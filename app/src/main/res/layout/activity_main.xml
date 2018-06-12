@@ -1,20 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout android:id="@+id/id_ll_container"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.hydbest.baseandroid.MainActivity">
+    android:orientation="vertical"
+    android:padding="10dp"
+    tools:context=".MainActivity">
 
-    <com.hydbest.baseandroid.view.SimpleTextureView
-        android:id="@+id/simple"
+    <TextView
+        android:id="@+id/id_tv_callback"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:text="Messenger Test!"/>
 
-    </com.hydbest.baseandroid.view.SimpleTextureView>
-
-    <Button
+    <Button android:id="@+id/id_btn_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="start" />
-</FrameLayout>
+        android:text="add"/>
+
+</LinearLayout>
