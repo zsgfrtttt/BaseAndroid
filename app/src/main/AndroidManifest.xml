@@ -26,6 +26,10 @@
         </activity>
 
         <activity android:name=".activity.ThreadLocalActivity">
+
+        </activity>
+
+        <activity android:name=".activity.ExecuteServiceActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
