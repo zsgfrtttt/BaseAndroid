@@ -14,7 +14,18 @@
         android:supportsRtl="true"
         android:hardwareAccelerated="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+
+        <activity android:name=".activity.HomeActivity">
+
+        </activity>
+        <activity android:name=".activity.MessengerActivity">
+
+        </activity>
+        <activity android:name=".activity.CountDownLatchActivity" >
+
+        </activity>
+
+        <activity android:name=".activity.ThreadLocalActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

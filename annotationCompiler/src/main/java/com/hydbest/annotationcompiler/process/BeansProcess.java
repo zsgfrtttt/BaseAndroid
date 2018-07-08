@@ -1,7 +1,6 @@
 package com.hydbest.annotationcompiler.process;
 
 import com.hydbest.annotationcompiler.annotation.Seriable;
-import com.sun.javafx.util.Logging;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -11,7 +10,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.logging.Logger;
 
 import javax.annotation.processing.AbstractProcessor;
 import javax.annotation.processing.ProcessingEnvironment;

@@ -1,4 +1,4 @@
-package com.hydbest.baseandroid;
+package com.hydbest.baseandroid.activity;
 
 import android.annotation.SuppressLint;
 import android.content.ComponentName;
@@ -12,16 +12,15 @@ import android.os.Messenger;
 import android.os.RemoteException;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.hydbest.Messenger.MessageService;
-import com.hydbest.baseandroid.view.SimpleTextureView;
+import com.hydbest.baseandroid.R;
 
-public class MainActivity extends AppCompatActivity {
+public class MessengerActivity extends AppCompatActivity {
     private static final int MSG_SUM = 0x110;
 
     private Button mBtnAdd;
@@ -85,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
                     int b = (int) (Math.random() * 100);
 
                     //创建一个tv,添加到LinearLayout中
-                    TextView tv = new TextView(MainActivity.this);
+                    TextView tv = new TextView(MessengerActivity.this);
                     tv.setText(a + " + " + b + " = caculating ...");
                     tv.setId(a);
                     mLyContainer.addView(tv);

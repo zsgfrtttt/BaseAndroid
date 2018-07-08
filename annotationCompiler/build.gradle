@@ -4,8 +4,6 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 }
 
-sourceCompatibility = "1.7"
-targetCompatibility = "1.7"
 //指定编译的编码
 tasks.withType(JavaCompile){
     options.encoding = "UTF-8"
