@@ -14,7 +14,7 @@ import java.util.concurrent.Executors;
 /**
  * shutdownNow会抛出interupt异常
  * isShutDown 在shutdown后就会更改标志位
- * isTerminater 在任务执行完毕后才会更改标志位 
+ * isTerminater 在任务执行完毕后才会更改标志位
  */
 
 public class ExecuteServiceActivity extends AppCompatActivity {

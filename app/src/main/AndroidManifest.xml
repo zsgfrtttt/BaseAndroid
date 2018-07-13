@@ -30,6 +30,10 @@
         </activity>
 
         <activity android:name=".activity.ExecuteServiceActivity">
+
+        </activity>
+
+        <activity android:name=".activity.ReentrantLockActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
