@@ -34,6 +34,10 @@
         </activity>
 
         <activity android:name=".activity.ReentrantLockActivity">
+
+        </activity>
+
+        <activity android:name=".activity.ThreadConcurrentActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
