@@ -38,6 +38,10 @@
         </activity>
 
         <activity android:name=".activity.ThreadConcurrentActivity">
+
+        </activity>
+
+        <activity android:name=".activity.FutureActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
