@@ -1,4 +1,4 @@
-package com.hydbest.baseandroid.activity;
+package com.hydbest.baseandroid.activity.concurrent;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

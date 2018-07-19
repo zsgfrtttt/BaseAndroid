@@ -21,27 +21,32 @@
         <activity android:name=".activity.MessengerActivity">
 
         </activity>
-        <activity android:name=".activity.CountDownLatchActivity" >
+        <activity android:name=".activity.concurrent.CountDownLatchActivity" >
 
         </activity>
 
-        <activity android:name=".activity.ThreadLocalActivity">
+        <activity android:name=".activity.concurrent.ThreadLocalActivity">
 
         </activity>
 
-        <activity android:name=".activity.ExecuteServiceActivity">
+        <activity android:name=".activity.concurrent.ExecuteServiceActivity">
 
         </activity>
 
-        <activity android:name=".activity.ReentrantLockActivity">
+        <activity android:name=".activity.concurrent.ReentrantLockActivity">
 
         </activity>
 
-        <activity android:name=".activity.ThreadConcurrentActivity">
+        <activity android:name=".activity.concurrent.ThreadConcurrentActivity">
 
         </activity>
 
-        <activity android:name=".activity.FutureActivity">
+        <activity android:name=".activity.concurrent.FutureActivity">
+
+        </activity>
+
+
+        <activity android:name=".activity.cus_viewgroup.LeftDrawerLayoutActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
