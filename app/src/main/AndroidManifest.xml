@@ -64,6 +64,10 @@
         </activity>
 
         <activity android:name=".activity.foundation.LogActivity">
+
+        </activity>
+
+        <activity android:name=".activity.foundation.BlockDetectActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
