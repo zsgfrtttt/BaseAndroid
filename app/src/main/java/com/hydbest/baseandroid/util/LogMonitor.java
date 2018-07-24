@@ -5,6 +5,9 @@ import android.os.HandlerThread;
 import android.os.Looper;
 import android.util.Log;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
 /**
  * Created by csz on 2018/7/24.
  */
@@ -39,6 +42,18 @@ public class LogMonitor {
     }
 
     public boolean isMonitor() {
+        try {
+            Method method = Handler.class.getMethod("hasCallbacks", Runnable.class);
+            boolean hasCallback = (boolean) method.invoke(mIoHandler, mLogRunnable);
+            Log.i("csz", "hasCallback:" + hasCallback);
+            return hasCallback;
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        }
         // return mIoHandler.hasCallbacks(mLogRunnable);
         return false;
     }

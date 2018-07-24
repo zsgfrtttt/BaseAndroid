@@ -51,9 +51,9 @@
 
         </activity>
 
-        <activity android:name=".activity.cus_view.LargeImageActivity">
+        <!--<activity android:name=".activity.cus_view.LargeImageActivity">-->
 
-        </activity>
+        <!--</activity>-->
 
         <activity android:name=".activity.foundation.RuntimePermissonActivity">
 
