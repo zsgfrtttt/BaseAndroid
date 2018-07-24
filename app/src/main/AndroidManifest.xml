@@ -60,6 +60,10 @@
         </activity>
 
         <activity android:name=".activity.cus_viewgroup.ViewpageActivity">
+
+        </activity>
+
+        <activity android:name=".activity.foundation.LogActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
