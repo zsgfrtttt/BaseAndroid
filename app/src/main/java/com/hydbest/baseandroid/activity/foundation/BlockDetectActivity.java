@@ -8,7 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.hydbest.baseandroid.R;
-import com.hydbest.baseandroid.util.BlockDetectByChoreographer;
+import com.hydbest.baseandroid.util.BlockDetectByLooper;
 import com.hydbest.baseandroid.util.BlockDetectByPrinter;
 
 /**
@@ -23,7 +23,8 @@ public class BlockDetectActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_block_detect);
        // BlockDetectByPrinter.start();
-        BlockDetectByChoreographer.start();
+       // BlockDetectByChoreographer.start();
+        BlockDetectByLooper.start();
     }
 
     public void check(View view) {
