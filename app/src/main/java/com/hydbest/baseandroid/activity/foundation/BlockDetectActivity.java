@@ -7,6 +7,7 @@ import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import com.csz.testmodule.L;
 import com.hydbest.baseandroid.R;
 import com.hydbest.baseandroid.util.BlockDetectByLooper;
 import com.hydbest.baseandroid.util.BlockDetectByPrinter;
@@ -25,6 +26,7 @@ public class BlockDetectActivity extends AppCompatActivity {
        // BlockDetectByPrinter.start();
        // BlockDetectByChoreographer.start();
         BlockDetectByLooper.start();
+        L.getStr();
     }
 
     public void check(View view) {

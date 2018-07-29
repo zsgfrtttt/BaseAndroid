@@ -10,6 +10,7 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/annotationCompiler" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/eventbus" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
