@@ -15,12 +15,9 @@ import android.util.AttributeSet;
  */
 
 public class AdImageView extends AppCompatImageView{
-    private RectF mBitmapRectF;
-    private Bitmap mBitmap;
 
     private int mMinDy;
     private int mDy;
-
 
     public AdImageView(Context context) {
         this(context,null);
@@ -44,15 +41,6 @@ public class AdImageView extends AppCompatImageView{
         super.onSizeChanged(w, h, oldw, oldh);
 
         mMinDy = h;
-        Drawable drawable = getDrawable();
-
-        if (drawable == null) {
-            return;
-        }
-
-        mBitmap = drawableToBitamp(drawable);
-        mBitmapRectF = new RectF(0, 0, w,mBitmap.getHeight() * w / mBitmap.getWidth());
-
     }
 
     private Bitmap drawableToBitamp(Drawable drawable) {
@@ -78,20 +66,21 @@ public class AdImageView extends AppCompatImageView{
         if (mDy <= 0) {
             mDy = 0;
         }
-        if (mDy > mBitmapRectF.height() - mMinDy) {
-            mDy = (int) (mBitmapRectF.height() - mMinDy);
+        if (mDy > getDrawable().getBounds().height() - mMinDy) {
+            mDy = getDrawable().getBounds().height() - mMinDy;
         }
         invalidate();
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
-        if (mBitmap == null) {
-            return;
-        }
+        Drawable drawable = getDrawable();
+        int w = getWidth();
+        int h = (int) (getWidth() * 1.0f / drawable.getIntrinsicWidth() * drawable.getIntrinsicHeight());
+        drawable.setBounds(0, 0, w, h);
         canvas.save();
         canvas.translate(0, -mDy);
-        canvas.drawBitmap(mBitmap, null, mBitmapRectF, null);
+        super.onDraw(canvas);
         canvas.restore();
     }
 }

@@ -5,10 +5,12 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.hydbest.baseandroid.R;
+import com.hydbest.baseandroid.view.view.AdImageView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,6 +51,23 @@ public class AdActivity extends AppCompatActivity {
                 }
             }
 
+        });
+
+        mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+
+                int fPos = mLinearLayoutManager.findFirstVisibleItemPosition();
+                int lPos = mLinearLayoutManager.findLastCompletelyVisibleItemPosition();
+                for (int i = fPos; i <= lPos; i++) {
+                    View view = mLinearLayoutManager.findViewByPosition(i);
+                    AdImageView adImageView = view.findViewById(R.id.id_iv_ad);
+                    if (adImageView.getVisibility() == View.VISIBLE) {
+                        adImageView.setDy(mLinearLayoutManager.getHeight() - view.getTop());
+                    }
+                }
+            }
         });
 
     }
