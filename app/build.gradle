@@ -31,4 +31,5 @@ dependencies {
         exclude group: 'com.android.support'
     }
     implementation project(':eventbus')
+    implementation project(':fileprovider')
 }

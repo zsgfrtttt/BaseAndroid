@@ -11,6 +11,7 @@
             <option value="$PROJECT_DIR$/annotationCompiler" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/eventbus" />
+            <option value="$PROJECT_DIR$/fileprovider" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

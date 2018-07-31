@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/annotationCompiler/annotationCompiler.iml" filepath="$PROJECT_DIR$/annotationCompiler/annotationCompiler.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/eventbus/eventbus.iml" filepath="$PROJECT_DIR$/eventbus/eventbus.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fileprovider/fileprovider.iml" filepath="$PROJECT_DIR$/fileprovider/fileprovider.iml" />
     </modules>
   </component>
 </project>
