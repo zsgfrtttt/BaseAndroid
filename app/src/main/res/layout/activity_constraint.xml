@@ -122,7 +122,6 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:background="#612"
-        android:visibility=""
         app:layout_constraintLeft_toLeftOf="@id/guideline_w"
         app:layout_constraintTop_toBottomOf="@id/guideline_h" />
 

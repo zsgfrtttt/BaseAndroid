@@ -33,7 +33,7 @@ public class LogMonitor {
             for (StackTraceElement s : stackTrace) {
                 sb.append(s.toString() + "\n");
             }
-            Log.e("csz", sb.toString());
+            Log.e("block", sb.toString());
         }
     };
 
@@ -45,7 +45,6 @@ public class LogMonitor {
         try {
             Method method = Handler.class.getMethod("hasCallbacks", Runnable.class);
             boolean hasCallback = (boolean) method.invoke(mIoHandler, mLogRunnable);
-            Log.i("csz", "hasCallback:" + hasCallback);
             return hasCallback;
         } catch (NoSuchMethodException e) {
             e.printStackTrace();

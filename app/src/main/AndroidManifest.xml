@@ -91,6 +91,10 @@
         </activity>
 
         <activity android:name=".activity.cus_viewgroup.ConstraintActivity">
+
+        </activity>
+
+        <activity android:name=".activity.cus_view.MultiTouchActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

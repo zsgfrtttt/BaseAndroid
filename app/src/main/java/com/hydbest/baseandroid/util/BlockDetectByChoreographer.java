@@ -15,7 +15,6 @@ public class BlockDetectByChoreographer {
         Choreographer.getInstance().postFrameCallback(new Choreographer.FrameCallback() {
             @Override
             public void doFrame(long frameTimeNanos) {
-                Log.i("csz","doFrame:"+System.currentTimeMillis());
                 if (LogMonitor.getInstance().isMonitor())
                 {
                     LogMonitor.getInstance().removeMonitor();
