@@ -8,6 +8,7 @@
     <uses-permission android:name="android.permission.READ_CONTACTS"/>
     <uses-permission android:name="android.permission.CAMERA"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -105,6 +106,10 @@
         <activity android:name=".activity.cus_viewgroup.ImageWatcherActivity">
 
         </activity>
+
+        <activity android:name=".activity.Media.MediaDrawImageActivity"></activity>
+
+        <activity android:name=".activity.Media.MediaAudioRecordActivity"></activity>
 
         <service
             android:name="com.hydbest.Messenger.MessageService"
