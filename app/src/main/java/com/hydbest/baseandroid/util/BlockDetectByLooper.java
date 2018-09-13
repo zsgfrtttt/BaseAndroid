@@ -40,7 +40,7 @@ public class BlockDetectByLooper {
                         }
                         LogMonitor.getInstance().startMonitor();
                         msg.getTarget().dispatchMessage(msg);
-                        msg.recycle();
+                       // msg.recycle();
                         LogMonitor.getInstance().removeMonitor();
                     }
                 } catch (NoSuchFieldException e) {
