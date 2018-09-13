@@ -113,6 +113,8 @@
         <activity android:name=".activity.Media.MediaAudioRecordActivity"></activity>
 
         <activity android:name=".activity.Media.MediaAudioTrackActivity"></activity>
+
+        <activity android:name=".activity.Media.MediaCameraActivity"></activity>
         <service
             android:name="com.hydbest.Messenger.MessageService"
             android:process=":remote"
