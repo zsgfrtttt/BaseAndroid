@@ -2,6 +2,7 @@ package com.hydbest.baseandroid.util;
 
 import com.chad.library.adapter.base.entity.MultiItemEntity;
 import com.hydbest.baseandroid.activity.Media.MediaAudioRecordActivity;
+import com.hydbest.baseandroid.activity.Media.MediaAudioTrackActivity;
 import com.hydbest.baseandroid.activity.Media.MediaDrawImageActivity;
 import com.hydbest.baseandroid.activity.concurrent.CountDownLatchActivity;
 import com.hydbest.baseandroid.activity.concurrent.ExecuteServiceActivity;
@@ -94,9 +95,11 @@ public class DataGeneration {
         Level0Item item6 = new Level0Item("音视频初级", "");
         Fragmentation subItem6_0 = new Fragmentation("通过两种方式绘制图片", MediaDrawImageActivity.class);
         Fragmentation subItem6_1 = new Fragmentation("使用AudioRecord采集音频PCM并保存到文件", MediaAudioRecordActivity.class);
+        Fragmentation subItem6_2 = new Fragmentation("使用 AudioTrack 播放PCM音频", MediaAudioTrackActivity.class);
 
         item6.addSubItem(subItem6_0);
         item6.addSubItem(subItem6_1);
+        item6.addSubItem(subItem6_2);
 
         list.add(item0);
         list.add(item1);
