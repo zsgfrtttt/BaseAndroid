@@ -1,6 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-</android.support.constraint.ConstraintLayout>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="surface"
+        android:text="surface" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="texture"
+        android:text="texture" />
+
+    <FrameLayout
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/sp_16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <SurfaceView
+            android:id="@+id/surface"
+            android:layout_width="300dp"
+            android:layout_height="300dp" />
+
+        <TextureView
+            android:id="@+id/texture"
+            android:layout_width="300dp"
+            android:layout_height="300dp" />
+    </FrameLayout>
+
+</LinearLayout>
