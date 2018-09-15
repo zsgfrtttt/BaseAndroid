@@ -4,4 +4,17 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="mediaExtractor"
+        android:text="音视频分离"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="mediaMuxer"
+        android:text="音视频合成"/>
+
+
 </LinearLayout>
