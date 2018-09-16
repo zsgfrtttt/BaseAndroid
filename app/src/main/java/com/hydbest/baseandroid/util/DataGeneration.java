@@ -6,6 +6,7 @@ import com.hydbest.baseandroid.activity.Media.MediaAudioTrackActivity;
 import com.hydbest.baseandroid.activity.Media.MediaCameraActivity;
 import com.hydbest.baseandroid.activity.Media.MediaDrawImageActivity;
 import com.hydbest.baseandroid.activity.Media.MediaExecutorActivity;
+import com.hydbest.baseandroid.activity.Media.record.MediaRecordActivity;
 import com.hydbest.baseandroid.activity.concurrent.CountDownLatchActivity;
 import com.hydbest.baseandroid.activity.concurrent.ExecuteServiceActivity;
 import com.hydbest.baseandroid.activity.concurrent.FutureActivity;
@@ -100,12 +101,14 @@ public class DataGeneration {
         Fragmentation subItem6_2 = new Fragmentation("使用 AudioTrack 播放PCM音频", MediaAudioTrackActivity.class);
         Fragmentation subItem6_3 = new Fragmentation("使用 Camera API 采集视频数据", MediaCameraActivity.class);
         Fragmentation subItem6_4 = new Fragmentation("使用 MediaExtractor 和 MediaMuxer API 解析和封装 mp4 文件", MediaExecutorActivity.class);
+        Fragmentation subItem6_5 = new Fragmentation("音视频的录制以及保存", MediaRecordActivity.class);
 
         item6.addSubItem(subItem6_0);
         item6.addSubItem(subItem6_1);
         item6.addSubItem(subItem6_2);
         item6.addSubItem(subItem6_3);
         item6.addSubItem(subItem6_4);
+        item6.addSubItem(subItem6_5);
 
         list.add(item0);
         list.add(item1);
