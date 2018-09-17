@@ -4,7 +4,12 @@ import android.Manifest;
 import android.content.pm.PackageManager;
 import android.graphics.ImageFormat;
 import android.hardware.Camera;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
+import android.media.MediaRecorder;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -15,6 +20,7 @@ import android.view.View;
 
 import com.hydbest.baseandroid.R;
 
+import java.io.File;
 import java.io.IOException;
 
 import butterknife.BindView;
@@ -25,10 +31,13 @@ public class MediaRecordActivity extends AppCompatActivity implements SurfaceHol
     @BindView(R.id.surface)
     SurfaceView surfaceView;
 
+    private MediaRecorder mMediaRecorder;
+    private MediaPlayer mMediaPlayer;
     private Camera mCamera;
     private SurfaceHolder mHolder;
-
-
+    private String mSavePath = Environment.getExternalStorageDirectory() + File.separator + "record.3gp";
+    private int surfaceHeight;
+    private int surfaceWidth;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -45,43 +54,127 @@ public class MediaRecordActivity extends AppCompatActivity implements SurfaceHol
                     Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE}, 100);
         }
 
-        mHolder  =  surfaceView.getHolder();
+        mHolder = surfaceView.getHolder();
         mHolder.addCallback(this);
+        // setType必须设置，要不出错.
+        mHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
     }
 
     public void record(View view) {
+        stopRecord();
+        try {
+            File file = new File(Environment.getExternalStorageDirectory(),"record.3gp");
+            if (!file.exists()) {
+                file.mkdirs();
+            }
+            mMediaRecorder = new MediaRecorder();// 创建mediarecorder对象
+            mCamera = Camera.open(Camera.CameraInfo.CAMERA_FACING_BACK);
+            Camera.Parameters parameters = mCamera.getParameters();
+//              parameters.setRotation(90);
+            parameters.setPreviewSize(640, 480);
+            parameters.setPictureSize(640, 480);
+            mCamera.setParameters(parameters);
+            mCamera.setDisplayOrientation(90);
+            mCamera.unlock();
+            mMediaRecorder.setCamera(mCamera);
+            mMediaRecorder.reset();
 
+            // 设置录制视频源为Camera(相机)
+            mMediaRecorder.setVideoSource(MediaRecorder.VideoSource.CAMERA);
+            //mMediaRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+            // 设置录制完成后视频的封装格式THREE_GPP为3gp.MPEG_4为mp4
+            mMediaRecorder
+                    .setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
+            // 设置录制的视频编码h263 h264
+            mMediaRecorder.setVideoEncoder(MediaRecorder.VideoEncoder.H264);
+            // 设置视频录制的分辨率。必须放在设置编码和格式的后面，否则报错
+            mMediaRecorder.setVideoSize(176*2, 144*2);
+            // 设置录制的视频帧率。必须放在设置编码和格式的后面，否则报错
+            mMediaRecorder.setVideoFrameRate(60);
+            //旋转90度
+            mMediaRecorder.setOrientationHint(90);
+            mMediaRecorder.setPreviewDisplay(mHolder.getSurface());
+            // 设置视频文件输出的路径
+            mMediaRecorder.setOutputFile(file.getAbsolutePath());
+            // 准备录制
+            mMediaRecorder.prepare();
+            // 开始录制
+            mMediaRecorder.start();
+            /*mMediaRecorder = new MediaRecorder();
+            mMediaRecorder.setCamera(mCamera);
+            // 这两项需要放在setOutputFormat之前
+            mMediaRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+            mMediaRecorder.setVideoSource(MediaRecorder.VideoSource.CAMERA);
+            // Set output file format
+            mMediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
+            // 这两项需要放在setOutputFormat之后
+            mMediaRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
+            mMediaRecorder.setVideoEncoder(MediaRecorder.VideoEncoder.MPEG_4_SP);
+            mMediaRecorder.setVideoSize(176, 144);
+            //60fps高画质
+            mMediaRecorder.setVideoFrameRate(20);
+            //3m/s高音质
+            mMediaRecorder.setVideoEncodingBitRate(3 * 1024 * 1024);
+            mMediaRecorder.setOrientationHint(90);
+            //设置记录会话的最大持续时间（毫秒）
+            mMediaRecorder.setMaxDuration(10 * 1000);
+            mMediaRecorder.setPreviewDisplay(mHolder.getSurface());
+
+            mMediaRecorder.setOutputFile(file.getAbsolutePath());
+            mMediaRecorder.prepare();
+            mMediaRecorder.start();*/
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void stopRecord(View view) {
+        stopRecord();
     }
 
     public void play(View view) {
+        stopPlay();
+        try {
+            mMediaPlayer = new MediaPlayer();
+            mMediaPlayer.setDataSource(mSavePath);
+            mMediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+            mMediaPlayer.setDisplay(mHolder);
+            mMediaPlayer.prepare();
+            mMediaPlayer.start();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
 
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
         if (holder != null) this.mHolder = holder;
+        startCamera();
     }
 
     @Override
     public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
-
+        surfaceWidth = width ;
+        surfaceHeight = height;
     }
 
     @Override
     public void surfaceDestroyed(SurfaceHolder holder) {
+        stopRecord();
         stopCamera();
     }
 
     /**
      * 打开摄像头
      */
-    private void startCamera(){
+    private void startCamera() {
         mCamera = android.hardware.Camera.open(Camera.CameraInfo.CAMERA_FACING_BACK);
         mCamera.setDisplayOrientation(90);
         Camera.Parameters parameters = mCamera.getParameters();
         parameters.setPreviewFormat(ImageFormat.NV21);
         // 这个宽高的设置必须和后面编解码的设置一样，否则不能正常处理
-        parameters.setPreviewSize(1920, 1080);
+        parameters.setPreviewSize(480, 320);
 
         try {
             mCamera.setParameters(parameters);
@@ -94,14 +187,38 @@ public class MediaRecordActivity extends AppCompatActivity implements SurfaceHol
     }
 
     /**
-     * 关闭摄像头
+     * 关闭摄像头,停止录制
      */
-    private void stopCamera(){
-        if (mCamera != null){
+    private void stopCamera() {
+        if (mCamera != null) {
             mCamera.setPreviewCallback(null);
             mCamera.stopPreview();
             mCamera.release();
             mCamera = null;
+        }
+    }
+
+    private void stopRecord() {
+        stopPlay();
+        try {
+            if (mMediaRecorder != null) {
+                mMediaRecorder.setOnErrorListener(null);
+                mMediaRecorder.setOnInfoListener(null);
+                mMediaRecorder.setPreviewDisplay(null);
+                mMediaRecorder.stop();
+                mMediaRecorder.release();
+                mMediaRecorder = null;
+            }
+        } catch (IllegalStateException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void stopPlay() {
+        if (mMediaPlayer != null) {
+            mMediaPlayer.stop();
+            mMediaPlayer.release();
+            mMediaPlayer = null;
         }
     }
 

@@ -14,6 +14,12 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="stopRecord"
+        android:text="停止录制"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:onClick="play"
         android:text="开始播放"/>
 
