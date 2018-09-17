@@ -7,7 +7,6 @@ import android.hardware.Camera;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.Nullable;
@@ -35,7 +34,7 @@ public class MediaRecordActivity extends AppCompatActivity implements SurfaceHol
     private MediaPlayer mMediaPlayer;
     private Camera mCamera;
     private SurfaceHolder mHolder;
-    private String mSavePath = Environment.getExternalStorageDirectory() + File.separator + "record.3gp";
+    private String mSavePath = Environment.getExternalStorageDirectory() + File.separator + "record.mp4";
     private int surfaceHeight;
     private int surfaceWidth;
 
@@ -63,18 +62,27 @@ public class MediaRecordActivity extends AppCompatActivity implements SurfaceHol
     public void record(View view) {
         stopRecord();
         try {
-            File file = new File(Environment.getExternalStorageDirectory(),"record.3gp");
-            if (!file.exists()) {
-                file.mkdirs();
+            File file = new File(mSavePath);
+            File fileParent = file.getParentFile();
+            if (!fileParent.exists()) {
+                fileParent.mkdirs();
             }
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+            //释放掉已经开启的色相头资源，打开新的摄像头绑定录制对象
+            stopCamera();
             mMediaRecorder = new MediaRecorder();// 创建mediarecorder对象
             mCamera = Camera.open(Camera.CameraInfo.CAMERA_FACING_BACK);
             Camera.Parameters parameters = mCamera.getParameters();
-//              parameters.setRotation(90);
+            parameters.setRotation(90);
             parameters.setPreviewSize(640, 480);
             parameters.setPictureSize(640, 480);
             mCamera.setParameters(parameters);
             mCamera.setDisplayOrientation(90);
+            mCamera.setPreviewDisplay(mHolder);
+            mCamera.setPreviewCallback(this);
+            mCamera.startPreview();
             mCamera.unlock();
             mMediaRecorder.setCamera(mCamera);
             mMediaRecorder.reset();
@@ -88,7 +96,7 @@ public class MediaRecordActivity extends AppCompatActivity implements SurfaceHol
             // 设置录制的视频编码h263 h264
             mMediaRecorder.setVideoEncoder(MediaRecorder.VideoEncoder.H264);
             // 设置视频录制的分辨率。必须放在设置编码和格式的后面，否则报错
-            mMediaRecorder.setVideoSize(176*2, 144*2);
+            mMediaRecorder.setVideoSize(176 * 2, 144 * 2);
             // 设置录制的视频帧率。必须放在设置编码和格式的后面，否则报错
             mMediaRecorder.setVideoFrameRate(60);
             //旋转90度
@@ -134,6 +142,8 @@ public class MediaRecordActivity extends AppCompatActivity implements SurfaceHol
 
     public void play(View view) {
         stopPlay();
+        //释放掉camera占有的holder对象   否则渲染不出录制的视频
+        stopCamera();
         try {
             mMediaPlayer = new MediaPlayer();
             mMediaPlayer.setDataSource(mSavePath);
@@ -155,7 +165,7 @@ public class MediaRecordActivity extends AppCompatActivity implements SurfaceHol
 
     @Override
     public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
-        surfaceWidth = width ;
+        surfaceWidth = width;
         surfaceHeight = height;
     }
 
