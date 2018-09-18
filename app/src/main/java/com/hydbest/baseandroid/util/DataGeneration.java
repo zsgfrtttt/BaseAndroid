@@ -6,6 +6,8 @@ import com.hydbest.baseandroid.activity.Media.MediaAudioTrackActivity;
 import com.hydbest.baseandroid.activity.Media.MediaCameraActivity;
 import com.hydbest.baseandroid.activity.Media.MediaDrawImageActivity;
 import com.hydbest.baseandroid.activity.Media.MediaExecutorActivity;
+import com.hydbest.baseandroid.activity.Media.openGL_ES.GLSurfaceActivity;
+import com.hydbest.baseandroid.activity.Media.openGL_ES.GL_DefineShapeActivity;
 import com.hydbest.baseandroid.activity.Media.record.MediaRecordActivity;
 import com.hydbest.baseandroid.activity.concurrent.CountDownLatchActivity;
 import com.hydbest.baseandroid.activity.concurrent.ExecuteServiceActivity;
@@ -102,13 +104,18 @@ public class DataGeneration {
         Fragmentation subItem6_3 = new Fragmentation("使用 Camera API 采集视频数据", MediaCameraActivity.class);
         Fragmentation subItem6_4 = new Fragmentation("使用 MediaExtractor 和 MediaMuxer API 解析和封装 mp4 文件", MediaExecutorActivity.class);
         Fragmentation subItem6_5 = new Fragmentation("MediaRecorder和Camera实现视频录制及播放功能", MediaRecordActivity.class);
-
         item6.addSubItem(subItem6_0);
         item6.addSubItem(subItem6_1);
         item6.addSubItem(subItem6_2);
         item6.addSubItem(subItem6_3);
         item6.addSubItem(subItem6_4);
         item6.addSubItem(subItem6_5);
+
+        Level0Item item7 = new Level0Item("OpenGL ES", "");
+        Fragmentation subItem7_0 = new Fragmentation("GLSurfaceView的探索", GLSurfaceActivity.class);
+        Fragmentation subItem7_1 = new Fragmentation("openGL绘制形状", GL_DefineShapeActivity.class);
+        item7.addSubItem(subItem7_0);
+        item7.addSubItem(subItem7_1);
 
         list.add(item0);
         list.add(item1);
@@ -117,6 +124,7 @@ public class DataGeneration {
         list.add(item4);
         list.add(item5);
         list.add(item6);
+        list.add(item7);
 
         return list;
     }
