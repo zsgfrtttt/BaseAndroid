@@ -130,6 +130,10 @@
         <activity android:name=".activity.Media.openGL_ES.GLSurfaceActivity"></activity>
 
         <activity android:name=".activity.Media.openGL_ES.GL_DefineShapeActivity"></activity>
+
+        <activity android:name=".activity.Media.MediaVoiceActivity"></activity>
+
+        <activity android:name=".activity.Media.MediaVideoActivity"></activity>
         <service
             android:name="com.hydbest.Messenger.MessageService"
             android:process=":remote"
