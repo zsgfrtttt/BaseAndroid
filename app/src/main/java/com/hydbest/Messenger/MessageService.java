@@ -31,7 +31,7 @@ public class MessageService extends Service{
                     e.printStackTrace();
                 }
             }
-            
+
         }
     });
 

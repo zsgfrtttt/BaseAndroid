@@ -27,6 +27,7 @@ import com.hydbest.baseandroid.activity.cus_viewgroup.NavigationActivity;
 import com.hydbest.baseandroid.activity.cus_viewgroup.NestScrollActivity;
 import com.hydbest.baseandroid.activity.cus_viewgroup.ViewpageActivity;
 import com.hydbest.baseandroid.activity.event.EventRegisterActivity;
+import com.hydbest.baseandroid.activity.foundation.ArrayActivity;
 import com.hydbest.baseandroid.activity.foundation.BlockDetectActivity;
 import com.hydbest.baseandroid.activity.foundation.FileProviderActivity;
 import com.hydbest.baseandroid.activity.foundation.LogActivity;
@@ -51,9 +52,11 @@ public class DataGeneration {
         Fragmentation subItem0_0 = new Fragmentation("运行时权限", RuntimePermissonActivity.class);
         Fragmentation subItem0_1 = new Fragmentation("Log库原理", LogActivity.class);
         Fragmentation subItem0_2 = new Fragmentation("FileProvider", FileProviderActivity.class);
+        Fragmentation subItem0_3 = new Fragmentation("ArrayMap和SparseArray的使用", ArrayActivity.class);
         item0.addSubItem(subItem0_0);
         item0.addSubItem(subItem0_1);
         item0.addSubItem(subItem0_2);
+        item0.addSubItem(subItem0_3);
 
         Level0Item item1 = new Level0Item("android自定义View", "");
         Fragmentation subItem1_0 = new Fragmentation("仿知乎广告", AdActivity.class);
