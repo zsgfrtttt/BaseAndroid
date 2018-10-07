@@ -43,10 +43,10 @@ public class MediaAudioTrackActivity extends AppCompatActivity {
         setContentView(R.layout.activity_media_audio_track);
     }
 
-    public void playStaticMode(View view){
+    public void playStaticMode(View view) {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED
-                ||ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.RECORD_AUDIO,Manifest.permission.WRITE_EXTERNAL_STORAGE}, 0);
+                || ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.RECORD_AUDIO, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 0);
         } else {
             new Thread(new Runnable() {
                 @Override
@@ -60,7 +60,7 @@ public class MediaAudioTrackActivity extends AppCompatActivity {
                             outputStream.write(data);
                         }
                         fis.close();
-                        start(outputStream.toByteArray(),AudioTrack.MODE_STATIC);
+                        start(outputStream.toByteArray(), AudioTrack.MODE_STATIC);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -69,25 +69,25 @@ public class MediaAudioTrackActivity extends AppCompatActivity {
         }
     }
 
-    private void start(byte[] data,int mode){
+    private void start(byte[] data, int mode) {
         if (mAudioTrack != null && mAudioTrack.getState() == AudioTrack.PLAYSTATE_PAUSED) {
             mAudioTrack.play();
             return;
-        }else if (mAudioTrack != null){
+        } else if (mAudioTrack != null) {
             mAudioTrack.stop();
             mAudioTrack.release();
         }
         mAudioTrack = new AudioTrack(AudioManager.STREAM_MUSIC, 44100,
-                AudioFormat.CHANNEL_IN_DEFAULT, AudioFormat.ENCODING_PCM_16BIT,
+                AudioFormat.CHANNEL_OUT_MONO, AudioFormat.ENCODING_PCM_16BIT,
                 data.length, mode);
-        mAudioTrack.write(data,0,data.length);
+        mAudioTrack.write(data, 0, data.length);
         mAudioTrack.play();
     }
 
-    public void playStreamMode(View view){
+    public void playStreamMode(View view) {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED
-                ||ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.RECORD_AUDIO,Manifest.permission.WRITE_EXTERNAL_STORAGE}, 0);
+                || ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.RECORD_AUDIO, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 0);
         } else {
             new Thread(new Runnable() {
                 @Override
@@ -96,20 +96,32 @@ public class MediaAudioTrackActivity extends AppCompatActivity {
                         if (mAudioTrack != null && mAudioTrack.getState() == AudioTrack.PLAYSTATE_PAUSED) {
                             mAudioTrack.play();
                             return;
-                        }else if (mAudioTrack != null){
+                        } else if (mAudioTrack != null) {
                             mAudioTrack.stop();
                             mAudioTrack.release();
                         }
+                        int bufferSize = AudioTrack.getMinBufferSize(44100, AudioFormat.CHANNEL_OUT_MONO, AudioFormat.ENCODING_PCM_16BIT);
                         mAudioTrack = new AudioTrack(AudioManager.STREAM_MUSIC, 44100,
-                                AudioFormat.CHANNEL_IN_DEFAULT, AudioFormat.ENCODING_PCM_16BIT,
-                                2048, AudioTrack.MODE_STREAM);
+                                AudioFormat.CHANNEL_OUT_MONO, AudioFormat.ENCODING_PCM_16BIT,
+                                Math.max(2048, bufferSize), AudioTrack.MODE_STREAM);
 
                         FileInputStream fis = new FileInputStream(fileName);
                         byte[] data = new byte[2048];
                         int size = 0;
-                        while ((size = fis.read(data)) != -1) {
-                            mAudioTrack.write(data,0,size);
-                            mAudioTrack.play();
+                        int status;
+                        boolean error = false;
+                        while ((size = fis.read(data)) != -1 && !error) {
+                            status = mAudioTrack.write(data, 0, size);
+                            switch (status) {
+                                case AudioTrack.ERROR_INVALID_OPERATION:
+                                case AudioTrack.ERROR_BAD_VALUE:
+                                case AudioTrack.ERROR_DEAD_OBJECT:
+                                    error = true;
+                                    break;
+                            }
+                            if (!error) {
+                                mAudioTrack.play();
+                            }
                         }
                         fis.close();
                     } catch (Exception e) {

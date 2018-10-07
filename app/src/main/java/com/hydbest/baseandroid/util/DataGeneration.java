@@ -108,7 +108,7 @@ public class DataGeneration {
         Fragmentation subItem6_2 = new Fragmentation("使用 AudioTrack 播放PCM音频", MediaAudioTrackActivity.class);
         Fragmentation subItem6_3 = new Fragmentation("使用 Camera API 采集视频数据", MediaCameraActivity.class);
         Fragmentation subItem6_4 = new Fragmentation("使用 MediaExtractor 和 MediaMuxer API 解析和封装 mp4 文件", MediaExecutorActivity.class);
-        Fragmentation subItem6_5 = new Fragmentation("MediaRecorder和Camera实现视频录制及播放功能", MediaRecordActivity.class);
+        Fragmentation subItem6_5 = new Fragmentation("MediaRecorder和Camera实现视频录制（音频录制）及播放功能", MediaRecordActivity.class);
         Fragmentation subItem6_6 = new Fragmentation("Android 音乐(音效)播放方式总结", MediaVoiceActivity.class);
         Fragmentation subItem6_7 = new Fragmentation("使用VideoView播放视频", MediaVideoActivity.class);
         item6.addSubItem(subItem6_0);
