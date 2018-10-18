@@ -26,6 +26,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MediaRecordActivity extends AppCompatActivity implements SurfaceHolder.Callback, Camera.PreviewCallback {
+    private static final int MAX_AMPLITUDE = 32767;
 
     @BindView(R.id.surface)
     SurfaceView surfaceView;
@@ -37,6 +38,8 @@ public class MediaRecordActivity extends AppCompatActivity implements SurfaceHol
     private String mSavePath = Environment.getExternalStorageDirectory() + File.separator + "record.mp4";
     private int surfaceHeight;
     private int surfaceWidth;
+
+    private String mVoicePath = Environment.getExternalStorageDirectory() + File.separator + "voice";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -57,6 +60,32 @@ public class MediaRecordActivity extends AppCompatActivity implements SurfaceHol
         mHolder.addCallback(this);
         // setType必须设置，要不出错.
         mHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
+    }
+
+    public void recordVoice(View view) {
+        try {
+            stopRecord();
+            stopCamera();
+            File file = new File(mVoicePath,"vo.m4a");
+            file.getParentFile().mkdirs();
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+            mMediaRecorder = new MediaRecorder();
+            mMediaRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+            mMediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
+            //所有安卓系统都支持的采样频率
+            mMediaRecorder.setAudioSamplingRate(44100);
+            mMediaRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AAC);
+            mMediaRecorder.setAudioEncodingBitRate(96000);
+            mMediaRecorder.setOutputFile(file.getAbsolutePath());
+            mMediaRecorder.prepare();
+            mMediaRecorder.start();
+            //获取音量
+            mMediaRecorder.getMaxAmplitude();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void record(View view) {

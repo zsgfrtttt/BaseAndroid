@@ -17,13 +17,13 @@ import com.hydbest.baseandroid.R;
 import com.hydbest.baseandroid.activity.Media.util.PcmToWavUtil;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
 import butterknife.ButterKnife;
 
-import static android.media.AudioFormat.CHANNEL_IN_DEFAULT;
+//所有安卓系统都支持
+import static android.media.AudioFormat.CHANNEL_IN_MONO;
 import static android.media.AudioFormat.ENCODING_PCM_16BIT;
 
 /**
@@ -31,6 +31,7 @@ import static android.media.AudioFormat.ENCODING_PCM_16BIT;
  */
 
 public class MediaAudioRecordActivity extends AppCompatActivity {
+
     private AudioRecord audioRecord = null;  // 声明 AudioRecord 对象
     private int recordBufSize = 0; // 声明recoordBufffer的大小字段
     private int frequency = 44100;
@@ -52,9 +53,9 @@ public class MediaAudioRecordActivity extends AppCompatActivity {
     }
 
     private void initAudio() {
-
-        recordBufSize = AudioRecord.getMinBufferSize(frequency, CHANNEL_IN_DEFAULT, ENCODING_PCM_16BIT);
-        audioRecord = new AudioRecord(MediaRecorder.AudioSource.MIC, frequency, CHANNEL_IN_DEFAULT, ENCODING_PCM_16BIT, recordBufSize);
+        //内部缓冲区大小
+        recordBufSize = AudioRecord.getMinBufferSize(frequency, AudioFormat.CHANNEL_IN_MONO, ENCODING_PCM_16BIT);
+        audioRecord = new AudioRecord(MediaRecorder.AudioSource.MIC, frequency,  AudioFormat.CHANNEL_IN_MONO, ENCODING_PCM_16BIT, recordBufSize);
     }
 
     public void record(View view) {
@@ -76,8 +77,10 @@ public class MediaAudioRecordActivity extends AppCompatActivity {
                         if (fos != null) {
                             while (isRecording) {
                                 size = audioRecord.read(data, 0, recordBufSize);
-                                if (size != AudioRecord.ERROR_INVALID_OPERATION) {
-                                    fos.write(data);
+                                if (size > 0) {
+                                    fos.write(data,0,size);
+                                } else {
+                                    isRecording = false;
                                 }
                             }
                             fos.flush();
@@ -109,7 +112,7 @@ public class MediaAudioRecordActivity extends AppCompatActivity {
             }
             File f = new File(fileName);
             if (f.exists()) {
-                new PcmToWavUtil(frequency, CHANNEL_IN_DEFAULT, ENCODING_PCM_16BIT).pcmToWav(fileName, wavFileName);
+                new PcmToWavUtil(frequency, CHANNEL_IN_MONO, ENCODING_PCM_16BIT).pcmToWav(fileName, wavFileName);
             }
             File wav = new File(wavFileName);
             if (wav.exists()) {
