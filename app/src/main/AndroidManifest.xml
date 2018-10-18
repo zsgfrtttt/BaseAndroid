@@ -136,6 +136,8 @@
         <activity android:name=".activity.Media.MediaVideoActivity"></activity>
 
         <activity android:name=".activity.foundation.ArrayActivity"></activity>
+
+        <activity android:name=".activity.other.PatchUpdateActivity"></activity>
         <service
             android:name="com.hydbest.Messenger.MessageService"
             android:process=":remote"

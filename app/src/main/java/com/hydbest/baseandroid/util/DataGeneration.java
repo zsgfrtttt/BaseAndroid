@@ -32,6 +32,7 @@ import com.hydbest.baseandroid.activity.foundation.BlockDetectActivity;
 import com.hydbest.baseandroid.activity.foundation.FileProviderActivity;
 import com.hydbest.baseandroid.activity.foundation.LogActivity;
 import com.hydbest.baseandroid.activity.foundation.RuntimePermissonActivity;
+import com.hydbest.baseandroid.activity.other.PatchUpdateActivity;
 import com.hydbest.baseandroid.entity.Fragmentation;
 import com.hydbest.baseandroid.entity.Level0Item;
 
@@ -86,7 +87,9 @@ public class DataGeneration {
 
         Level0Item item4 = new Level0Item("android其他", "");
         Fragmentation subItem4_0 = new Fragmentation("EventBus", EventRegisterActivity.class);
+        Fragmentation subItem4_1 = new Fragmentation("增量更新", PatchUpdateActivity.class);
         item4.addSubItem(subItem4_0);
+        item4.addSubItem(subItem4_1);
 
         Level0Item item5 = new Level0Item("java并发编程", "");
         Fragmentation subItem5_0 = new Fragmentation("CountDownLatch", CountDownLatchActivity.class);
