@@ -138,6 +138,8 @@
         <activity android:name=".activity.foundation.ArrayActivity"></activity>
 
         <activity android:name=".activity.other.PatchUpdateActivity"></activity>
+
+        <activity android:name=".activity.cus_viewgroup.CalendarActivity"></activity>
         <service
             android:name="com.hydbest.Messenger.MessageService"
             android:process=":remote"
