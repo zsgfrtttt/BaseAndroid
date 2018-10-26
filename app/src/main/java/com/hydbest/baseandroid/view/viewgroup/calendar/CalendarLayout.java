@@ -2,14 +2,11 @@ package com.hydbest.baseandroid.view.viewgroup.calendar;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -17,10 +14,7 @@ import android.widget.TextView;
 import com.hydbest.baseandroid.R;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
 
 /**
  * Created by csz on 2018/10/26.
@@ -30,9 +24,10 @@ public class CalendarLayout extends LinearLayout implements View.OnClickListener
     private ImageView ivPrev;
     private ImageView ivNext;
     private TextView tvDate;
-    private GridView gvDate;
+    private CalendarViewPager vp;
 
     private Calendar mCalendar;
+    private CalenderAdapter mCalenderAdapter;
 
     public CalendarLayout(Context context) {
         this(context, null);
@@ -53,7 +48,7 @@ public class CalendarLayout extends LinearLayout implements View.OnClickListener
         ivPrev = findViewById(R.id.iv_prev);
         ivNext = findViewById(R.id.iv_next);
         tvDate = findViewById(R.id.tv_date);
-        gvDate = findViewById(R.id.gv);
+        vp = findViewById(R.id.vp);
 
         ivPrev.setOnClickListener(this);
         ivNext.setOnClickListener(this);
@@ -63,29 +58,15 @@ public class CalendarLayout extends LinearLayout implements View.OnClickListener
 
     @SuppressLint("SimpleDateFormat")
     private void initCalendar() {
-        tvDate.setText(new SimpleDateFormat("MMM yyyy").format(mCalendar.getTime()));
-
-        Calendar calendar = (Calendar) mCalendar.clone();
-        //重置到当月第一天
-        calendar.add(Calendar.DAY_OF_MONTH, -calendar.get(Calendar.DAY_OF_MONTH) + 1);
-        //当期月份
-        int currentMonth = calendar.get(Calendar.MONTH);
-        //当月第一天是周的第几天
-        int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
-        calendar.add(Calendar.DATE, -(dayOfWeek - 1));
-
-        List<Date> cells = new ArrayList<>();
-        for (int i = 0; i < 42; i++) {
-            //避免添加多一行
-            if (calendar.get(Calendar.MONTH) != currentMonth && i % 7 == 0 && i > 7)
-                break;
-            cells.add(calendar.getTime());
-            calendar.add(Calendar.DATE, 1);
-        }
-
-        gvDate.setAdapter(new DateAdapter(getContext(), cells));
+        mCalenderAdapter = new CalenderAdapter(vp, (Calendar) mCalendar.clone());
+        mCalenderAdapter.setChangeListener(new CalenderAdapter.ChangeListener() {
+            @Override
+            public void onChange(Calendar calendar) {
+                tvDate.setText(new SimpleDateFormat("MMM yyyy").format(calendar.getTime()));
+            }
+        });
+        vp.setAdapter(mCalenderAdapter);
     }
-
 
     @Override
     public void onClick(View v) {
@@ -99,44 +80,12 @@ public class CalendarLayout extends LinearLayout implements View.OnClickListener
     }
 
     private void nextCalendar() {
-        mCalendar.set(Calendar.MONTH, mCalendar.get(Calendar.MONTH) + 1);
-        initCalendar();
+        vp.setCurrentItem(vp.getCurrentItem() + 1);
     }
 
     private void prevCalendar() {
-        mCalendar.set(Calendar.MONTH, mCalendar.get(Calendar.MONTH) - 1);
-        initCalendar();
+        vp.setCurrentItem(vp.getCurrentItem() - 1);
     }
 
-    private class DateAdapter extends ArrayAdapter<Date> {
 
-        private List<Date> mList;
-
-        public DateAdapter(@NonNull Context context, List<Date> list) {
-            super(context, R.layout.item_date);
-            this.mList = list;
-        }
-
-        @Override
-        public int getCount() {
-            return mList == null ? 0 : mList.size();
-        }
-
-        @NonNull
-        @Override
-        public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-            if (convertView == null) {
-                convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_date, parent, false);
-            }
-            TextView tv = ((TextView) convertView.findViewById(R.id.tv));
-            tv.setText(mList.get(position).getDate() + "");
-            SimpleDateFormat format = new SimpleDateFormat("MMM");
-            if (format.format(mList.get(position)).equals(format.format(mCalendar.getTime()))) {
-                tv.setTextColor(getResources().getColor(R.color.text));
-            }else {
-                tv.setTextColor(getResources().getColor(R.color.light_text));
-            }
-            return convertView;
-        }
-    }
 }

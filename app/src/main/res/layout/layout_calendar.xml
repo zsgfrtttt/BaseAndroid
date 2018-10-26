@@ -103,9 +103,8 @@
             android:text="六"/>
     </LinearLayout>
 
-    <GridView
-        android:id="@+id/gv"
-        android:numColumns="7"
+    <com.hydbest.baseandroid.view.viewgroup.calendar.CalendarViewPager
+        android:id="@+id/vp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 </LinearLayout>
