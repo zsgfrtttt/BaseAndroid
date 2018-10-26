@@ -128,7 +128,14 @@ public class CalendarLayout extends LinearLayout implements View.OnClickListener
             if (convertView == null) {
                 convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_date, parent, false);
             }
-            ((TextView) convertView.findViewById(R.id.tv)).setText(mList.get(position).getDate() + "");
+            TextView tv = ((TextView) convertView.findViewById(R.id.tv));
+            tv.setText(mList.get(position).getDate() + "");
+            SimpleDateFormat format = new SimpleDateFormat("MMM");
+            if (format.format(mList.get(position)).equals(format.format(mCalendar.getTime()))) {
+                tv.setTextColor(getResources().getColor(R.color.text));
+            }else {
+                tv.setTextColor(getResources().getColor(R.color.light_text));
+            }
             return convertView;
         }
     }
