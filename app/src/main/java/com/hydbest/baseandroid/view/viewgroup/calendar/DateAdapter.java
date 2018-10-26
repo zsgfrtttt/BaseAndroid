@@ -34,7 +34,7 @@ public class DateAdapter extends ArrayAdapter<Date>{
 
     private void init() {
         Calendar calendar = (Calendar) mCalendar.clone();
-        //重置到当月第一天
+        //重置到当月第一天  calendar.set(Calendar.DAY_OF_MONTH,1);
         calendar.add(Calendar.DAY_OF_MONTH, -calendar.get(Calendar.DAY_OF_MONTH) + 1);
         //当期月份
         int currentMonth = calendar.get(Calendar.MONTH);
@@ -60,16 +60,23 @@ public class DateAdapter extends ArrayAdapter<Date>{
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+        Date item = mList.get(position);
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_date, parent, false);
         }
         TextView tv = convertView.findViewById(R.id.tv);
-        tv.setText(mList.get(position).getDate() + "");
+        tv.setText(item.getDate() + "");
         SimpleDateFormat format = new SimpleDateFormat("MMM");
-        if (format.format(mList.get(position)).equals(format.format(mCalendar.getTime()))) {
+        if (format.format(item).equals(format.format(mCalendar.getTime()))) {
             tv.setTextColor(parent.getResources().getColor(R.color.text));
         } else {
             tv.setTextColor(parent.getResources().getColor(R.color.light_text));
+        }
+        Date date = Calendar.getInstance().getTime();
+        if (item.getDate() == date.getDate() && item.getMonth() == date.getMonth() && item.getYear() == date.getYear()){
+            tv.setBackgroundResource(R.drawable.bg_stroke_circle);
+        }else {
+            tv.setBackgroundResource(R.drawable.bg_white_default);
         }
         return convertView;
     }

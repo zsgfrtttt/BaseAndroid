@@ -1,5 +1,7 @@
 package com.hydbest.baseandroid.view.viewgroup.calendar;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
@@ -46,6 +48,7 @@ public class CalenderAdapter extends PagerAdapter {
 
         GridView gv = new GridView(container.getContext());
         gv.setNumColumns(7);
+        gv.setSelector(new ColorDrawable(Color.TRANSPARENT));
         gv.setAdapter(new DateAdapter(container.getContext(), calendar));
         container.addView(gv, container.getLayoutParams());
         return gv;
