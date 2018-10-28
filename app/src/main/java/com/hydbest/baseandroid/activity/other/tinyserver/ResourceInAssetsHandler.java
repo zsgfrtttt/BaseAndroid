@@ -39,7 +39,6 @@ public class ResourceInAssetsHandler implements IResourceHandler{
                 OutputStream socketOutStream = httpContext.getUnderlySocket().getOutputStream();
                 PrintWriter writer = new PrintWriter(socketOutStream);
                 writer.println("HTTP/1.1 200 OK");
-                writer.println();
                 writer.println("Content-Length:"+raw.length);
                 if (assetsPath.endsWith(".html") || assetsPath.endsWith("htm")){
                     writer.println("Content-Type:text/html");

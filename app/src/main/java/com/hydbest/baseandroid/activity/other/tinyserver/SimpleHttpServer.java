@@ -18,7 +18,7 @@ public class SimpleHttpServer {
 
     private WebConfiguration mWebConfiguration;
     private ExecutorService mThreadPool;
-    private boolean mIsEnable;
+    private volatile boolean mIsEnable;
     private ServerSocket mServerSocket;
     private Set<IResourceHandler> mResourceHandler;
 
