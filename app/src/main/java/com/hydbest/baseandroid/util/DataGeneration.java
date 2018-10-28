@@ -32,8 +32,10 @@ import com.hydbest.baseandroid.activity.foundation.ArrayActivity;
 import com.hydbest.baseandroid.activity.foundation.BlockDetectActivity;
 import com.hydbest.baseandroid.activity.foundation.FileProviderActivity;
 import com.hydbest.baseandroid.activity.foundation.LogActivity;
+import com.hydbest.baseandroid.activity.foundation.NotificationActivity;
 import com.hydbest.baseandroid.activity.foundation.RuntimePermissonActivity;
 import com.hydbest.baseandroid.activity.other.PatchUpdateActivity;
+import com.hydbest.baseandroid.activity.other.tinyserver.TinyServerActivity;
 import com.hydbest.baseandroid.entity.Fragmentation;
 import com.hydbest.baseandroid.entity.Level0Item;
 
@@ -55,10 +57,12 @@ public class DataGeneration {
         Fragmentation subItem0_1 = new Fragmentation("Log库原理", LogActivity.class);
         Fragmentation subItem0_2 = new Fragmentation("FileProvider", FileProviderActivity.class);
         Fragmentation subItem0_3 = new Fragmentation("ArrayMap和SparseArray的使用", ArrayActivity.class);
+        Fragmentation subItem0_4 = new Fragmentation("notification 8.0", NotificationActivity.class);
         item0.addSubItem(subItem0_0);
         item0.addSubItem(subItem0_1);
         item0.addSubItem(subItem0_2);
         item0.addSubItem(subItem0_3);
+        item0.addSubItem(subItem0_4);
 
         Level0Item item1 = new Level0Item("android自定义View", "");
         Fragmentation subItem1_0 = new Fragmentation("仿知乎广告", AdActivity.class);
@@ -91,8 +95,10 @@ public class DataGeneration {
         Level0Item item4 = new Level0Item("android其他", "");
         Fragmentation subItem4_0 = new Fragmentation("EventBus", EventRegisterActivity.class);
         Fragmentation subItem4_1 = new Fragmentation("增量更新", PatchUpdateActivity.class);
+        Fragmentation subItem4_2 = new Fragmentation("微服务搭建", TinyServerActivity.class);
         item4.addSubItem(subItem4_0);
         item4.addSubItem(subItem4_1);
+        item4.addSubItem(subItem4_2);
 
         Level0Item item5 = new Level0Item("java并发编程", "");
         Fragmentation subItem5_0 = new Fragmentation("CountDownLatch", CountDownLatchActivity.class);

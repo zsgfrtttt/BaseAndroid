@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<!-- saved from url=(0047)https://wqs.jd.com/portal/wx/m_storage_hub.html -->
+<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        <title>m storage hub</title>
+        <script type="text/javascript" src="./m.xstorage.hub.min.js"></script>
+    </head>
+    <body>
+        <script>
+            CrossStorageHub.init([
+                {origin: /:\/\/([^.]*\.)?m\.jd\.com$/, allow: ['get', 'set', 'del']},
+                {origin: /:\/\/mitem\.jd\.hk$/, allow: ['get', 'set', 'del']},
+                {origin: /:\/\/m\.yiyaojd\.com$/, allow: ['get', 'set', 'del']},
+                {origin: /:\/\/wqs?\.jd\.com$/, allow: ['get', 'set', 'del']}
+            ]);
+        </script>
+    
+</body></html>
