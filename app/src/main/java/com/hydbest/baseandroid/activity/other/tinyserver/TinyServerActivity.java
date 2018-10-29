@@ -28,7 +28,7 @@ public class TinyServerActivity extends AppCompatActivity{
 
     private void init() {
         WebConfiguration webConfiguration = new WebConfiguration(8088,10);
-        server = new SimpleHttpServer(webConfiguration);
+        server = SimpleHttpServer.initConfig(webConfiguration);
         server.registerResourceHandler(new ResourceInAssetsHandler(this));
         server.registerResourceHandler(new UploadImageHandler(){
             @Override

@@ -1,6 +1,7 @@
 package com.hydbest.baseandroid.activity.other.tinyserver;
 
 import android.text.TextUtils;
+import android.util.Log;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -29,19 +30,25 @@ public class UploadImageHandler implements IResourceHandler {
         InputStream inputStream = null;
         OutputStream outputStream = null;
         try {
+            long totalLength = Long.parseLong(httpContext.getHeaderValue("content-length").trim());
+            int count = 0;
             fileOutputStream = new FileOutputStream(tmpPath);
             inputStream = httpContext.getUnderlySocket().getInputStream();
             int len = 0;
             byte[] buffer = new byte[1024];
-            while ((len = inputStream.read(buffer)) != -1) {
+            while (count < totalLength) {
+                len = inputStream.read(buffer);
+                count += len;
                 fileOutputStream.write(buffer, 0, len);
             }
+            fileOutputStream.flush();
+            fileOutputStream.close();
+            //inputStream.close();  会直接关闭当前管道，导致后续数据无法写入
             outputStream = httpContext.getUnderlySocket().getOutputStream();
             PrintWriter writer = new PrintWriter(outputStream);
             writer.println("HTTP/1.1 200 OK");
             writer.println();
             writer.flush();
-
             onImageLoaded(tmpPath);
         } catch (Exception e) {
             e.printStackTrace();
@@ -50,13 +57,14 @@ public class UploadImageHandler implements IResourceHandler {
                 if (fileOutputStream != null) fileOutputStream.close();
                 if (inputStream != null) inputStream.close();
                 if (outputStream != null) outputStream.close();
+                httpContext.getUnderlySocket().close();
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    protected void onImageLoaded(String imgPath){
+    protected void onImageLoaded(String imgPath) {
 
     }
 }

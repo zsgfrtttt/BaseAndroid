@@ -5,7 +5,6 @@ import android.util.Log;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.StringWriter;
 import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -16,16 +15,31 @@ import java.util.concurrent.Executors;
 
 public class SimpleHttpServer {
 
-    private WebConfiguration mWebConfiguration;
+    private static WebConfiguration mWebConfiguration;
+
     private ExecutorService mThreadPool;
     private volatile boolean mIsEnable;
+    private int mCurrentParallels;
     private ServerSocket mServerSocket;
     private Set<IResourceHandler> mResourceHandler;
 
-    public SimpleHttpServer(WebConfiguration webConfiguration) {
-        this.mWebConfiguration = webConfiguration;
+    public static final class Holder {
+        private static final SimpleHttpServer SERVER = new SimpleHttpServer();
+    }
+
+    private SimpleHttpServer() {
         mThreadPool = Executors.newCachedThreadPool();
         mResourceHandler = new HashSet<>();
+    }
+
+    public static SimpleHttpServer initConfig(WebConfiguration webConfiguration) {
+        SimpleHttpServer server = getInstance();
+        mWebConfiguration = webConfiguration;
+        return server;
+    }
+
+    public static SimpleHttpServer getInstance() {
+        return Holder.SERVER;
     }
 
     public void startAsync() {
@@ -56,49 +70,64 @@ public class SimpleHttpServer {
             InetSocketAddress socketAddress = new InetSocketAddress(mWebConfiguration.getPort());
             mServerSocket = new ServerSocket();
             mServerSocket.bind(socketAddress);
-            while (mIsEnable) {
+            while (mIsEnable && mCurrentParallels <= mWebConfiguration.getMaxParallels()) {
                 final Socket socket = mServerSocket.accept();
                 mThreadPool.submit(new Runnable() {
                     @Override
                     public void run() {
-                        Log.i("csz", "socket :" + socket.getRemoteSocketAddress());
                         onAcceptRemotePeer(socket);
                     }
                 });
             }
         } catch (IOException e) {
+            stopAsync();
             e.printStackTrace();
         }
     }
 
-    public void registerResourceHandler(IResourceHandler handler){
+    public void registerResourceHandler(IResourceHandler handler) {
         mResourceHandler.add(handler);
     }
 
     private void onAcceptRemotePeer(Socket socket) {
         try {
             //socket.getOutputStream().write("客户端发来贺电".getBytes());
+            synchronized (this) {
+                mCurrentParallels++;
+            }
+            Log.i("csz","mCurrentParallels:"+mCurrentParallels);
             HttpContext httpContext = new HttpContext();
             httpContext.setUnderlySocket(socket);
             InputStream inputStream = socket.getInputStream();
             String line = null;
-
-            String uri = StreamUtil.readLine(inputStream).split(" ")[1];
-
+            String url = StreamUtil.readLine(inputStream);//GET /static/jd.htm HTTP/1.1
+            String uri = url.split(" ")[1];
             while (!TextUtils.isEmpty(line = StreamUtil.readLine(inputStream))) {
                 if ("\r\n".equals(line)) break;
-                Log.i("csz", line);
                 String[] pair = line.split(": ");
-                httpContext.addRequestHeader(pair[0],pair[1]);
+                httpContext.addRequestHeader(pair[0], pair[1]);
             }
 
             for (IResourceHandler handler : mResourceHandler) {
-                if (handler.accept(uri)){
-                    handler.handle(uri,httpContext);
+                if (handler.accept(uri)) {
+                    handler.handle(uri, httpContext);
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            synchronized (this) {
+                mCurrentParallels--;
+            }
+            Log.i("csz","mCurrentParallels:"+mCurrentParallels);
+            if (!socket.isClosed()) {
+                try {
+                    socket.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
+
 }

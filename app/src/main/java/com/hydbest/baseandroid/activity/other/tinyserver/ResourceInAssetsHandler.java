@@ -2,11 +2,13 @@ package com.hydbest.baseandroid.activity.other.tinyserver;
 
 import android.content.Context;
 import android.text.TextUtils;
+import android.util.Log;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
+import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 
@@ -37,26 +39,35 @@ public class ResourceInAssetsHandler implements IResourceHandler{
                 assetsInputStream.close();
 
                 OutputStream socketOutStream = httpContext.getUnderlySocket().getOutputStream();
-                PrintWriter writer = new PrintWriter(socketOutStream);
+                PrintStream writer = new PrintStream(socketOutStream);
                 writer.println("HTTP/1.1 200 OK");
-                writer.println("Content-Length:"+raw.length);
-                if (assetsPath.endsWith(".html") || assetsPath.endsWith("htm")){
-                    writer.println("Content-Type:text/html");
+                writer.println("Content-Length: "+raw.length);
+                if (assetsPath.endsWith(".html")){
+                    writer.println("Content-Type: text/html");
+                }else if (assetsPath.endsWith(".htm")){
+                    writer.println("Content-Type: text/html");
                 }else if (assetsPath.endsWith(".js")){
-                    writer.println("Content-Type:text/js");
+                    writer.println("Content-Type: text/js");
                 }else if (assetsPath.endsWith(".css")){
-                    writer.println("Content-Type:text/css");
+                    writer.println("Content-Type: text/css");
                 }else if (assetsPath.endsWith(".jpg")){
-                    writer.println("Content-Type:text/jpg");
+                    writer.println("Content-Type: text/jpg");
                 }else if (assetsPath.endsWith(".png")){
-                    writer.println("Content-Type:text/png");
+                    writer.println("Content-Type: text/png");
                 }
                 writer.println();
-                writer.println(raw);
+                writer.write(raw);
+                writer.println();
                 writer.flush();
             }
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                httpContext.getUnderlySocket().close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
