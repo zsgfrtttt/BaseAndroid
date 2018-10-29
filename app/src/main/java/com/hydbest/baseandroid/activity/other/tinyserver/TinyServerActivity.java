@@ -1,6 +1,7 @@
 package com.hydbest.baseandroid.activity.other.tinyserver;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
@@ -14,7 +15,6 @@ import android.widget.Toast;
 import com.hydbest.baseandroid.R;
 
 import java.io.File;
-import java.security.Permission;
 
 public class TinyServerActivity extends AppCompatActivity{
     private SimpleHttpServer server;
@@ -49,6 +49,7 @@ public class TinyServerActivity extends AppCompatActivity{
 
     private void loadImage(final String imgPath) {
         runOnUiThread(new Runnable() {
+            @SuppressLint("WrongViewCast")
             @Override
             public void run() {
                 ImageView iv = new ImageView(TinyServerActivity.this);

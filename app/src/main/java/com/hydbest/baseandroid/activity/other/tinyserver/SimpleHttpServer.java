@@ -15,7 +15,7 @@ import java.util.concurrent.Executors;
 
 public class SimpleHttpServer {
 
-    private static WebConfiguration mWebConfiguration;
+    private static WebConfiguration sWebConfiguration;
 
     private ExecutorService mThreadPool;
     private volatile boolean mIsEnable;
@@ -34,7 +34,7 @@ public class SimpleHttpServer {
 
     public static SimpleHttpServer initConfig(WebConfiguration webConfiguration) {
         SimpleHttpServer server = getInstance();
-        mWebConfiguration = webConfiguration;
+        sWebConfiguration = webConfiguration;
         return server;
     }
 
@@ -67,17 +67,19 @@ public class SimpleHttpServer {
 
     private void doProcAsync() {
         try {
-            InetSocketAddress socketAddress = new InetSocketAddress(mWebConfiguration.getPort());
+            InetSocketAddress socketAddress = new InetSocketAddress(sWebConfiguration.getPort());
             mServerSocket = new ServerSocket();
             mServerSocket.bind(socketAddress);
-            while (mIsEnable && mCurrentParallels <= mWebConfiguration.getMaxParallels()) {
+            while (mIsEnable) {
                 final Socket socket = mServerSocket.accept();
-                mThreadPool.submit(new Runnable() {
-                    @Override
-                    public void run() {
-                        onAcceptRemotePeer(socket);
-                    }
-                });
+                if (mCurrentParallels <= sWebConfiguration.getMaxParallels()) {
+                    mThreadPool.submit(new Runnable() {
+                        @Override
+                        public void run() {
+                            onAcceptRemotePeer(socket);
+                        }
+                    });
+                }
             }
         } catch (IOException e) {
             stopAsync();
