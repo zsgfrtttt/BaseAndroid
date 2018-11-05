@@ -30,10 +30,13 @@ import com.hydbest.baseandroid.activity.cus_viewgroup.ViewpageActivity;
 import com.hydbest.baseandroid.activity.event.EventRegisterActivity;
 import com.hydbest.baseandroid.activity.foundation.ArrayActivity;
 import com.hydbest.baseandroid.activity.foundation.BlockDetectActivity;
+import com.hydbest.baseandroid.activity.foundation.ContextMenuActivity;
 import com.hydbest.baseandroid.activity.foundation.FileProviderActivity;
 import com.hydbest.baseandroid.activity.foundation.LogActivity;
 import com.hydbest.baseandroid.activity.foundation.NotificationActivity;
 import com.hydbest.baseandroid.activity.foundation.RuntimePermissonActivity;
+import com.hydbest.baseandroid.activity.foundation.transition.ListTransitionActivity;
+import com.hydbest.baseandroid.activity.md.MD_ButtonActivity;
 import com.hydbest.baseandroid.activity.other.PatchUpdateActivity;
 import com.hydbest.baseandroid.activity.other.tinyserver.TinyServerActivity;
 import com.hydbest.baseandroid.entity.Fragmentation;
@@ -58,11 +61,15 @@ public class DataGeneration {
         Fragmentation subItem0_2 = new Fragmentation("FileProvider", FileProviderActivity.class);
         Fragmentation subItem0_3 = new Fragmentation("ArrayMap和SparseArray的使用", ArrayActivity.class);
         Fragmentation subItem0_4 = new Fragmentation("notification 8.0", NotificationActivity.class);
+        Fragmentation subItem0_5 = new Fragmentation("Context menu", ContextMenuActivity.class);
+        Fragmentation subItem0_6 = new Fragmentation("列表转场", ListTransitionActivity.class);
         item0.addSubItem(subItem0_0);
         item0.addSubItem(subItem0_1);
         item0.addSubItem(subItem0_2);
         item0.addSubItem(subItem0_3);
         item0.addSubItem(subItem0_4);
+        item0.addSubItem(subItem0_5);
+        item0.addSubItem(subItem0_6);
 
         Level0Item item1 = new Level0Item("android自定义View", "");
         Fragmentation subItem1_0 = new Fragmentation("仿知乎广告", AdActivity.class);
@@ -138,6 +145,10 @@ public class DataGeneration {
         item7.addSubItem(subItem7_0);
         item7.addSubItem(subItem7_1);
 
+        Level0Item item8 = new Level0Item("MD 风格化", "");
+        Fragmentation subItem8_0 = new Fragmentation("MD Button", MD_ButtonActivity.class);
+        item8.addSubItem(subItem8_0);
+
         list.add(item0);
         list.add(item1);
         list.add(item2);
@@ -146,6 +157,7 @@ public class DataGeneration {
         list.add(item5);
         list.add(item6);
         list.add(item7);
+        list.add(item8);
 
         return list;
     }

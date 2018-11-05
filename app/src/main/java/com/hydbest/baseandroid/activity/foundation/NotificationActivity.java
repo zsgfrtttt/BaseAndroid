@@ -18,7 +18,6 @@ import android.widget.RemoteViews;
 import com.hydbest.baseandroid.R;
 import com.hydbest.baseandroid.activity.cus_view.AdActivity;
 
-import junit.runner.Version;
 
 public class NotificationActivity extends AppCompatActivity{
     private NotificationManager notificationManager;

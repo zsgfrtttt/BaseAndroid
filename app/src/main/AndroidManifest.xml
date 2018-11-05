@@ -144,6 +144,14 @@
         <activity android:name=".activity.foundation.NotificationActivity"></activity>
 
         <activity android:name=".activity.other.tinyserver.TinyServerActivity"></activity>
+
+        <activity android:name=".activity.md.MD_ButtonActivity"></activity>
+
+        <activity android:name=".activity.foundation.ContextMenuActivity"></activity>
+
+        <activity android:name=".activity.foundation.transition.ListTransitionActivity"></activity>
+
+        <activity android:name=".activity.foundation.transition.DetailTransitionActivity"></activity>
         <service
             android:name="com.hydbest.Messenger.MessageService"
             android:process=":remote"
