@@ -152,6 +152,8 @@
         <activity android:name=".activity.foundation.transition.ListTransitionActivity"></activity>
 
         <activity android:name=".activity.foundation.transition.DetailTransitionActivity"></activity>
+
+        <activity android:name=".activity.other.AndroidAdvanceActivity"></activity>
         <service
             android:name="com.hydbest.Messenger.MessageService"
             android:process=":remote"

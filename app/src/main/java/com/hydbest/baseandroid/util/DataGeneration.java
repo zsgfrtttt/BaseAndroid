@@ -37,6 +37,7 @@ import com.hydbest.baseandroid.activity.foundation.NotificationActivity;
 import com.hydbest.baseandroid.activity.foundation.RuntimePermissonActivity;
 import com.hydbest.baseandroid.activity.foundation.transition.ListTransitionActivity;
 import com.hydbest.baseandroid.activity.md.MD_ButtonActivity;
+import com.hydbest.baseandroid.activity.other.AndroidAdvanceActivity;
 import com.hydbest.baseandroid.activity.other.PatchUpdateActivity;
 import com.hydbest.baseandroid.activity.other.tinyserver.TinyServerActivity;
 import com.hydbest.baseandroid.entity.Fragmentation;
@@ -103,9 +104,11 @@ public class DataGeneration {
         Fragmentation subItem4_0 = new Fragmentation("EventBus", EventRegisterActivity.class);
         Fragmentation subItem4_1 = new Fragmentation("增量更新", PatchUpdateActivity.class);
         Fragmentation subItem4_2 = new Fragmentation("微服务搭建", TinyServerActivity.class);
+        Fragmentation subItem4_3 = new Fragmentation("学习资源tnt", AndroidAdvanceActivity.class);
         item4.addSubItem(subItem4_0);
         item4.addSubItem(subItem4_1);
         item4.addSubItem(subItem4_2);
+        item4.addSubItem(subItem4_3);
 
         Level0Item item5 = new Level0Item("java并发编程", "");
         Fragmentation subItem5_0 = new Fragmentation("CountDownLatch", CountDownLatchActivity.class);
@@ -158,6 +161,21 @@ public class DataGeneration {
         list.add(item6);
         list.add(item7);
         list.add(item8);
+
+        return list;
+    }
+
+    public static List<MultiItemEntity> getSourceItems() {
+        List list = new ArrayList();
+
+        Level0Item item0 = new Level0Item("客户端项目", "");
+
+        Level0Item item1 = new Level0Item("优质博客(长按打开资源~ ~!)", "");
+        Fragmentation subItem1_0 = new Fragmentation("终极组件化框架项目方案详解-https://blog.csdn.net/c10WTiybQ1Ye3/article/details/78979879", null);
+        item1.addSubItem(subItem1_0);
+
+        list.add(item0);
+        list.add(item1);
 
         return list;
     }

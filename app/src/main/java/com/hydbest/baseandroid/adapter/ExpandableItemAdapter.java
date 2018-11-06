@@ -71,12 +71,14 @@ public class ExpandableItemAdapter extends BaseMultiItemQuickAdapter<MultiItemEn
                 break;
             case TYPE_LEVEL_1:
                 final Fragmentation fragmentation = (Fragmentation) item;
-                holder.setText(R.id.tv, fragmentation.content);
+                holder.setText(R.id.tv, fragmentation.content.split("-")[0]);
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Context context = holder.itemView.getContext();
-                        context.startActivity(new Intent(context,fragmentation.clz));
+                        if (fragmentation.clz != null) {
+                            Context context = holder.itemView.getContext();
+                            context.startActivity(new Intent(context, fragmentation.clz));
+                        }
                     }
                 });
                 break;
