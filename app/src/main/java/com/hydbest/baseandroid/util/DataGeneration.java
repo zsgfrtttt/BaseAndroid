@@ -41,6 +41,7 @@ import com.hydbest.baseandroid.activity.md.MD_ButtonActivity;
 import com.hydbest.baseandroid.activity.other.AndroidAdvanceActivity;
 import com.hydbest.baseandroid.activity.other.PatchUpdateActivity;
 import com.hydbest.baseandroid.activity.other.tinyserver.TinyServerActivity;
+import com.hydbest.baseandroid.aidl.BookActivity;
 import com.hydbest.baseandroid.entity.Fragmentation;
 import com.hydbest.baseandroid.entity.Level0Item;
 
@@ -66,6 +67,7 @@ public class DataGeneration {
         Fragmentation subItem0_5 = new Fragmentation("Context menu", ContextMenuActivity.class);
         Fragmentation subItem0_6 = new Fragmentation("列表转场", ListTransitionActivity.class);
         Fragmentation subItem0_7 = new Fragmentation("gif播放及监听", GifActivity.class);
+        Fragmentation subItem0_8 = new Fragmentation("aidl使用规范", BookActivity.class);
         item0.addSubItem(subItem0_0);
         item0.addSubItem(subItem0_1);
         item0.addSubItem(subItem0_2);
@@ -74,6 +76,7 @@ public class DataGeneration {
         item0.addSubItem(subItem0_5);
         item0.addSubItem(subItem0_6);
         item0.addSubItem(subItem0_7);
+        item0.addSubItem(subItem0_8);
 
         Level0Item item1 = new Level0Item("android自定义View", "");
         Fragmentation subItem1_0 = new Fragmentation("仿知乎广告", AdActivity.class);

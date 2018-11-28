@@ -156,6 +156,12 @@
         <activity android:name=".activity.other.AndroidAdvanceActivity"></activity>
 
         <activity android:name=".activity.foundation.GifActivity"></activity>
+
+        <activity android:name=".aidl.BookActivity"></activity>
+
+        <activity android:name=".aidl.AddBookActivity"
+            android:process="com.addbook"></activity>
+
         <service
             android:name="com.hydbest.Messenger.MessageService"
             android:process=":remote"
@@ -164,6 +170,12 @@
             <intent-filter>
                 <action android:name="com.csz.service"></action>
                 <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </service>
+
+        <service android:name=".aidl.BookManagerService">
+            <intent-filter>
+                <action android:name="com.hydbest.baseandroid.aidl.BookManagerService" />
             </intent-filter>
         </service>
     </application>
