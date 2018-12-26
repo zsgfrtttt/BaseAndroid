@@ -9,7 +9,6 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.util.SparseArray;
@@ -28,7 +27,6 @@ import com.hydbest.baseandroid.view.viewgroup.imagewatcher.ImageWatcher;
 import com.hydbest.baseandroid.view.viewgroup.imagewatcher.ImageWatcherHelper;
 import com.hydbest.baseandroid.view.viewgroup.imagewatcher.SimpleLoader;
 
-import java.util.Arrays;
 import java.util.List;
 
 import butterknife.BindView;

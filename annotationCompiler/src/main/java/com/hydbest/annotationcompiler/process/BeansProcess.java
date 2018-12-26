@@ -1,6 +1,6 @@
-package com.hydbest.annotationcompiler.process;
+package groovy.hydbest.annotationcompiler.process;
 
-import com.hydbest.annotationcompiler.annotation.Seriable;
+import groovy.hydbest.annotationcompiler.annotation.Seriable;
 
 import java.io.File;
 import java.io.FileWriter;

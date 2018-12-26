@@ -4,16 +4,13 @@ import android.content.ContentResolver;
 import android.content.res.Resources;
 import android.net.Uri;
 import android.support.annotation.Nullable;
-import android.view.View;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
-import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
-import com.chad.library.adapter.base.entity.MultiItemEntity;
+
 import com.hydbest.baseandroid.R;
-import com.hydbest.baseandroid.view.viewgroup.imagewatcher.ImageWatcher;
 
 import java.util.ArrayList;
 import java.util.Arrays;

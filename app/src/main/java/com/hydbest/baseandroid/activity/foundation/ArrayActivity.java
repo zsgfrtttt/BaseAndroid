@@ -1,10 +1,8 @@
 package com.hydbest.baseandroid.activity.foundation;
 
-import android.graphics.pdf.PdfDocument;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.util.ArraySet;
 import android.support.v4.util.LongSparseArray;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;

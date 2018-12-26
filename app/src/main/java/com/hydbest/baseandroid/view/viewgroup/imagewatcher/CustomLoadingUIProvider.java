@@ -7,8 +7,6 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
-import com.hydbest.baseandroid.R;
-
 public class CustomLoadingUIProvider implements ImageWatcher.LoadingUIProvider {
     private final FrameLayout.LayoutParams lpCenterInParent = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
@@ -17,7 +15,7 @@ public class CustomLoadingUIProvider implements ImageWatcher.LoadingUIProvider {
         ImageView load = new ImageView(parent.getContext());
         lpCenterInParent.gravity = Gravity.CENTER;
         load.setLayoutParams(lpCenterInParent);
-        load.setImageResource(R.drawable.dice_action);
+        load.setImageResource(com.hydbest.baseandroid.R.drawable.dice_action);
         return load;
     }
 

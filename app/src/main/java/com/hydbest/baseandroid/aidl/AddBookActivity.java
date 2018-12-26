@@ -28,7 +28,7 @@ import butterknife.OnClick;
 public class AddBookActivity extends AppCompatActivity {
 
     private static final String SERVICE_PACKAGE = "com.hydbest.baseandroid";
-    private static final String SERVICE_ACTION = "com.hydbest.baseandroid.aidl.BookManagerService";
+    private static final String SERVICE_ACTION = "BookManagerService";
 
     @BindView(R.id.edit_book_id)
     EditText mEditBookId;

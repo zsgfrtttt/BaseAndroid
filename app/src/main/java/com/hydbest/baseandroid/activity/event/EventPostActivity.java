@@ -5,7 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import com.csz.eventbus.EventBus;
+import groovy.csz.eventbus.EventBus;
 import com.hydbest.baseandroid.R;
 
 public class EventPostActivity extends AppCompatActivity{

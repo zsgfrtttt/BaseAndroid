@@ -2,7 +2,6 @@ package com.hydbest.baseandroid.util;
 
 import android.os.Build;
 import android.support.annotation.RequiresApi;
-import android.util.Log;
 import android.view.Choreographer;
 
 /**

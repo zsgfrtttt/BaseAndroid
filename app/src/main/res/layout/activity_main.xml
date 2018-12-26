@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:padding="10dp"
     android:baselineAligned="true"
-    tools:context=".activity.MessengerActivity">
+    tools:context="com.hydbest.baseandroid.activity.MessengerActivity">
 
     <TextView
         android:id="@+id/id_tv_callback"

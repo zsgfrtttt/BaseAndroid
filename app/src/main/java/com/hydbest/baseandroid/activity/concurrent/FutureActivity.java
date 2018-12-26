@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
-
 import com.hydbest.baseandroid.R;
 
 import java.util.TimerTask;

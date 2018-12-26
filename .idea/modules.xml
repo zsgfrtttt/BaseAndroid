@@ -5,8 +5,11 @@
       <module fileurl="file://$PROJECT_DIR$/BaseAndroid.iml" filepath="$PROJECT_DIR$/BaseAndroid.iml" />
       <module fileurl="file://$PROJECT_DIR$/annotationCompiler/annotationCompiler.iml" filepath="$PROJECT_DIR$/annotationCompiler/annotationCompiler.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/buildSrc/buildSrc.iml" filepath="$PROJECT_DIR$/buildSrc/buildSrc.iml" />
       <module fileurl="file://$PROJECT_DIR$/eventbus/eventbus.iml" filepath="$PROJECT_DIR$/eventbus/eventbus.iml" />
       <module fileurl="file://$PROJECT_DIR$/fileprovider/fileprovider.iml" filepath="$PROJECT_DIR$/fileprovider/fileprovider.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pluginlibrary/pluginlibrary.iml" filepath="$PROJECT_DIR$/pluginlibrary/pluginlibrary.iml" />
+      <module fileurl="file://E:\develope\workspace\demo\BaseAndroid\buildSrc\t.iml" filepath="E:\develope\workspace\demo\BaseAndroid\buildSrc\t.iml" />
     </modules>
   </component>
 </project>

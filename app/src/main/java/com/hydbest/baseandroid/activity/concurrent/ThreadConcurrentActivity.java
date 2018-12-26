@@ -16,7 +16,7 @@ public class ThreadConcurrentActivity extends AppCompatActivity {
         setContentView(R.layout.activity_concurrent);
     }
 
-    public void notify(View view) throws InterruptedException {
+    public void _notify(View view){
         final Object obj= new Object();
 
         new Thread(new Runnable() {
@@ -26,8 +26,10 @@ public class ThreadConcurrentActivity extends AppCompatActivity {
                 synchronized (obj) {
                     try {
                         //会释放掉当前的obj锁
-                        obj.wait();
+                        obj.wait(5000);
+                        Log.i("csz","thread111   11111111");
                     } catch (InterruptedException e) {
+                        Log.i("csz","thread111   interrupted");
                         e.printStackTrace();
                     }
                     Log.i("csz", "thread111   end!");
@@ -63,8 +65,24 @@ public class ThreadConcurrentActivity extends AppCompatActivity {
                 synchronized (obj) {
                     Log.i("csz","thread222   get lock");
                     obj.notify();
+                    Log.i("csz","thread222   11111111");
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    Log.i("csz","thread222   22222222");
                 }
             }
         }).start();
+
+        /*
+        12-05 18:34:54.592 4752-4925/com.hydbest.baseandroid I/csz: thread111   start!
+        12-05 18:35:04.591 4752-4927/com.hydbest.baseandroid I/csz: thread222   get lock
+        12-05 18:35:04.591 4752-4927/com.hydbest.baseandroid I/csz: thread222   11111111
+        12-05 18:35:05.592 4752-4927/com.hydbest.baseandroid I/csz: thread222   22222222
+        12-05 18:35:05.593 4752-4925/com.hydbest.baseandroid I/csz: thread111   11111111
+        12-05 18:35:05.593 4752-4925/com.hydbest.baseandroid I/csz: thread111   end!
+        */
     }
 }

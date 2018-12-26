@@ -7,7 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
-import com.csz.eventbus.EventBus;
+import groovy.csz.eventbus.EventBus;
 import com.hydbest.baseandroid.R;
 
 public class EventRegisterActivity extends AppCompatActivity {

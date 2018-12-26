@@ -5,8 +5,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 
-import com.hydbest.baseandroid.R;
-
 /**
  * Created by csz on 2018/8/7.
  */

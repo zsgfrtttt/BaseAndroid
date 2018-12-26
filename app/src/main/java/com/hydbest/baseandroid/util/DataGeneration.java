@@ -20,6 +20,7 @@ import com.hydbest.baseandroid.activity.concurrent.ThreadLocalActivity;
 import com.hydbest.baseandroid.activity.cus_view.AdActivity;
 import com.hydbest.baseandroid.activity.cus_view.LargeImageActivity;
 import com.hydbest.baseandroid.activity.cus_view.MultiTouchActivity;
+import com.hydbest.baseandroid.activity.cus_view.TextAreaActivity;
 import com.hydbest.baseandroid.activity.cus_viewgroup.CalendarActivity;
 import com.hydbest.baseandroid.activity.cus_viewgroup.ConstraintActivity;
 import com.hydbest.baseandroid.activity.cus_viewgroup.ImageWatcherActivity;
@@ -29,6 +30,7 @@ import com.hydbest.baseandroid.activity.cus_viewgroup.NestScrollActivity;
 import com.hydbest.baseandroid.activity.cus_viewgroup.ViewpageActivity;
 import com.hydbest.baseandroid.activity.event.EventRegisterActivity;
 import com.hydbest.baseandroid.activity.foundation.ArrayActivity;
+import com.hydbest.baseandroid.activity.foundation.AtActivity;
 import com.hydbest.baseandroid.activity.foundation.BlockDetectActivity;
 import com.hydbest.baseandroid.activity.foundation.ContextMenuActivity;
 import com.hydbest.baseandroid.activity.foundation.FileProviderActivity;
@@ -68,6 +70,7 @@ public class DataGeneration {
         Fragmentation subItem0_6 = new Fragmentation("列表转场", ListTransitionActivity.class);
         Fragmentation subItem0_7 = new Fragmentation("gif播放及监听", GifActivity.class);
         Fragmentation subItem0_8 = new Fragmentation("aidl使用规范", BookActivity.class);
+        Fragmentation subItem0_9 = new Fragmentation("如何优雅的@人", AtActivity.class);
         item0.addSubItem(subItem0_0);
         item0.addSubItem(subItem0_1);
         item0.addSubItem(subItem0_2);
@@ -77,14 +80,17 @@ public class DataGeneration {
         item0.addSubItem(subItem0_6);
         item0.addSubItem(subItem0_7);
         item0.addSubItem(subItem0_8);
+        item0.addSubItem(subItem0_9);
 
         Level0Item item1 = new Level0Item("android自定义View", "");
         Fragmentation subItem1_0 = new Fragmentation("仿知乎广告", AdActivity.class);
         Fragmentation subItem1_1 = new Fragmentation("加载查看超大图片", LargeImageActivity.class);
         Fragmentation subItem1_2 = new Fragmentation("多触点的View", MultiTouchActivity.class);
+        Fragmentation subItem1_3 = new Fragmentation("长文对齐TextView", TextAreaActivity.class);
         item1.addSubItem(subItem1_0);
         item1.addSubItem(subItem1_1);
         item1.addSubItem(subItem1_2);
+        item1.addSubItem(subItem1_3);
 
         Level0Item item2 = new Level0Item("android自定义ViewGroup", "");
         Fragmentation subItem2_0 = new Fragmentation("constrainLayout", ConstraintActivity.class);

@@ -2,23 +2,12 @@ package com.hydbest.baseandroid.view;
 
 import android.content.Context;
 import android.graphics.SurfaceTexture;
-import android.media.AudioManager;
 import android.media.MediaPlayer;
-import android.net.Uri;
-import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.Surface;
-import android.view.SurfaceHolder;
 import android.view.TextureView;
-import android.view.View;
-import android.widget.FrameLayout;
-
-import com.hydbest.baseandroid.R;
-
-import java.io.IOException;
 
 /**
  * Created by csz on 2018/6/11.
