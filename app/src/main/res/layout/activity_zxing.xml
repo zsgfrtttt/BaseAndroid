@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:text="custom_options"
         android:onClick="scanBarcodeCustomOptions"/>
-    
+
     <fragment
         android:tag="scan_fragment"
         android:layout_width="match_parent"

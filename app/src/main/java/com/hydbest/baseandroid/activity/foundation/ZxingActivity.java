@@ -20,6 +20,7 @@ import com.hydbest.baseandroid.R;
  */
 
 public class ZxingActivity extends AppCompatActivity{
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
