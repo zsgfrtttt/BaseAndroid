@@ -12,8 +12,6 @@ public class Book implements Parcelable {
     private String bookName;
 
     public Book() {
-
-
     }
 
     public Book(int bookId, String bookName) {

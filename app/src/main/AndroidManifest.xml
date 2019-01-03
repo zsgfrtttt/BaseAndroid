@@ -166,6 +166,8 @@
 
         <activity android:name="com.hydbest.baseandroid.activity.cus_view.TextAreaActivity"></activity>
 
+        <activity android:name=".activity.foundation.ZxingActivity"></activity>
+
         <service
             android:name="groovy.hydbest.Messenger.MessageService"
             android:process=":remote"
