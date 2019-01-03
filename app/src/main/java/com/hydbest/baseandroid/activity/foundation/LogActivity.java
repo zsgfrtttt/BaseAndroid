@@ -4,9 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 
-import com.hydbest.baseandroid.R;
 import com.hydbest.baseandroid.util.L;
 
 /**
@@ -17,7 +15,7 @@ public class LogActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_log);
+        setContentView(com.hydbest.baseandroid.R.layout.activity_log);
         L.e("csz");
         L.json("{\"status\":\"0000\",\"code\":\"0000\",\"msg\":null,\"debugMsg\":\"no debug message\",\"data\":{\"id\":3228268,\"userId\":91408147889386123,\"username\":null,\"mobile\":\"MB:6ac7249adacd27d708fdc9442522b017\",\"email\":null,\"password\":\"dc483e80a7a0bd9ef71d8cf973673924\",\"gesturePassword\":null,\"fingerprint\":null,\"status\":1,\"lastActiveGmt\":1532421450420,\"lastLogonAt\":1532341096000,\"failedCount\":0,\"createdAt\":1525835428000,\"src\":0,\"token\":\"1817022193589673\",\"channelCode\":null,\"channel\":\"PP\",\"platformSource\":\"LBD\"}}\n");
     }

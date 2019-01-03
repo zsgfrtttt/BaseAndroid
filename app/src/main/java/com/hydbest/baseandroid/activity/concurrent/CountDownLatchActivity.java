@@ -6,8 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 
-import com.hydbest.baseandroid.R;
-
 import java.util.concurrent.CountDownLatch;
 
 public class CountDownLatchActivity extends AppCompatActivity {
@@ -18,7 +16,7 @@ public class CountDownLatchActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_countdown);
+        setContentView(com.hydbest.baseandroid.R.layout.activity_countdown);
         execTask();
     }
 

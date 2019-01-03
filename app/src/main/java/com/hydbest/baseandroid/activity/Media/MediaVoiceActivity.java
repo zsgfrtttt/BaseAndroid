@@ -8,8 +8,6 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import com.hydbest.baseandroid.R;
-
 public class MediaVoiceActivity extends AppCompatActivity{
     private SoundPool mSoundPool;
     private int mId ;
@@ -18,7 +16,7 @@ public class MediaVoiceActivity extends AppCompatActivity{
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_media_voice);
+        setContentView(com.hydbest.baseandroid.R.layout.activity_media_voice);
         initSoundPool();
     }
 
@@ -27,7 +25,7 @@ public class MediaVoiceActivity extends AppCompatActivity{
         int streamMaxVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
         int streamVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
         mSoundPool = new SoundPool(streamMaxVolume, AudioManager.STREAM_MUSIC,0);
-        mId = mSoundPool.load(this,R.raw.ring,0);
+        mId = mSoundPool.load(this, com.hydbest.baseandroid.R.raw.ring,0);
     }
 
     public void spPlay(View view){

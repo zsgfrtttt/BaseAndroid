@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.media.session.PlaybackStateCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
@@ -18,7 +17,6 @@ import com.hydbest.baseandroid.R;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 
 /**
  * <p>

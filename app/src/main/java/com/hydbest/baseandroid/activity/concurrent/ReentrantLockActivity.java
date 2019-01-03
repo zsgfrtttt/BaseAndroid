@@ -6,8 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 
-import com.hydbest.baseandroid.R;
-
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
@@ -21,7 +19,7 @@ public class ReentrantLockActivity extends AppCompatActivity{
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_reentrant_lock);
+        setContentView(com.hydbest.baseandroid.R.layout.activity_reentrant_lock);
 
     }
 

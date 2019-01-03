@@ -12,8 +12,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 
-import com.hydbest.baseandroid.R;
-
 /**
  * Created by csz on 2018/7/24.
  */
@@ -22,7 +20,7 @@ public class RuntimePermissonActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_runtime_permission);
+        setContentView(com.hydbest.baseandroid.R.layout.activity_runtime_permission);
     }
 
     public void test(View view) {

@@ -34,8 +34,6 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.hydbest.baseandroid.R;
-
 import java.lang.ref.WeakReference;
 import java.util.List;
 
@@ -61,7 +59,7 @@ public class ImageWatcher extends FrameLayout implements GestureDetector.OnGestu
 
     private ImageView iSource;
 
-    protected int mErrorImageRes = R.mipmap.error_picture; // 图片加载失败站位图
+    protected int mErrorImageRes = com.hydbest.baseandroid.R.mipmap.error_picture; // 图片加载失败站位图
     protected int mStatusBarHeight; // 状态栏高度
     private int mWidth, mHeight;
     private int mBackgroundColor = 0x00000000;
@@ -450,7 +448,7 @@ public class ImageWatcher extends FrameLayout implements GestureDetector.OnGestu
             if (Math.abs(moveX) > mTouchSlop || Math.abs(moveY) > mTouchSlop) {
                 final ViewState vsCurrent = ViewState.write(iSource, ViewState.STATE_CURRENT);
                 final ViewState vsDefault = ViewState.read(iSource, ViewState.STATE_DEFAULT);
-                final String imageOrientation = (String) iSource.getTag(R.id.image_orientation);
+                final String imageOrientation = (String) iSource.getTag(com.hydbest.baseandroid.R.id.image_orientation);
 
                 if (vsDefault == null) {
                     // 没有vsDefault标志的View说明图标正在下载中。转化为Slide手势，可以进行viewpager的翻页滑动
@@ -642,7 +640,7 @@ public class ImageWatcher extends FrameLayout implements GestureDetector.OnGestu
         float translateXValue = vsTouchDrag.translationX + moveX;
         float translateYValue = vsTouchDrag.translationY + moveY;
 
-        final String imageOrientation = (String) iSource.getTag(R.id.image_orientation);
+        final String imageOrientation = (String) iSource.getTag(com.hydbest.baseandroid.R.id.image_orientation);
         if ("horizontal".equals(imageOrientation)) {
             float translateXEdge = vsDefault.width * (vsTouchDrag.scaleX - 1) / 2;
             if (translateXValue > translateXEdge) {
@@ -791,7 +789,7 @@ public class ImageWatcher extends FrameLayout implements GestureDetector.OnGestu
         ViewState vsCurrent = ViewState.write(iSource, ViewState.STATE_CURRENT);
 
         final float endTranslateX, endTranslateY;
-        String imageOrientation = (String) iSource.getTag(R.id.image_orientation);
+        String imageOrientation = (String) iSource.getTag(com.hydbest.baseandroid.R.id.image_orientation);
         if ("horizontal".equals(imageOrientation)) {
             float translateXEdge = vsDefault.width * (vsCurrent.scaleX - 1) / 2;
             if (vsCurrent.translationX > translateXEdge) endTranslateX = translateXEdge;
@@ -1028,13 +1026,13 @@ public class ImageWatcher extends FrameLayout implements GestureDetector.OnGestu
                         sourceDefaultHeight = (int) (sourceDefaultWidth * 1f / resourceImageWidth * resourceImageHeight);
                         sourceDefaultTranslateX = 0;
                         sourceDefaultTranslateY = (mHeight - sourceDefaultHeight) / 2;
-                        imageView.setTag(R.id.image_orientation, "horizontal");
+                        imageView.setTag(com.hydbest.baseandroid.R.id.image_orientation, "horizontal");
                     } else {
                         sourceDefaultWidth = mWidth;
                         sourceDefaultHeight = (int) (sourceDefaultWidth * 1f / resourceImageWidth * resourceImageHeight);
                         sourceDefaultTranslateX = 0;
                         sourceDefaultTranslateY = 0;
-                        imageView.setTag(R.id.image_orientation, "vertical");
+                        imageView.setTag(com.hydbest.baseandroid.R.id.image_orientation, "vertical");
                     }
                     imageView.setImageDrawable(resource);
                     notifyItemChangedState(pos, false, false);

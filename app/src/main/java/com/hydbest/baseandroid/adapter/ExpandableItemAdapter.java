@@ -2,13 +2,12 @@ package com.hydbest.baseandroid.adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.View;
 
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.chad.library.adapter.base.entity.MultiItemEntity;
-import com.hydbest.baseandroid.R;
+
 import com.hydbest.baseandroid.entity.Fragmentation;
 import com.hydbest.baseandroid.entity.Level0Item;
 
@@ -32,8 +31,8 @@ public class ExpandableItemAdapter extends BaseMultiItemQuickAdapter<MultiItemEn
      */
     public ExpandableItemAdapter(List<MultiItemEntity> data) {
         super(data);
-        addItemType(TYPE_LEVEL_0, R.layout.item_expandable_lv0);
-        addItemType(TYPE_LEVEL_1, R.layout.item_expandable_lv1);
+        addItemType(TYPE_LEVEL_0, com.hydbest.baseandroid.R.layout.item_expandable_lv0);
+        addItemType(TYPE_LEVEL_1, com.hydbest.baseandroid.R.layout.item_expandable_lv1);
     }
 
 
@@ -44,19 +43,19 @@ public class ExpandableItemAdapter extends BaseMultiItemQuickAdapter<MultiItemEn
                 switch (holder.getLayoutPosition() %
                         3) {
                     case 0:
-                        holder.setImageResource(R.id.iv_head, R.mipmap.dice_action_0);
+                        holder.setImageResource(com.hydbest.baseandroid.R.id.iv_head, com.hydbest.baseandroid.R.mipmap.dice_action_0);
                         break;
                     case 1:
-                        holder.setImageResource(R.id.iv_head, R.mipmap.dice_action_1);
+                        holder.setImageResource(com.hydbest.baseandroid.R.id.iv_head, com.hydbest.baseandroid.R.mipmap.dice_action_1);
                         break;
                     case 2:
-                        holder.setImageResource(R.id.iv_head, R.mipmap.dice_action_2);
+                        holder.setImageResource(com.hydbest.baseandroid.R.id.iv_head, com.hydbest.baseandroid.R.mipmap.dice_action_2);
                         break;
                 }
                 final Level0Item lv0 = (Level0Item) item;
-                holder.setText(R.id.title, lv0.title)
-                        .setText(R.id.sub_title, lv0.subTitle)
-                        .setImageResource(R.id.iv, lv0.isExpanded() ? R.mipmap.arrow_b : R.mipmap.arrow_r);
+                holder.setText(com.hydbest.baseandroid.R.id.title, lv0.title)
+                        .setText(com.hydbest.baseandroid.R.id.sub_title, lv0.subTitle)
+                        .setImageResource(com.hydbest.baseandroid.R.id.iv, lv0.isExpanded() ? com.hydbest.baseandroid.R.mipmap.arrow_b : com.hydbest.baseandroid.R.mipmap.arrow_r);
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -71,7 +70,7 @@ public class ExpandableItemAdapter extends BaseMultiItemQuickAdapter<MultiItemEn
                 break;
             case TYPE_LEVEL_1:
                 final Fragmentation fragmentation = (Fragmentation) item;
-                holder.setText(R.id.tv, fragmentation.content.split("-")[0]);
+                holder.setText(com.hydbest.baseandroid.R.id.tv, fragmentation.content.split("-")[0]);
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

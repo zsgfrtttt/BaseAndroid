@@ -6,8 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 
-import com.hydbest.baseandroid.R;
-
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -27,7 +25,7 @@ public class ExecuteServiceActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_execute_service);
+        setContentView(com.hydbest.baseandroid.R.layout.activity_execute_service);
         initService();
     }
 

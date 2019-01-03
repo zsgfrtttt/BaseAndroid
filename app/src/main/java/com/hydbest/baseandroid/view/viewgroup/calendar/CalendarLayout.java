@@ -3,15 +3,12 @@ package com.hydbest.baseandroid.view.viewgroup.calendar;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.support.annotation.Nullable;
-import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import com.hydbest.baseandroid.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -44,11 +41,11 @@ public class CalendarLayout extends LinearLayout implements View.OnClickListener
     }
 
     private void initViews() {
-        LayoutInflater.from(getContext()).inflate(R.layout.layout_calendar, this, true);
-        ivPrev = findViewById(R.id.iv_prev);
-        ivNext = findViewById(R.id.iv_next);
-        tvDate = findViewById(R.id.tv_date);
-        vp = findViewById(R.id.vp);
+        LayoutInflater.from(getContext()).inflate(com.hydbest.baseandroid.R.layout.layout_calendar, this, true);
+        ivPrev = findViewById(com.hydbest.baseandroid.R.id.iv_prev);
+        ivNext = findViewById(com.hydbest.baseandroid.R.id.iv_next);
+        tvDate = findViewById(com.hydbest.baseandroid.R.id.tv_date);
+        vp = findViewById(com.hydbest.baseandroid.R.id.vp);
 
         ivPrev.setOnClickListener(this);
         ivNext.setOnClickListener(this);
@@ -70,11 +67,11 @@ public class CalendarLayout extends LinearLayout implements View.OnClickListener
 
     @Override
     public void onClick(View v) {
-        if (v.getId() == R.id.iv_prev) {
+        if (v.getId() == com.hydbest.baseandroid.R.id.iv_prev) {
             prevCalendar();
-        } else if (v.getId() == R.id.iv_next) {
+        } else if (v.getId() == com.hydbest.baseandroid.R.id.iv_next) {
             nextCalendar();
-        } else if (v.getId() == R.id.tv_date) {
+        } else if (v.getId() == com.hydbest.baseandroid.R.id.tv_date) {
             //TODO 选择年份
         }
     }

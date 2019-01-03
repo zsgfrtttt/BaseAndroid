@@ -13,7 +13,6 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import com.hydbest.baseandroid.R;
 import com.hydbest.baseandroid.activity.Media.util.PcmToWavUtil;
 
 import java.io.File;
@@ -46,7 +45,7 @@ public class MediaAudioRecordActivity extends AppCompatActivity {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_media_audio_record);
+        setContentView(com.hydbest.baseandroid.R.layout.activity_media_audio_record);
         ButterKnife.bind(this);
 
         //initAudio();

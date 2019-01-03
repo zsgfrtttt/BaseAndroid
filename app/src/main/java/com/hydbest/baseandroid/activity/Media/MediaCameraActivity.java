@@ -9,13 +9,10 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.TextureView;
 import android.view.View;
-
-import com.hydbest.baseandroid.R;
 
 import java.io.IOException;
 
@@ -24,9 +21,9 @@ import butterknife.ButterKnife;
 
 public class MediaCameraActivity extends AppCompatActivity {
 
-    @BindView(R.id.surface)
+    @BindView(com.hydbest.baseandroid.R.id.surface)
     SurfaceView surfaceView;
-    @BindView(R.id.texture)
+    @BindView(com.hydbest.baseandroid.R.id.texture)
     TextureView textureView;
 
     private Camera mCamera;
@@ -35,7 +32,7 @@ public class MediaCameraActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_media_camera);
+        setContentView(com.hydbest.baseandroid.R.layout.activity_media_camera);
         ButterKnife.bind(this);
         //在创建surface界面的时候会回调callback
         //surface(null);

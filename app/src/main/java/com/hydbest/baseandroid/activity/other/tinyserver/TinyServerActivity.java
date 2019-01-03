@@ -12,8 +12,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.hydbest.baseandroid.R;
-
 import java.io.File;
 
 public class TinyServerActivity extends AppCompatActivity{
@@ -22,7 +20,7 @@ public class TinyServerActivity extends AppCompatActivity{
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tiny_server);
+        setContentView(com.hydbest.baseandroid.R.layout.activity_tiny_server);
         init();
     }
 
@@ -54,7 +52,7 @@ public class TinyServerActivity extends AppCompatActivity{
             public void run() {
                 ImageView iv = new ImageView(TinyServerActivity.this);
                 iv.setImageURI(Uri.fromFile(new File(imgPath)));
-                addContentView(iv,findViewById(R.id.layout).getLayoutParams());
+                addContentView(iv,findViewById(com.hydbest.baseandroid.R.id.layout).getLayoutParams());
             }
         });
 

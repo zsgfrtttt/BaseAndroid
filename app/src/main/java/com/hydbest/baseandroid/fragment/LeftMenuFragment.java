@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-import com.hydbest.baseandroid.R;
 import com.hydbest.baseandroid.adapter.LeftMenuAdapter;
 import com.hydbest.baseandroid.entity.MenuItem;
 
@@ -31,7 +30,7 @@ public class LeftMenuFragment extends ListFragment {
 
         MenuItem menuItem = null;
         for (int i = 0; i < SIZE_MENU_ITEM; i++) {
-            menuItem = new MenuItem(getResources().getStringArray(R.array.arr)[i], false, R.color.colorAccent, R.color.colorPrimary);
+            menuItem = new MenuItem(getResources().getStringArray(com.hydbest.baseandroid.R.array.arr)[i], false, com.hydbest.baseandroid.R.color.colorAccent, com.hydbest.baseandroid.R.color.colorPrimary);
             mItems[i] = menuItem;
         }
     }

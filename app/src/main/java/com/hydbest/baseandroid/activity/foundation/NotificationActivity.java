@@ -15,7 +15,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.RemoteViews;
 
-import com.hydbest.baseandroid.R;
 import com.hydbest.baseandroid.activity.cus_view.AdActivity;
 
 
@@ -27,7 +26,7 @@ public class NotificationActivity extends AppCompatActivity{
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_notification);
+        setContentView(com.hydbest.baseandroid.R.layout.activity_notification);
         notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
     }
 
@@ -37,7 +36,7 @@ public class NotificationActivity extends AppCompatActivity{
                 .setAutoCancel(true)
                 .setContentTitle("this is a 内容标题")
                 .setContentText("今天是星期六，贼几把开心。")
-                .setSmallIcon(R.drawable.a); //必须属性  否则不显示
+                .setSmallIcon(com.hydbest.baseandroid.R.drawable.a); //必须属性  否则不显示
 
 
         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.O){
@@ -63,7 +62,7 @@ public class NotificationActivity extends AppCompatActivity{
                 .setAutoCancel(true)
                 .setContentTitle("this is a 内容标题")
                 .setContentText("aaaaa")
-                .setSmallIcon(R.drawable.a); //必须属性  否则不显示
+                .setSmallIcon(com.hydbest.baseandroid.R.drawable.a); //必须属性  否则不显示
         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.O){
             reBuilder.setChannelId(CHANNEL_ID);
         }
@@ -95,12 +94,12 @@ public class NotificationActivity extends AppCompatActivity{
     public void customLayout(View view){
         final Notification.Builder builder = channel(view);
 
-        RemoteViews remoteViews = new RemoteViews(getPackageName(),R.layout.layout_notification_vus);
-        remoteViews.setTextViewText(R.id.tv1,"title");
-        remoteViews.setTextViewText(R.id.tv2,"content");
+        RemoteViews remoteViews = new RemoteViews(getPackageName(), com.hydbest.baseandroid.R.layout.layout_notification_vus);
+        remoteViews.setTextViewText(com.hydbest.baseandroid.R.id.tv1,"title");
+        remoteViews.setTextViewText(com.hydbest.baseandroid.R.id.tv2,"content");
 
         PendingIntent pendingIntent = PendingIntent.getActivity(this,-1,new Intent(this,AdActivity.class),PendingIntent.FLAG_UPDATE_CURRENT);
-        remoteViews.setOnClickPendingIntent(R.id.iv,pendingIntent);
+        remoteViews.setOnClickPendingIntent(com.hydbest.baseandroid.R.id.iv,pendingIntent);
         builder.setCustomContentView(remoteViews);
         notificationManager.notify(3,builder.build());
     }

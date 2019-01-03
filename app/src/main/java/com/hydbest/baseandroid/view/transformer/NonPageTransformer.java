@@ -1,6 +1,5 @@
 package com.hydbest.baseandroid.view.transformer;
 
-import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 

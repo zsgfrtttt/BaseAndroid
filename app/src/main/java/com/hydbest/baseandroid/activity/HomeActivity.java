@@ -9,12 +9,9 @@ import android.support.v7.widget.RecyclerView;
 import com.chad.library.adapter.base.entity.MultiItemEntity;
 import com.hydbest.baseandroid.R;
 import com.hydbest.baseandroid.adapter.ExpandableItemAdapter;
-import com.hydbest.baseandroid.entity.Level0Item;
 import com.hydbest.baseandroid.util.DataGeneration;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

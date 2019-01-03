@@ -8,7 +8,6 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.os.Environment;
-import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;

@@ -1,4 +1,4 @@
-package com.hydbest.fileprovider;
+package groovy.hydbest.fileprovider;
 
 import android.content.Context;
 import android.content.Intent;

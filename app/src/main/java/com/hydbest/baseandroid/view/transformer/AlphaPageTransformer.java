@@ -3,7 +3,6 @@ package com.hydbest.baseandroid.view.transformer;
 import android.annotation.TargetApi;
 import android.os.Build;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.View;
 
 public class AlphaPageTransformer extends BasePageTransformer

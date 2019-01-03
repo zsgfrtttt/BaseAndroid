@@ -1,4 +1,4 @@
-package com.csz.eventbus;
+package groovy.csz.eventbus;
 
 import android.annotation.SuppressLint;
 import android.os.AsyncTask;

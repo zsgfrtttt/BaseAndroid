@@ -3,7 +3,6 @@ package com.hydbest.baseandroid.activity.foundation;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
@@ -20,12 +19,11 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.hydbest.baseandroid.R;
-import com.hydbest.fileprovider.FileProvider7;
+import groovy.hydbest.fileprovider.FileProvider7;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 import java.util.Locale;
 
 /**

@@ -2,15 +2,12 @@ package com.hydbest.baseandroid.activity.other.tinyserver;
 
 import android.content.Context;
 import android.text.TextUtils;
-import android.util.Log;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintStream;
-import java.io.PrintWriter;
-import java.io.StringWriter;
 
 public class ResourceInAssetsHandler implements IResourceHandler{
 

@@ -17,7 +17,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.hydbest.Messenger.MessageService;
+import groovy.hydbest.Messenger.MessageService;
 import com.hydbest.baseandroid.R;
 
 public class MessengerActivity extends AppCompatActivity {

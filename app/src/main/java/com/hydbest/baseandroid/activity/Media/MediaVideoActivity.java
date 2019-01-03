@@ -11,21 +11,19 @@ import android.view.View;
 import android.widget.MediaController;
 import android.widget.VideoView;
 
-import com.hydbest.baseandroid.R;
-
 import java.io.File;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MediaVideoActivity extends AppCompatActivity{
-    @BindView(R.id.video_view)
+    @BindView(com.hydbest.baseandroid.R.id.video_view)
     VideoView videoView;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_media_video);
+        setContentView(com.hydbest.baseandroid.R.layout.activity_media_video);
         ButterKnife.bind(this);
     }
 
