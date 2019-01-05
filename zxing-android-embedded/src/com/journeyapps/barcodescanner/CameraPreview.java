@@ -137,7 +137,7 @@ public class CameraPreview extends ViewGroup {
 
     // Fraction of the width / heigth to use as a margin. This fraction is used on each size, so
     // must be smaller than 0.5;
-    private double marginFraction = 0.1d;
+    private double marginFraction = 0.2d;
 
     private PreviewScalingStrategy previewScalingStrategy = null;
 
@@ -874,5 +874,17 @@ public class CameraPreview extends ViewGroup {
      */
     public boolean isCameraClosed() {
         return cameraInstance == null || cameraInstance.isCameraClosed();
+    }
+
+    public void turnLightOn(){
+        if (!isCameraClosed()) {
+            getCameraInstance().getCameraManager().lightOn();
+        }
+    }
+
+    public void turnLightOff(){
+        if (!isCameraClosed()) {
+            getCameraInstance().getCameraManager().lightOff();
+        }
     }
 }

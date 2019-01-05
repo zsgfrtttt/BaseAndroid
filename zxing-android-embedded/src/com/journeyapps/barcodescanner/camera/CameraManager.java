@@ -518,4 +518,48 @@ public final class CameraManager {
     public Camera getCamera() {
         return camera;
     }
+
+
+    public void lightOn(){
+        if (camera == null){
+            return;
+        }
+        Camera.Parameters parameters = camera.getParameters();
+        if (parameters == null){
+            return;
+        }
+        List<String> flashModes = parameters.getSupportedFlashModes();
+        if (flashModes == null || flashModes.isEmpty()){
+            return;
+        }
+        String flashMode = parameters.getFlashMode();
+        if (!Camera.Parameters.FLASH_MODE_TORCH.equals(flashMode)){
+            if (flashModes.contains(Camera.Parameters.FLASH_MODE_TORCH)){
+                parameters.setFlashMode(Camera.Parameters.FLASH_MODE_TORCH);
+                camera.setParameters(parameters);
+                camera.startPreview();
+            }
+        }
+    }
+
+    public void lightOff(){
+        if (camera == null){
+            return;
+        }
+        Camera.Parameters parameters = camera.getParameters();
+        if (parameters == null){
+            return;
+        }
+        List<String> flashModes = parameters.getSupportedFlashModes();
+        if (flashModes == null || flashModes.isEmpty()){
+            return;
+        }
+        String flashMode = parameters.getFlashMode();
+        if (Camera.Parameters.FLASH_MODE_TORCH.equals(flashMode)){
+                parameters.setFlashMode(Camera.Parameters.FLASH_MODE_OFF);
+                camera.setParameters(parameters);
+                camera.startPreview();
+            }
+    }
+
 }

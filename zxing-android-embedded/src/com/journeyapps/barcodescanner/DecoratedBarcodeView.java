@@ -1,10 +1,13 @@
 package com.journeyapps.barcodescanner;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.KeyEvent;
+import android.view.View;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
@@ -16,6 +19,7 @@ import com.google.zxing.client.android.DecodeFormatManager;
 import com.google.zxing.client.android.DecodeHintManager;
 import com.google.zxing.client.android.Intents;
 import com.google.zxing.client.android.R;
+import com.journeyapps.barcodescanner.camera.CameraManager;
 import com.journeyapps.barcodescanner.camera.CameraParametersCallback;
 import com.journeyapps.barcodescanner.camera.CameraSettings;
 
@@ -28,15 +32,21 @@ import java.util.Set;
  *
  * To customize the UI, use BarcodeView and ViewfinderView directly.
  */
-public class DecoratedBarcodeView extends FrameLayout {
+public class DecoratedBarcodeView extends FrameLayout implements View.OnClickListener {
+    public static final int REQUEST_PHOTO = 0x10;
+
     private BarcodeView barcodeView;
     private ViewfinderView viewFinder;
     private TextView statusView;
+
+    private Button btnLight;
+    private Button btnPhoto;
 
     /**
      * The instance of @link TorchListener to send events callback.
      */
     private TorchListener torchListener;
+    private boolean isFlash;
 
     private class WrappedCallback implements BarcodeCallback {
         private BarcodeCallback delegate;
@@ -114,6 +124,10 @@ public class DecoratedBarcodeView extends FrameLayout {
 
         // statusView is optional
         statusView = (TextView) findViewById(R.id.zxing_status_view);
+        btnLight = findViewById(R.id.btn_light);
+        btnPhoto = findViewById(R.id.btn_photo);
+        btnLight.setOnClickListener(this);
+        btnPhoto.setOnClickListener(this);
     }
 
     /**
@@ -272,6 +286,28 @@ public class DecoratedBarcodeView extends FrameLayout {
                 return true;
         }
         return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (v.getId() == R.id.btn_light){
+            if (!isFlash){
+                viewFinder.getCameraPreview().turnLightOn();
+            }else {
+                viewFinder.getCameraPreview().turnLightOff();
+            }
+            isFlash = !isFlash;
+        } else if (v.getId()== R.id.btn_photo){
+            startChoosePhoto();
+        }
+
+    }
+
+    private void startChoosePhoto() {
+        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+        intent.setType("image/*");
+        Intent wrapIntent = Intent.createChooser(intent,"选择二维码图片");
+        ((Activity)getContext()).startActivityForResult(wrapIntent,REQUEST_PHOTO);
     }
 
     public void setTorchListener(TorchListener listener) {

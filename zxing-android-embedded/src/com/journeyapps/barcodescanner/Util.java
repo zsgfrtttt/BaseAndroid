@@ -11,4 +11,5 @@ public class Util {
             throw new IllegalStateException("Must be called from the main thread.");
         }
     }
+
 }
