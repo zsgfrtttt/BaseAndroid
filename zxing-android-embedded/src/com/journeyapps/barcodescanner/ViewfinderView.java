@@ -22,8 +22,17 @@ import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.ComposeShader;
+import android.graphics.LinearGradient;
 import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.RadialGradient;
 import android.graphics.Rect;
+import android.graphics.RectF;
+import android.graphics.Shader;
+import android.graphics.SweepGradient;
+import android.graphics.drawable.BitmapDrawable;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -43,10 +52,12 @@ public class ViewfinderView extends View {
     protected static final String TAG = ViewfinderView.class.getSimpleName();
 
     protected static final int[] SCANNER_ALPHA = {0, 64, 128, 192, 255, 192, 128, 64};
-    protected static final long ANIMATION_DELAY = 80L;
+    protected static final long ANIMATION_DELAY = 60L;
     protected static final int CURRENT_POINT_OPACITY = 0xA0;
     protected static final int MAX_RESULT_POINTS = 20;
     protected static final int POINT_SIZE = 6;
+    protected static final int SPEED_DISTANCE = 6;
+    private static final int SCANNER_LINE_HEIGHT = 20;
 
     protected final Paint paint;
     protected Bitmap resultBitmap;
@@ -63,6 +74,15 @@ public class ViewfinderView extends View {
     // stopped.
     protected Rect framingRect;
     protected Rect previewFramingRect;
+
+    private float density;
+    private int screentRate;
+    private int borderWidth;
+    private int speedDistance;
+
+    private int slideTop;
+    private int slideBottom;
+    private Bitmap mLineBitmap;
 
     // This constructor is used when the class is built from an XML resource.
     public ViewfinderView(Context context, AttributeSet attrs) {
@@ -90,6 +110,12 @@ public class ViewfinderView extends View {
         scannerAlpha = 0;
         possibleResultPoints = new ArrayList<>(MAX_RESULT_POINTS);
         lastPossibleResultPoints = new ArrayList<>(MAX_RESULT_POINTS);
+
+        density =getContext().getResources().getDisplayMetrics().density;
+        screentRate = (int) (24 * density);
+        borderWidth = (int) (5 * density);
+        speedDistance = (int) (SPEED_DISTANCE * density);
+        mLineBitmap = ((BitmapDrawable)getResources().getDrawable(R.drawable.scan_light)).getBitmap();
     }
 
     public void setCameraPreview(CameraPreview view) {
@@ -155,6 +181,30 @@ public class ViewfinderView extends View {
         canvas.drawRect(frame.right + 1, frame.top, width, frame.bottom + 1, paint);
         canvas.drawRect(0, frame.bottom + 1, width, height, paint);
 
+        paint.setColor(Color.BLUE);
+        canvas.drawRect(frame.left,frame.top,frame.left + screentRate ,frame.top + borderWidth,paint);
+        canvas.drawRect(frame.left,frame.top,frame.left + borderWidth ,frame.top + screentRate,paint);
+        canvas.drawRect(frame.right - screentRate,frame.top,frame.right  ,frame.top + borderWidth,paint);
+        canvas.drawRect(frame.right - borderWidth,frame.top,frame.right ,frame.top + screentRate,paint);
+        canvas.drawRect(frame.left,frame.bottom - screentRate,frame.left + borderWidth ,frame.bottom,paint);
+        canvas.drawRect(frame.left,frame.bottom - borderWidth,frame.left + screentRate ,frame.bottom,paint);
+        canvas.drawRect(frame.right - screentRate,frame.bottom - borderWidth,frame.right ,frame.bottom ,paint);
+        canvas.drawRect(frame.right - borderWidth,frame.bottom - screentRate,frame.right ,frame.bottom,paint);
+        if (slideTop == 0) {
+            slideTop = frame.top;
+        }
+        slideBottom = slideTop+mLineBitmap.getHeight();
+        if (slideBottom > frame.bottom){
+            slideBottom = frame.bottom;
+        }
+        Rect lineRect = new Rect(frame.left,slideTop,frame.right,slideBottom);
+       // canvas.drawBitmap(mLineBitmap,null,lineRect,paint);
+        drawLaserScanner(canvas,lineRect);
+        slideTop += speedDistance;
+        if (slideTop >= frame.bottom){
+            slideTop = frame.top;
+        }
+
         if (resultBitmap != null) {
             // Draw the opaque result bitmap over the scanning rectangle
             paint.setAlpha(CURRENT_POINT_OPACITY);
@@ -218,6 +268,51 @@ public class ViewfinderView extends View {
         }
     }
 
+    //绘制扫描线
+    private void drawLaserScanner(Canvas canvas, Rect frame) {
+        paint.setColor(Color.BLUE);
+        //线性渐变
+        LinearGradient linearGradient = new LinearGradient(
+                frame.left, frame.top,
+                frame.left, frame.top + SCANNER_LINE_HEIGHT / 2,
+                shadeColor(laserColor),
+                laserColor,
+                Shader.TileMode.MIRROR);
+
+        RadialGradient radialGradient = new RadialGradient(
+                (float)(frame.left + frame.width() / 2),
+                (float)(frame.top + SCANNER_LINE_HEIGHT / 2),
+                360f,
+                laserColor,
+                shadeColor(laserColor),
+                Shader.TileMode.MIRROR);
+
+        SweepGradient sweepGradient = new SweepGradient(
+                (float)(frame.left + frame.width() / 2),
+                (float)(frame.top + SCANNER_LINE_HEIGHT),
+                shadeColor(laserColor),
+                laserColor);
+
+        ComposeShader composeShader = new ComposeShader(radialGradient, linearGradient, PorterDuff.Mode.ADD);
+        paint.setShader(radialGradient);
+
+        if(frame.top + SCANNER_LINE_HEIGHT<= framingRect.bottom) {
+            RectF rectF = new RectF(frame.left + 2 * SCANNER_LINE_HEIGHT, frame.top, frame.right - 2 * SCANNER_LINE_HEIGHT, frame.top + SCANNER_LINE_HEIGHT);
+            canvas.drawOval(rectF, paint);
+        }else if (frame.top + SCANNER_LINE_HEIGHT > framingRect.bottom){
+            RectF rectF = new RectF(frame.left + 2 * SCANNER_LINE_HEIGHT, frame.top, frame.right - 2 * SCANNER_LINE_HEIGHT, framingRect.bottom);
+            canvas.drawOval(rectF, paint);
+        }
+        paint.setShader(null);
+    }
+
+    //处理颜色模糊
+    public int shadeColor(int color) {
+        String hax = Integer.toHexString(color);
+        String result = "20"+hax.substring(2);
+        return Integer.valueOf(result, 16);
+    }
+
     public void drawViewfinder() {
         Bitmap resultBitmap = this.resultBitmap;
         this.resultBitmap = null;
@@ -249,5 +344,9 @@ public class ViewfinderView extends View {
 
     public void setMaskColor(int maskColor) {
         this.maskColor = maskColor;
+    }
+
+    public CameraPreview getCameraPreview() {
+        return cameraPreview;
     }
 }
