@@ -4,6 +4,7 @@ import com.chad.library.adapter.base.entity.MultiItemEntity;
 import com.hydbest.baseandroid.activity.Media.MediaAudioRecordActivity;
 import com.hydbest.baseandroid.activity.Media.MediaAudioTrackActivity;
 import com.hydbest.baseandroid.activity.Media.MediaCameraActivity;
+import com.hydbest.baseandroid.activity.Media.MediaCusVideoActivity;
 import com.hydbest.baseandroid.activity.Media.MediaDrawImageActivity;
 import com.hydbest.baseandroid.activity.Media.MediaExecutorActivity;
 import com.hydbest.baseandroid.activity.Media.MediaVideoActivity;
@@ -139,7 +140,7 @@ public class DataGeneration {
         item5.addSubItem(subItem5_4);
         item5.addSubItem(subItem5_5);
 
-        Level0Item item6 = new Level0Item("音视频初级", "");
+        Level0Item item6 = new Level0Item("音视频", "");
         Fragmentation subItem6_0 = new Fragmentation("通过两种方式绘制图片", MediaDrawImageActivity.class);
         Fragmentation subItem6_1 = new Fragmentation("使用AudioRecord采集音频PCM并保存到文件", MediaAudioRecordActivity.class);
         Fragmentation subItem6_2 = new Fragmentation("使用 AudioTrack 播放PCM音频", MediaAudioTrackActivity.class);
@@ -148,6 +149,7 @@ public class DataGeneration {
         Fragmentation subItem6_5 = new Fragmentation("MediaRecorder和Camera实现视频录制（音频录制）及播放功能", MediaRecordActivity.class);
         Fragmentation subItem6_6 = new Fragmentation("Android 音乐(音效)播放方式总结", MediaVoiceActivity.class);
         Fragmentation subItem6_7 = new Fragmentation("使用VideoView播放视频", MediaVideoActivity.class);
+        Fragmentation subItem6_8 = new Fragmentation("自定义播放器", MediaCusVideoActivity.class);
         item6.addSubItem(subItem6_0);
         item6.addSubItem(subItem6_1);
         item6.addSubItem(subItem6_2);
@@ -156,6 +158,7 @@ public class DataGeneration {
         item6.addSubItem(subItem6_5);
         item6.addSubItem(subItem6_6);
         item6.addSubItem(subItem6_7);
+        item6.addSubItem(subItem6_8);
 
         Level0Item item7 = new Level0Item("OpenGL ES", "");
         Fragmentation subItem7_0 = new Fragmentation("GLSurfaceView的探索", GLSurfaceActivity.class);
