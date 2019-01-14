@@ -116,7 +116,6 @@ public class VideoLayout extends RelativeLayout implements View.OnClickListener,
                 if (playState == STATE_PAUSEING) {
                     seekAndPause(progress);
                 } else if (playState == STATE_PLAYING) {
-                    Log.i("csz","11111111");
                     seekAndResume(progress);
                 }
             }
@@ -314,7 +313,6 @@ public class VideoLayout extends RelativeLayout implements View.OnClickListener,
     }
 
     public void seekAndResume(int position) {
-        Log.i("csz","2222222222");
         if (playState != STATE_PLAYING || playState != STATE_PAUSEING) {
             return;
         }
