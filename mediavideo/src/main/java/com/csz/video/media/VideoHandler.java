@@ -19,9 +19,15 @@ public class VideoHandler implements VideoLayout.VidioPlayerListener {
     private boolean mAutoPause;//防止滑动时多次调用
     private int lastArea = 0;
 
-    public void VideoHandler(SlotValue data) {
+    private VideoHandler(SlotValue data,ViewGroup parentLayout) {
         this.mSlotValue = data;
+        this.mParentLayout = parentLayout;
+        this.mContext = parentLayout.getContext();
         initVedioView();
+    }
+
+    public static VideoHandler handle(SlotValue data,ViewGroup parentLayout){
+        return new VideoHandler(data,parentLayout);
     }
 
     private void initVedioView() {

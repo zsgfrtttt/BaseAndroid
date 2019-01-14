@@ -22,6 +22,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 
@@ -45,6 +46,7 @@ public class VideoLayout extends RelativeLayout implements View.OnClickListener,
     private ImageView mIvCenter;
     private ImageView mIvFull;
     private ImageView mIvSwitch;
+    private ProgressBar mProgressBar;
     private LinearLayout mLayoutBottom;
     private SeekBar mSeekBar;
     private AudioManager mAudioManager;
@@ -52,6 +54,7 @@ public class VideoLayout extends RelativeLayout implements View.OnClickListener,
 
     private String mUrl;
     private boolean isMute;
+    private boolean mStopPostMsg;//是否停止发送消息
     private int mSreenWidth, mDestationHeight;
 
     private boolean isRealPause;
@@ -69,8 +72,9 @@ public class VideoLayout extends RelativeLayout implements View.OnClickListener,
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case TIME_MSG:
-                    if (isPlaying()) {
-                        //  listener.onBufferUpdate(getCurrentPosition());
+                    if (isPlaying() && !mStopPostMsg) {
+                        listener.onBufferUpdate(getCurrentPosition());
+                        mSeekBar.setProgress(mediaPlayer.getCurrentPosition());
                         sendEmptyMessageDelayed(TIME_MSG, TIME_INVAL);
                     }
                     break;
@@ -93,11 +97,12 @@ public class VideoLayout extends RelativeLayout implements View.OnClickListener,
     }
 
     private void initView() {
-        View.inflate(getContext(), R.layout.layout_video,this);
+        View.inflate(getContext(), R.layout.layout_video, this);
         mVideoView = findViewById(R.id.texture);
         mIvCenter = findViewById(R.id.iv_center);
         mIvFull = findViewById(R.id.iv_full);
-        mIvSwitch = findViewById(R.id.iv_switch) ;
+        mIvSwitch = findViewById(R.id.iv_switch);
+        mProgressBar = findViewById(R.id.progress);
         mLayoutBottom = findViewById(R.id.layout_bottom);
         mSeekBar = findViewById(R.id.seek);
 
@@ -105,13 +110,32 @@ public class VideoLayout extends RelativeLayout implements View.OnClickListener,
         mIvFull.setOnClickListener(this);
         mIvSwitch.setOnClickListener(this);
         mVideoView.setSurfaceTextureListener(this);
+        mSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                if (playState == STATE_PAUSEING) {
+                    seekAndPause(progress);
+                } else if (playState == STATE_PLAYING) {
+                    Log.i("csz","11111111");
+                    seekAndResume(progress);
+                }
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+            }
+        });
 
         showPauseOrPlayView(false);
     }
 
     @Override
     public void onBufferingUpdate(MediaPlayer mp, int percent) {
-
+        mSeekBar.setSecondaryProgress(percent);
     }
 
     @Override
@@ -119,6 +143,8 @@ public class VideoLayout extends RelativeLayout implements View.OnClickListener,
         if (listener != null) {
             listener.onVideoPlayComplete();
         }
+        mCurrentCount = 0;
+        setCurrentPalyState(STATE_PAUSEING);
         setIsComplete(true);
         setIsPauseClick(true);
         playBack();
@@ -130,16 +156,17 @@ public class VideoLayout extends RelativeLayout implements View.OnClickListener,
             if (listener != null) {
                 listener.onVideoLoadFail();
             }
+            hideLoadingView();
             setCurrentPalyState(STATE_ERROR);
             showPauseOrPlayView(false);
+        } else {
+            stop();
         }
-        stop();
         return true;
     }
 
     @Override
     public void onPrepared(MediaPlayer mp) {
-        Log.i("csz",(Looper.getMainLooper().getThread() == Thread.currentThread())+":llll");
         mediaPlayer = mp;
         if (mediaPlayer != null) {
             mediaPlayer.setOnBufferingUpdateListener(this);
@@ -164,7 +191,8 @@ public class VideoLayout extends RelativeLayout implements View.OnClickListener,
 
     @Override
     public boolean onSurfaceTextureDestroyed(SurfaceTexture surface) {
-        return false;
+        stop();
+        return true;
     }
 
     @Override
@@ -211,19 +239,22 @@ public class VideoLayout extends RelativeLayout implements View.OnClickListener,
     }
 
     public void resume() {
+        hideLoadingView();
         if (playState != STATE_PAUSEING) {
-            Log.i("csz","llll");
             return;
         }
         if (!isPlaying()) {
             entryResumeState();
             showPauseOrPlayView(true);
             mediaPlayer.start();
+            mSeekBar.setMax(mediaPlayer.getDuration());
             mHandler.sendEmptyMessage(TIME_MSG);
+            mStopPostMsg = false;
         }
     }
 
     public void pause() {
+        hideLoadingView();
         if (playState != STATE_PLAYING) {
             return;
         }
@@ -232,7 +263,9 @@ public class VideoLayout extends RelativeLayout implements View.OnClickListener,
             mediaPlayer.pause();
         }
         showPauseOrPlayView(false);
+        mStopPostMsg = true;
         mHandler.removeCallbacksAndMessages(null);
+
     }
 
     private boolean isPlaying() {
@@ -244,6 +277,7 @@ public class VideoLayout extends RelativeLayout implements View.OnClickListener,
      */
     public void playBack() {
         setCurrentPalyState(STATE_PAUSEING);
+        mStopPostMsg = true;
         mHandler.removeCallbacksAndMessages(null);
         if (mediaPlayer != null) {
             mediaPlayer.setOnSeekCompleteListener(null);
@@ -261,8 +295,9 @@ public class VideoLayout extends RelativeLayout implements View.OnClickListener,
             mediaPlayer.release();
             mediaPlayer = null;
         }
-        mHandler.removeCallbacksAndMessages(null);
         setCurrentPalyState(STATE_IDLE);
+        mStopPostMsg = true;
+        mHandler.removeCallbacksAndMessages(null);
 
         if (mCurrentCount < LOAD_TOTAL_COUNT) {
             mCurrentCount += 1;
@@ -278,34 +313,42 @@ public class VideoLayout extends RelativeLayout implements View.OnClickListener,
         setIsComplete(false);
     }
 
-    public void destory() {
-
-    }
-
     public void seekAndResume(int position) {
-        setCurrentPalyState(STATE_PLAYING);
+        Log.i("csz","2222222222");
+        if (playState != STATE_PLAYING || playState != STATE_PAUSEING) {
+            return;
+        }
         if (mediaPlayer.isPlaying() || mediaPlayer.getCurrentPosition() > 0) {
             mediaPlayer.seekTo(position);
-            decideCanPlay();
+            mStopPostMsg = true;
+            mHandler.removeCallbacksAndMessages(null);
+            showLoadingView();
+            mediaPlayer.setOnSeekCompleteListener(new MediaPlayer.OnSeekCompleteListener() {
+                @Override
+                public void onSeekComplete(MediaPlayer mp) {
+                    decideCanPlay();
+                    hideLoadingView();
+                }
+            });
+
         }
     }
 
     public void seekAndPause(int position) {
-        if (playState != STATE_PLAYING) {
+        if (playState != STATE_PLAYING || playState != STATE_PAUSEING) {
             return;
         }
         setCurrentPalyState(STATE_PAUSEING);
         showPauseOrPlayView(false);
-        if (isPlaying()) {
-            mediaPlayer.seekTo(position);
-            mediaPlayer.setOnSeekCompleteListener(new MediaPlayer.OnSeekCompleteListener() {
-                @Override
-                public void onSeekComplete(MediaPlayer mp) {
-                    mediaPlayer.pause();
-                    mHandler.removeCallbacksAndMessages(null);
-                }
-            });
-        }
+        mediaPlayer.seekTo(position);
+        mediaPlayer.setOnSeekCompleteListener(new MediaPlayer.OnSeekCompleteListener() {
+            @Override
+            public void onSeekComplete(MediaPlayer mp) {
+                mediaPlayer.pause();
+                mStopPostMsg = true;
+                mHandler.removeCallbacksAndMessages(null);
+            }
+        });
 
     }
 
@@ -327,6 +370,7 @@ public class VideoLayout extends RelativeLayout implements View.OnClickListener,
             player.setOnErrorListener(this);
             player.setOnPreparedListener(this);
             player.setAudioStreamType(AudioManager.STREAM_MUSIC);
+            player.setOnBufferingUpdateListener(this);
             if (videoSurface != null && videoSurface.isValid()) {
                 player.setSurface(videoSurface);
             } else {
@@ -377,11 +421,11 @@ public class VideoLayout extends RelativeLayout implements View.OnClickListener,
      * @param play true:播放    false：暂停
      */
     private void showPauseOrPlayView(boolean play) {
-        if (play){
+        if (play) {
             mIvCenter.setImageResource(R.drawable.icon_start);
             mIvCenter.setVisibility(GONE);
             mIvSwitch.setImageResource(R.drawable.icon_start);
-        }else{
+        } else {
             mIvCenter.setImageResource(R.drawable.icon_pause);
             mIvCenter.setVisibility(VISIBLE);
             mIvSwitch.setImageResource(R.drawable.icon_pause);
@@ -389,6 +433,12 @@ public class VideoLayout extends RelativeLayout implements View.OnClickListener,
     }
 
     private void showLoadingView() {
+        mIvCenter.setVisibility(GONE);
+        mProgressBar.setVisibility(VISIBLE);
+    }
+
+    private void hideLoadingView() {
+        mProgressBar.setVisibility(GONE);
     }
 
     public void setIsPauseClick(boolean click) {
@@ -419,7 +469,21 @@ public class VideoLayout extends RelativeLayout implements View.OnClickListener,
 
     @Override
     public void onClick(View v) {
-
+        if (v == mIvCenter) {
+            if (playState == STATE_PAUSEING) {
+                decideCanPlay();
+            }
+        } else if (v == mIvSwitch) {
+            if (playState == STATE_PAUSEING) {
+                decideCanPlay();
+            } else {
+                pause();
+            }
+        } else if (v == mIvFull) {
+            if (listener != null) {
+                listener.onClickFullScreen();
+            }
+        }
     }
 
     public interface VidioPlayerListener {

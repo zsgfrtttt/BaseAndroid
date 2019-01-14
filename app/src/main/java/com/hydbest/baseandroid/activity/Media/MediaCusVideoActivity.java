@@ -8,6 +8,8 @@ import android.support.v7.widget.RecyclerView;
 import android.widget.RelativeLayout;
 
 import com.csz.video.media.SlotValue;
+import com.csz.video.media.VideoHandler;
+import com.csz.video.media.VideoLayout;
 import com.hydbest.baseandroid.R;
 import com.hydbest.baseandroid.adapter.VideoAdapter;
 
@@ -34,15 +36,16 @@ public class MediaCusVideoActivity extends AppCompatActivity{
     }
 
     private void initView() {
-        for (int i = 0; i < 10; i++) {
-            mData.add(new SlotValue("https://vd.yinyuetai.com/hd.yinyuetai.com/uploads/videos/common/90B8015D26C51713A86A1B985458D61E.mp4",null));
+        /*for (int i = 0; i < 10; i++) {
+            mData.add();
         }
         VideoAdapter adapter = new VideoAdapter(mData);
 
         final LinearLayoutManager manager = new LinearLayoutManager(this);
         mRecycleView.setAdapter(adapter);
-        mRecycleView.setLayoutManager(manager);
+        mRecycleView.setLayoutManager(manager);*/
 
+        VideoHandler.handle(new SlotValue("https://vd.yinyuetai.com/hd.yinyuetai.com/uploads/videos/common/90B8015D26C51713A86A1B985458D61E.mp4",null),relativeLayout);
     }
 
 }
