@@ -168,6 +168,8 @@
 
         <activity android:name=".activity.foundation.ZxingActivity"></activity>
 
+        <activity android:name=".activity.Media.MediaCusVideoActivity"></activity>
+
         <service
             android:name="groovy.hydbest.Messenger.MessageService"
             android:process=":remote"
