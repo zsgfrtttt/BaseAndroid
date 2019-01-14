@@ -198,7 +198,7 @@ public class ViewfinderView extends View {
             slideBottom = frame.bottom;
         }
         Rect lineRect = new Rect(frame.left,slideTop,frame.right,slideBottom);
-        canvas.drawBitmap(mLineBitmap,null,lineRect,paint);
+        //canvas.drawBitmap(mLineBitmap,null,lineRect,paint);
         drawLaserScanner(canvas,lineRect);
         slideTop += speedDistance;
         if (slideTop >= frame.bottom){
