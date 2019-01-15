@@ -26,6 +26,7 @@ public class MediaCusVideoActivity extends AppCompatActivity{
     protected RecyclerView mRecycleView;
 
     private List<SlotValue> mData = new ArrayList<>();
+    private VideoHandler handle;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -45,7 +46,18 @@ public class MediaCusVideoActivity extends AppCompatActivity{
         mRecycleView.setAdapter(adapter);
         mRecycleView.setLayoutManager(manager);*/
 
-        VideoHandler.handle(new SlotValue("https://vd.yinyuetai.com/hd.yinyuetai.com/uploads/videos/common/90B8015D26C51713A86A1B985458D61E.mp4",null),relativeLayout);
+        handle = VideoHandler.handle(new SlotValue("https://vd.yinyuetai.com/hd.yinyuetai.com/uploads/videos/common/90B8015D26C51713A86A1B985458D61E.mp4", null), relativeLayout);
     }
 
+    @Override
+    public void onBackPressed() {
+        if (handle.onBackPressed()) return;
+        super.onBackPressed();
+    }
+
+    @Override
+    protected void onPause() {
+        handle.pause();
+        super.onPause();
+    }
 }

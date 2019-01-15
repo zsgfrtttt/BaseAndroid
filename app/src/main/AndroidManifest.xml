@@ -168,7 +168,8 @@
 
         <activity android:name=".activity.foundation.ZxingActivity"></activity>
 
-        <activity android:name=".activity.Media.MediaCusVideoActivity"></activity>
+        <activity android:name=".activity.Media.MediaCusVideoActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"></activity>
 
         <service
             android:name="groovy.hydbest.Messenger.MessageService"

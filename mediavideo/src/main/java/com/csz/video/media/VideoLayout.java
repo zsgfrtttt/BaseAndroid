@@ -5,21 +5,29 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.graphics.SurfaceTexture;
 import android.media.AudioManager;
 import android.media.Image;
 import android.media.MediaPlayer;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.OrientationEventListener;
 import android.view.Surface;
 import android.view.TextureView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -30,9 +38,10 @@ import com.csz.video.R;
 
 import java.io.IOException;
 
-public class VideoLayout extends RelativeLayout implements View.OnClickListener, MediaPlayer.OnPreparedListener, MediaPlayer.OnBufferingUpdateListener, MediaPlayer.OnCompletionListener, MediaPlayer.OnErrorListener, TextureView.SurfaceTextureListener {
+public class VideoLayout extends FrameLayout implements View.OnClickListener, MediaPlayer.OnPreparedListener, MediaPlayer.OnBufferingUpdateListener, MediaPlayer.OnCompletionListener, MediaPlayer.OnErrorListener, TextureView.SurfaceTextureListener {
 
     private static final int TIME_MSG = 0x01;
+    private static final int SENSOR_MSG = 0x02;
     private static final int TIME_INVAL = 1000;
     private static final int STATE_ERROR = -1;
     private static final int STATE_IDLE = 0;
@@ -42,7 +51,7 @@ public class VideoLayout extends RelativeLayout implements View.OnClickListener,
 
     private ViewGroup mParentContainer;
     private RelativeLayout mPlayerView;
-    private TextureView mVideoView;
+    private NiceTextureView mNiceTextureView;
     private ImageView mIvCenter;
     private ImageView mIvFull;
     private ImageView mIvSwitch;
@@ -50,6 +59,8 @@ public class VideoLayout extends RelativeLayout implements View.OnClickListener,
     private LinearLayout mLayoutBottom;
     private SeekBar mSeekBar;
     private AudioManager mAudioManager;
+
+    private SurfaceTexture mSurfaceTexture;
     private Surface videoSurface;
 
     private String mUrl;
@@ -59,11 +70,13 @@ public class VideoLayout extends RelativeLayout implements View.OnClickListener,
 
     private boolean isRealPause;
     private boolean isComplete;
+    private boolean isFullScreen;
     private int mCurrentCount;
     private int playState = STATE_IDLE;
 
     private MediaPlayer mediaPlayer;
     private VidioPlayerListener listener;
+    private OrientationEventListener mOrientationListener; // 屏幕方向改变监听器
     private ScreenEventReceiver mScreenReceiver;
 
     @SuppressLint("HandlerLeak")
@@ -78,6 +91,10 @@ public class VideoLayout extends RelativeLayout implements View.OnClickListener,
                         sendEmptyMessageDelayed(TIME_MSG, TIME_INVAL);
                     }
                     break;
+                case SENSOR_MSG:
+                    //开启自动旋转，响应屏幕旋转事件
+                    Util.scanForActivity(getContext()).setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_FULL_SENSOR);
+                    break;
             }
         }
     };
@@ -88,6 +105,7 @@ public class VideoLayout extends RelativeLayout implements View.OnClickListener,
         mAudioManager = (AudioManager) getContext().getSystemService(Context.AUDIO_SERVICE);
         initData();
         initView();
+        startConfigListener();
         registerBroadcastReceiver();
     }
 
@@ -98,18 +116,20 @@ public class VideoLayout extends RelativeLayout implements View.OnClickListener,
 
     private void initView() {
         View.inflate(getContext(), R.layout.layout_video, this);
-        mVideoView = findViewById(R.id.texture);
+        mNiceTextureView = new NiceTextureView(getContext());
         mIvCenter = findViewById(R.id.iv_center);
         mIvFull = findViewById(R.id.iv_full);
         mIvSwitch = findViewById(R.id.iv_switch);
         mProgressBar = findViewById(R.id.progress);
         mLayoutBottom = findViewById(R.id.layout_bottom);
         mSeekBar = findViewById(R.id.seek);
+        addTextureView();
 
         mIvCenter.setOnClickListener(this);
         mIvFull.setOnClickListener(this);
         mIvSwitch.setOnClickListener(this);
-        mVideoView.setSurfaceTextureListener(this);
+        mNiceTextureView.setSurfaceTextureListener(this);
+
         mSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -123,10 +143,8 @@ public class VideoLayout extends RelativeLayout implements View.OnClickListener,
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
                 if (playState == STATE_PAUSEING) {
-                    Log.i("csz","ppppppp");
                     seekAndPause(seekBar.getProgress());
                 } else if (playState == STATE_PLAYING) {
-                    Log.i("csz","ssssssss");
                     seekAndResume(seekBar.getProgress());
                 }
             }
@@ -134,6 +152,16 @@ public class VideoLayout extends RelativeLayout implements View.OnClickListener,
 
         showPauseOrPlayView(false);
     }
+
+    private void addTextureView() {
+        removeView(mNiceTextureView);
+        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                Gravity.CENTER);
+        addView(mNiceTextureView, 0, params);
+    }
+
 
     @Override
     public void onBufferingUpdate(MediaPlayer mp, int percent) {
@@ -181,26 +209,30 @@ public class VideoLayout extends RelativeLayout implements View.OnClickListener,
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     public void onSurfaceTextureAvailable(SurfaceTexture surface, int width, int height) {
-        videoSurface = new Surface(surface);
-        load();
+        Log.i("csz", "onSurfaceTextureAvailable");
+        if (videoSurface == null) {
+            mSurfaceTexture = surface;
+            videoSurface = new Surface(surface);
+            load();
+        } else {
+            mNiceTextureView.setSurfaceTexture(mSurfaceTexture);
+        }
     }
 
     @Override
     public void onSurfaceTextureSizeChanged(SurfaceTexture surface, int width, int height) {
-
     }
 
     @Override
     public boolean onSurfaceTextureDestroyed(SurfaceTexture surface) {
-        stop();
-        return true;
+        return videoSurface == null;
     }
 
     @Override
     public void onSurfaceTextureUpdated(SurfaceTexture surface) {
-
     }
 
     @Override
@@ -212,8 +244,6 @@ public class VideoLayout extends RelativeLayout implements View.OnClickListener,
             } else {
                 decideCanPlay();
             }
-        } else {
-            pause();
         }
     }
 
@@ -292,7 +322,6 @@ public class VideoLayout extends RelativeLayout implements View.OnClickListener,
 
     public void stop() {
         if (mediaPlayer != null) {
-            mediaPlayer.reset();
             mediaPlayer.setOnSeekCompleteListener(null);
             mediaPlayer.stop();
             mediaPlayer.release();
@@ -401,9 +430,6 @@ public class VideoLayout extends RelativeLayout implements View.OnClickListener,
         }
     }
 
-    public void showFullBtn(boolean show) {
-    }
-
     public boolean isPauseBtnClicked() {
         return isRealPause;
     }
@@ -436,6 +462,15 @@ public class VideoLayout extends RelativeLayout implements View.OnClickListener,
         mProgressBar.setVisibility(GONE);
     }
 
+    public void onFullScreen(boolean isFull) {
+        if (isFull) {
+            mIvFull.setImageResource(R.drawable.icon_zoom_small);
+        } else {
+            mIvFull.setImageResource(R.drawable.icon_full);
+        }
+        isFullScreen = isFull;
+    }
+
     public void setIsPauseClick(boolean click) {
         isRealPause = click;
     }
@@ -462,6 +497,10 @@ public class VideoLayout extends RelativeLayout implements View.OnClickListener,
         return 0;
     }
 
+    public boolean isFullScreen() {
+        return isFullScreen;
+    }
+
     @Override
     public void onClick(View v) {
         if (v == mIvCenter) {
@@ -475,16 +514,53 @@ public class VideoLayout extends RelativeLayout implements View.OnClickListener,
                 pause();
             }
         } else if (v == mIvFull) {
-            if (listener != null) {
+            changeConfiguration();
+        }
+    }
+
+    /**
+     * 横竖屏切换
+     */
+    private void changeConfiguration() {
+        if (listener != null) {
+            if (isFullScreen) {
+                mHandler.sendEmptyMessageDelayed(SENSOR_MSG,3000);
+                listener.onExitFullScreen();
+            } else {
+                mHandler.sendEmptyMessageDelayed(SENSOR_MSG,3000);
                 listener.onClickFullScreen();
             }
         }
+    }
+
+    private void startConfigListener() {
+        mOrientationListener = new OrientationEventListener(getContext()) {
+            @Override
+            public void onOrientationChanged(int orientation) {
+                Log.i("csz", "orientation:" + orientation);
+                if ((orientation > 45 && orientation < 135) || (orientation > 225 && orientation < 315)) {
+                    //当前为横屏
+                    if (!isFullScreen) {
+                        mHandler.sendEmptyMessageDelayed(SENSOR_MSG,3000);
+                        listener.onClickFullScreen();
+                    }
+                } else {
+                    if (isFullScreen) {
+                        mHandler.sendEmptyMessageDelayed(SENSOR_MSG,3000);
+                        listener.onExitFullScreen();
+                    }
+                }
+            }
+        };
+        mOrientationListener.enable();
     }
 
     public interface VidioPlayerListener {
         void onBufferUpdate(int time);
 
         void onClickFullScreen();
+
+        void onExitFullScreen();
 
         void onClickVideo();
 

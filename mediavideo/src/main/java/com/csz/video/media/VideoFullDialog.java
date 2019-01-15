@@ -97,6 +97,11 @@ public class VideoFullDialog extends Dialog implements VidioPlayerListener {
     }
 
     @Override
+    public void onExitFullScreen() {
+
+    }
+
+    @Override
     public void onClickVideo() {
 
     }
