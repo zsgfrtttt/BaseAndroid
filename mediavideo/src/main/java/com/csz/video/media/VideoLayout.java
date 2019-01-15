@@ -26,6 +26,7 @@ import android.view.Surface;
 import android.view.TextureView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -67,6 +68,8 @@ public class VideoLayout extends FrameLayout implements View.OnClickListener, Me
     private boolean isMute;
     private boolean mStopPostMsg;//是否停止发送消息
     private int mSreenWidth, mDestationHeight;
+    private int mPortraitHeight;
+    private int mPortraitWidth;
 
     private boolean isRealPause;
     private boolean isComplete;
@@ -98,6 +101,7 @@ public class VideoLayout extends FrameLayout implements View.OnClickListener, Me
             }
         }
     };
+
 
     public VideoLayout(Context context, ViewGroup parentContainer) {
         super(context);
@@ -518,17 +522,40 @@ public class VideoLayout extends FrameLayout implements View.OnClickListener, Me
         }
     }
 
+    @Override
+    protected void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE){
+            setScaleView(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT);
+            onFullScreen(true);
+        }else{
+            setScaleView(mPortraitWidth,mPortraitHeight);
+            onFullScreen(false);
+        }
+    }
+
+    private void setScaleView(int width,int height){
+        ViewGroup.LayoutParams layoutParams = mParentContainer.getLayoutParams();
+        layoutParams.width = width;
+        layoutParams.height =height;
+        mParentContainer.setLayoutParams(layoutParams);
+        ViewGroup.LayoutParams params = getLayoutParams();
+        params.width = width;
+        params.height = height;
+        setLayoutParams(params);
+    }
+
     /**
      * 横竖屏切换
      */
     private void changeConfiguration() {
         if (listener != null) {
             if (isFullScreen) {
-                mHandler.sendEmptyMessageDelayed(SENSOR_MSG,3000);
                 listener.onExitFullScreen();
+                mHandler.sendEmptyMessageDelayed(SENSOR_MSG,5000);
             } else {
-                mHandler.sendEmptyMessageDelayed(SENSOR_MSG,3000);
                 listener.onClickFullScreen();
+                mHandler.sendEmptyMessageDelayed(SENSOR_MSG,5000);
             }
         }
     }
@@ -540,19 +567,24 @@ public class VideoLayout extends FrameLayout implements View.OnClickListener, Me
                 Log.i("csz", "orientation:" + orientation);
                 if ((orientation > 45 && orientation < 135) || (orientation > 225 && orientation < 315)) {
                     //当前为横屏
-                    if (!isFullScreen) {
-                        mHandler.sendEmptyMessageDelayed(SENSOR_MSG,3000);
-                        listener.onClickFullScreen();
-                    }
+                    mHandler.sendEmptyMessage(SENSOR_MSG);
                 } else {
-                    if (isFullScreen) {
-                        mHandler.sendEmptyMessageDelayed(SENSOR_MSG,3000);
-                        listener.onExitFullScreen();
-                    }
+                    mHandler.sendEmptyMessage(SENSOR_MSG);
                 }
             }
         };
         mOrientationListener.enable();
+
+        getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+            @Override
+            public void onGlobalLayout() {
+                Log.i("csz","addOnGlobalLayoutListener:"+getWidth()+":"+getHeight());
+                mPortraitHeight = getHeight();
+                mPortraitWidth = getWidth();
+                getViewTreeObserver().removeOnGlobalLayoutListener(this);
+            }
+        });
     }
 
     public interface VidioPlayerListener {

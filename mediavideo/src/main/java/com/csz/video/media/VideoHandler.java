@@ -93,7 +93,7 @@ public class VideoHandler implements VideoLayout.VidioPlayerListener, IVideoOper
     @Override
     public void onClickFullScreen() {
         Util.hideActionBar(mContext);
-        Util.scanForActivity(mContext).setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        Util.scanForActivity(mContext).setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
 
         ViewGroup contentView = Util.scanForActivity(mContext).findViewById(android.R.id.content);
         if (mVedioLayout.getParent() != null) {
@@ -110,10 +110,11 @@ public class VideoHandler implements VideoLayout.VidioPlayerListener, IVideoOper
     @Override
     public void onExitFullScreen() {
         Util.showActionBar(mContext);
-        Util.scanForActivity(mContext).setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        Util.scanForActivity(mContext).setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT);
 
-        ViewGroup contentView = Util.scanForActivity(mContext).findViewById(android.R.id.content);
-        contentView.removeView(mVedioLayout);
+        if (mVedioLayout.getParent() != null) {
+            ((ViewGroup) mVedioLayout.getParent()).removeView(mVedioLayout);
+        }
         mParentLayout.addView(mVedioLayout);
         mVedioLayout.onFullScreen(false);
 
