@@ -8,7 +8,9 @@ package com.csz.video.media;
 public interface IVideoOperation {
     void resume();
 
-    void pause();
+    void pause(boolean isRealPause);
 
     boolean onBackPressed();
+
+    void playWithData(SlotValue data);
 }

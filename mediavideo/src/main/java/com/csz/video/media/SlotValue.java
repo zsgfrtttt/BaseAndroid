@@ -4,10 +4,12 @@ public class SlotValue {
     private String url;
     //广告url
     private String clickUrl;
+    private boolean autoPlay;
 
-    public SlotValue(String url, String clickUrl) {
+    public SlotValue(String url, String clickUrl,boolean autoPlay) {
         this.url = url;
         this.clickUrl = clickUrl;
+        this.autoPlay = autoPlay;
     }
 
     public String getUrl() {
@@ -24,5 +26,13 @@ public class SlotValue {
 
     public void setClickUrl(String clickUrl) {
         this.clickUrl = clickUrl;
+    }
+
+    public boolean isAutoPlay() {
+        return autoPlay;
+    }
+
+    public void setAutoPlay(boolean autoPlay) {
+        this.autoPlay = autoPlay;
     }
 }

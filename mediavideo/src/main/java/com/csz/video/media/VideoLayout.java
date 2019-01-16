@@ -9,14 +9,12 @@ import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.graphics.SurfaceTexture;
 import android.media.AudioManager;
-import android.media.Image;
 import android.media.MediaPlayer;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Handler;
-import android.os.Looper;
 import android.os.Message;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -27,7 +25,8 @@ import android.view.TextureView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
-import android.widget.Button;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -66,6 +65,7 @@ public class VideoLayout extends FrameLayout implements View.OnClickListener, Me
 
     private String mUrl;
     private boolean isMute;
+    private boolean mAutoPlay;
     private boolean mStopPostMsg;//是否停止发送消息
     private int mSreenWidth, mDestationHeight;
     private int mPortraitHeight;
@@ -78,6 +78,7 @@ public class VideoLayout extends FrameLayout implements View.OnClickListener, Me
     private int playState = STATE_IDLE;
 
     private MediaPlayer mediaPlayer;
+    private VideoHandler mVideoHandler;
     private VidioPlayerListener listener;
     private OrientationEventListener mOrientationListener; // 屏幕方向改变监听器
     private ScreenEventReceiver mScreenReceiver;
@@ -102,11 +103,13 @@ public class VideoLayout extends FrameLayout implements View.OnClickListener, Me
         }
     };
 
-
-    public VideoLayout(Context context, ViewGroup parentContainer) {
+    public VideoLayout(Context context, ViewGroup parentContainer, VideoHandler handler, boolean autoPlay) {
         super(context);
         mParentContainer = parentContainer;
+        mVideoHandler = handler;
+        mAutoPlay = autoPlay;
         mAudioManager = (AudioManager) getContext().getSystemService(Context.AUDIO_SERVICE);
+        setId(R.id.video_layout);
         initData();
         initView();
         startConfigListener();
@@ -216,11 +219,11 @@ public class VideoLayout extends FrameLayout implements View.OnClickListener, Me
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     public void onSurfaceTextureAvailable(SurfaceTexture surface, int width, int height) {
-        Log.i("csz", "onSurfaceTextureAvailable");
         if (videoSurface == null) {
             mSurfaceTexture = surface;
             videoSurface = new Surface(surface);
-            load();
+            if (mAutoPlay)
+                load();
         } else {
             mNiceTextureView.setSurfaceTexture(mSurfaceTexture);
         }
@@ -244,7 +247,7 @@ public class VideoLayout extends FrameLayout implements View.OnClickListener, Me
         super.onVisibilityChanged(changedView, visibility);
         if (visibility == VISIBLE && playState == STATE_PAUSEING) {
             if (isRealPause || isComplete()) {
-                pause();
+                pause(isRealPause);
             } else {
                 decideCanPlay();
             }
@@ -268,6 +271,7 @@ public class VideoLayout extends FrameLayout implements View.OnClickListener, Me
         try {
             showLoadingView();
             checkMediaPlayer();
+            VideoManager.getInstance().setCurrentPlayHandler(mVideoHandler);
             mediaPlayer.prepareAsync();
         } catch (Exception e) {
             e.printStackTrace();
@@ -290,12 +294,27 @@ public class VideoLayout extends FrameLayout implements View.OnClickListener, Me
         }
     }
 
-    public void pause() {
+    /**
+     * 播放 非主动暂停
+     */
+    public void resumeByFilter() {
+        if (!isRealPause) {
+            resume();
+        }
+    }
+
+    /**
+     * 暂停播放
+     *
+     * @param isRealPause true:需要手动开启     false:view可见时自动开启播放
+     */
+    public void pause(boolean isRealPause) {
         hideLoadingView();
         if (playState != STATE_PLAYING && playState != STATE_PAUSEING) {
             return;
         }
         setCurrentPalyState(STATE_PAUSEING);
+        setIsPauseClick(isRealPause);
         if (isPlaying()) {
             mediaPlayer.pause();
         }
@@ -430,7 +449,7 @@ public class VideoLayout extends FrameLayout implements View.OnClickListener, Me
         if (mParentContainer.getWidth() * 2 > mSreenWidth) {
             resume();
         } else {
-            pause();
+            pause(false);
         }
     }
 
@@ -469,8 +488,14 @@ public class VideoLayout extends FrameLayout implements View.OnClickListener, Me
     public void onFullScreen(boolean isFull) {
         if (isFull) {
             mIvFull.setImageResource(R.drawable.icon_zoom_small);
+            Window window = Util.scanForActivity(getContext()).getWindow();
+            //window.clearFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
+            window.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         } else {
             mIvFull.setImageResource(R.drawable.icon_full);
+            Window window = Util.scanForActivity(getContext()).getWindow();
+            window.clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+            //window.addFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
         }
         isFullScreen = isFull;
     }
@@ -505,17 +530,24 @@ public class VideoLayout extends FrameLayout implements View.OnClickListener, Me
         return isFullScreen;
     }
 
+    public VideoHandler getVideoHandler(){
+        return mVideoHandler;
+    }
     @Override
     public void onClick(View v) {
         if (v == mIvCenter) {
-            if (playState == STATE_PAUSEING) {
+            if (playState == STATE_IDLE) {
+                load();
+            } else if (playState == STATE_PAUSEING) {
                 decideCanPlay();
             }
         } else if (v == mIvSwitch) {
-            if (playState == STATE_PAUSEING) {
+            if (playState == STATE_IDLE) {
+                load();
+            } else if (playState == STATE_PAUSEING) {
                 decideCanPlay();
             } else {
-                pause();
+                pause(true);
             }
         } else if (v == mIvFull) {
             changeConfiguration();
@@ -525,19 +557,19 @@ public class VideoLayout extends FrameLayout implements View.OnClickListener, Me
     @Override
     protected void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE){
-            setScaleView(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT);
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            setScaleView(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
             onFullScreen(true);
-        }else{
-            setScaleView(mPortraitWidth,mPortraitHeight);
+        } else {
+            setScaleView(mPortraitWidth, mPortraitHeight);
             onFullScreen(false);
         }
     }
 
-    private void setScaleView(int width,int height){
+    private void setScaleView(int width, int height) {
         ViewGroup.LayoutParams layoutParams = mParentContainer.getLayoutParams();
         layoutParams.width = width;
-        layoutParams.height =height;
+        layoutParams.height = height;
         mParentContainer.setLayoutParams(layoutParams);
         ViewGroup.LayoutParams params = getLayoutParams();
         params.width = width;
@@ -552,10 +584,10 @@ public class VideoLayout extends FrameLayout implements View.OnClickListener, Me
         if (listener != null) {
             if (isFullScreen) {
                 listener.onExitFullScreen();
-                mHandler.sendEmptyMessageDelayed(SENSOR_MSG,5000);
+                mHandler.sendEmptyMessageDelayed(SENSOR_MSG, 5000);
             } else {
                 listener.onClickFullScreen();
-                mHandler.sendEmptyMessageDelayed(SENSOR_MSG,5000);
+                mHandler.sendEmptyMessageDelayed(SENSOR_MSG, 5000);
             }
         }
     }
@@ -564,12 +596,8 @@ public class VideoLayout extends FrameLayout implements View.OnClickListener, Me
         mOrientationListener = new OrientationEventListener(getContext()) {
             @Override
             public void onOrientationChanged(int orientation) {
-                Log.i("csz", "orientation:" + orientation);
                 if ((orientation > 45 && orientation < 135) || (orientation > 225 && orientation < 315)) {
-                    //当前为横屏
-                    mHandler.sendEmptyMessage(SENSOR_MSG);
                 } else {
-                    mHandler.sendEmptyMessage(SENSOR_MSG);
                 }
             }
         };
@@ -579,7 +607,6 @@ public class VideoLayout extends FrameLayout implements View.OnClickListener, Me
             @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
             @Override
             public void onGlobalLayout() {
-                Log.i("csz","addOnGlobalLayoutListener:"+getWidth()+":"+getHeight());
                 mPortraitHeight = getHeight();
                 mPortraitWidth = getWidth();
                 getViewTreeObserver().removeOnGlobalLayoutListener(this);
@@ -614,12 +641,12 @@ public class VideoLayout extends FrameLayout implements View.OnClickListener, Me
                         if (!isRealPause) {
                             decideCanPlay();
                         } else {
-                            pause();
+                            pause(true);
                         }
                     }
                     break;
                 case Intent.ACTION_SCREEN_OFF:
-                    pause();
+                    pause(isRealPause);
                     break;
             }
         }

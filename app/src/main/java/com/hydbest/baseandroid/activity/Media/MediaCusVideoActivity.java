@@ -9,7 +9,6 @@ import android.widget.RelativeLayout;
 
 import com.csz.video.media.SlotValue;
 import com.csz.video.media.VideoHandler;
-import com.csz.video.media.VideoLayout;
 import com.hydbest.baseandroid.R;
 import com.hydbest.baseandroid.adapter.VideoAdapter;
 
@@ -19,7 +18,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MediaCusVideoActivity extends AppCompatActivity{
+public class MediaCusVideoActivity extends AppCompatActivity {
     @BindView(R.id.lyout_top)
     RelativeLayout relativeLayout;
     @BindView(R.id.rv)
@@ -37,27 +36,33 @@ public class MediaCusVideoActivity extends AppCompatActivity{
     }
 
     private void initView() {
-        /*for (int i = 0; i < 10; i++) {
-            mData.add();
+        for (int i = 0; i < 10; i++) {
+            mData.add(new SlotValue("https://vd.yinyuetai.com/hd.yinyuetai.com/uploads/videos/common/90B8015D26C51713A86A1B985458D61E.mp4", null,i==0));
         }
         VideoAdapter adapter = new VideoAdapter(mData);
 
         final LinearLayoutManager manager = new LinearLayoutManager(this);
-        mRecycleView.setAdapter(adapter);
-        mRecycleView.setLayoutManager(manager);*/
+        mRecycleView.setLayoutManager(manager);
+        adapter.bindToRecyclerView(mRecycleView);
 
-        handle = VideoHandler.handle(new SlotValue("https://vd.yinyuetai.com/hd.yinyuetai.com/uploads/videos/common/90B8015D26C51713A86A1B985458D61E.mp4", null), relativeLayout);
+        //handle = VideoHandler.handle(new SlotValue("https://vd.yinyuetai.com/hd.yinyuetai.com/uploads/videos/common/90B8015D26C51713A86A1B985458D61E.mp4", null), relativeLayout);
     }
 
     @Override
     public void onBackPressed() {
+        if (handle == null) {
+            super.onBackPressed();
+            return;
+        }
         if (handle.onBackPressed()) return;
         super.onBackPressed();
     }
 
     @Override
     protected void onPause() {
-        handle.pause();
+        if (handle != null) {
+            handle.pause();
+        }
         super.onPause();
     }
 }

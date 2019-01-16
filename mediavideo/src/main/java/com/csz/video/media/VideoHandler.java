@@ -2,16 +2,9 @@ package com.csz.video.media;
 
 import android.content.Context;
 import android.content.pm.ActivityInfo;
-import android.graphics.Color;
-import android.media.AudioManager;
 import android.text.TextUtils;
-import android.util.Log;
-import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.FrameLayout;
-
-import com.csz.video.R;
 
 public class VideoHandler implements VideoLayout.VidioPlayerListener, IVideoOperation {
 
@@ -41,7 +34,7 @@ public class VideoHandler implements VideoLayout.VidioPlayerListener, IVideoOper
     }
 
     private void initVedioView() {
-        mVedioLayout = new VideoLayout(mContext, mParentLayout);
+        mVedioLayout = new VideoLayout(mContext, mParentLayout,this,mSlotValue.isAutoPlay());
         if (mSlotValue != null) {
             mVedioLayout.setDataSource(mSlotValue.getUrl());
             mVedioLayout.setVidioPlayerListener(this);
@@ -55,7 +48,7 @@ public class VideoHandler implements VideoLayout.VidioPlayerListener, IVideoOper
             return;
         } else if (curArea <= 50) {
             if (mAutoPause) {
-                mVedioLayout.pause();
+                mVedioLayout.pause(mVedioLayout.isPauseBtnClicked());
                 mAutoPause = false;
             }
             lastArea = 0;
@@ -63,18 +56,20 @@ public class VideoHandler implements VideoLayout.VidioPlayerListener, IVideoOper
             mVedioLayout.setIsPauseClick(false);
         } else if (mVedioLayout.isComplete() || mVedioLayout.isPauseBtnClicked()) {
             if (mAutoPause) {
-                mVedioLayout.pause();
+                mVedioLayout.pause(mVedioLayout.isPauseBtnClicked());
                 mAutoPause = false;
             }
         }
 
         if (Util.canAutoPlay(mContext)) {
-            mVedioLayout.resume();
+            if (!mVedioLayout.isPauseBtnClicked()) {
+                mVedioLayout.resume();
+                mVedioLayout.setIsPauseClick(false);
+            }
             mAutoPause = true;
             lastArea = curArea;
-            mVedioLayout.setIsPauseClick(false);
         } else {
-            mVedioLayout.pause();
+            mVedioLayout.pause(mVedioLayout.isPauseBtnClicked());
             mVedioLayout.setIsPauseClick(true);
         }
 
@@ -169,6 +164,10 @@ public class VideoHandler implements VideoLayout.VidioPlayerListener, IVideoOper
         return mVedioLayout.isFullScreen();
     }
 
+    public VideoLayout getVedioLayout(){
+        return mVedioLayout;
+    }
+
     /**
      * 销毁所有资源,结束播放
      */
@@ -188,10 +187,22 @@ public class VideoHandler implements VideoLayout.VidioPlayerListener, IVideoOper
         }
     }
 
+    public void resumeByFilter(){
+        if (mVedioLayout != null ){
+            mVedioLayout.resumeByFilter();
+        }
+    }
+
     @Override
-    public void pause() {
+    public void pause(boolean isRealPause) {
         if (mVedioLayout != null) {
-            mVedioLayout.pause();
+            mVedioLayout.pause(isRealPause);
+        }
+    }
+
+    public void pause(){
+        if (mVedioLayout != null){
+            mVedioLayout.pause(mVedioLayout.isPauseBtnClicked());
         }
     }
 
@@ -206,5 +217,14 @@ public class VideoHandler implements VideoLayout.VidioPlayerListener, IVideoOper
             }
         }
         return false;
+    }
+
+    @Override
+    public void playWithData(SlotValue data) {
+        if (mVedioLayout != null){
+            this.mSlotValue = data;
+            mVedioLayout.setDataSource(data.getUrl());
+            mVedioLayout.load();
+        }
     }
 }

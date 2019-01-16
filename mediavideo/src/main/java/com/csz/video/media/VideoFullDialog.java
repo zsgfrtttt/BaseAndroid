@@ -69,7 +69,7 @@ public class VideoFullDialog extends Dialog implements VidioPlayerListener {
         super.onWindowFocusChanged(hasFocus);
         if (!hasFocus){
             mPosition = mVideoLayout.getCurrentPosition();
-            mVideoLayout.pause();
+            mVideoLayout.pause(mVideoLayout.isPauseBtnClicked());
         }else {
             if (isFrist){
                 isFrist = false;
