@@ -52,6 +52,7 @@ public class VideoLayout extends FrameLayout implements View.OnClickListener, Me
     private ViewGroup mParentContainer;
     private RelativeLayout mPlayerView;
     private NiceTextureView mNiceTextureView;
+    private ImageView mIvPreview;
     private ImageView mIvCenter;
     private ImageView mIvFull;
     private ImageView mIvSwitch;
@@ -112,18 +113,29 @@ public class VideoLayout extends FrameLayout implements View.OnClickListener, Me
         setId(R.id.video_layout);
         initData();
         initView();
-        startConfigListener();
+        //startConfigListener();
         registerBroadcastReceiver();
     }
 
     private void initData() {
         mSreenWidth = getContext().getResources().getDisplayMetrics().widthPixels;
         mDestationHeight = mSreenWidth * 9 / 16;
+
+        getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+            @Override
+            public void onGlobalLayout() {
+                mPortraitHeight = getHeight();
+                mPortraitWidth = getWidth();
+                getViewTreeObserver().removeOnGlobalLayoutListener(this);
+            }
+        });
     }
 
     private void initView() {
         View.inflate(getContext(), R.layout.layout_video, this);
         mNiceTextureView = new NiceTextureView(getContext());
+        mIvPreview = findViewById(R.id.iv_preview);
         mIvCenter = findViewById(R.id.iv_center);
         mIvFull = findViewById(R.id.iv_full);
         mIvSwitch = findViewById(R.id.iv_switch);
@@ -350,6 +362,7 @@ public class VideoLayout extends FrameLayout implements View.OnClickListener, Me
             mediaPlayer.release();
             mediaPlayer = null;
         }
+        hideLoadingView();
         showPauseOrPlayView(false);
         setCurrentPalyState(STATE_IDLE);
         mStopPostMsg = true;
@@ -483,6 +496,7 @@ public class VideoLayout extends FrameLayout implements View.OnClickListener, Me
 
     private void hideLoadingView() {
         mProgressBar.setVisibility(GONE);
+        mIvPreview.setVisibility(GONE);
     }
 
     public void onFullScreen(boolean isFull) {
@@ -602,16 +616,6 @@ public class VideoLayout extends FrameLayout implements View.OnClickListener, Me
             }
         };
         mOrientationListener.enable();
-
-        getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-            @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
-            @Override
-            public void onGlobalLayout() {
-                mPortraitHeight = getHeight();
-                mPortraitWidth = getWidth();
-                getViewTreeObserver().removeOnGlobalLayoutListener(this);
-            }
-        });
     }
 
     public interface VidioPlayerListener {

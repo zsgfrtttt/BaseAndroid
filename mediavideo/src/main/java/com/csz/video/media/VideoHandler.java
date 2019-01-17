@@ -6,6 +6,8 @@ import android.text.TextUtils;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
+import com.csz.video.R;
+
 public class VideoHandler implements VideoLayout.VidioPlayerListener, IVideoOperation {
 
     private static final int MILLION_SECOND = 1000;
@@ -34,10 +36,14 @@ public class VideoHandler implements VideoLayout.VidioPlayerListener, IVideoOper
     }
 
     private void initVedioView() {
-        mVedioLayout = new VideoLayout(mContext, mParentLayout,this,mSlotValue.isAutoPlay());
+        mVedioLayout = new VideoLayout(mContext, mParentLayout, this, mSlotValue.isAutoPlay());
         if (mSlotValue != null) {
             mVedioLayout.setDataSource(mSlotValue.getUrl());
             mVedioLayout.setVidioPlayerListener(this);
+        }
+        VideoLayout child = mParentLayout.findViewById(R.id.video_layout);
+        if (child != null) {
+            mParentLayout.removeView(child);
         }
         mParentLayout.addView(mVedioLayout);
     }
@@ -164,7 +170,7 @@ public class VideoHandler implements VideoLayout.VidioPlayerListener, IVideoOper
         return mVedioLayout.isFullScreen();
     }
 
-    public VideoLayout getVedioLayout(){
+    public VideoLayout getVedioLayout() {
         return mVedioLayout;
     }
 
@@ -187,8 +193,8 @@ public class VideoHandler implements VideoLayout.VidioPlayerListener, IVideoOper
         }
     }
 
-    public void resumeByFilter(){
-        if (mVedioLayout != null ){
+    public void resumeByFilter() {
+        if (mVedioLayout != null) {
             mVedioLayout.resumeByFilter();
         }
     }
@@ -200,8 +206,8 @@ public class VideoHandler implements VideoLayout.VidioPlayerListener, IVideoOper
         }
     }
 
-    public void pause(){
-        if (mVedioLayout != null){
+    public void pause() {
+        if (mVedioLayout != null) {
             mVedioLayout.pause(mVedioLayout.isPauseBtnClicked());
         }
     }
@@ -212,7 +218,7 @@ public class VideoHandler implements VideoLayout.VidioPlayerListener, IVideoOper
             if (isFullScreen()) {
                 onExitFullScreen();
                 return true;
-            }else{
+            } else {
                 release();
             }
         }
@@ -221,7 +227,7 @@ public class VideoHandler implements VideoLayout.VidioPlayerListener, IVideoOper
 
     @Override
     public void playWithData(SlotValue data) {
-        if (mVedioLayout != null){
+        if (mVedioLayout != null) {
             this.mSlotValue = data;
             mVedioLayout.setDataSource(data.getUrl());
             mVedioLayout.load();
