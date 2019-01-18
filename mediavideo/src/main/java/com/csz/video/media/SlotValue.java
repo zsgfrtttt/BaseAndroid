@@ -4,7 +4,10 @@ public class SlotValue {
     private String url;
     //广告url
     private String clickUrl;
+    //是否自动播放
     private boolean autoPlay;
+    //是否为列表模式
+    private boolean isListMode;
 
     public SlotValue(String url, String clickUrl,boolean autoPlay) {
         this.url = url;

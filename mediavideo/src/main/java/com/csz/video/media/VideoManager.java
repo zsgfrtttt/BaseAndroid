@@ -1,5 +1,7 @@
 package com.csz.video.media;
 
+import android.util.Log;
+
 /**
  * Created by csz on 2019/1/16.
  */
@@ -25,7 +27,9 @@ public class VideoManager {
     }
 
     public void setCurrentPlayHandler(VideoHandler handler) {
+        Log.i("csz","setCurrentPlayHandler");
         if (mCurrentPlayHandler != handler) {
+            Log.i("csz","oooooooooooooo");
             if (mCurrentPlayHandler != null) {
                 mCurrentPlayHandler.release();
             }

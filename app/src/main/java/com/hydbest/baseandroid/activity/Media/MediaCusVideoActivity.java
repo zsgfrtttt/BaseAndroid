@@ -28,7 +28,7 @@ public class MediaCusVideoActivity extends AppCompatActivity {
 
     private List<SlotValue> mData = new ArrayList<>();
     private VideoHandler handle;
-    private boolean mIsList;
+    private boolean mIsList = true;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
