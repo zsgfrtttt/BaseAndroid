@@ -169,6 +169,7 @@
         <activity android:name=".activity.foundation.ZxingActivity"></activity>
 
         <activity android:name=".activity.Media.MediaCusVideoActivity"
+            android:screenOrientation="portrait"
             android:configChanges="orientation|keyboardHidden|screenSize"></activity>
 
         <service

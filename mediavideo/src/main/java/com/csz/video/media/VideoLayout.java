@@ -5,7 +5,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.graphics.SurfaceTexture;
 import android.media.AudioManager;
@@ -14,9 +13,7 @@ import android.os.Build;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
-import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.OrientationEventListener;
@@ -66,7 +63,9 @@ public class VideoLayout extends FrameLayout implements View.OnClickListener, Me
 
     private String mUrl;
     private boolean isMute;
+    private boolean isList = true;
     private boolean mAutoPlay;
+    private int mOriginOritation;//原Activity设置的方向
     private boolean mStopPostMsg;//是否停止发送消息
     private int mSreenWidth, mDestationHeight;
     private int mPortraitHeight;
@@ -97,18 +96,19 @@ public class VideoLayout extends FrameLayout implements View.OnClickListener, Me
                     }
                     break;
                 case SENSOR_MSG:
-                    //开启自动旋转，响应屏幕旋转事件
-                    Util.scanForActivity(getContext()).setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_FULL_SENSOR);
+                    //开启自动旋转，响应屏幕旋转事件ActivityInfo.SCREEN_ORIENTATION_FULL_SENSOR
+                    Util.scanForActivity(getContext()).setRequestedOrientation(mOriginOritation);
                     break;
             }
         }
     };
 
-    public VideoLayout(Context context, ViewGroup parentContainer, VideoHandler handler, boolean autoPlay) {
+    public VideoLayout(Context context, ViewGroup parentContainer, VideoHandler handler, boolean autoPlay, int oritation) {
         super(context);
         mParentContainer = parentContainer;
         mVideoHandler = handler;
         mAutoPlay = autoPlay;
+        mOriginOritation = oritation;
         mAudioManager = (AudioManager) getContext().getSystemService(Context.AUDIO_SERVICE);
         setId(R.id.video_layout);
         initData();
@@ -247,6 +247,7 @@ public class VideoLayout extends FrameLayout implements View.OnClickListener, Me
 
     @Override
     public boolean onSurfaceTextureDestroyed(SurfaceTexture surface) {
+        mIvPreview.setVisibility(VISIBLE);
         return videoSurface == null;
     }
 
@@ -362,6 +363,7 @@ public class VideoLayout extends FrameLayout implements View.OnClickListener, Me
             mediaPlayer.release();
             mediaPlayer = null;
         }
+        mIvPreview.setVisibility(VISIBLE);
         hideLoadingView();
         showPauseOrPlayView(false);
         setCurrentPalyState(STATE_IDLE);
@@ -430,6 +432,7 @@ public class VideoLayout extends FrameLayout implements View.OnClickListener, Me
             player.setOnCompletionListener(this);
             player.setOnErrorListener(this);
             player.setOnPreparedListener(this);
+            player.setOnInfoListener(mOnInfoListener);
             player.setAudioStreamType(AudioManager.STREAM_MUSIC);
             player.setOnBufferingUpdateListener(this);
             if (videoSurface != null && videoSurface.isValid()) {
@@ -444,6 +447,7 @@ public class VideoLayout extends FrameLayout implements View.OnClickListener, Me
     }
 
     private void registerBroadcastReceiver() {
+        unRegisterReceiver();
         mScreenReceiver = new ScreenEventReceiver();
         IntentFilter filter = new IntentFilter();
         filter.addAction(Intent.ACTION_USER_PRESENT);
@@ -505,6 +509,7 @@ public class VideoLayout extends FrameLayout implements View.OnClickListener, Me
             Window window = Util.scanForActivity(getContext()).getWindow();
             //window.clearFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
             window.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+            VideoManager.getInstance().setCurrentPlayHandler(mVideoHandler);
         } else {
             mIvFull.setImageResource(R.drawable.icon_full);
             Window window = Util.scanForActivity(getContext()).getWindow();
@@ -544,9 +549,10 @@ public class VideoLayout extends FrameLayout implements View.OnClickListener, Me
         return isFullScreen;
     }
 
-    public VideoHandler getVideoHandler(){
+    public VideoHandler getVideoHandler() {
         return mVideoHandler;
     }
+
     @Override
     public void onClick(View v) {
         if (v == mIvCenter) {
@@ -571,24 +577,35 @@ public class VideoLayout extends FrameLayout implements View.OnClickListener, Me
     @Override
     protected void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
+        if (isList) return;
         if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            setScaleView(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-            onFullScreen(true);
+            setScaleView(true);
         } else {
-            setScaleView(mPortraitWidth, mPortraitHeight);
-            onFullScreen(false);
+            setScaleView(false);
         }
     }
 
-    private void setScaleView(int width, int height) {
-        ViewGroup.LayoutParams layoutParams = mParentContainer.getLayoutParams();
-        layoutParams.width = width;
-        layoutParams.height = height;
-        mParentContainer.setLayoutParams(layoutParams);
-        ViewGroup.LayoutParams params = getLayoutParams();
-        params.width = width;
-        params.height = height;
-        setLayoutParams(params);
+    private void setScaleView(boolean isFullScreen) {
+        if (isFullScreen) {
+            Util.hideActionBar(getContext());
+            ViewGroup contentView = Util.scanForActivity(getContext()).findViewById(android.R.id.content);
+            if (getParent() != null) {
+                ((ViewGroup) getParent()).removeView(this);
+            }
+            FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.MATCH_PARENT);
+            contentView.addView(this, params);
+            onFullScreen(true);
+        } else {
+            Util.showActionBar(getContext());
+            ViewGroup contentView = Util.scanForActivity(getContext()).findViewById(android.R.id.content);
+            contentView.removeView(this);
+            mParentContainer.removeView(this);
+            mParentContainer.addView(this);
+            onFullScreen(false);
+        }
+
     }
 
     /**
@@ -598,12 +615,14 @@ public class VideoLayout extends FrameLayout implements View.OnClickListener, Me
         if (listener != null) {
             if (isFullScreen) {
                 listener.onExitFullScreen();
-                mHandler.sendEmptyMessageDelayed(SENSOR_MSG, 5000);
             } else {
                 listener.onClickFullScreen();
-                mHandler.sendEmptyMessageDelayed(SENSOR_MSG, 5000);
             }
         }
+    }
+
+    public void sendRequestOritationMsg(){
+        mHandler.sendEmptyMessageDelayed(SENSOR_MSG, 5000);
     }
 
     private void startConfigListener() {
@@ -655,4 +674,33 @@ public class VideoLayout extends FrameLayout implements View.OnClickListener, Me
             }
         }
     }
+
+    private MediaPlayer.OnInfoListener mOnInfoListener = new MediaPlayer.OnInfoListener() {
+        @Override
+        public boolean onInfo(MediaPlayer mp, int what, int extra) {
+            if (what == MediaPlayer.MEDIA_INFO_VIDEO_RENDERING_START) {
+                // 播放器开始渲染
+            } else if (what == MediaPlayer.MEDIA_INFO_BUFFERING_START) {
+                // MediaPlayer暂时不播放，以缓冲更多的数据
+                if (playState == STATE_PAUSEING || playState == STATE_PLAYING){
+                    showLoadingView();
+                }
+            } else if (what == MediaPlayer.MEDIA_INFO_BUFFERING_END) {
+                // 填充缓冲区后，MediaPlayer恢复播放/暂停
+                hideLoadingView();
+                if (playState == STATE_PAUSEING || playState == STATE_PLAYING){
+                    if (isRealPause){
+                        pause(isRealPause);
+                    }else{
+                        resume();
+                    }
+                }
+            } else if (what == MediaPlayer.MEDIA_INFO_NOT_SEEKABLE) {
+                Log.i("csz","视频不能seekTo，为直播视频");
+            } else {
+
+            }
+            return false;
+        }
+    };
 }

@@ -3,6 +3,7 @@ package com.csz.video.media;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
@@ -23,6 +24,7 @@ public class VideoHandler implements VideoLayout.VidioPlayerListener, IVideoOper
 
     private boolean mAutoPause;//防止滑动时多次调用
     private int lastArea = 0;
+    private int mOritation;
 
     private VideoHandler(SlotValue data, ViewGroup parentLayout) {
         this.mSlotValue = data;
@@ -36,7 +38,8 @@ public class VideoHandler implements VideoLayout.VidioPlayerListener, IVideoOper
     }
 
     private void initVedioView() {
-        mVedioLayout = new VideoLayout(mContext, mParentLayout, this, mSlotValue.isAutoPlay());
+        int oritation = Util.scanForActivity(mContext).getRequestedOrientation();
+        mVedioLayout = new VideoLayout(mContext, mParentLayout, this, mSlotValue.isAutoPlay(), oritation);
         if (mSlotValue != null) {
             mVedioLayout.setDataSource(mSlotValue.getUrl());
             mVedioLayout.setVidioPlayerListener(this);
@@ -94,7 +97,11 @@ public class VideoHandler implements VideoLayout.VidioPlayerListener, IVideoOper
     @Override
     public void onClickFullScreen() {
         Util.hideActionBar(mContext);
-        Util.scanForActivity(mContext).setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
+        Util.scanForActivity(mContext).setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        if (mOritation == ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE || mOritation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT){
+        }else{
+            mVedioLayout.sendRequestOritationMsg();
+        }
 
         ViewGroup contentView = Util.scanForActivity(mContext).findViewById(android.R.id.content);
         if (mVedioLayout.getParent() != null) {
@@ -111,7 +118,11 @@ public class VideoHandler implements VideoLayout.VidioPlayerListener, IVideoOper
     @Override
     public void onExitFullScreen() {
         Util.showActionBar(mContext);
-        Util.scanForActivity(mContext).setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT);
+        Util.scanForActivity(mContext).setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        if (mOritation == ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE || mOritation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT){
+        }else{
+            mVedioLayout.sendRequestOritationMsg();
+        }
 
         if (mVedioLayout.getParent() != null) {
             ((ViewGroup) mVedioLayout.getParent()).removeView(mVedioLayout);
