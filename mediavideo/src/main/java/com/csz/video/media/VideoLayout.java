@@ -44,7 +44,7 @@ public class VideoLayout extends FrameLayout implements View.OnClickListener, Me
     private static final int STATE_IDLE = 0;
     private static final int STATE_PLAYING = 1;
     private static final int STATE_PAUSEING = 2;
-    private static final int LOAD_TOTAL_COUNT = 3;
+    private static final int LOAD_TOTAL_COUNT = 1;
 
     private ViewGroup mParentContainer;
     private RelativeLayout mPlayerView;
@@ -201,15 +201,20 @@ public class VideoLayout extends FrameLayout implements View.OnClickListener, Me
 
     @Override
     public boolean onError(MediaPlayer mp, int what, int extra) {
-        if (mCurrentCount >= LOAD_TOTAL_COUNT) {
-            if (listener != null) {
-                listener.onVideoLoadFail();
+        // 直播流播放时去调用mediaPlayer.getDuration会导致-38和-2147483648错误，忽略该错误
+        if (what != -38 && what != -2147483648 && extra != -38 && extra != -2147483648) {
+            Log.i("csz","eeee");
+            if (mCurrentCount >= LOAD_TOTAL_COUNT) {
+                if (listener != null) {
+                    listener.onVideoLoadFail();
+                }
+                stop();
+                mCurrentCount = 0;
+            } else {
+                mCurrentCount += 1;
+                setCurrentPalyState(STATE_IDLE);
+                load();
             }
-            hideLoadingView();
-            setCurrentPalyState(STATE_ERROR);
-            showPauseOrPlayView(false);
-        } else {
-            stop();
         }
         return true;
     }
