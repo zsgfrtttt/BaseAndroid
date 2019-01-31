@@ -13,6 +13,7 @@
             <option value="$PROJECT_DIR$/buildSrc" />
             <option value="$PROJECT_DIR$/eventbus" />
             <option value="$PROJECT_DIR$/fileprovider" />
+            <option value="$PROJECT_DIR$/loadapk" />
             <option value="$PROJECT_DIR$/mediavideo" />
             <option value="$PROJECT_DIR$/pluginlibrary" />
             <option value="$PROJECT_DIR$/zxing-android-embedded" />
