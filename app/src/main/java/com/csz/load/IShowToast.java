@@ -5,5 +5,5 @@ package com.csz.load;
  */
 
 public interface IShowToast {
-    public String getToast();
+    String getToast();
 }

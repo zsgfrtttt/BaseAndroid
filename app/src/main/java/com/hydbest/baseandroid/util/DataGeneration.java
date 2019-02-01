@@ -45,6 +45,7 @@ import com.hydbest.baseandroid.activity.md.MD_ButtonActivity;
 import com.hydbest.baseandroid.activity.other.AndroidAdvanceActivity;
 import com.hydbest.baseandroid.activity.other.PatchUpdateActivity;
 import com.hydbest.baseandroid.activity.other.tinyserver.TinyServerActivity;
+import com.hydbest.baseandroid.activity.plugin.ApkLoaderActivity;
 import com.hydbest.baseandroid.activity.plugin.ClassLoaderActivity;
 import com.hydbest.baseandroid.activity.plugin.DexLoaderActivity;
 import com.hydbest.baseandroid.aidl.BookActivity;
@@ -175,8 +176,10 @@ public class DataGeneration {
         Level0Item item9 = new Level0Item("插件化", "");
         Fragmentation subItem9_0 = new Fragmentation("深入探讨java类加载器", ClassLoaderActivity.class);
         Fragmentation subItem9_1 = new Fragmentation("动态加载dex", DexLoaderActivity.class);
+        Fragmentation subItem9_2 = new Fragmentation("动态加载技术加载已安装和未安装的apk", ApkLoaderActivity.class);
         item9.addSubItem(subItem9_0);
         item9.addSubItem(subItem9_1);
+        item9.addSubItem(subItem9_2);
 
         list.add(item0);
         list.add(item1);

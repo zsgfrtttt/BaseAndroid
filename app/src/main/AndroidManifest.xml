@@ -90,7 +90,6 @@
 
         <activity android:name="com.hydbest.baseandroid.activity.cus_viewgroup.NestScrollActivity">
 
-            
         </activity>
 
         <activity android:name="com.hydbest.baseandroid.activity.event.EventPostActivity"/>
@@ -175,6 +174,8 @@
         <activity android:name=".activity.plugin.ClassLoaderActivity"></activity>
 
         <activity android:name=".activity.plugin.DexLoaderActivity"></activity>
+
+        <activity android:name=".activity.plugin.ApkLoaderActivity"></activity>
 
         <service
             android:name="groovy.hydbest.Messenger.MessageService"

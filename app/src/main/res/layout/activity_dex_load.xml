@@ -4,7 +4,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="dx --dex --output=C:\Users\Administrator\Desktop\classes.dex C:\Users\Administrator\Desktop\output.jar  jar转dex"/>
+
     <Button
+        android:layout_marginTop="@dimen/dp_10"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="loadDex"
