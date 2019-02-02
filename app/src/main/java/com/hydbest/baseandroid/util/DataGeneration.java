@@ -45,6 +45,9 @@ import com.hydbest.baseandroid.activity.md.MD_ButtonActivity;
 import com.hydbest.baseandroid.activity.other.AndroidAdvanceActivity;
 import com.hydbest.baseandroid.activity.other.PatchUpdateActivity;
 import com.hydbest.baseandroid.activity.other.tinyserver.TinyServerActivity;
+import com.hydbest.baseandroid.activity.plugin.ApkLoaderActivity;
+import com.hydbest.baseandroid.activity.plugin.ClassLoaderActivity;
+import com.hydbest.baseandroid.activity.plugin.DexLoaderActivity;
 import com.hydbest.baseandroid.aidl.BookActivity;
 import com.hydbest.baseandroid.entity.Fragmentation;
 import com.hydbest.baseandroid.entity.Level0Item;
@@ -170,6 +173,14 @@ public class DataGeneration {
         Fragmentation subItem8_0 = new Fragmentation("MD Button", MD_ButtonActivity.class);
         item8.addSubItem(subItem8_0);
 
+        Level0Item item9 = new Level0Item("插件化", "");
+        Fragmentation subItem9_0 = new Fragmentation("深入探讨java类加载器", ClassLoaderActivity.class);
+        Fragmentation subItem9_1 = new Fragmentation("动态加载dex", DexLoaderActivity.class);
+        Fragmentation subItem9_2 = new Fragmentation("动态加载技术加载已安装和未安装的apk", ApkLoaderActivity.class);
+        item9.addSubItem(subItem9_0);
+        item9.addSubItem(subItem9_1);
+        item9.addSubItem(subItem9_2);
+
         list.add(item0);
         list.add(item1);
         list.add(item2);
@@ -179,6 +190,7 @@ public class DataGeneration {
         list.add(item6);
         list.add(item7);
         list.add(item8);
+        list.add(item9);
 
         return list;
     }

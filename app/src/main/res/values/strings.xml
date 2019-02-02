@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">BaseAndroid</string>
     <string name="text_long">这是一个开头，哈哈哈！java is a language which the best of world. so if you want to advance 突然来个中文, you must to learn more about it ,再来一个惊喜 and you will be a good programer in IT AREA.Buy the way,we should always to keey our attention on the new AREA ,because so much infomation bounch in our life ! That is my advice of my worklife ,enjoy it together !这是文末的彩蛋</string>
+    <string name="class_loader">loadClass()封装了前面提到的代理模式的实现。 该方法会首先调用 findLoadedClass()方法来检查该类是否已经被加载过； 如果没有加载过的话，会调用父类加载器的 loadClass()方法来尝试加载该类； 如果父类加载器无法加载该类的话，就调用 findClass()方法来查找该类。 因此，为了保证类加载器都正确实现代理模式，在开发自己的类加载器时， 最好不要覆写 loadClass()方法，而是覆写 findClass()方法。 最后通过 defineClass()方法来把这些字节代码转换成 java.lang.Class类的实例</string>
 </resources>
