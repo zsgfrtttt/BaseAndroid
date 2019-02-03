@@ -1,13 +1,15 @@
 package com.hydbest.baseandroid.activity.plugin;
 
-import android.Manifest;
 import android.content.Context;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.content.res.AssetManager;
+import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -15,12 +17,15 @@ import android.widget.ImageView;
 
 import com.hydbest.baseandroid.R;
 
+import java.io.File;
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import dalvik.system.DexClassLoader;
 import dalvik.system.PathClassLoader;
 
 /**
@@ -30,7 +35,7 @@ import dalvik.system.PathClassLoader;
 public class ApkLoaderActivity extends AppCompatActivity {
 
     @BindView(R.id.iv)
-    ImageView iv;
+    ImageView mIv;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -39,22 +44,11 @@ public class ApkLoaderActivity extends AppCompatActivity {
         ButterKnife.bind(this);
     }
 
-    public void loadApk(View view) {
-        if (ActivityCompat.checkSelfPermission(ApkLoaderActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED
-                || ActivityCompat.checkSelfPermission(ApkLoaderActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(ApkLoaderActivity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 0);
-        } else {
-            //findAllPlugin();
-            try {
-                int id = dynamicLoadResouce("com.ex.pl");
-                //int id = dynamicLoadResouce("com.hydbest.baseandroid");
-                iv.setImageResource(id);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
+    /**
+     * 找出所有已安装插件
+     *
+     * @return
+     */
     private List<PluginBean> findAllPlugin() {
         List<PluginBean> list = new ArrayList<>();
         PackageManager pm = getPackageManager();
@@ -62,7 +56,7 @@ public class ApkLoaderActivity extends AppCompatActivity {
         for (PackageInfo packageInfo : installedPackages) {
             String packName = packageInfo.packageName;
             String shareUserId = packageInfo.sharedUserId;
-            if (shareUserId != null && shareUserId.equals("share.apk") && !"com.hydbest.baseandroid".equals(packName)) {
+            if (shareUserId != null && shareUserId.equals("share") && !"com.hydbest.baseandroid".equals(packName)) {
                 String label = pm.getApplicationLabel(packageInfo.applicationInfo).toString();
                 Log.i("csz", "label:" + label);
                 list.add(new PluginBean(label, packName));
@@ -80,8 +74,69 @@ public class ApkLoaderActivity extends AppCompatActivity {
         int resourceId = field.getInt(null);
         Log.i("csz", "资源Id:" + resourceId);
         Drawable drawable = pluginContext.getResources().getDrawable(resourceId);
-        iv.setImageDrawable(drawable);
+
         return resourceId;
+    }
+
+    public void loadPlugin(View view) {
+        dynamicLoadApk("com.csz.ni", Environment.getExternalStorageDirectory() + File.separator + "plugin.apk");
+    }
+
+    /**
+     * 获取插件包名等信息
+     */
+    private String[] getUninstallApk(String uninstallApkPath) {
+        String[] info = new String[2];
+        PackageManager pm = getPackageManager();
+        PackageInfo packInfo = pm.getPackageArchiveInfo(uninstallApkPath, PackageManager.GET_ACTIVITIES);
+        if (packInfo != null) {
+            ApplicationInfo applicationInfo = packInfo.applicationInfo;
+            String label = pm.getApplicationLabel(applicationInfo).toString();
+            String packageName = packInfo.packageName;
+            info[0] = label;
+            info[1] = packageName;
+        }
+        return info;
+    }
+
+    private Resources getPluginResources(String pluginPath) {
+        try {
+            AssetManager assetManager = AssetManager.class.newInstance();
+            //getDeclaredMethod
+            Method addAssetPath = assetManager.getClass().getDeclaredMethod("addAssetPath", String.class);
+            addAssetPath.invoke(assetManager, pluginPath);
+            Resources origin = getResources();
+            Resources plugin = new Resources(assetManager, origin.getDisplayMetrics(), origin.getConfiguration());
+            plugin.newTheme().setTo(getTheme());
+            return plugin;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    /**
+     * 加载外部资源
+     *
+     * @param packageName
+     * @param pluginPath
+     */
+    private void dynamicLoadApk(String packageName, String pluginPath) {
+        try {
+            File dexPath = getDir("dex", Context.MODE_PRIVATE);
+            Log.i("csz", "dexPath:" + dexPath);
+            DexClassLoader dexClassLoader = new DexClassLoader(pluginPath, dexPath.getAbsolutePath(), null, ClassLoader.getSystemClassLoader());
+            Class<?> aClass = dexClassLoader.loadClass(packageName + ".R$mipmap");
+            Field one = aClass.getDeclaredField("one");
+            int resourceId = one.getInt(null);
+            Resources pluginResources = getPluginResources(pluginPath);
+            if (pluginResources != null) {
+                Drawable bg = pluginResources.getDrawable(resourceId);
+                mIv.setImageDrawable(bg);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     class PluginBean {

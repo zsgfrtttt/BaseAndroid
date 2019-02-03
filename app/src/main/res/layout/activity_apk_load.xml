@@ -5,18 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
     <Button
-        android:onClick="loadApk"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="加载外部apk"/>
+        android:onClick="loadPlugin"
+        android:text="loadPlugin"/>
 
     <ImageView
         android:id="@+id/iv"
-        android:layout_margin="@dimen/dp_10"
-        android:layout_gravity="center"
         android:layout_width="300dp"
-        android:layout_height="300dp" />
+        android:layout_height="300dp"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_gravity="center"/>
 
 </LinearLayout>
