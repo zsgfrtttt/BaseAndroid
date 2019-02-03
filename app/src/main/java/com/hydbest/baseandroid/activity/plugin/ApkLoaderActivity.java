@@ -1,14 +1,17 @@
 package com.hydbest.baseandroid.activity.plugin;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.widget.Toast;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.hydbest.baseandroid.R;
 
@@ -16,6 +19,8 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import dalvik.system.PathClassLoader;
 
 /**
@@ -24,10 +29,30 @@ import dalvik.system.PathClassLoader;
 
 public class ApkLoaderActivity extends AppCompatActivity {
 
+    @BindView(R.id.iv)
+    ImageView iv;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_apk_load);
+        ButterKnife.bind(this);
+    }
+
+    public void loadApk(View view) {
+        if (ActivityCompat.checkSelfPermission(ApkLoaderActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED
+                || ActivityCompat.checkSelfPermission(ApkLoaderActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(ApkLoaderActivity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 0);
+        } else {
+            //findAllPlugin();
+            try {
+                int id = dynamicLoadResouce("com.ex.pl");
+                //int id = dynamicLoadResouce("com.hydbest.baseandroid");
+                iv.setImageResource(id);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     private List<PluginBean> findAllPlugin() {
@@ -37,7 +62,7 @@ public class ApkLoaderActivity extends AppCompatActivity {
         for (PackageInfo packageInfo : installedPackages) {
             String packName = packageInfo.packageName;
             String shareUserId = packageInfo.sharedUserId;
-            if (shareUserId != null && shareUserId.equals("share") && !"com.hydbest.baseandroid".equals(packName)) {
+            if (shareUserId != null && shareUserId.equals("share.apk") && !"com.hydbest.baseandroid".equals(packName)) {
                 String label = pm.getApplicationLabel(packageInfo.applicationInfo).toString();
                 Log.i("csz", "label:" + label);
                 list.add(new PluginBean(label, packName));
@@ -46,16 +71,16 @@ public class ApkLoaderActivity extends AppCompatActivity {
         return list;
     }
 
-    private int  dynamicLoadResouce(String packName) throws Exception {
+    private int dynamicLoadResouce(String packName) throws Exception {
         Context pluginContext = createPackageContext(packName, CONTEXT_IGNORE_SECURITY | CONTEXT_INCLUDE_CODE);
-        Log.i("csz","资源路径："+pluginContext.getPackageResourcePath());
-        PathClassLoader pathClassLoader = new PathClassLoader(pluginContext.getPackageResourcePath(),ClassLoader.getSystemClassLoader());
-        Class clazz = Class.forName(packName + ".R$mipmap",true,pathClassLoader);
+        Log.i("csz", "资源路径：" + pluginContext.getPackageResourcePath());
+        PathClassLoader pathClassLoader = new PathClassLoader(pluginContext.getPackageResourcePath(), ClassLoader.getSystemClassLoader());
+        Class clazz = Class.forName(packName + ".R$mipmap", true, pathClassLoader);
         Field field = clazz.getDeclaredField("one");
         int resourceId = field.getInt(null);
-        Log.i("csz","资源Id:"+resourceId);
+        Log.i("csz", "资源Id:" + resourceId);
         Drawable drawable = pluginContext.getResources().getDrawable(resourceId);
-
+        iv.setImageDrawable(drawable);
         return resourceId;
     }
 
