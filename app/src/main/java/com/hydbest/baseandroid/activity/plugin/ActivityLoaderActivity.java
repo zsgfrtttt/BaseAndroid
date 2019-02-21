@@ -57,6 +57,19 @@ public class ActivityLoaderActivity extends AppCompatActivity {
         }
     }
 
+    public void loadAct2(View view) {
+        if (ActivityCompat.checkSelfPermission(ActivityLoaderActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED
+                || ActivityCompat.checkSelfPermission(ActivityLoaderActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(ActivityLoaderActivity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 0);
+        } else {
+            DexClassLoader loader = dynamicLoadApk();
+            Class clz = createActivityClass(getClassLoader());
+            invoke(loader);
+            Intent intent = new Intent(this, clz);
+            startActivity(intent);
+        }
+    }
+
     private Class<?> createActivityClass(ClassLoader loader) {
         Class<?> clazz = null;
         try {

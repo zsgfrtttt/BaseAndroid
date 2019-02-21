@@ -9,7 +9,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="loadAct"
-        android:text="加载插件activity"/>
+        android:text="合并方式加载插件activity"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="loadAct2"
+        android:visibility="gone"
+        android:text="改变宿主LoadApk方式加载插件activity"/>
 
     <Button
         android:layout_width="match_parent"
