@@ -10,4 +10,10 @@
         android:layout_height="wrap_content"
         android:onClick="loadAct"
         android:text="加载插件activity"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="adActivity"
+        android:text="adActivity"/>
 </LinearLayout>

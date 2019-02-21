@@ -178,13 +178,9 @@
         <activity android:name=".activity.plugin.ApkLoaderActivity"></activity>
 
         <activity android:name=".activity.plugin.ActivityLoaderActivity"></activity>
-
-        <activity android:name=".activity.plugin.ProxyActivity">
-            <intent-filter>
-                <action android:name="com.csz.ni.activity.VIEW"/>
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
+        
+        <activity android:name="com.pl.one.MainActivity"></activity>
+        <activity android:name="com.pl.one.SecondActivity"></activity>
 
         <service
             android:name="groovy.hydbest.Messenger.MessageService"
