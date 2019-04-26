@@ -178,9 +178,13 @@
         <activity android:name=".activity.plugin.ApkLoaderActivity"></activity>
 
         <activity android:name=".activity.plugin.ActivityLoaderActivity"></activity>
+
+        <activity android:name=".activity.md.MD_StatusBarActivity"
+            android:theme="@style/status"></activity>
         
         <activity android:name="com.pl.one.MainActivity"></activity>
         <activity android:name="com.pl.one.SecondActivity"></activity>
+        <activity android:name=".activity.cus_viewgroup.KeyboardActivity"></activity>
 
         <service
             android:name="groovy.hydbest.Messenger.MessageService"

@@ -6,4 +6,10 @@
 
     <color name="text">#323232</color>
     <color name="light_text">#888888</color>
+
+    <color name="color1">#66849601</color>
+    <color name="color2">#33aaaaaa</color>
+    <color name="color3">#33FF4081</color>
+    <color name="color4">#33323232</color>
+    <color name="color5">#33888888</color>
 </resources>

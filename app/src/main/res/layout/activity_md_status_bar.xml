@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.hydbest.baseandroid.activity.md.MyScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/a"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+    <!--<ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/a"/>-->
+
+    <LinearLayout
+        android:id="@+id/root"
+        android:background="@color/color1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:text="@string/app_name" />
+
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_10"
+            android:onClick="changeBgColor"
+            android:text="背景颜色更换" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_10"
+            android:onClick="changeTextColor"
+            android:text="字体颜色更换" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_10"
+            android:onClick="changeFill"
+            android:text="changeFill" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="1000dp" />
+    </LinearLayout>
+</com.hydbest.baseandroid.activity.md.MyScrollView>

@@ -1,5 +1,8 @@
 package com.hydbest.baseandroid.util;
 
+import android.app.Activity;
+import android.inputmethodservice.Keyboard;
+
 import com.chad.library.adapter.base.entity.MultiItemEntity;
 import com.hydbest.baseandroid.activity.Media.MediaAudioRecordActivity;
 import com.hydbest.baseandroid.activity.Media.MediaAudioTrackActivity;
@@ -25,6 +28,7 @@ import com.hydbest.baseandroid.activity.cus_view.TextAreaActivity;
 import com.hydbest.baseandroid.activity.cus_viewgroup.CalendarActivity;
 import com.hydbest.baseandroid.activity.cus_viewgroup.ConstraintActivity;
 import com.hydbest.baseandroid.activity.cus_viewgroup.ImageWatcherActivity;
+import com.hydbest.baseandroid.activity.cus_viewgroup.KeyboardActivity;
 import com.hydbest.baseandroid.activity.cus_viewgroup.LeftDrawerLayoutActivity;
 import com.hydbest.baseandroid.activity.cus_viewgroup.NavigationActivity;
 import com.hydbest.baseandroid.activity.cus_viewgroup.NestScrollActivity;
@@ -42,6 +46,7 @@ import com.hydbest.baseandroid.activity.foundation.RuntimePermissonActivity;
 import com.hydbest.baseandroid.activity.foundation.ZxingActivity;
 import com.hydbest.baseandroid.activity.foundation.transition.ListTransitionActivity;
 import com.hydbest.baseandroid.activity.md.MD_ButtonActivity;
+import com.hydbest.baseandroid.activity.md.MD_StatusBarActivity;
 import com.hydbest.baseandroid.activity.other.AndroidAdvanceActivity;
 import com.hydbest.baseandroid.activity.other.PatchUpdateActivity;
 import com.hydbest.baseandroid.activity.other.tinyserver.TinyServerActivity;
@@ -108,6 +113,7 @@ public class DataGeneration {
         Fragmentation subItem2_4 = new Fragmentation("嵌套滚动", NestScrollActivity.class);
         Fragmentation subItem2_5 = new Fragmentation("Viewpager transformer", ViewpageActivity.class);
         Fragmentation subItem2_6 = new Fragmentation("自定义日历", CalendarActivity.class);
+        Fragmentation subItem2_7 = new Fragmentation("自定义键盘", KeyboardActivity.class);
         item2.addSubItem(subItem2_0);
         item2.addSubItem(subItem2_1);
         item2.addSubItem(subItem2_2);
@@ -115,6 +121,7 @@ public class DataGeneration {
         item2.addSubItem(subItem2_4);
         item2.addSubItem(subItem2_5);
         item2.addSubItem(subItem2_6);
+        item2.addSubItem(subItem2_7);
 
         Level0Item item3 = new Level0Item("android性能优化", "");
         Fragmentation subItem3_0 = new Fragmentation("主线程阻塞检测", BlockDetectActivity.class);
@@ -172,7 +179,9 @@ public class DataGeneration {
 
         Level0Item item8 = new Level0Item("MD 风格化", "");
         Fragmentation subItem8_0 = new Fragmentation("MD Button", MD_ButtonActivity.class);
+        Fragmentation subItem8_1 = new Fragmentation("状态栏变化", MD_StatusBarActivity.class);
         item8.addSubItem(subItem8_0);
+        item8.addSubItem(subItem8_1);
 
         Level0Item item9 = new Level0Item("插件化", "");
         Fragmentation subItem9_0 = new Fragmentation("深入探讨java类加载器", ClassLoaderActivity.class);
