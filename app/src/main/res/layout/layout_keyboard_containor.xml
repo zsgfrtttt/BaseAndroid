@@ -42,7 +42,8 @@
             android:layout_height="match_parent"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:background="@drawable/bg_keyboard_done">
+            android:background="@drawable/bg_keyboard_done"
+            tools:ignore="RtlCompat">
 
             <ImageView
                 android:layout_width="30sp"
