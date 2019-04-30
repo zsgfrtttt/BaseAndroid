@@ -22,6 +22,6 @@ android:verticalGap="4dp">
 <Row>
     <Key android:codes="-2" android:keyLabel="ABC" />
     <Key android:codes="48" android:keyLabel="0" />
-    <Key android:codes="-35" android:isRepeatable="true" />
+    <Key android:codes="-5" android:isRepeatable="true" />
 </Row>
 </Keyboard>

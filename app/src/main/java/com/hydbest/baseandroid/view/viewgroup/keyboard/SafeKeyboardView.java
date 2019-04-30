@@ -11,6 +11,7 @@ import android.inputmethodservice.Keyboard;
 import android.inputmethodservice.KeyboardView;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.util.Log;
 
 import com.hydbest.baseandroid.R;
 
@@ -21,7 +22,7 @@ import java.util.List;
  * Created by csz on 2019/4/28.
  */
 
-public class SafeKeyboardView extends KeyboardView{
+public class SafeKeyboardView extends KeyboardView {
 
     private static final String TAG = "SafeKeyboardView";
 
@@ -132,7 +133,7 @@ public class SafeKeyboardView extends KeyboardView{
                     paint.setTextSize(keyTextSize);
                     paint.setTypeface(Typeface.DEFAULT);
                 }
-
+                //TODO
                 paint.getTextBounds(key.label.toString(), 0, key.label.toString().length(), bounds);
                 canvas.drawText(key.label.toString(), key.x + (key.width / 2),
                         (key.y + key.height / 2) + bounds.height() / 2, paint);
@@ -151,18 +152,14 @@ public class SafeKeyboardView extends KeyboardView{
                 //图标的实际宽度和高度至少有一个不在按键的宽度或高度的二分之一以内, 需要等比例缩放, 因为此时图标的宽或者高已经超过按键的二分之一
                 //需要把超过的那个值设置为按键的二分之一, 另一个等比例缩放
                 //不管图标大小是多少, 都以宽度width为标准, 把图标的宽度缩放到和按键一样大, 并同比例缩放高度
-                double multi = 1.0 * iconW / key.width;
-                int tempIconH = (int) (iconH / multi);
-                if (tempIconH <= key.height) {
-                    //宽度相等时, 图标的高度小于等于按键的高度, 按照现在的宽度和高度设置图标的最终宽度和高度
-                    iconSizeHeight = tempIconH / ICON2KEY;
+                double scaleX = 1.0 * iconW / key.width;
+                double scaleY = 1.0 * iconH / key.height;
+                if (scaleX >= scaleY) {
                     iconSizeWidth = key.width / ICON2KEY;
+                    iconSizeHeight = (int) (iconH * 1. / iconW * iconSizeWidth);
                 } else {
-                    //宽度相等时, 图标的高度大于按键的高度, 这时按键放不下图标, 需要重新按照高度缩放
-                    double mul = 1.0 * iconH / key.height;
-                    int tempIconW = (int) (iconW / mul);
                     iconSizeHeight = key.height / ICON2KEY;
-                    iconSizeWidth = tempIconW / ICON2KEY;
+                    iconSizeWidth = (int) (iconW * 1. / iconH * iconSizeHeight);
                 }
                 setIconSize(canvas, key, iconSizeWidth, iconSizeHeight);
             }
