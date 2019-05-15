@@ -3,4 +3,11 @@
     <declare-styleable name="AlignTextView">
         <attr name="alignOnlyOneLine" format="boolean" />
     </declare-styleable>
+
+    <declare-styleable name="AliPayLoadingView">
+        <attr name="rotateColor" format="color" />
+        <attr name="circleColor" format="color" />
+        <attr name="strokeWidth" format="dimension" />
+        <attr name="rotateDuration" format="integer" />
+    </declare-styleable>
 </resources>

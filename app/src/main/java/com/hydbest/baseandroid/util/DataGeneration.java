@@ -22,6 +22,7 @@ import com.hydbest.baseandroid.activity.concurrent.ReentrantLockActivity;
 import com.hydbest.baseandroid.activity.concurrent.ThreadConcurrentActivity;
 import com.hydbest.baseandroid.activity.concurrent.ThreadLocalActivity;
 import com.hydbest.baseandroid.activity.cus_view.AdActivity;
+import com.hydbest.baseandroid.activity.cus_view.AliPayLoadActivity;
 import com.hydbest.baseandroid.activity.cus_view.LargeImageActivity;
 import com.hydbest.baseandroid.activity.cus_view.MultiTouchActivity;
 import com.hydbest.baseandroid.activity.cus_view.TextAreaActivity;
@@ -100,10 +101,12 @@ public class DataGeneration {
         Fragmentation subItem1_1 = new Fragmentation("加载查看超大图片", LargeImageActivity.class);
         Fragmentation subItem1_2 = new Fragmentation("多触点的View", MultiTouchActivity.class);
         Fragmentation subItem1_3 = new Fragmentation("长文对齐TextView", TextAreaActivity.class);
+        Fragmentation subItem1_4 = new Fragmentation("阿里加载view", AliPayLoadActivity.class);
         item1.addSubItem(subItem1_0);
         item1.addSubItem(subItem1_1);
         item1.addSubItem(subItem1_2);
         item1.addSubItem(subItem1_3);
+        item1.addSubItem(subItem1_4);
 
         Level0Item item2 = new Level0Item("android自定义ViewGroup", "");
         Fragmentation subItem2_0 = new Fragmentation("constrainLayout", ConstraintActivity.class);
