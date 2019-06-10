@@ -26,6 +26,7 @@ public class TextAdapter extends BaseQuickAdapter<TextAdapter.Bean, BaseViewHold
     protected void convert(BaseViewHolder helper, Bean item) {
         helper.setText(android.R.id.text1, item.title);
         helper.setImageResource(R.id.iv,R.drawable.a);
+        helper.setVisible(R.id.iv,false);
         helper.addOnClickListener(R.id.item);
     //    helper.addOnClickListener(android.R.id.text1);
     }

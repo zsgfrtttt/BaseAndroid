@@ -2,6 +2,7 @@ package com.hydbest.baseandroid.util;
 
 import android.app.Activity;
 import android.inputmethodservice.Keyboard;
+import android.view.ViewOutlineProvider;
 
 import com.chad.library.adapter.base.entity.MultiItemEntity;
 import com.hydbest.baseandroid.activity.Media.MediaAudioRecordActivity;
@@ -48,6 +49,9 @@ import com.hydbest.baseandroid.activity.foundation.ZxingActivity;
 import com.hydbest.baseandroid.activity.foundation.transition.ListTransitionActivity;
 import com.hydbest.baseandroid.activity.md.MD_ButtonActivity;
 import com.hydbest.baseandroid.activity.md.MD_StatusBarActivity;
+import com.hydbest.baseandroid.activity.md.RecycleViewAnimActivity;
+import com.hydbest.baseandroid.activity.md.RecycleViewDecorateActivity;
+import com.hydbest.baseandroid.activity.md.ViewOutlineActivity;
 import com.hydbest.baseandroid.activity.other.AndroidAdvanceActivity;
 import com.hydbest.baseandroid.activity.other.PatchUpdateActivity;
 import com.hydbest.baseandroid.activity.other.tinyserver.TinyServerActivity;
@@ -183,8 +187,14 @@ public class DataGeneration {
         Level0Item item8 = new Level0Item("MD 风格化", "");
         Fragmentation subItem8_0 = new Fragmentation("MD Button", MD_ButtonActivity.class);
         Fragmentation subItem8_1 = new Fragmentation("状态栏变化", MD_StatusBarActivity.class);
+        Fragmentation subItem8_2 = new Fragmentation("recycleview动画", RecycleViewAnimActivity.class);
+        Fragmentation subItem8_3 = new Fragmentation("recycleview装饰", RecycleViewDecorateActivity.class);
+        Fragmentation subItem8_4 = new Fragmentation("viewOutline", ViewOutlineActivity.class);
         item8.addSubItem(subItem8_0);
         item8.addSubItem(subItem8_1);
+        item8.addSubItem(subItem8_2);
+        item8.addSubItem(subItem8_3);
+        item8.addSubItem(subItem8_4);
 
         Level0Item item9 = new Level0Item("插件化", "");
         Fragmentation subItem9_0 = new Fragmentation("深入探讨java类加载器", ClassLoaderActivity.class);
