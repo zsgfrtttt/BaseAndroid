@@ -104,7 +104,7 @@ public class StickyDecoration extends RecyclerView.ItemDecoration {
     }
 
     private String getGroupName(int pos) {
-        return null;
+        return pos < 5 ? "111" : pos < 10 ? "ppp" : pos < 15 ? "ddd" : "jjjj";
     }
 
     //根据前一个组名，判断当前是否为新的组
