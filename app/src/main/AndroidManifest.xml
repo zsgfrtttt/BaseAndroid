@@ -197,6 +197,8 @@
         <activity android:name=".activity.md.RecycleViewDecorateActivity"/>
         <activity android:name=".activity.md.ViewOutlineActivity" />
 
+        <activity android:name=".activity.cus_view.WaveActivity"></activity>
+
         <service
             android:name="groovy$hydbest$Messenger$MessageService"
             android:enabled="true"
