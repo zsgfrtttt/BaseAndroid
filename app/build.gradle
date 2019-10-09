@@ -1,4 +1,6 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion 27
@@ -51,5 +53,10 @@ dependencies {
     implementation project(':zxing-android-embedded')
     implementation project(':mediavideo')
     implementation 'com.github.bumptech.glide:glide:4.6.1'
+    implementation "com.google.protobuf:protobuf-lite:3.0.0"
     annotationProcessor 'com.github.bumptech.glide:compiler:4.6.1'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+}
+repositories {
+    mavenCentral()
 }
