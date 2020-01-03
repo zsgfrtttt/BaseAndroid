@@ -1,9 +1,5 @@
 package com.hydbest.baseandroid.util;
 
-import android.app.Activity;
-import android.inputmethodservice.Keyboard;
-import android.view.ViewOutlineProvider;
-
 import com.chad.library.adapter.base.entity.MultiItemEntity;
 import com.hydbest.baseandroid.activity.Media.MediaAudioRecordActivity;
 import com.hydbest.baseandroid.activity.Media.MediaAudioTrackActivity;
@@ -55,6 +51,7 @@ import com.hydbest.baseandroid.activity.md.RecycleViewDecorateActivity;
 import com.hydbest.baseandroid.activity.md.ViewOutlineActivity;
 import com.hydbest.baseandroid.activity.other.AndroidAdvanceActivity;
 import com.hydbest.baseandroid.activity.other.PatchUpdateActivity;
+import com.hydbest.baseandroid.activity.other.syncAdapter.SyncAdapterActivity;
 import com.hydbest.baseandroid.activity.other.tinyserver.TinyServerActivity;
 import com.hydbest.baseandroid.activity.plugin.ActivityLoaderActivity;
 import com.hydbest.baseandroid.activity.plugin.ApkLoaderActivity;
@@ -142,10 +139,12 @@ public class DataGeneration {
         Fragmentation subItem4_1 = new Fragmentation("增量更新", PatchUpdateActivity.class);
         Fragmentation subItem4_2 = new Fragmentation("微服务搭建", TinyServerActivity.class);
         Fragmentation subItem4_3 = new Fragmentation("学习资源tnt", AndroidAdvanceActivity.class);
+        Fragmentation subItem4_4 = new Fragmentation("SyncAdapter同步（提高进程优先级）", SyncAdapterActivity.class);
         item4.addSubItem(subItem4_0);
         item4.addSubItem(subItem4_1);
         item4.addSubItem(subItem4_2);
         item4.addSubItem(subItem4_3);
+        item4.addSubItem(subItem4_4);
 
         Level0Item item5 = new Level0Item("java并发编程", "");
         Fragmentation subItem5_0 = new Fragmentation("CountDownLatch", CountDownLatchActivity.class);
