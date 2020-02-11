@@ -73,7 +73,7 @@ public class ActivityLoaderActivity extends AppCompatActivity {
     private Class<?> createActivityClass(ClassLoader loader) {
         Class<?> clazz = null;
         try {
-            clazz = loader.loadClass("com.pl.one.MainActivity");
+            clazz = loader.loadClass("com.pl.one.ShadowActivity");
             Method setLayoutId = clazz.getMethod("setLayoutId", int.class);
             //这种方式用的是宿主的ClassLoader 只能用宿主的资源 //activity_main
             setLayoutId.invoke(null, 0x7f0b0038);

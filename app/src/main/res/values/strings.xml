@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">BaseAndroid</string>
     <string name="text_long">这是一个开头，哈哈哈！java is a language which the best of world. so if you want to advance 突然来个中文, you must to learn more about it ,再来一个惊喜 and you will be a good programer in IT AREA.Buy the way,we should always to keey our attention on the new AREA ,because so much infomation bounch in our life ! That is my advice of my worklife ,enjoy it together !这是文末的彩蛋</string>
@@ -13,4 +14,5 @@
     <string name="keyboard_system">"系统键盘"</string>
     <string name="keyboard_demo_new">"安全软键盘"</string>
     <string name="mLabelTextSize">mLabelTextSize</string>
+    <string name="sync_account_type">com.csz</string>
 </resources>

@@ -25,4 +25,9 @@
     <color name="keyboardDeep">#991c69ac</color>
     <color name="keyboardPress">#1296db</color>
     <color name="colorRed">#FF0000</color>
+
+    <color name="red">#d50000</color>
+    <color name="blue">#304ffe</color>
+    <color name="green">#6AB344</color>
+    <color name="gray">#636363</color>
 </resources>
