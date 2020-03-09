@@ -23,6 +23,7 @@ import com.hydbest.baseandroid.activity.cus_view.AliPayLoadActivity;
 import com.hydbest.baseandroid.activity.cus_view.LargeImageActivity;
 import com.hydbest.baseandroid.activity.cus_view.MultiTouchActivity;
 import com.hydbest.baseandroid.activity.cus_view.TextAreaActivity;
+import com.hydbest.baseandroid.activity.cus_view.ZoomImageActivity;
 import com.hydbest.baseandroid.activity.cus_view.shadow.sample.ShadowActivity;
 import com.hydbest.baseandroid.activity.cus_viewgroup.CalendarActivity;
 import com.hydbest.baseandroid.activity.cus_viewgroup.ConstraintActivity;
@@ -48,6 +49,8 @@ import com.hydbest.baseandroid.activity.md.MD_ButtonActivity;
 import com.hydbest.baseandroid.activity.md.MD_StatusBarActivity;
 import com.hydbest.baseandroid.activity.md.RecycleViewAnimActivity;
 import com.hydbest.baseandroid.activity.md.RecycleViewDecorateActivity;
+import com.hydbest.baseandroid.activity.md.SvgActivity;
+import com.hydbest.baseandroid.activity.md.TranslucentBarActivity;
 import com.hydbest.baseandroid.activity.md.ViewOutlineActivity;
 import com.hydbest.baseandroid.activity.other.AndroidAdvanceActivity;
 import com.hydbest.baseandroid.activity.other.PatchUpdateActivity;
@@ -86,6 +89,7 @@ public class DataGeneration {
         Fragmentation subItem0_8 = new Fragmentation("aidl使用规范", BookActivity.class);
         Fragmentation subItem0_9 = new Fragmentation("如何优雅的@人", AtActivity.class);
         Fragmentation subItem0_10 = new Fragmentation("zxing扫描", ZxingActivity.class);
+        Fragmentation subItem0_11 = new Fragmentation("图片压缩" , ZoomImageActivity.class);
         item0.addSubItem(subItem0_0);
         item0.addSubItem(subItem0_1);
         item0.addSubItem(subItem0_2);
@@ -97,6 +101,7 @@ public class DataGeneration {
         item0.addSubItem(subItem0_8);
         item0.addSubItem(subItem0_9);
         item0.addSubItem(subItem0_10);
+        item0.addSubItem(subItem0_11);
 
         Level0Item item1 = new Level0Item("android自定义View", "");
         Fragmentation subItem1_0 = new Fragmentation("仿知乎广告", AdActivity.class);
@@ -192,11 +197,15 @@ public class DataGeneration {
         Fragmentation subItem8_2 = new Fragmentation("recycleview动画", RecycleViewAnimActivity.class);
         Fragmentation subItem8_3 = new Fragmentation("recycleview装饰", RecycleViewDecorateActivity.class);
         Fragmentation subItem8_4 = new Fragmentation("viewOutline", ViewOutlineActivity.class);
+        Fragmentation subItem8_5 = new Fragmentation("沉浸式", TranslucentBarActivity.class);
+        Fragmentation subItem8_6 = new Fragmentation("SVG详解", SvgActivity.class);
         item8.addSubItem(subItem8_0);
         item8.addSubItem(subItem8_1);
         item8.addSubItem(subItem8_2);
         item8.addSubItem(subItem8_3);
         item8.addSubItem(subItem8_4);
+        item8.addSubItem(subItem8_5);
+        item8.addSubItem(subItem8_6);
 
         Level0Item item9 = new Level0Item("插件化", "");
         Fragmentation subItem9_0 = new Fragmentation("深入探讨java类加载器", ClassLoaderActivity.class);

@@ -207,6 +207,9 @@
         <activity android:name=".activity.cus_view.shadow.sample.ShadowActivity"/>
         <activity android:name=".activity.cus_view.shadow.sample.RecyclerImagesActivity"/>
         <activity android:name=".activity.cus_view.shadow.sample.StaticImageActivity"/>
+        <activity android:name=".activity.cus_view.ZoomImageActivity"/>
+        <activity android:name=".activity.md.TranslucentBarActivity"/>
+        <activity android:name=".activity.md.SvgActivity"/>
 
         <activity android:name=".activity.cus_view.WaveActivity"></activity>
 
