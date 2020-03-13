@@ -147,14 +147,7 @@ public class SvgView extends View {
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         if (drawItems == null) return true;
-        PointF point;
-        if (matrix != null) {
-            float[] floats = {event.getX(), event.getY()};
-         //   matrix.mapPoints(floats);
-            point = new PointF(floats[0], floats[1]);
-        } else {
-            point = new PointF(event.getX(), event.getY());
-        }
+        PointF point = new PointF(event.getX(), event.getY());
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 for (DrawItem drawItem : drawItems) {
@@ -199,7 +192,6 @@ public class SvgView extends View {
 
         public void draw(Canvas canvas, Paint paint, boolean b) {
             if (b) {
-                // paint.clearShadowLayer();
                 paint.setColor(color);
                 paint.setStyle(Paint.Style.FILL);
                 canvas.drawPath(path, paint);

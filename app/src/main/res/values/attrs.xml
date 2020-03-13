@@ -10,4 +10,14 @@
         <attr name="strokeWidth" format="dimension" />
         <attr name="rotateDuration" format="integer" />
     </declare-styleable>
+
+    <declare-styleable name="ripple_view">
+        <attr name="rippleColor" format="color"/>
+        <attr name="ripple_type" format="enum">
+            <enum name="fill" value="0"/>
+            <enum name="stroke" value="1"/>
+        </attr>
+        <attr name="radius" format="integer"/>
+        <attr name="stroke_width" format="integer"/>
+    </declare-styleable>
 </resources>

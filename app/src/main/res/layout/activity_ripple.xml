@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.hydbest.baseandroid.view.view.RippleView
+        android:id="@+id/ripple"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:rippleColor="@color/color1"
+        app:ripple_type="fill"
+        app:radius="120"
+        app:stroke_width="4">
+        <ImageView
+            android:id="@+id/iv"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/a"
+            android:onClick="click"
+            android:clickable="true"
+            android:layout_centerInParent="true"/>
+    </com.hydbest.baseandroid.view.view.RippleView>
+
+</RelativeLayout>

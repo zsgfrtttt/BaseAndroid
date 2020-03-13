@@ -210,6 +210,9 @@
         <activity android:name=".activity.cus_view.ZoomImageActivity"/>
         <activity android:name=".activity.md.TranslucentBarActivity"/>
         <activity android:name=".activity.md.SvgActivity"/>
+        <activity android:name=".activity.foundation.VlayoutActivity"/>
+        <activity android:name=".activity.cus_view.MusicDropActivity"/>
+        <activity android:name=".activity.cus_view.RippleActivity"/>
 
         <activity android:name=".activity.cus_view.WaveActivity"></activity>
 

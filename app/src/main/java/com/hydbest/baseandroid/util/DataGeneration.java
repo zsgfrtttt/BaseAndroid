@@ -22,6 +22,8 @@ import com.hydbest.baseandroid.activity.cus_view.AdActivity;
 import com.hydbest.baseandroid.activity.cus_view.AliPayLoadActivity;
 import com.hydbest.baseandroid.activity.cus_view.LargeImageActivity;
 import com.hydbest.baseandroid.activity.cus_view.MultiTouchActivity;
+import com.hydbest.baseandroid.activity.cus_view.MusicDropActivity;
+import com.hydbest.baseandroid.activity.cus_view.RippleActivity;
 import com.hydbest.baseandroid.activity.cus_view.TextAreaActivity;
 import com.hydbest.baseandroid.activity.cus_view.ZoomImageActivity;
 import com.hydbest.baseandroid.activity.cus_view.shadow.sample.ShadowActivity;
@@ -43,6 +45,7 @@ import com.hydbest.baseandroid.activity.foundation.GifActivity;
 import com.hydbest.baseandroid.activity.foundation.LogActivity;
 import com.hydbest.baseandroid.activity.foundation.NotificationActivity;
 import com.hydbest.baseandroid.activity.foundation.RuntimePermissonActivity;
+import com.hydbest.baseandroid.activity.foundation.VlayoutActivity;
 import com.hydbest.baseandroid.activity.foundation.ZxingActivity;
 import com.hydbest.baseandroid.activity.foundation.transition.ListTransitionActivity;
 import com.hydbest.baseandroid.activity.md.MD_ButtonActivity;
@@ -89,7 +92,8 @@ public class DataGeneration {
         Fragmentation subItem0_8 = new Fragmentation("aidl使用规范", BookActivity.class);
         Fragmentation subItem0_9 = new Fragmentation("如何优雅的@人", AtActivity.class);
         Fragmentation subItem0_10 = new Fragmentation("zxing扫描", ZxingActivity.class);
-        Fragmentation subItem0_11 = new Fragmentation("图片压缩" , ZoomImageActivity.class);
+        Fragmentation subItem0_11 = new Fragmentation("图片压缩", ZoomImageActivity.class);
+        Fragmentation subItem0_12 = new Fragmentation("VLayout使用", VlayoutActivity.class);
         item0.addSubItem(subItem0_0);
         item0.addSubItem(subItem0_1);
         item0.addSubItem(subItem0_2);
@@ -102,6 +106,7 @@ public class DataGeneration {
         item0.addSubItem(subItem0_9);
         item0.addSubItem(subItem0_10);
         item0.addSubItem(subItem0_11);
+        item0.addSubItem(subItem0_12);
 
         Level0Item item1 = new Level0Item("android自定义View", "");
         Fragmentation subItem1_0 = new Fragmentation("仿知乎广告", AdActivity.class);
@@ -110,12 +115,16 @@ public class DataGeneration {
         Fragmentation subItem1_3 = new Fragmentation("长文对齐TextView", TextAreaActivity.class);
         Fragmentation subItem1_4 = new Fragmentation("阿里加载view", AliPayLoadActivity.class);
         Fragmentation subItem1_5 = new Fragmentation("阴影ImageView", ShadowActivity.class);
+        Fragmentation subItem1_6 = new Fragmentation("背景渐变效果", MusicDropActivity.class);
+        Fragmentation subItem1_7 = new Fragmentation("水波纹扩散", RippleActivity.class);
         item1.addSubItem(subItem1_0);
         item1.addSubItem(subItem1_1);
         item1.addSubItem(subItem1_2);
         item1.addSubItem(subItem1_3);
         item1.addSubItem(subItem1_4);
         item1.addSubItem(subItem1_5);
+        item1.addSubItem(subItem1_6);
+        item1.addSubItem(subItem1_7);
 
         Level0Item item2 = new Level0Item("android自定义ViewGroup", "");
         Fragmentation subItem2_0 = new Fragmentation("constrainLayout", ConstraintActivity.class);
