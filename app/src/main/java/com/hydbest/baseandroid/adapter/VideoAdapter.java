@@ -1,25 +1,20 @@
 package com.hydbest.baseandroid.adapter;
 
-import android.os.Build;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.view.View;
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.widget.LinearLayout;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.chad.library.adapter.base.BaseViewHolder;
+import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 import com.csz.video.media.SlotValue;
 import com.csz.video.media.VideoHandler;
 import com.csz.video.media.VideoLayout;
-import com.csz.video.media.VideoManager;
 import com.hydbest.baseandroid.R;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import static android.support.v7.widget.RecyclerView.NO_POSITION;
+import static androidx.recyclerview.widget.RecyclerView.NO_POSITION;
 
 public class VideoAdapter extends BaseQuickAdapter<SlotValue, BaseViewHolder> {
 

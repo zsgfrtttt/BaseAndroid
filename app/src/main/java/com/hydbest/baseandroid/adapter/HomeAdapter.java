@@ -3,13 +3,13 @@ package com.hydbest.baseandroid.adapter;
 import android.view.View;
 
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
-import com.chad.library.adapter.base.BaseViewHolder;
 import com.chad.library.adapter.base.entity.MultiItemEntity;
+import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 import com.hydbest.baseandroid.R;
 
 import java.util.List;
 
-public class HomeAdapter extends BaseMultiItemQuickAdapter<MultiItemEntity,BaseViewHolder> {
+public class HomeAdapter extends BaseMultiItemQuickAdapter<MultiItemEntity, BaseViewHolder> {
     private static final int TYPE_TITLE = 0;
     private static final int TYPE_CONTENT = 1;
 

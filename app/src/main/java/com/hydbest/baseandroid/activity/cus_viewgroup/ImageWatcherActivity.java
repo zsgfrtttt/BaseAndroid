@@ -5,11 +5,11 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.util.SparseArray;
 import android.view.View;
@@ -95,7 +95,7 @@ public class ImageWatcherActivity extends AppCompatActivity{
         rv.setLayoutManager(new GridLayoutManager(this,4));
         //rv.addItemDecoration(new SpaceItemDecoration(this).setSpace(14).setSpaceColor(0xFFECECEC));
         rv.setAdapter(mAdapter = new ImageWatcherAdapter(ImageWatcherAdapter.idArray2UriList(getResources(),datas)));
-        mAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
+        mAdapter.setOnItemChildClickListener(new com.chad.library.adapter.base.listener.OnItemChildClickListener() {
             @Override
             public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
                 if (view.getId()== R.id.iv){
@@ -108,7 +108,7 @@ public class ImageWatcherActivity extends AppCompatActivity{
                 }
             }
         });
-        mAdapter.setOnItemChildLongClickListener(new BaseQuickAdapter.OnItemChildLongClickListener() {
+        mAdapter.setOnItemChildLongClickListener(new com.chad.library.adapter.base.listener.OnItemChildLongClickListener() {
             @Override
             public boolean onItemChildLongClick(BaseQuickAdapter adapter, View view, final int position) {
                 if (view.getId()== R.id.iv){

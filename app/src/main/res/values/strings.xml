@@ -15,4 +15,7 @@
     <string name="keyboard_demo_new">"安全软键盘"</string>
     <string name="mLabelTextSize">mLabelTextSize</string>
     <string name="sync_account_type">com.csz</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

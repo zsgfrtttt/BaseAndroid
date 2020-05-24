@@ -1,7 +1,7 @@
 package com.hydbest.baseandroid.util;
 
 import android.os.Build;
-import android.support.annotation.RequiresApi;
+import androidx.annotation.RequiresApi;
 import android.view.Choreographer;
 
 /**

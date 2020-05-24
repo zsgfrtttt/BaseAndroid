@@ -14,11 +14,9 @@ import android.graphics.Shader;
 import android.graphics.Xfermode;
 import android.os.Handler;
 import android.os.Message;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
-
-import java.util.logging.LogRecord;
 
 public class WaveView extends View {
     private static final int SAMPLE_SIZE = 128;

@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.hydbest.baseandroid">
 
+    <!-- To access Google+ APIs: -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -15,10 +16,9 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
-
-    <uses-permission android:name="android.permission.READ_SYNC_SETTINGS"/>
-    <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS"/>
-    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.READ_SYNC_SETTINGS" />
+    <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />
+    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
 
     <uses-feature
         android:glEsVersion="0x00020000"
@@ -37,226 +37,143 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-
-        <activity android:name="com.hydbest.baseandroid.activity.HomeActivity">
+        <activity android:name=".activity.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.hydbest.baseandroid.activity.MessengerActivity">
-
-        </activity>
-        <activity android:name="com.hydbest.baseandroid.activity.concurrent.CountDownLatchActivity">
-
-        </activity>
-
-        <activity android:name="com.hydbest.baseandroid.activity.concurrent.ThreadLocalActivity">
-
-        </activity>
-
-        <activity android:name="com.hydbest.baseandroid.activity.concurrent.ExecuteServiceActivity">
-
-        </activity>
-
-        <activity android:name="com.hydbest.baseandroid.activity.concurrent.ReentrantLockActivity">
-
-        </activity>
-
-        <activity android:name="com.hydbest.baseandroid.activity.concurrent.ThreadConcurrentActivity">
-
-        </activity>
-
-        <activity android:name="com.hydbest.baseandroid.activity.concurrent.FutureActivity">
-
-        </activity>
-
-
-        <activity android:name="com.hydbest.baseandroid.activity.cus_viewgroup.LeftDrawerLayoutActivity">
-
-        </activity>
-
-        <activity android:name="com.hydbest.baseandroid.activity.cus_view.LargeImageActivity" />
-
-        <activity android:name="com.hydbest.baseandroid.activity.foundation.FileProviderActivity" />
-
-        <activity android:name="com.hydbest.baseandroid.activity.foundation.BlockDetectActivity" />
-
-        <activity android:name="com.hydbest.baseandroid.activity.foundation.RuntimePermissonActivity">
-
-        </activity>
-
-        <activity android:name="com.hydbest.baseandroid.activity.cus_viewgroup.ViewpageActivity">
-
-        </activity>
-
-        <activity android:name="com.hydbest.baseandroid.activity.foundation.LogActivity">
-
-        </activity>
-
-        <activity android:name="com.hydbest.baseandroid.activity.event.EventRegisterActivity">
-
-        </activity>
-
-        <activity android:name="com.hydbest.baseandroid.activity.cus_viewgroup.NestScrollActivity">
-
-        </activity>
-
-        <activity android:name="com.hydbest.baseandroid.activity.event.EventPostActivity" />
-
-        <activity android:name="com.hydbest.baseandroid.activity.cus_view.AdActivity">
-
-        </activity>
-
-        <activity android:name="com.hydbest.baseandroid.activity.cus_viewgroup.NavigationActivity">
-
-        </activity>
-
-        <activity android:name="com.hydbest.baseandroid.activity.cus_viewgroup.ConstraintActivity">
-
-        </activity>
-
-        <activity android:name="com.hydbest.baseandroid.activity.cus_view.MultiTouchActivity">
-
-        </activity>
-
-        <activity android:name="com.hydbest.baseandroid.activity.cus_viewgroup.ImageWatcherActivity">
-
-        </activity>
-
-        <activity android:name="com$hydbest$baseandroid$activity$Media$MediaDrawImageActivity" />
-
-        <activity android:name="com$hydbest$baseandroid$activity$Media$MediaAudioRecordActivity" />
-
-        <activity android:name="com$hydbest$baseandroid$activity$Media$MediaAudioTrackActivity" />
-
-        <activity android:name="com$hydbest$baseandroid$activity$Media$MediaCameraActivity" />
-
-        <activity android:name="com$hydbest$baseandroid$activity$Media$MediaExecutorActivity" />
-
-        <activity android:name="com$hydbest$baseandroid$activity$Media$record$MediaRecordActivity" />
-
-        <activity android:name="com$hydbest$baseandroid$activity$Media$openGL_ES$GLSurfaceActivity" />
-
-        <activity android:name="com$hydbest$baseandroid$activity$Media$openGL_ES$GL_DefineShapeActivity" />
-
-        <activity android:name="com$hydbest$baseandroid$activity$Media$MediaVoiceActivity" />
-
-        <activity android:name="com$hydbest$baseandroid$activity$Media$MediaVideoActivity" />
-
-        <activity android:name="com.hydbest.baseandroid.activity.foundation.ArrayActivity" />
-
-        <activity android:name="com.hydbest.baseandroid.activity.other.PatchUpdateActivity" />
-
-        <activity android:name="com.hydbest.baseandroid.activity.cus_viewgroup.CalendarActivity" />
-
-        <activity android:name="com.hydbest.baseandroid.activity.foundation.NotificationActivity" />
-
-        <activity android:name="com.hydbest.baseandroid.activity.other.tinyserver.TinyServerActivity" />
-
-        <activity android:name="com.hydbest.baseandroid.activity.md.MD_ButtonActivity" />
-
-        <activity android:name="com.hydbest.baseandroid.activity.foundation.ContextMenuActivity" />
-
-        <activity android:name="com.hydbest.baseandroid.activity.foundation.transition.ListTransitionActivity" />
-
-        <activity android:name="com.hydbest.baseandroid.activity.foundation.transition.DetailTransitionActivity" />
-
-        <activity android:name="com.hydbest.baseandroid.activity.other.AndroidAdvanceActivity" />
-        <activity android:name="com.hydbest.baseandroid.activity.other.syncAdapter.SyncAdapterActivity" />
-
-        <activity android:name="com.hydbest.baseandroid.activity.foundation.GifActivity" />
-
-        <activity android:name="com.hydbest.baseandroid.aidl.BookActivity" />
-
+        <activity android:name=".activity.MessengerActivity" />
+        <activity android:name=".activity.concurrent.CountDownLatchActivity" />
+        <activity android:name=".activity.concurrent.ThreadLocalActivity" />
+        <activity android:name=".activity.concurrent.ExecuteServiceActivity" />
+        <activity android:name=".activity.concurrent.ReentrantLockActivity" />
+        <activity android:name=".activity.concurrent.ThreadConcurrentActivity" />
+        <activity android:name=".activity.concurrent.FutureActivity" />
+        <activity android:name=".activity.cus_viewgroup.LeftDrawerLayoutActivity" />
+        <activity android:name=".activity.cus_view.LargeImageActivity" />
+        <activity android:name=".activity.foundation.FileProviderActivity" />
+        <activity android:name=".activity.foundation.BlockDetectActivity" />
+        <activity android:name=".activity.foundation.RuntimePermissonActivity" />
+        <activity android:name=".activity.cus_viewgroup.ViewpageActivity" />
+        <activity android:name=".activity.foundation.LogActivity" />
+        <activity android:name=".activity.event.EventRegisterActivity" />
+        <activity android:name=".activity.cus_viewgroup.NestScrollActivity" />
+        <activity android:name=".activity.event.EventPostActivity" />
+        <activity android:name=".activity.cus_view.AdActivity" />
+        <activity android:name=".activity.cus_viewgroup.NavigationActivity" />
+        <activity android:name=".activity.cus_viewgroup.ConstraintActivity" />
+        <activity android:name=".activity.cus_view.MultiTouchActivity" />
+        <activity android:name=".activity.cus_viewgroup.ImageWatcherActivity" />
+        <activity android:name=".com$hydbest$baseandroid$activity$Media$MediaDrawImageActivity" />
+        <activity android:name=".com$hydbest$baseandroid$activity$Media$MediaAudioRecordActivity" />
+        <activity android:name=".com$hydbest$baseandroid$activity$Media$MediaAudioTrackActivity" />
+        <activity android:name=".com$hydbest$baseandroid$activity$Media$MediaCameraActivity" />
+        <activity android:name=".com$hydbest$baseandroid$activity$Media$MediaExecutorActivity" />
+        <activity android:name=".com$hydbest$baseandroid$activity$Media$record$MediaRecordActivity" />
+        <activity android:name=".com$hydbest$baseandroid$activity$Media$openGL_ES$GLSurfaceActivity" />
+        <activity android:name=".com$hydbest$baseandroid$activity$Media$openGL_ES$GL_DefineShapeActivity" />
+        <activity android:name=".com$hydbest$baseandroid$activity$Media$MediaVoiceActivity" />
+        <activity android:name=".com$hydbest$baseandroid$activity$Media$MediaVideoActivity" />
+        <activity android:name=".activity.foundation.ArrayActivity" />
+        <activity android:name=".activity.other.PatchUpdateActivity" />
+        <activity android:name=".activity.cus_viewgroup.CalendarActivity" />
+        <activity android:name=".activity.foundation.NotificationActivity" />
+        <activity android:name=".activity.other.tinyserver.TinyServerActivity" />
+        <activity android:name=".activity.md.MD_ButtonActivity" />
+        <activity android:name=".activity.foundation.ContextMenuActivity" />
+        <activity android:name=".activity.foundation.transition.ListTransitionActivity" />
+        <activity android:name=".activity.foundation.transition.DetailTransitionActivity" />
+        <activity android:name=".activity.other.AndroidAdvanceActivity" />
+        <activity android:name=".activity.other.syncAdapter.SyncAdapterActivity" />
+        <activity android:name=".activity.foundation.GifActivity" />
+        <activity android:name=".aidl.BookActivity" />
+        <activity android:name=".activity.jetpack.KtActivity"
+            android:screenOrientation="landscape"/>
         <activity
-            android:name="com.hydbest.baseandroid.aidl.AddBookActivity"
+            android:name=".aidl.AddBookActivity"
             android:process="com.addbook" />
-
-        <activity android:name="com.hydbest.baseandroid.activity.foundation.AtActivity" />
-
-        <activity android:name="com.hydbest.baseandroid.activity.cus_view.TextAreaActivity" />
-
+        <activity android:name=".activity.foundation.AtActivity" />
+        <activity android:name=".activity.cus_view.TextAreaActivity" />
         <activity android:name=".activity.foundation.ZxingActivity" />
-
         <activity
             android:name=".activity.Media.MediaCusVideoActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait" />
-
         <activity android:name=".activity.plugin.ClassLoaderActivity" />
-
         <activity android:name=".activity.plugin.DexLoaderActivity" />
-
         <activity android:name=".activity.plugin.ApkLoaderActivity" />
-
         <activity android:name=".activity.plugin.ActivityLoaderActivity" />
-
         <activity
             android:name=".activity.md.MD_StatusBarActivity"
             android:theme="@style/status" />
-
         <activity android:name="com.pl.one.MainActivity" />
         <activity android:name="com.pl.one.SecondActivity" />
         <activity android:name=".activity.cus_viewgroup.KeyboardActivity" />
         <activity android:name=".activity.cus_view.AliPayLoadActivity" />
         <activity android:name=".activity.md.RecycleViewAnimActivity" />
-        <activity android:name=".activity.md.RecycleViewDecorateActivity"/>
+        <activity android:name=".activity.md.RecycleViewDecorateActivity" />
         <activity android:name=".activity.md.ViewOutlineActivity" />
-        <activity android:name=".activity.cus_view.shadow.sample.ShadowActivity"/>
-        <activity android:name=".activity.cus_view.shadow.sample.RecyclerImagesActivity"/>
-        <activity android:name=".activity.cus_view.shadow.sample.StaticImageActivity"/>
-        <activity android:name=".activity.cus_view.ZoomImageActivity"/>
-        <activity android:name=".activity.md.TranslucentBarActivity"/>
-        <activity android:name=".activity.md.SvgActivity"/>
-        <activity android:name=".activity.foundation.VlayoutActivity"/>
-        <activity android:name=".activity.cus_view.MusicDropActivity"/>
-        <activity android:name=".activity.cus_view.RippleActivity"/>
-
-        <activity android:name=".activity.cus_view.WaveActivity"></activity>
+        <activity android:name=".activity.cus_view.shadow.sample.ShadowActivity" />
+        <activity android:name=".activity.cus_view.shadow.sample.RecyclerImagesActivity" />
+        <activity android:name=".activity.cus_view.shadow.sample.StaticImageActivity" />
+        <activity android:name=".activity.cus_view.ZoomImageActivity" />
+        <activity android:name=".activity.md.TranslucentBarActivity" />
+        <activity android:name=".activity.md.SvgActivity" />
+        <activity android:name=".activity.foundation.VlayoutActivity" />
+        <activity android:name=".activity.cus_view.MusicDropActivity" />
+        <activity android:name=".activity.cus_view.RippleActivity" />
+        <activity android:name=".activity.jetpack.LiveViewModelActivity" />
+        <activity android:name=".activity.jetpack.JetpackNavigationActivity" />
+        <activity android:name=".activity.jetpack.LifeCycleActivity" />
+        <activity android:name=".activity.jetpack.RoomActivity" />
+        <activity android:name=".activity.jetpack.PagingActivity" />
+        <activity android:name=".activity.jetpack.ViewBindingActivity"/>
+        <activity android:name=".activity.jetpack.WorkerActivity"/>
 
         <service
-            android:name="groovy$hydbest$Messenger$MessageService"
+            android:name=".groovy$hydbest$Messenger$MessageService"
             android:enabled="true"
             android:exported="true"
             android:process=":remote">
             <intent-filter>
                 <action android:name="com.csz.service" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </service>
-
-        <service android:name="com.hydbest.baseandroid.aidl.BookManagerService">
+        <service android:name=".aidl.BookManagerService">
             <intent-filter>
                 <action android:name="com.hydbest.baseandroid.aidl.BookManagerService" />
             </intent-filter>
         </service>
-
-        <service
-            android:name="com.hydbest.baseandroid.activity.other.syncAdapter.AuthenticatorService">
+        <service android:name=".activity.other.syncAdapter.AuthenticatorService">
             <intent-filter>
-                <action android:name="android.accounts.AccountAuthenticator"/>
+                <action android:name="android.accounts.AccountAuthenticator" />
             </intent-filter>
+
             <meta-data
                 android:name="android.accounts.AccountAuthenticator"
                 android:resource="@xml/authenticator" />
         </service>
-        
+
         <provider
+            android:name=".activity.other.syncAdapter.AuthenticatorContentProvider"
             android:authorities="com.csz.syncAdapter"
-            android:name="com.hydbest.baseandroid.activity.other.syncAdapter.AuthenticatorContentProvider"
-            android:syncable="true"
-            android:exported="false"/>
+            android:exported="false"
+            android:syncable="true" />
 
         <service
-            android:name="com.hydbest.baseandroid.activity.other.syncAdapter.SyncService"
+            android:name=".activity.other.syncAdapter.SyncService"
             android:exported="true"
             android:process=":sync">
             <intent-filter>
-                <action android:name="android.content.SyncAdapter"/>
+                <action android:name="android.content.SyncAdapter" />
             </intent-filter>
-            <meta-data android:name="android.content.SyncAdapter"
+
+            <meta-data
+                android:name="android.content.SyncAdapter"
                 android:resource="@xml/syncadapter" />
         </service>
     </application>

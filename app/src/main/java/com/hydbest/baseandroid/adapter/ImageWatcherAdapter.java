@@ -3,13 +3,18 @@ package com.hydbest.baseandroid.adapter;
 import android.content.ContentResolver;
 import android.content.res.Resources;
 import android.net.Uri;
-import android.support.annotation.Nullable;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
+import android.view.View;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.chad.library.adapter.base.BaseViewHolder;
 
+import com.chad.library.adapter.base.listener.OnItemClickListener;
+import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 import com.hydbest.baseandroid.R;
 
 import java.util.ArrayList;
@@ -26,10 +31,18 @@ public class ImageWatcherAdapter extends BaseQuickAdapter<Uri, BaseViewHolder> {
     protected void convert(BaseViewHolder helper, Uri item) {
         //helper.setImageResource(R.id.iv,item);
         ImageView iv = helper.getView(R.id.iv);
-        helper.addOnClickListener(R.id.iv);
-        helper.addOnLongClickListener(R.id.iv);
+        addChildClickViewIds(R.id.iv);
+        addChildLongClickViewIds(R.id.iv);
         Glide.with(iv).asBitmap().load(item).into(iv);
+        setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(@NonNull BaseQuickAdapter<?, ?> adapter, @NonNull View view, int position) {
+
+            }
+        });
     }
+
+
 
     public static Uri id2Uri(Resources resources, int id) {
         return Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE + "://" +

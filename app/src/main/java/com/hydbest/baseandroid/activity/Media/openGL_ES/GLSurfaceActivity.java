@@ -1,12 +1,11 @@
 package com.hydbest.baseandroid.activity.Media.openGL_ES;
 
 import android.content.Context;
-import android.opengl.EGLConfig;
 import android.opengl.GLES20;
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import javax.microedition.khronos.opengles.GL10;
 

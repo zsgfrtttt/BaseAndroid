@@ -1,12 +1,17 @@
 package com.hydbest.baseandroid.activity.cus_viewgroup;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.design.widget.NavigationView;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import androidx.annotation.Nullable;
+import com.google.android.material.navigation.NavigationView;
+import com.hydbest.baseandroid.R;
+import com.hydbest.baseandroid.activity.jetpack.A;
+
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
+import android.util.Log;
 import android.view.MenuItem;
 
 /**
@@ -30,12 +35,13 @@ public class NavigationActivity extends AppCompatActivity{
         setSupportActionBar(toolbar);
 
         final ActionBar ab = getSupportActionBar();
-        ab.setHomeAsUpIndicator(com.hydbest.baseandroid.R.drawable.sample_footer_loading_progress);
+        ab.setHomeAsUpIndicator(R.drawable.brvah_sample_footer_loading);
         ab.setDisplayHomeAsUpEnabled(true);
 
         setupDrawerContent(mNavigationView);
 
-
+        A.B data = getIntent().getParcelableExtra("data");
+        Log.i("csz","B : " + data.getIndex());
     }
 
     private void setupDrawerContent(NavigationView navigationView)

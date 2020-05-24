@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/homeFragment"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="首页" />
+    <item
+        android:id="@+id/descFragment"
+        android:icon="@drawable/ic_insert_chart_black_24dp"
+        android:title="讨论" />
+    <item
+        android:id="@+id/profileFragment"
+        android:icon="@drawable/ic_account_circle_black_24dp"
+        android:title="我的" />
+</menu>

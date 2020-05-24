@@ -1,7 +1,7 @@
 package com.hydbest.baseandroid.adapter;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.chad.library.adapter.base.BaseViewHolder;
+import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 import com.hydbest.baseandroid.R;
 
 import java.util.ArrayList;
@@ -27,8 +27,7 @@ public class TextAdapter extends BaseQuickAdapter<TextAdapter.Bean, BaseViewHold
         helper.setText(android.R.id.text1, item.title);
         helper.setImageResource(R.id.iv,R.drawable.a);
         helper.setVisible(R.id.iv,false);
-        helper.addOnClickListener(R.id.item);
-    //    helper.addOnClickListener(android.R.id.text1);
+        addChildClickViewIds(R.id.item);
     }
 
     public static class Bean{

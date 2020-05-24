@@ -1,8 +1,8 @@
 package com.hydbest.baseandroid.activity.cus_view.shadow.sample;
 
 import android.os.Bundle
-import android.support.v4.content.ContextCompat
-import android.support.v7.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import androidx.appcompat.app.AppCompatActivity
 import android.widget.Button
 import com.hydbest.baseandroid.R
 import io.github.armcha.coloredshadow.ShadowImageView

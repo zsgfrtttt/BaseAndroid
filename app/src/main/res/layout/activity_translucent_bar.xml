@@ -21,7 +21,7 @@
                 android:scaleType="centerCrop"
                 android:src="@drawable/c" />
 
-            <android.support.v7.widget.RecyclerView
+            <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="800dp"
                 android:background="@color/blue"
@@ -29,7 +29,7 @@
         </LinearLayout>
     </com.hydbest.baseandroid.view.view.CusNestScrollView>
 
-    <android.support.v7.widget.Toolbar
+    <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

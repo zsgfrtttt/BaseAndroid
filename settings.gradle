@@ -1,1 +1,1 @@
-include ':app', ':annotationCompiler', ':eventbus', ':fileprovider', ':buildSrc', ':pluginlibrary', ':zxing-android-embedded', ':mediavideo', ':loadapk'
+include ':app', ':annotationCompiler', ':eventbus', ':fileprovider',':zxing-android-embedded', ':mediavideo', ':loadapk'

@@ -1,10 +1,9 @@
 package com.hydbest.baseandroid.activity.cus_view;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
-import android.widget.ImageView;
 
 import com.hydbest.baseandroid.R;
 import com.hydbest.baseandroid.view.view.RippleView;

@@ -3,15 +3,17 @@ package com.hydbest.baseandroid.activity.other;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 
+import com.chad.library.adapter.base.BaseNodeAdapter;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.entity.MultiItemEntity;
+import com.chad.library.adapter.base.entity.node.BaseNode;
 import com.hydbest.baseandroid.R;
 import com.hydbest.baseandroid.adapter.ExpandableItemAdapter;
 import com.hydbest.baseandroid.entity.Fragmentation;
@@ -33,7 +35,8 @@ public class AndroidAdvanceActivity extends AppCompatActivity {
     RecyclerView mRv;
 
     ExpandableItemAdapter adapter;
-    List<MultiItemEntity> list;
+
+    List<BaseNode> list;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -47,7 +50,7 @@ public class AndroidAdvanceActivity extends AppCompatActivity {
         mRv.setLayoutManager(new LinearLayoutManager(this));
         mRv.setAdapter(adapter);
 
-        adapter.setOnItemLongClickListener(new BaseQuickAdapter.OnItemLongClickListener() {
+        adapter.setOnItemLongClickListener(new com.chad.library.adapter.base.listener.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(BaseQuickAdapter adapter, View view, int position) {
                 if (AndroidAdvanceActivity.this.adapter.getItemViewType(position) == ExpandableItemAdapter.TYPE_LEVEL_1) {

@@ -9,9 +9,8 @@ import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.inputmethodservice.Keyboard;
 import android.inputmethodservice.KeyboardView;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.util.AttributeSet;
-import android.util.Log;
 
 import com.hydbest.baseandroid.R;
 

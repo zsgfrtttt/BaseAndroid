@@ -3,11 +3,10 @@ package com.hydbest.baseandroid.activity.md;
 import android.animation.Animator;
 import android.animation.ObjectAnimator;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -17,6 +16,8 @@ import android.widget.Button;
 import com.chad.library.adapter.base.animation.BaseAnimation;
 import com.hydbest.baseandroid.R;
 import com.hydbest.baseandroid.adapter.TextAdapter;
+
+import org.jetbrains.annotations.NotNull;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -81,8 +82,9 @@ public class RecycleViewAnimActivity extends AppCompatActivity {
             mFrom = from;
         }
 
+        @NotNull
         @Override
-        public Animator[] getAnimators(View view) {
+        public Animator[] animators(@NotNull View view) {
             ObjectAnimator scaleX = ObjectAnimator.ofFloat(view, "scaleX", mFrom, 1f);
             ObjectAnimator scaleY = ObjectAnimator.ofFloat(view, "scaleY", mFrom, 1f);
             return new ObjectAnimator[]{scaleX, scaleY};

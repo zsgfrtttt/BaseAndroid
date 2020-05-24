@@ -1,6 +1,7 @@
 package com.hydbest.baseandroid.util;
 
 import com.chad.library.adapter.base.entity.MultiItemEntity;
+import com.chad.library.adapter.base.entity.node.BaseNode;
 import com.hydbest.baseandroid.activity.Media.MediaAudioRecordActivity;
 import com.hydbest.baseandroid.activity.Media.MediaAudioTrackActivity;
 import com.hydbest.baseandroid.activity.Media.MediaCameraActivity;
@@ -48,6 +49,14 @@ import com.hydbest.baseandroid.activity.foundation.RuntimePermissonActivity;
 import com.hydbest.baseandroid.activity.foundation.VlayoutActivity;
 import com.hydbest.baseandroid.activity.foundation.ZxingActivity;
 import com.hydbest.baseandroid.activity.foundation.transition.ListTransitionActivity;
+import com.hydbest.baseandroid.activity.jetpack.JetpackNavigationActivity;
+import com.hydbest.baseandroid.activity.jetpack.KtActivity;
+import com.hydbest.baseandroid.activity.jetpack.LifeCycleActivity;
+import com.hydbest.baseandroid.activity.jetpack.LiveViewModelActivity;
+import com.hydbest.baseandroid.activity.jetpack.PagingActivity;
+import com.hydbest.baseandroid.activity.jetpack.RoomActivity;
+import com.hydbest.baseandroid.activity.jetpack.ViewBindingActivity;
+import com.hydbest.baseandroid.activity.jetpack.WorkerActivity;
 import com.hydbest.baseandroid.activity.md.MD_ButtonActivity;
 import com.hydbest.baseandroid.activity.md.MD_StatusBarActivity;
 import com.hydbest.baseandroid.activity.md.RecycleViewAnimActivity;
@@ -77,7 +86,7 @@ import java.util.List;
 
 public class DataGeneration {
 
-    public static List<MultiItemEntity> getItems() {
+    public static List<BaseNode> getItems() {
         List list = new ArrayList();
 
         Level0Item item0 = new Level0Item("android基础API", "");
@@ -226,6 +235,24 @@ public class DataGeneration {
         item9.addSubItem(subItem9_2);
         item9.addSubItem(subItem9_3);
 
+        Level0Item item10 = new Level0Item("JetPack", "");
+        Fragmentation subItem10_0 = new Fragmentation("LiveData&ViewModel", LiveViewModelActivity.class);
+        Fragmentation subItem10_1 = new Fragmentation("Navigation", JetpackNavigationActivity.class);
+        Fragmentation subItem10_2 = new Fragmentation("LifeCycles", LifeCycleActivity.class);
+        Fragmentation subItem10_3 = new Fragmentation("Room", RoomActivity.class);
+        Fragmentation subItem10_4 = new Fragmentation("Kt", KtActivity.class);
+        Fragmentation subItem10_5 = new Fragmentation("Paging", PagingActivity.class);
+        Fragmentation subItem10_6 = new Fragmentation("ViewBinding", ViewBindingActivity.class);
+        Fragmentation subItem10_7 = new Fragmentation("Worker", WorkerActivity.class);
+        item10.addSubItem(subItem10_0);
+        item10.addSubItem(subItem10_1);
+        item10.addSubItem(subItem10_2);
+        item10.addSubItem(subItem10_3);
+        item10.addSubItem(subItem10_4);
+        item10.addSubItem(subItem10_5);
+        item10.addSubItem(subItem10_6);
+        item10.addSubItem(subItem10_7);
+
         list.add(item0);
         list.add(item1);
         list.add(item2);
@@ -236,11 +263,12 @@ public class DataGeneration {
         list.add(item7);
         list.add(item8);
         list.add(item9);
+        list.add(item10);
 
         return list;
     }
 
-    public static List<MultiItemEntity> getSourceItems() {
+    public static List<BaseNode> getSourceItems() {
         List list = new ArrayList();
 
         Level0Item item0 = new Level0Item("客户端项目", "");

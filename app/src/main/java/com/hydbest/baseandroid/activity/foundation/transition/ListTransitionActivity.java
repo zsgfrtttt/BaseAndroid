@@ -5,13 +5,13 @@ import android.animation.AnimatorListenerAdapter;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
-import android.support.v4.app.ActivityOptionsCompat;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import androidx.core.app.ActivityOptionsCompat;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewAnimationUtils;
 import android.widget.ImageView;
@@ -49,13 +49,13 @@ public class ListTransitionActivity extends AppCompatActivity {
         mTextAdapter = new TextAdapter(null);
         mRv.setLayoutManager(new LinearLayoutManager(this));
         mRv.addItemDecoration(new DividerItemDecoration(this, RecyclerView.VERTICAL));
-        mTextAdapter.bindToRecyclerView(mRv);
+        mTextAdapter.onAttachedToRecyclerView(mRv);
         initEvent();
     }
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     private void initEvent() {
-        mTextAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
+        mTextAdapter.setOnItemChildClickListener(new com.chad.library.adapter.base.listener.OnItemChildClickListener() {
             @Override
             public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
                 start(adapter.getViewByPosition(position, R.id.iv));
