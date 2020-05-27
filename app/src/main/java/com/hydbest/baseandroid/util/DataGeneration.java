@@ -66,6 +66,7 @@ import com.hydbest.baseandroid.activity.md.TranslucentBarActivity;
 import com.hydbest.baseandroid.activity.md.ViewOutlineActivity;
 import com.hydbest.baseandroid.activity.other.AndroidAdvanceActivity;
 import com.hydbest.baseandroid.activity.other.PatchUpdateActivity;
+import com.hydbest.baseandroid.activity.other.syncAdapter.AnnotationProcessActivity;
 import com.hydbest.baseandroid.activity.other.syncAdapter.SyncAdapterActivity;
 import com.hydbest.baseandroid.activity.other.tinyserver.TinyServerActivity;
 import com.hydbest.baseandroid.activity.plugin.ActivityLoaderActivity;
@@ -76,6 +77,7 @@ import com.hydbest.baseandroid.aidl.BookActivity;
 import com.hydbest.baseandroid.entity.Fragmentation;
 import com.hydbest.baseandroid.entity.Level0Item;
 
+import java.lang.annotation.Annotation;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -163,11 +165,13 @@ public class DataGeneration {
         Fragmentation subItem4_2 = new Fragmentation("微服务搭建", TinyServerActivity.class);
         Fragmentation subItem4_3 = new Fragmentation("学习资源tnt", AndroidAdvanceActivity.class);
         Fragmentation subItem4_4 = new Fragmentation("SyncAdapter同步（提高进程优先级）", SyncAdapterActivity.class);
+        Fragmentation subItem4_5 = new Fragmentation("注解处理器", AnnotationProcessActivity.class);
         item4.addSubItem(subItem4_0);
         item4.addSubItem(subItem4_1);
         item4.addSubItem(subItem4_2);
         item4.addSubItem(subItem4_3);
         item4.addSubItem(subItem4_4);
+        item4.addSubItem(subItem4_5);
 
         Level0Item item5 = new Level0Item("java并发编程", "");
         Fragmentation subItem5_0 = new Fragmentation("CountDownLatch", CountDownLatchActivity.class);

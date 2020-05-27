@@ -1,4 +1,4 @@
-package groovy.hydbest.annotationcompiler.annotation;
+package com.hydbest.annotationcompiler.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

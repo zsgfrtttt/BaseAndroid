@@ -19,7 +19,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import butterknife.ButterKnife;
 
 //所有安卓系统都支持
 import static android.media.AudioFormat.CHANNEL_IN_MONO;
@@ -46,8 +45,6 @@ public class MediaAudioRecordActivity extends AppCompatActivity {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(com.hydbest.baseandroid.R.layout.activity_media_audio_record);
-        ButterKnife.bind(this);
-
         //initAudio();
     }
 

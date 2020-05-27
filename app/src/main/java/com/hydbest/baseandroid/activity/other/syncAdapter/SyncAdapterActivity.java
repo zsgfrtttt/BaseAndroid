@@ -11,7 +11,6 @@ import android.view.View;
 
 import com.hydbest.baseandroid.R;
 
-import butterknife.ButterKnife;
 
 /**
  * @author csz
@@ -26,7 +25,6 @@ public class SyncAdapterActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sync_adapter);
-        ButterKnife.bind(this);
     }
 
     /**

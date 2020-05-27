@@ -22,7 +22,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.nio.ByteBuffer;
 
-import butterknife.ButterKnife;
 
 /**
  * Created by csz on 2018/9/14.
@@ -41,7 +40,6 @@ public class MediaExecutorActivity extends AppCompatActivity {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_media_executor);
-        ButterKnife.bind(this);
     }
 
     @TargetApi(16)

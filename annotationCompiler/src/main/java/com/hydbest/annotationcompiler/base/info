@@ -1,0 +1,5 @@
+javapoet:
+ $N for Names  = 使用 $N 可以引用另外一个通过名字生成的声明。
+ $T for Types
+ $S for Strings
+ $L for Literals

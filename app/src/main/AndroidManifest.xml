@@ -131,6 +131,8 @@
         <activity android:name=".activity.jetpack.PagingActivity" />
         <activity android:name=".activity.jetpack.ViewBindingActivity"/>
         <activity android:name=".activity.jetpack.WorkerActivity"/>
+        <activity android:name=".activity.other.syncAdapter.AnnotationProcessActivity"/>
+        <activity android:name=".activity.other.syncAdapter.AnnoReceActivity"/>
 
         <service
             android:name=".groovy$hydbest$Messenger$MessageService"
