@@ -7,6 +7,8 @@ import com.csz.annotation.Optional
 import com.csz.annotation.Required
 import com.hydbest.baseandroid.R
 import kotlinx.android.synthetic.main.activity_anno_rece.*
+import java.util.*
+import kotlin.collections.ArrayList
 
 @Builder
 class AnnoReceActivity: AppCompatActivity(){
@@ -20,6 +22,8 @@ class AnnoReceActivity: AppCompatActivity(){
     var level: Short = 0
     @Optional
     var length:Boolean = false
+    @Optional
+    lateinit var list: ArrayList<String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,6 +32,8 @@ class AnnoReceActivity: AppCompatActivity(){
         tvname.setText(name)
         tvlevel.setText(level.toString())
         tvlength.setText(length.toString())
+        tvlist.setText(Arrays.toString(list.toArray()))
     }
+
 
 }

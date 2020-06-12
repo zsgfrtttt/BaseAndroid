@@ -74,6 +74,7 @@ dependencies {
     implementation('com.csz.upload:testmodule:1.0.1') {
         exclude group: 'com.android.support'
     }
+    implementation 'com.github.zsgfrtttt:PagerIndicator:1.0.2'
     implementation project(':eventbus')
     implementation project(':fileprovider')
     implementation project(':zxing-android-embedded')

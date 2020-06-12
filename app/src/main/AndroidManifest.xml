@@ -133,6 +133,7 @@
         <activity android:name=".activity.jetpack.WorkerActivity"/>
         <activity android:name=".activity.other.syncAdapter.AnnotationProcessActivity"/>
         <activity android:name=".activity.other.syncAdapter.AnnoReceActivity"/>
+        <activity android:name=".activity.cus_viewgroup.PagerIndicatorActivity"/>
 
         <service
             android:name=".groovy$hydbest$Messenger$MessageService"

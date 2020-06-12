@@ -37,7 +37,7 @@ open class BuilderProcessor : AbstractProcessor() {
         val activityClass = HashMap<Element, ActivityClass>()
         roundEnv.getElementsAnnotatedWith(Builder::class.java)
                 .filter { it.kind.isClass }
-                .forEach { element: Element ->
+                .forEach { element ->  //Symbol$ClassSymbol
                     try {
                         if (element.asType().isSubTypeOf("android.app.Activity")) {
                             activityClass[element] = ActivityClass(element as TypeElement)
@@ -51,15 +51,14 @@ open class BuilderProcessor : AbstractProcessor() {
 
         roundEnv.getElementsAnnotatedWith(Required::class.java)
                 .filter { it.kind.isField }
-                .forEach { element: Element ->
-                    //TODO
+                .forEach { element -> //Symbol$VarSymbol
                     activityClass[element.enclosingElement]?.fields?.add(Field(element as Symbol.VarSymbol))
                             ?: Logger.error(element,"filed $element required while ${element.enclosingElement} not annotate")
                 }
 
         roundEnv.getElementsAnnotatedWith(Optional::class.java)
                 .filter { it.kind.isField }
-                .forEach { element: Element ->
+                .forEach { element ->
                     activityClass[element.enclosingElement]?.fields?.add(OptionalField(element as Symbol.VarSymbol))
                             ?: Logger.error(element,"filed $element required while ${element.enclosingElement} not annotate")
                 }

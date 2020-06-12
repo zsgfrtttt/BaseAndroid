@@ -16,12 +16,19 @@ class AnnotationProcessActivity :AppCompatActivity (){
     }
 
     fun skip(view: View) {
-        AnnoReceActivityBuilder.start(this,100,true,18,"csz")
+        val list:ArrayList<String> = ArrayList()
+        list.addAll(arrayOf("caishuzhan","is","handsome"))
+        AnnoReceActivityBuilder.start(this,100,true,18,list,"csz")
     }
 
     @SuppressLint("UseValueOf")
     fun skipKt(view: View) {
-        startAnnoReceActivity(1000, false, 100,"ccsszz")
+        val list:java.util.ArrayList<java.lang.String> = java.util.ArrayList<java.lang.String>()
+        list.add(java.lang.String("caishuzhan"))
+        list.add(java.lang.String("is"))
+        list.add(java.lang.String("very"))
+        list.add(java.lang.String("handsome"))
+        startAnnoReceActivity(1000, false, 100,list,"ccsszz")
     }
 
 

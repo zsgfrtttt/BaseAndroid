@@ -3,6 +3,7 @@ package com.hydbest.annotationcompiler.base
 import com.squareup.javapoet.MethodSpec
 import com.squareup.javapoet.TypeName
 import com.squareup.javapoet.TypeSpec
+import java.io.Serializable
 import javax.lang.model.element.Modifier
 
 class SaveStateMethodBuilder(private val activityClass: ActivityClass) {
@@ -26,4 +27,12 @@ class SaveStateMethodBuilder(private val activityClass: ActivityClass) {
         methodBuilder.addStatement("outState.putAll(intent.getExtras())").endControlFlow()
         typeSpec.addMethod(methodBuilder.build())
     }
+
+    companion object {
+        @JvmStatic
+        fun main(args: Array<String>) {
+
+        }
+    }
 }
+

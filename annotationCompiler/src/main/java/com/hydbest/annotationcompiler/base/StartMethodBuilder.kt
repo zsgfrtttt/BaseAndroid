@@ -50,7 +50,7 @@ class StartMethodBuilder(private val activityClass: ActivityClass) {
                         .returns(buildClassName)
                         .build())
 
-                if (field.isPrimitive){
+                if (field.isPrimitive){//基本类型
                     fillIntentMethodBuilder.addStatement("intent.putExtra(\$S,\$L)",field.name,field.name)
                 } else {
                     fillIntentMethodBuilder.beginControlFlow("if(\$L != null)",field.name)

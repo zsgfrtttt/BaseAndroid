@@ -35,6 +35,7 @@ import com.hydbest.baseandroid.activity.cus_viewgroup.KeyboardActivity;
 import com.hydbest.baseandroid.activity.cus_viewgroup.LeftDrawerLayoutActivity;
 import com.hydbest.baseandroid.activity.cus_viewgroup.NavigationActivity;
 import com.hydbest.baseandroid.activity.cus_viewgroup.NestScrollActivity;
+import com.hydbest.baseandroid.activity.cus_viewgroup.PagerIndicatorActivity;
 import com.hydbest.baseandroid.activity.cus_viewgroup.ViewpageActivity;
 import com.hydbest.baseandroid.activity.event.EventRegisterActivity;
 import com.hydbest.baseandroid.activity.foundation.ArrayActivity;
@@ -146,6 +147,7 @@ public class DataGeneration {
         Fragmentation subItem2_5 = new Fragmentation("Viewpager transformer", ViewpageActivity.class);
         Fragmentation subItem2_6 = new Fragmentation("自定义日历", CalendarActivity.class);
         Fragmentation subItem2_7 = new Fragmentation("自定义键盘", KeyboardActivity.class);
+        Fragmentation subItem2_8 = new Fragmentation("自定义ViewPagerIndicator", PagerIndicatorActivity.class);
         item2.addSubItem(subItem2_0);
         item2.addSubItem(subItem2_1);
         item2.addSubItem(subItem2_2);
@@ -154,6 +156,7 @@ public class DataGeneration {
         item2.addSubItem(subItem2_5);
         item2.addSubItem(subItem2_6);
         item2.addSubItem(subItem2_7);
+        item2.addSubItem(subItem2_8);
 
         Level0Item item3 = new Level0Item("android性能优化", "");
         Fragmentation subItem3_0 = new Fragmentation("主线程阻塞检测", BlockDetectActivity.class);

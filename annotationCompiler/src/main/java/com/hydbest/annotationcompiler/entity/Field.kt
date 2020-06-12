@@ -14,9 +14,7 @@ open class Field(private val symbol:Symbol.VarSymbol):Comparable<Field> {
     val isPrimitive = symbol.type.isPrimitive
 
     fun asJavaTypeName() = symbol.type.asJavaTypeName()
-    open fun asKotlinTypeName(): TypeName {
-        return  symbol.type.asKotlinTypeName()
-    }
+    open fun asKotlinTypeName() = symbol.type.asKotlinTypeName()
 
     override fun compareTo(other: Field): Int {
         return name.compareTo(other.name)

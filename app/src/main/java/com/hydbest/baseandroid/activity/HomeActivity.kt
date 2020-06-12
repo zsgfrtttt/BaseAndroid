@@ -1,6 +1,10 @@
 package com.hydbest.baseandroid.activity
 
 import android.os.Bundle
+import android.view.View
+import android.widget.Button
+import android.widget.CheckBox
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import com.chad.library.adapter.base.BaseQuickAdapter
@@ -37,5 +41,17 @@ class HomeActivity : AppCompatActivity() {
         rv.adapter = adapter
         rv.layoutManager = manager
         //adapter.expandAll();
+    }
+
+    companion object{
+
+        @JvmStatic
+        fun main(args:Array<String>){
+           val btn :ArrayList<Button> = ArrayList()
+            sequenceOf(1,2,3,4).forEach {
+                println("kk $it")
+            }
+        }
+
     }
 }

@@ -14,11 +14,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.LinearLayout;
+import android.widget.TextClock;
 import android.widget.TextView;
 
 import groovy.hydbest.Messenger.MessageService;
 import com.hydbest.baseandroid.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MessengerActivity extends AppCompatActivity {
     private static final int MSG_SUM = 0x110;
@@ -114,6 +119,4 @@ public class MessengerActivity extends AppCompatActivity {
         super.onDestroy();
         unbindService(mConn);
     }
-
-
 }

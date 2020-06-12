@@ -18,6 +18,8 @@ public class EventRegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_register);
         tv = findViewById(R.id.tv);
+
+
     }
 
     public void startPost(View view){

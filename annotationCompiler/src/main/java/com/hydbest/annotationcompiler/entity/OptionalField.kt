@@ -1,6 +1,5 @@
 package com.hydbest.annotationcompiler.entity
 
-import com.bennyhuo.aptutils.types.asKotlinTypeName
 import com.bennyhuo.aptutils.types.asTypeMirror
 import com.csz.annotation.Optional
 import com.squareup.kotlinpoet.TypeName
@@ -44,7 +43,7 @@ class OptionalField(symbol: Symbol.VarSymbol) : Field(symbol) {
                 if (symbol.type == String::class.java.asTypeMirror()) {
                      """"${optional.stringValue}""""
                 }else{
-                    null
+                    "null"
                 }
         }
     }
@@ -57,7 +56,7 @@ class OptionalField(symbol: Symbol.VarSymbol) : Field(symbol) {
         }
     }
 
-    override open fun asKotlinTypeName(): TypeName {
+    override  fun asKotlinTypeName(): TypeName {
         return super.asKotlinTypeName().asNullable()
     }
 

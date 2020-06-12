@@ -52,10 +52,14 @@ public class FirstFragment extends Fragment {
                 model.Skip(v);
             }
         });
-        NavController controller = Navigation.findNavController(binding.root);
-    //   AppBarConfiguration configuration = new AppBarConfiguration.Builder(controller.getGraph()).build();
-    //    NavigationUI.setupActionBarWithNavController((AppCompatActivity) requireActivity(),controller,configuration);
-        NavigationUI.setupWithNavController(binding.navi,controller);
+        try {
+            NavController controller = Navigation.findNavController(binding.root);
+            //   AppBarConfiguration configuration = new AppBarConfiguration.Builder(controller.getGraph()).build();
+            //    NavigationUI.setupActionBarWithNavController((AppCompatActivity) requireActivity(),controller,configuration);
+            NavigationUI.setupWithNavController(binding.navi,controller);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public static final class FirstViewModel extends AndroidViewModel{

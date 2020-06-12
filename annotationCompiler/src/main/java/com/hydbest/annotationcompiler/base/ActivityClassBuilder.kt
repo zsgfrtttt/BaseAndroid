@@ -36,7 +36,7 @@ class ActivityClassBuilder(private val activityClass: ActivityClass) {
 
     private fun writeKotlinToFile(filer: Filer, fileSpec: FileSpec) {
         try {
-            val fileObj = filer.createResource(StandardLocation.SOURCE_OUTPUT, activityClass.packageName, fileSpec.name + ".kt").apply {
+            filer.createResource(StandardLocation.SOURCE_OUTPUT, activityClass.packageName, fileSpec.name + ".kt").apply {
                 openWriter().also {
                     fileSpec.writeTo(it)
                 }.close()

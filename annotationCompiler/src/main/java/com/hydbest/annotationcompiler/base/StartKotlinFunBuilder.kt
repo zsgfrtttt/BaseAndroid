@@ -17,7 +17,6 @@ class StartKotlinFunBuilder(private val activityClass: ActivityClass) {
             val name = field.name
             val className = field.asKotlinTypeName()
             if (field is OptionalField){
-                //TODO
                 functionBuilder.addParameter(ParameterSpec.builder(name,className).defaultValue("null").build())
             }else{
                 functionBuilder.addParameter(name,className)
