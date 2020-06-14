@@ -2,6 +2,7 @@ package com.hydbest.baseandroid.util;
 
 import com.chad.library.adapter.base.entity.MultiItemEntity;
 import com.chad.library.adapter.base.entity.node.BaseNode;
+import com.hydbest.baseandroid.activity.Media.IjkPlayerActivity;
 import com.hydbest.baseandroid.activity.Media.MediaAudioRecordActivity;
 import com.hydbest.baseandroid.activity.Media.MediaAudioTrackActivity;
 import com.hydbest.baseandroid.activity.Media.MediaCameraActivity;
@@ -45,6 +46,7 @@ import com.hydbest.baseandroid.activity.foundation.ContextMenuActivity;
 import com.hydbest.baseandroid.activity.foundation.FileProviderActivity;
 import com.hydbest.baseandroid.activity.foundation.GifActivity;
 import com.hydbest.baseandroid.activity.foundation.LogActivity;
+import com.hydbest.baseandroid.activity.foundation.NetworkObserveActivity;
 import com.hydbest.baseandroid.activity.foundation.NotificationActivity;
 import com.hydbest.baseandroid.activity.foundation.RuntimePermissonActivity;
 import com.hydbest.baseandroid.activity.foundation.VlayoutActivity;
@@ -106,6 +108,7 @@ public class DataGeneration {
         Fragmentation subItem0_10 = new Fragmentation("zxing扫描", ZxingActivity.class);
         Fragmentation subItem0_11 = new Fragmentation("图片压缩", ZoomImageActivity.class);
         Fragmentation subItem0_12 = new Fragmentation("VLayout使用", VlayoutActivity.class);
+        Fragmentation subItem0_13 = new Fragmentation("网络监听器", NetworkObserveActivity.class);
         item0.addSubItem(subItem0_0);
         item0.addSubItem(subItem0_1);
         item0.addSubItem(subItem0_2);
@@ -119,6 +122,7 @@ public class DataGeneration {
         item0.addSubItem(subItem0_10);
         item0.addSubItem(subItem0_11);
         item0.addSubItem(subItem0_12);
+        item0.addSubItem(subItem0_13);
 
         Level0Item item1 = new Level0Item("android自定义View", "");
         Fragmentation subItem1_0 = new Fragmentation("仿知乎广告", AdActivity.class);
@@ -200,6 +204,7 @@ public class DataGeneration {
         Fragmentation subItem6_6 = new Fragmentation("Android 音乐(音效)播放方式总结", MediaVoiceActivity.class);
         Fragmentation subItem6_7 = new Fragmentation("使用VideoView播放视频", MediaVideoActivity.class);
         Fragmentation subItem6_8 = new Fragmentation("自定义播放器", MediaCusVideoActivity.class);
+        Fragmentation subItem6_9 = new Fragmentation("ijkplayer播放器", IjkPlayerActivity.class);
         item6.addSubItem(subItem6_0);
         item6.addSubItem(subItem6_1);
         item6.addSubItem(subItem6_2);
@@ -209,6 +214,7 @@ public class DataGeneration {
         item6.addSubItem(subItem6_6);
         item6.addSubItem(subItem6_7);
         item6.addSubItem(subItem6_8);
+        item6.addSubItem(subItem6_9);
 
         Level0Item item7 = new Level0Item("OpenGL ES", "");
         Fragmentation subItem7_0 = new Fragmentation("GLSurfaceView的探索", GLSurfaceActivity.class);

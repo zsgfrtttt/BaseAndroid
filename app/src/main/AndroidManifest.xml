@@ -89,8 +89,9 @@
         <activity android:name=".activity.other.syncAdapter.SyncAdapterActivity" />
         <activity android:name=".activity.foundation.GifActivity" />
         <activity android:name=".aidl.BookActivity" />
-        <activity android:name=".activity.jetpack.KtActivity"
-            android:screenOrientation="landscape"/>
+        <activity
+            android:name=".activity.jetpack.KtActivity"
+            android:screenOrientation="landscape" />
         <activity
             android:name=".aidl.AddBookActivity"
             android:process="com.addbook" />
@@ -129,11 +130,14 @@
         <activity android:name=".activity.jetpack.LifeCycleActivity" />
         <activity android:name=".activity.jetpack.RoomActivity" />
         <activity android:name=".activity.jetpack.PagingActivity" />
-        <activity android:name=".activity.jetpack.ViewBindingActivity"/>
-        <activity android:name=".activity.jetpack.WorkerActivity"/>
-        <activity android:name=".activity.other.syncAdapter.AnnotationProcessActivity"/>
-        <activity android:name=".activity.other.syncAdapter.AnnoReceActivity"/>
-        <activity android:name=".activity.cus_viewgroup.PagerIndicatorActivity"/>
+        <activity android:name=".activity.jetpack.ViewBindingActivity" />
+        <activity android:name=".activity.jetpack.WorkerActivity" />
+        <activity android:name=".activity.other.syncAdapter.AnnotationProcessActivity" />
+        <activity android:name=".activity.other.syncAdapter.AnnoReceActivity" />
+        <activity android:name=".activity.cus_viewgroup.PagerIndicatorActivity" />
+        <activity android:name=".activity.foundation.NetworkObserveActivity"/>
+        <activity android:name=".activity.Media.IjkPlayerActivity"
+            android:screenOrientation="landscape"/>
 
         <service
             android:name=".groovy$hydbest$Messenger$MessageService"

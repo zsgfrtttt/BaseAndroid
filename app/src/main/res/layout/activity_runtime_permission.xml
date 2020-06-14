@@ -18,4 +18,26 @@
         android:indeterminateDuration="300"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
+
+
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider" />
+
+    <TextView
+        android:background="@drawable/shape_grandient"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:padding="@dimen/dp_10"
+        android:gravity="center"
+        android:text="hahah caishuzhan"/>
+
+    <View
+        android:id="@+id/divider3"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider" />
 </LinearLayout>

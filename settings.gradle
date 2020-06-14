@@ -1,3 +1,4 @@
 include ':app', ':annotationCompiler', ':eventbus', ':fileprovider',':zxing-android-embedded', ':mediavideo', ':loadapk'
 include ':annotation'
 include ':runtime'
+include ':ijkplayer-java'

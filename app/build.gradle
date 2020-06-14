@@ -6,15 +6,18 @@ apply plugin: 'kotlin-android'
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
+    ndkVersion '21.2.6472646'
     defaultConfig {
         applicationId "com.hydbest.baseandroid"
         minSdkVersion 21
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
         ndk {
             moduleName = 'bsdiff'
         }
+        flavorDimensions "default"
 
         javaCompileOptions {
             annotationProcessorOptions {
@@ -58,7 +61,10 @@ android {
     lintOptions {
         abortOnError false
     }
-
+    productFlavors{
+        all32 { minSdkVersion 17 }
+        all64 { minSdkVersion 21 }
+    }
 }
 
 dependencies {
@@ -71,6 +77,7 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'com.google.android.gms:play-services-plus:17.0.0'
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
+    implementation 'androidx.multidex:multidex:2.0.1'
     implementation('com.csz.upload:testmodule:1.0.1') {
         exclude group: 'com.android.support'
     }
@@ -81,6 +88,7 @@ dependencies {
     implementation project(':mediavideo')
     implementation project(':annotation')
     implementation project(':runtime')
+    implementation project(':ijkplayer-java')
     kapt project(':annotationCompiler')
     implementation 'com.github.bumptech.glide:glide:4.6.1'
     implementation "com.google.protobuf:protobuf-lite:3.0.0"
