@@ -3,11 +3,22 @@
     <item android:id="@android:id/background">
         <color android:color="@color/gray"/>
     </item>
-    <item>
+    <item android:id="@android:id/secondaryProgress">
+        <clip>
+            <shape>
+
+                <gradient android:startColor="@color/color3"
+                    android:endColor="@color/color3">
+                </gradient>
+            </shape>
+        </clip>
+
+    </item>
+    <item android:id="@android:id/progress">
         <clip>
             <shape>
                 <gradient android:startColor="@color/colorRed"
-                    android:endColor="@color/color3">
+                    android:endColor="@color/colorRed">
                 </gradient>
             </shape>
         </clip>

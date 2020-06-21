@@ -1,23 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="test"
-        android:text="@string/app_name"/>
+        android:text="@string/app_name" />
 
     <ProgressBar
         android:id="@+id/pr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dp_10"
         android:indeterminate="true"
-        android:indeterminateDrawable="@drawable/progressbar_anim"
         android:indeterminateBehavior="repeat"
-        android:indeterminateOnly="true"
+        android:indeterminateDrawable="@drawable/progressbar_anim"
         android:indeterminateDuration="300"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:indeterminateOnly="true" />
 
 
     <View
@@ -27,17 +29,31 @@
         android:background="?android:attr/listDivider" />
 
     <TextView
-        android:background="@drawable/shape_grandient"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:padding="@dimen/dp_10"
+        android:background="@drawable/shape_grandient"
         android:gravity="center"
-        android:text="hahah caishuzhan"/>
+        android:padding="@dimen/dp_10"
+        android:text="hahah caishuzhan"
+        android:textSize="20sp" />
 
     <View
         android:id="@+id/divider3"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="?android:attr/listDivider" />
+
+    <com.hydbest.baseandroid.view.view.RecordView
+        android:layout_marginTop="100dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/dp_10" />
+
+    <com.hydbest.baseandroid.view.view.CustomTextView
+        android:layout_marginTop="100dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/dp_10" />
 </LinearLayout>

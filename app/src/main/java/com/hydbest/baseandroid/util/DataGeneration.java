@@ -26,6 +26,7 @@ import com.hydbest.baseandroid.activity.cus_view.LargeImageActivity;
 import com.hydbest.baseandroid.activity.cus_view.MultiTouchActivity;
 import com.hydbest.baseandroid.activity.cus_view.MusicDropActivity;
 import com.hydbest.baseandroid.activity.cus_view.RippleActivity;
+import com.hydbest.baseandroid.activity.cus_view.TextActivity;
 import com.hydbest.baseandroid.activity.cus_view.TextAreaActivity;
 import com.hydbest.baseandroid.activity.cus_view.ZoomImageActivity;
 import com.hydbest.baseandroid.activity.cus_view.shadow.sample.ShadowActivity;
@@ -133,6 +134,7 @@ public class DataGeneration {
         Fragmentation subItem1_5 = new Fragmentation("阴影ImageView", ShadowActivity.class);
         Fragmentation subItem1_6 = new Fragmentation("背景渐变效果", MusicDropActivity.class);
         Fragmentation subItem1_7 = new Fragmentation("水波纹扩散", RippleActivity.class);
+        Fragmentation subItem1_8 = new Fragmentation("文字的绘制", TextActivity.class);
         item1.addSubItem(subItem1_0);
         item1.addSubItem(subItem1_1);
         item1.addSubItem(subItem1_2);
@@ -141,6 +143,7 @@ public class DataGeneration {
         item1.addSubItem(subItem1_5);
         item1.addSubItem(subItem1_6);
         item1.addSubItem(subItem1_7);
+        item1.addSubItem(subItem1_8);
 
         Level0Item item2 = new Level0Item("android自定义ViewGroup", "");
         Fragmentation subItem2_0 = new Fragmentation("constrainLayout", ConstraintActivity.class);

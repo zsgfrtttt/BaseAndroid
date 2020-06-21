@@ -33,4 +33,8 @@
     <declare-styleable name="IjkListPreference">
         <attr name="entrySummaries" />
     </declare-styleable>
+
+    <declare-styleable name="Textswitch">
+        <attr name="type" format="integer"/>
+    </declare-styleable>
 </resources>

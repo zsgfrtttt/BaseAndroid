@@ -112,7 +112,7 @@
             android:layout_height="wrap_content"
             android:textColor="@android:color/white"
             android:textSize="12sp"
-            android:text="14:00"/>
+            android:text="00:00"/>
         <SeekBar
             android:id="@+id/seek"
             android:layout_width="0dp"
@@ -134,6 +134,27 @@
             android:layout_height="wrap_content"
             android:textColor="@android:color/white"
             android:textSize="12sp"
-            android:text="14:00"/>
+            android:text="00:00"/>
     </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_attributes"
+        android:visibility="gone"
+        android:background="@color/zxing_viewfinder_mask"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:padding="24dp"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/tv_attr"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/sp_14"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:shadowDx="0.4"
+            android:shadowDy="0.4"/>
+    </RelativeLayout>
 </RelativeLayout>
