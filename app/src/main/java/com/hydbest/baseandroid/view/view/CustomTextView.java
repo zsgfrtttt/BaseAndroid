@@ -18,9 +18,70 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 
+import com.google.android.gms.common.util.Base64Utils;
+import com.google.android.gms.common.util.Hex;
 import com.hydbest.baseandroid.R;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.math.BigInteger;
+import java.net.Socket;
+import java.net.URLEncoder;
+import java.security.AlgorithmParameterGenerator;
+import java.security.AlgorithmParameters;
+import java.security.CodeSigner;
+import java.security.DigestInputStream;
+import java.security.DigestOutputStream;
+import java.security.Key;
+import java.security.KeyFactory;
+import java.security.KeyPair;
+import java.security.KeyPairGenerator;
+import java.security.KeyStore;
+import java.security.KeyStoreException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.security.PrivateKey;
+import java.security.SecureRandom;
+import java.security.Signature;
+import java.security.SignedObject;
+import java.security.Timestamp;
+import java.security.cert.CRL;
+import java.security.cert.CertPath;
+import java.security.cert.Certificate;
+import java.security.cert.CertificateFactory;
+import java.security.cert.X509Certificate;
+import java.security.spec.EncodedKeySpec;
+import java.security.spec.PKCS8EncodedKeySpec;
+import java.security.spec.X509EncodedKeySpec;
+import java.util.Base64;
+import java.util.Date;
+
+import javax.crypto.Cipher;
+import javax.crypto.CipherInputStream;
+import javax.crypto.CipherOutputStream;
+import javax.crypto.KeyGenerator;
+import javax.crypto.Mac;
+import javax.crypto.SecretKey;
+import javax.crypto.SecretKeyFactory;
+import javax.crypto.spec.DESKeySpec;
+import javax.crypto.spec.DESedeKeySpec;
+import javax.crypto.spec.PBEKeySpec;
+import javax.crypto.spec.PBEParameterSpec;
+import javax.crypto.spec.SecretKeySpec;
+import javax.net.ssl.KeyManagerFactory;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSession;
+import javax.net.ssl.SSLSocket;
+import javax.net.ssl.SSLSocketFactory;
+import javax.net.ssl.TrustManagerFactory;
+
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 
 public class CustomTextView extends View {
 
@@ -82,7 +143,7 @@ public class CustomTextView extends View {
         mTextSmall.setTextScaleX(1f);//文字横向缩放比
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             mTextSmall.setLetterSpacing(0);//字母间距
-       //     mTextSmall.setFontFeatureSettings("smcp"); //用 CSS 的 font-feature-settings 的方式来设置文字。  大写效果
+            //     mTextSmall.setFontFeatureSettings("smcp"); //用 CSS 的 font-feature-settings 的方式来设置文字。  大写效果
             mTextSmall.setElegantTextHeight(true);//对中文无效，恢复某些语言某些特殊字体的原始高度
         }
     }
@@ -205,8 +266,8 @@ public class CustomTextView extends View {
         float base = mWidth * 2 / 3.f;
         canvas.drawLine(0, base, mWidth, base, mTextPaint);
         //如果是绘制数字不需要往上移动descent，数字本身就是在baseline上方绘制
-        canvas.drawText(chars, 0, end, mWidth / 2 - width / 2, base  - mTextPaint.descent() , mTextPaint);
-        canvas.drawText(chars, end, text.length() - end, mWidth / 2 - width / 2 + rect.width() , base -  mTextSmall.descent(), mTextSmall);
+        canvas.drawText(chars, 0, end, mWidth / 2 - width / 2, base - mTextPaint.descent(), mTextPaint);
+        canvas.drawText(chars, end, text.length() - end, mWidth / 2 - width / 2 + rect.width(), base - mTextSmall.descent(), mTextSmall);
     }
 
     private void drawTextOnCenter(Canvas canvas) {
@@ -217,7 +278,7 @@ public class CustomTextView extends View {
         mTextPaint.getTextBounds(text, 0, end, rect);
         float centerY = mWidth / 2;
         canvas.drawLine(0, centerY, mWidth, centerY, mTextPaint);
-        canvas.drawText(text, 0, end, mWidth / 2, centerY - (mTextPaint.ascent() + mTextPaint.descent())/2 , mTextPaint);
+        canvas.drawText(text, 0, end, mWidth / 2, centerY - (mTextPaint.ascent() + mTextPaint.descent()) / 2, mTextPaint);
     }
 
     //vOffset 在CW >0 往里面收 ，<0  往外面扩  ,hOffset 不能为负数且不能超过半圆的大小 ，最好用canvas.rotate代替
@@ -289,18 +350,18 @@ public class CustomTextView extends View {
     }
 
     //getRunAdvance 获取光标的位置，可用于图文混排的场景
-    private void drawRunAdvance(Canvas canvas){
+    private void drawRunAdvance(Canvas canvas) {
         String line = "shuzhan \\uD83C\\uDDE8\\uD83C\\uDDF3";
         Rect rect = new Rect();
         mTextPaint.getTextBounds(line, 0, line.length(), rect);
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
             float runAdvance = mTextPaint.getRunAdvance(line, 0, line.length(), 0, line.length(), false, line.length() - 1);
             canvas.drawText(line, 0, line.length(), 0, rect.height(), mTextPaint);
-            canvas.drawLine(runAdvance + 2,rect.height(),runAdvance + 2, 0,mTextPaint);
+            canvas.drawLine(runAdvance + 2, rect.height(), runAdvance + 2, 0, mTextPaint);
         }
     }
 
-    private void drawLinesOnStaticLayout(Canvas canvas){
+    private void drawLinesOnStaticLayout(Canvas canvas) {
         TextPaint paint = new TextPaint();
         paint.setDither(true);
         paint.setStyle(Paint.Style.FILL);
@@ -317,5 +378,10 @@ public class CustomTextView extends View {
         canvas.translate(0, 200);
         staticLayout2.draw(canvas);
         canvas.restore();
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public static void main(String[] args) {
+
     }
 }

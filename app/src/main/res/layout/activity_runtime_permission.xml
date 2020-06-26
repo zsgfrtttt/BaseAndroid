@@ -43,17 +43,13 @@
         android:layout_height="1dp"
         android:background="?android:attr/listDivider" />
 
-    <com.hydbest.baseandroid.view.view.RecordView
-        android:layout_marginTop="100dp"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_gravity="center"
-        android:layout_margin="@dimen/dp_10" />
-
-    <com.hydbest.baseandroid.view.view.CustomTextView
-        android:layout_marginTop="100dp"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_gravity="center"
-        android:layout_margin="@dimen/dp_10" />
+   <WebView
+       android:id="@+id/web_1"
+       android:layout_width="match_parent"
+       android:layout_height="200dp"/>
+    <WebView
+        android:layout_marginTop="@dimen/dp_40"
+        android:id="@+id/web_2"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"/>
 </LinearLayout>
