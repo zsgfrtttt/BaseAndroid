@@ -139,6 +139,7 @@
         <activity android:name=".activity.foundation.NetworkObserveActivity"/>
         <activity android:name=".activity.Media.IjkPlayerActivity"
             android:screenOrientation="landscape"/>
+        <activity android:name=".activity.other.HotFixActivity"/>
 
         <service
             android:name="groovy.hydbest.Messenger.MessageService"

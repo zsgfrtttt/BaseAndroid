@@ -69,6 +69,7 @@ import com.hydbest.baseandroid.activity.md.SvgActivity;
 import com.hydbest.baseandroid.activity.md.TranslucentBarActivity;
 import com.hydbest.baseandroid.activity.md.ViewOutlineActivity;
 import com.hydbest.baseandroid.activity.other.AndroidAdvanceActivity;
+import com.hydbest.baseandroid.activity.other.HotFixActivity;
 import com.hydbest.baseandroid.activity.other.PatchUpdateActivity;
 import com.hydbest.baseandroid.activity.other.syncAdapter.AnnotationProcessActivity;
 import com.hydbest.baseandroid.activity.other.syncAdapter.SyncAdapterActivity;
@@ -176,12 +177,14 @@ public class DataGeneration {
         Fragmentation subItem4_3 = new Fragmentation("学习资源tnt", AndroidAdvanceActivity.class);
         Fragmentation subItem4_4 = new Fragmentation("SyncAdapter同步（提高进程优先级）", SyncAdapterActivity.class);
         Fragmentation subItem4_5 = new Fragmentation("注解处理器", AnnotationProcessActivity.class);
+        Fragmentation subItem4_6 = new Fragmentation("热修复", HotFixActivity.class);
         item4.addSubItem(subItem4_0);
         item4.addSubItem(subItem4_1);
         item4.addSubItem(subItem4_2);
         item4.addSubItem(subItem4_3);
         item4.addSubItem(subItem4_4);
         item4.addSubItem(subItem4_5);
+        item4.addSubItem(subItem4_6);
 
         Level0Item item5 = new Level0Item("java并发编程", "");
         Fragmentation subItem5_0 = new Fragmentation("CountDownLatch", CountDownLatchActivity.class);
