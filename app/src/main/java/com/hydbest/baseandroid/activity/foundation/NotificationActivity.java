@@ -9,13 +9,14 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.RemoteViews;
 
 import com.hydbest.baseandroid.activity.cus_view.AdActivity;
+
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
 
 
 public class NotificationActivity extends AppCompatActivity{

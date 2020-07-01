@@ -2,9 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/root"
     android:orientation="vertical">
 
     <Button
+        android:id="@+id/btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="test"
@@ -34,6 +36,8 @@
         android:background="@drawable/shape_grandient"
         android:gravity="center"
         android:padding="@dimen/dp_10"
+        android:clickable="true"
+        android:longClickable="true"
         android:text="hahah caishuzhan"
         android:textSize="20sp" />
 
@@ -52,4 +56,11 @@
         android:id="@+id/web_2"
         android:layout_width="match_parent"
         android:layout_height="200dp"/>
+
+    <FrameLayout
+        android:id="@+id/frame"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@color/gray"/>
 </LinearLayout>

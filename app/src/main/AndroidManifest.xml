@@ -46,7 +46,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.MessengerActivity" />
+        <activity android:name=".activity.MessengerActivity"/>
         <activity android:name=".activity.concurrent.CountDownLatchActivity" />
         <activity android:name=".activity.concurrent.ThreadLocalActivity" />
         <activity android:name=".activity.concurrent.ExecuteServiceActivity" />
@@ -57,9 +57,13 @@
         <activity android:name=".activity.cus_view.LargeImageActivity" />
         <activity android:name=".activity.foundation.FileProviderActivity" />
         <activity android:name=".activity.foundation.BlockDetectActivity" />
-        <activity android:name=".activity.foundation.RuntimePermissonActivity" />
+        <!--taskAffinity 一定要以.开头-->
+        <activity android:name=".activity.foundation.RuntimePermissonActivity"
+            android:taskAffinity=".csz"
+            android:allowTaskReparenting="true"/>
         <activity android:name=".activity.cus_viewgroup.ViewpageActivity" />
-        <activity android:name=".activity.foundation.LogActivity" />
+        <activity android:name=".activity.foundation.LogActivity"
+            android:theme="@style/translucentTheme"/>
         <activity android:name=".activity.event.EventRegisterActivity" />
         <activity android:name=".activity.cus_viewgroup.NestScrollActivity" />
         <activity android:name=".activity.event.EventPostActivity" />
@@ -140,9 +144,10 @@
         <activity android:name=".activity.Media.IjkPlayerActivity"
             android:screenOrientation="landscape"/>
         <activity android:name=".activity.other.HotFixActivity"/>
+        <activity android:name=".activity.md.MatraialShapeDrawableActivity"/>
 
         <service
-            android:name="groovy.hydbest.Messenger.MessageService"
+            android:name=".messenger.MessageService"
             android:enabled="true"
             android:exported="true"
             android:process=":remote">

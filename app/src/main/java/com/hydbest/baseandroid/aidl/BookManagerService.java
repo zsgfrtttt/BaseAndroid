@@ -8,11 +8,12 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Binder;
 import android.os.IBinder;
 import android.os.RemoteException;
-import androidx.annotation.Nullable;
 import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.annotation.Nullable;
 
 /**
  * Created by csz on 2018/11/28.

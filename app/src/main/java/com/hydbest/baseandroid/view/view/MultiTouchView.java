@@ -1,14 +1,13 @@
 package com.hydbest.baseandroid.view.view;
 
 import android.content.Context;
-import androidx.annotation.Nullable;
-import androidx.core.view.MotionEventCompat;
-import androidx.core.view.ViewCompat;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
+
+import androidx.annotation.Nullable;
 
 /**
  * Created by csz on 2018/8/8.

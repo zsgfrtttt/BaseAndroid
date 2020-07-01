@@ -2,13 +2,14 @@ package com.hydbest.baseandroid.activity.event;
 
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
-import groovy.csz.eventbus.EventBus;
 import com.hydbest.baseandroid.R;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import groovy.csz.eventbus.EventBus;
 
 public class EventRegisterActivity extends AppCompatActivity {
     private TextView tv;

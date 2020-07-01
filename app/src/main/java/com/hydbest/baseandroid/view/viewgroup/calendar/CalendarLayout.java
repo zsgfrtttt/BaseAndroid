@@ -2,7 +2,6 @@ package com.hydbest.baseandroid.view.viewgroup.calendar;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +11,8 @@ import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+
+import androidx.annotation.Nullable;
 
 /**
  * Created by csz on 2018/10/26.

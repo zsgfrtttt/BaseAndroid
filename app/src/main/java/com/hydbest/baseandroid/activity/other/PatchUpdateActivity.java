@@ -4,9 +4,6 @@ import android.Manifest;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Environment;
-import androidx.annotation.Nullable;
-import androidx.core.app.ActivityCompat;
-import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
 
@@ -15,6 +12,10 @@ import com.hydbest.baseandroid.natived.BsPatch;
 import com.hydbest.baseandroid.util.ApkExtract;
 
 import java.io.File;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 /**
  * Created by csz on 2018/10/18.

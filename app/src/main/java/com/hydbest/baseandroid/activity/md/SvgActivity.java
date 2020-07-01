@@ -1,10 +1,11 @@
 package com.hydbest.baseandroid.activity.md;
 
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.hydbest.baseandroid.R;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class SvgActivity extends AppCompatActivity {
 

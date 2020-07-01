@@ -8,7 +8,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.hydbest.baseandroid.R
 import com.hydbest.baseandroid.aidl.AddBookActivity
 import kotlinx.android.synthetic.main.activity_book.*

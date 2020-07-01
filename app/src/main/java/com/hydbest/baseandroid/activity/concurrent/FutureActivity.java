@@ -2,11 +2,10 @@ package com.hydbest.baseandroid.activity.concurrent;
 
 import android.os.Build;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+
 import com.hydbest.baseandroid.R;
 
 import java.util.TimerTask;
@@ -15,6 +14,9 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class FutureActivity extends AppCompatActivity {
     @Override

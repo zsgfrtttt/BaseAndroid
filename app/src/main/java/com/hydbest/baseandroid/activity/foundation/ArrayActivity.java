@@ -2,15 +2,16 @@ package com.hydbest.baseandroid.activity.foundation;
 
 import android.os.Build;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.collection.LongSparseArray;
-import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.util.SparseArray;
 import android.util.SparseLongArray;
 import android.view.View;
 
 import com.hydbest.baseandroid.R;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.collection.LongSparseArray;
 
 /**
  * Created by csz on 2018/9/26.

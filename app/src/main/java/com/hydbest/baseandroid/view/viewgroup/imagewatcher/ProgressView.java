@@ -10,7 +10,6 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.Drawable;
-import androidx.annotation.NonNull;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View;
@@ -21,6 +20,8 @@ import android.view.animation.LinearInterpolator;
 import android.view.animation.Transformation;
 
 import java.util.ArrayList;
+
+import androidx.annotation.NonNull;
 
 /**
  * PtrFrameLayout 源码微调

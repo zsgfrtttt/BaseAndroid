@@ -9,13 +9,14 @@ import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.inputmethodservice.Keyboard;
 import android.inputmethodservice.KeyboardView;
-import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 
 import com.hydbest.baseandroid.R;
 
 import java.lang.reflect.Field;
 import java.util.List;
+
+import androidx.annotation.Nullable;
 
 /**
  * Created by csz on 2019/4/28.

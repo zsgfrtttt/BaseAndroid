@@ -2,10 +2,15 @@ package com.hydbest.baseandroid.fragment;
 
 import android.app.Application;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+import com.hydbest.baseandroid.R;
+import com.hydbest.baseandroid.databinding.FragmentFirstBinding;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.AndroidViewModel;
@@ -14,15 +19,7 @@ import androidx.lifecycle.SavedStateViewModelFactory;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
-import com.hydbest.baseandroid.R;
-import com.hydbest.baseandroid.databinding.FragmentFirstBinding;
 
 
 public class FirstFragment extends Fragment {

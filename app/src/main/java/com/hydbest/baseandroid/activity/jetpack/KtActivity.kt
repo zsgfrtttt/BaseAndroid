@@ -6,7 +6,10 @@ import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
+import androidx.lifecycle.SavedStateHandle
+import androidx.lifecycle.ViewModel
 import com.hydbest.baseandroid.R
 import kotlinx.android.synthetic.main.activity_kt.*
 import kotlinx.coroutines.*

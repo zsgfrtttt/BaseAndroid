@@ -9,9 +9,6 @@ import android.media.MediaFormat;
 import android.media.MediaMuxer;
 import android.os.Bundle;
 import android.os.Environment;
-import androidx.annotation.Nullable;
-import androidx.core.app.ActivityCompat;
-import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
@@ -21,6 +18,10 @@ import com.hydbest.baseandroid.R;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.nio.ByteBuffer;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 
 /**

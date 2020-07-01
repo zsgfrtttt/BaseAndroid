@@ -5,8 +5,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.hydbest.baseandroid.R
-import java.lang.Boolean
-import java.lang.Short
 
 class AnnotationProcessActivity :AppCompatActivity (){
 

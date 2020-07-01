@@ -1,12 +1,13 @@
 package com.hydbest.baseandroid.activity.foundation;
 
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.alibaba.android.vlayout.VirtualLayoutManager;
 import com.hydbest.baseandroid.R;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class VlayoutActivity extends AppCompatActivity {
 

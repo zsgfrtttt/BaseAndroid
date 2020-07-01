@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.os.Environment
 import android.view.View
 import android.widget.MediaController
-import android.widget.VideoView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import com.hydbest.baseandroid.R

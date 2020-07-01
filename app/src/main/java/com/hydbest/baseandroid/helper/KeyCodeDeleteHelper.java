@@ -1,11 +1,8 @@
 package com.hydbest.baseandroid.helper;
 
-import android.os.Build;
 import android.text.Selection;
 import android.text.Spannable;
 import android.util.Log;
-import android.view.View;
-import android.view.ViewOutlineProvider;
 
 import com.hydbest.baseandroid.activity.integrate.span.DataBindingSpan;
 

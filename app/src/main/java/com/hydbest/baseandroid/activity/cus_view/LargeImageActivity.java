@@ -2,13 +2,14 @@
 package com.hydbest.baseandroid.activity.cus_view;
 
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.hydbest.baseandroid.R;
 import com.hydbest.baseandroid.view.view.LargeImageView;
 
 import java.io.IOException;
 import java.io.InputStream;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class LargeImageActivity extends AppCompatActivity {
     private LargeImageView mLargeImageView;

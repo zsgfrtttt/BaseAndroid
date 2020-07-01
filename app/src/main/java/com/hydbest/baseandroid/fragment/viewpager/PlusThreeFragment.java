@@ -2,15 +2,14 @@ package com.hydbest.baseandroid.fragment.viewpager;
 
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.hydbest.baseandroid.R;
+
+import androidx.fragment.app.Fragment;
 
 public class PlusThreeFragment extends Fragment {
 

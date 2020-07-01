@@ -1,8 +1,6 @@
 package com.hydbest.baseandroid.fragment;
 
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +8,9 @@ import android.widget.ListView;
 
 import com.hydbest.baseandroid.adapter.LeftMenuAdapter;
 import com.hydbest.baseandroid.entity.MenuItem;
+
+import androidx.annotation.Nullable;
+import androidx.fragment.app.ListFragment;
 
 public class LeftMenuFragment extends ListFragment {
 

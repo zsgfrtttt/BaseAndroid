@@ -10,8 +10,6 @@ import android.graphics.Path;
 import android.graphics.PointF;
 import android.graphics.RectF;
 import android.graphics.Region;
-import androidx.annotation.Nullable;
-import androidx.core.graphics.PathParser;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -28,6 +26,9 @@ import java.util.List;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+
+import androidx.annotation.Nullable;
+import androidx.core.graphics.PathParser;
 
 public class SvgView extends View {
 

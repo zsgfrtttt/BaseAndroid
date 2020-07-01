@@ -5,25 +5,21 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
 import android.os.Messenger;
 import android.os.RemoteException;
-import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.LinearLayout;
-import android.widget.TextClock;
 import android.widget.TextView;
 
-import groovy.hydbest.Messenger.MessageService;
 import com.hydbest.baseandroid.R;
+import com.hydbest.baseandroid.messenger.MessageService;
 
-import java.util.ArrayList;
-import java.util.List;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MessengerActivity extends AppCompatActivity {
     private static final int MSG_SUM = 0x110;
@@ -109,7 +105,7 @@ public class MessengerActivity extends AppCompatActivity {
     }
 
     private void bindServiceInvoked() {
-        Intent intent = new Intent(this,MessageService.class);
+        Intent intent = new Intent(this, MessageService.class);
         intent.setAction("com.csz.service");
         bindService(intent, mConn, Context.BIND_AUTO_CREATE);
     }

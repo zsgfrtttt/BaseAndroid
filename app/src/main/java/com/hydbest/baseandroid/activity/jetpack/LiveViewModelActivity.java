@@ -1,11 +1,9 @@
 package com.hydbest.baseandroid.activity.jetpack;
 
 import android.app.Application;
-import android.content.Intent;
 import android.os.Bundle;
 
 import com.hydbest.baseandroid.R;
-import com.hydbest.baseandroid.activity.cus_viewgroup.NavigationActivity;
 import com.hydbest.baseandroid.databinding.ActivityLiveViewmodelBinding;
 
 import androidx.annotation.NonNull;
@@ -16,7 +14,6 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.SavedStateHandle;
 import androidx.lifecycle.SavedStateViewModelFactory;
-import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
 public class LiveViewModelActivity extends AppCompatActivity {

@@ -1,11 +1,11 @@
 package com.hydbest.baseandroid.view.viewgroup;
 
 import android.content.Context;
-import androidx.core.view.MotionEventCompat;
-import androidx.customview.widget.ViewDragHelper;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.RelativeLayout;
+
+import androidx.customview.widget.ViewDragHelper;
 
 public class Container extends RelativeLayout {
 

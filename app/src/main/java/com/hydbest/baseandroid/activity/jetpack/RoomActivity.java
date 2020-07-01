@@ -16,7 +16,6 @@ import java.util.concurrent.Executors;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 
 public class RoomActivity extends AppCompatActivity {

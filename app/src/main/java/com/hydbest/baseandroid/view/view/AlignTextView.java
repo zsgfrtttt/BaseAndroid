@@ -3,13 +3,14 @@ package com.hydbest.baseandroid.view.view;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
-import androidx.annotation.Nullable;
-import androidx.appcompat.widget.AppCompatTextView;
 import android.text.Layout;
 import android.text.StaticLayout;
 import android.util.AttributeSet;
 
 import com.hydbest.baseandroid.R;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatTextView;
 
 /**
  * Created by csz on 2018/12/21.

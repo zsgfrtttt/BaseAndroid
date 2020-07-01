@@ -8,7 +8,6 @@ import com.csz.annotation.Required
 import com.hydbest.baseandroid.R
 import kotlinx.android.synthetic.main.activity_anno_rece.*
 import java.util.*
-import kotlin.collections.ArrayList
 
 @Builder
 class AnnoReceActivity: AppCompatActivity(){

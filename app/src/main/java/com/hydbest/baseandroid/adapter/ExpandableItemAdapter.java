@@ -4,12 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 
-import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.BaseNodeAdapter;
-import com.chad.library.adapter.base.entity.MultiItemEntity;
-
 import com.chad.library.adapter.base.entity.node.BaseNode;
-import com.chad.library.adapter.base.provider.BaseItemProvider;
 import com.chad.library.adapter.base.provider.BaseNodeProvider;
 import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 import com.hydbest.baseandroid.R;

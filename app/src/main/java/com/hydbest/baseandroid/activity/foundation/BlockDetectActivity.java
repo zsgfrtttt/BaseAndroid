@@ -2,15 +2,16 @@ package com.hydbest.baseandroid.activity.foundation;
 
 import android.os.Build;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 
 import com.csz.testmodule.L;
 import com.hydbest.baseandroid.R;
 import com.hydbest.baseandroid.util.BlockDetectByLooper;
 import com.hydbest.baseandroid.util.BlockDetectByPrinter;
+
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * Created by csz on 2018/7/24.

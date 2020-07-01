@@ -4,9 +4,6 @@ import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.os.Build;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.LinearLayout;
 
@@ -14,6 +11,10 @@ import com.hydbest.baseandroid.R;
 import com.hydbest.baseandroid.util.StatusBarUtil;
 
 import java.util.Random;
+
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * Created by csz on 2018/10/31.

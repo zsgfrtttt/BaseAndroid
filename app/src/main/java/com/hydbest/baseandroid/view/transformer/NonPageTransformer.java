@@ -1,7 +1,8 @@
 package com.hydbest.baseandroid.view.transformer;
 
-import androidx.viewpager.widget.ViewPager;
 import android.view.View;
+
+import androidx.viewpager.widget.ViewPager;
 
 /**
  * Created by csz on 16/5/7.

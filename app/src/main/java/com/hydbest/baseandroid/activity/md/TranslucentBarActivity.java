@@ -3,10 +3,6 @@ package com.hydbest.baseandroid.activity.md;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -18,6 +14,11 @@ import com.hydbest.baseandroid.util.SystemBarUtil;
 import com.hydbest.baseandroid.view.view.CusNestScrollView;
 
 import java.lang.reflect.Field;
+
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 public class TranslucentBarActivity extends AppCompatActivity implements CusNestScrollView.Callback {
 

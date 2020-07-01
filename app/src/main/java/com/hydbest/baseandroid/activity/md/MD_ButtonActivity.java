@@ -2,10 +2,10 @@ package com.hydbest.baseandroid.activity.md;
 
 import android.os.Bundle;
 
+import com.hydbest.baseandroid.R;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.hydbest.baseandroid.R;
 
 /**
  * Created by csz on 2018/10/31.

@@ -1,9 +1,6 @@
 package com.hydbest.baseandroid.activity.cus_viewgroup;
 
 import android.os.Bundle;
-import androidx.viewpager.widget.PagerAdapter;
-import androidx.viewpager.widget.ViewPager;
-import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -15,6 +12,10 @@ import com.hydbest.baseandroid.view.transformer.RotateDownPageTransformer;
 import com.hydbest.baseandroid.view.transformer.RotateUpPageTransformer;
 import com.hydbest.baseandroid.view.transformer.RotateYTransformer;
 import com.hydbest.baseandroid.view.transformer.ScaleInTransformer;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 /**
  * Created by csz on 2018/7/24.

@@ -8,13 +8,14 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
-import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
 
 import com.hydbest.baseandroid.R;
+
+import androidx.annotation.Nullable;
 
 /**
  * Created by csz on 2019/5/15.

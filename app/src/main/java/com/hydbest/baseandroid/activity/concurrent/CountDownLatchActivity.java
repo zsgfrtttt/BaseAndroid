@@ -1,12 +1,13 @@
 package com.hydbest.baseandroid.activity.concurrent;
 
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 
 import java.util.concurrent.CountDownLatch;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class CountDownLatchActivity extends AppCompatActivity {
     private CountDownLatch mCountDownLatch = new CountDownLatch(2);

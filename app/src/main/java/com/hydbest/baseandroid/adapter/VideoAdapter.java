@@ -1,8 +1,5 @@
 package com.hydbest.baseandroid.adapter;
 
-import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.widget.LinearLayout;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -14,7 +11,8 @@ import com.hydbest.baseandroid.R;
 
 import java.util.List;
 
-import static androidx.recyclerview.widget.RecyclerView.NO_POSITION;
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class VideoAdapter extends BaseQuickAdapter<SlotValue, BaseViewHolder> {
 

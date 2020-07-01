@@ -5,10 +5,10 @@ import android.graphics.*
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.os.Build
-import androidx.core.content.ContextCompat
-import androidx.appcompat.widget.AppCompatImageView
 import android.util.AttributeSet
 import android.view.ViewTreeObserver
+import androidx.appcompat.widget.AppCompatImageView
+import androidx.core.content.ContextCompat
 import com.hydbest.baseandroid.R
 import kotlin.properties.Delegates
 

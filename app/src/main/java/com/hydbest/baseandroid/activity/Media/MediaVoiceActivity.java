@@ -4,9 +4,10 @@ import android.content.Context;
 import android.media.AudioManager;
 import android.media.SoundPool;
 import android.os.Bundle;
+import android.view.View;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import android.view.View;
 
 public class MediaVoiceActivity extends AppCompatActivity{
     private SoundPool mSoundPool;

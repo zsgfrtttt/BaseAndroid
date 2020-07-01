@@ -1,8 +1,9 @@
 package com.hydbest.baseandroid.util;
 
 import android.os.Build;
-import androidx.annotation.RequiresApi;
 import android.view.Choreographer;
+
+import androidx.annotation.RequiresApi;
 
 /**
  * Created by csz on 2018/7/24.

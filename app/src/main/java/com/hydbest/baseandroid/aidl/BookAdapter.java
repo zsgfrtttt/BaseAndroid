@@ -1,11 +1,11 @@
 package com.hydbest.baseandroid.aidl;
 
-import androidx.annotation.Nullable;
-
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 
 import java.util.List;
+
+import androidx.annotation.Nullable;
 
 /**
  * Created by csz on 2018/11/28.

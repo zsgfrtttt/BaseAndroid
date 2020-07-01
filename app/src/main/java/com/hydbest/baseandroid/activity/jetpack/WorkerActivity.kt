@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.work.*
 import com.hydbest.baseandroid.R
-import kotlinx.android.synthetic.main.activity_md_button.view.*
 import kotlinx.android.synthetic.main.activity_worker.*
 
 class WorkerActivity :AppCompatActivity() {

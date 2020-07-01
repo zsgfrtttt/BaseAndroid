@@ -2,8 +2,8 @@ package com.hydbest.baseandroid.activity.cus_view.shadow.sample;
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
 import com.hydbest.baseandroid.R
 
 class ShadowActivity : AppCompatActivity() {

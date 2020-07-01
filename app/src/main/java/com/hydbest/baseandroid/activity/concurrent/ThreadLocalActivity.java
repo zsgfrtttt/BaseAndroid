@@ -4,14 +4,15 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Message;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 
 import com.hydbest.baseandroid.R;
 
 import java.util.concurrent.Semaphore;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class ThreadLocalActivity extends AppCompatActivity {
 

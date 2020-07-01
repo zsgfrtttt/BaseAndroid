@@ -2,10 +2,6 @@ package com.hydbest.baseandroid.activity.cus_viewgroup;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.fragment.app.FragmentManager;
-import androidx.customview.widget.ViewDragHelper;
-import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -15,6 +11,11 @@ import com.hydbest.baseandroid.R;
 import com.hydbest.baseandroid.fragment.LeftMenuFragment;
 import com.hydbest.baseandroid.view.viewdraghelper.DrawlerLayout;
 import com.hydbest.baseandroid.view.viewgroup.Container;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.customview.widget.ViewDragHelper;
+import androidx.fragment.app.FragmentManager;
 
 public class LeftDrawerLayoutActivity extends AppCompatActivity {
 

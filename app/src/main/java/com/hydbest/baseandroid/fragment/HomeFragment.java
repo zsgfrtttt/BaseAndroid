@@ -1,15 +1,7 @@
 package com.hydbest.baseandroid.fragment;
 
 
-import android.net.Uri;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.viewpager2.adapter.FragmentStateAdapter;
-import androidx.viewpager2.widget.ViewPager2;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,7 +14,11 @@ import com.hydbest.baseandroid.fragment.viewpager.PlusOneFragment;
 import com.hydbest.baseandroid.fragment.viewpager.PlusThreeFragment;
 import com.hydbest.baseandroid.fragment.viewpager.PlusTwoFragment;
 
-import java.io.FileNotFoundException;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.viewpager2.adapter.FragmentStateAdapter;
+import androidx.viewpager2.widget.ViewPager2;
 
 
 /**

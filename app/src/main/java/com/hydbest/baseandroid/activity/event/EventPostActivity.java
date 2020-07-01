@@ -1,12 +1,13 @@
 package com.hydbest.baseandroid.activity.event;
 
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 
-import groovy.csz.eventbus.EventBus;
 import com.hydbest.baseandroid.R;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import groovy.csz.eventbus.EventBus;
 
 public class EventPostActivity extends AppCompatActivity{
     @Override

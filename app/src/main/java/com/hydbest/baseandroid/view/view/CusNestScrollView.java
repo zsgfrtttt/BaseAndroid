@@ -1,10 +1,11 @@
 package com.hydbest.baseandroid.view.view;
 
 import android.content.Context;
+import android.util.AttributeSet;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.widget.NestedScrollView;
-import android.util.AttributeSet;
 
 public class CusNestScrollView extends NestedScrollView {
 

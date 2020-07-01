@@ -3,16 +3,11 @@ package com.hydbest.baseandroid.adapter;
 import android.content.ContentResolver;
 import android.content.res.Resources;
 import android.net.Uri;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
 import android.view.View;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
-
 import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 import com.hydbest.baseandroid.R;
@@ -20,6 +15,9 @@ import com.hydbest.baseandroid.R;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 public class ImageWatcherAdapter extends BaseQuickAdapter<Uri, BaseViewHolder> {
 

@@ -1,11 +1,12 @@
 package com.hydbest.baseandroid.view.viewdraghelper;
 
 import android.content.Context;
-import androidx.customview.widget.ViewDragHelper;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.customview.widget.ViewDragHelper;
 
 public class DrawlerLayout extends ViewGroup {
 

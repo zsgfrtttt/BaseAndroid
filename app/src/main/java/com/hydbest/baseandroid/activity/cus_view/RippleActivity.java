@@ -1,12 +1,13 @@
 package com.hydbest.baseandroid.activity.cus_view;
 
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 
 import com.hydbest.baseandroid.R;
 import com.hydbest.baseandroid.view.view.RippleView;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class RippleActivity extends AppCompatActivity {
 

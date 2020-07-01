@@ -5,9 +5,10 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.util.AttributeSet;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatImageView;
-import android.util.AttributeSet;
 
 /**
  * Created by csz on 2018/7/31.

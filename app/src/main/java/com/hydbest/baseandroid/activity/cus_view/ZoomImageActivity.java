@@ -3,8 +3,6 @@ package com.hydbest.baseandroid.activity.cus_view;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -16,6 +14,9 @@ import com.hydbest.baseandroid.util.ImageUtil;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class ZoomImageActivity extends AppCompatActivity {
 

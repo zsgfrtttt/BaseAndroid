@@ -1,10 +1,8 @@
 package com.hydbest.baseandroid.activity.jetpack
 
-import android.annotation.SuppressLint
 import android.os.Parcel
 import android.os.Parcelable
 import androidx.versionedparcelable.VersionedParcelize
-import java.io.OutputStream
 
 
 class A private constructor() {

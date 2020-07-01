@@ -1,12 +1,13 @@
 package com.hydbest.baseandroid.view.viewgroup;
 
 import android.content.Context;
-import androidx.annotation.Nullable;
-import androidx.core.view.NestedScrollingParent;
-import androidx.core.view.ViewCompat;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
+
+import androidx.annotation.Nullable;
+import androidx.core.view.NestedScrollingParent;
+import androidx.core.view.ViewCompat;
 
 public class NestScrollLayout extends LinearLayout implements NestedScrollingParent{
 

@@ -1,6 +1,5 @@
 package com.hydbest.baseandroid.util;
 
-import com.chad.library.adapter.base.entity.MultiItemEntity;
 import com.chad.library.adapter.base.entity.node.BaseNode;
 import com.hydbest.baseandroid.activity.Media.IjkPlayerActivity;
 import com.hydbest.baseandroid.activity.Media.MediaAudioRecordActivity;
@@ -63,6 +62,7 @@ import com.hydbest.baseandroid.activity.jetpack.ViewBindingActivity;
 import com.hydbest.baseandroid.activity.jetpack.WorkerActivity;
 import com.hydbest.baseandroid.activity.md.MD_ButtonActivity;
 import com.hydbest.baseandroid.activity.md.MD_StatusBarActivity;
+import com.hydbest.baseandroid.activity.md.MatraialShapeDrawableActivity;
 import com.hydbest.baseandroid.activity.md.RecycleViewAnimActivity;
 import com.hydbest.baseandroid.activity.md.RecycleViewDecorateActivity;
 import com.hydbest.baseandroid.activity.md.SvgActivity;
@@ -82,7 +82,6 @@ import com.hydbest.baseandroid.aidl.BookActivity;
 import com.hydbest.baseandroid.entity.Fragmentation;
 import com.hydbest.baseandroid.entity.Level0Item;
 
-import java.lang.annotation.Annotation;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -228,7 +227,7 @@ public class DataGeneration {
         item7.addSubItem(subItem7_0);
         item7.addSubItem(subItem7_1);
 
-        Level0Item item8 = new Level0Item("MD 风格化", "");
+        Level0Item item8 = new Level0Item("Matrial Design", "");
         Fragmentation subItem8_0 = new Fragmentation("MD Button", MD_ButtonActivity.class);
         Fragmentation subItem8_1 = new Fragmentation("状态栏变化", MD_StatusBarActivity.class);
         Fragmentation subItem8_2 = new Fragmentation("recycleview动画", RecycleViewAnimActivity.class);
@@ -236,6 +235,7 @@ public class DataGeneration {
         Fragmentation subItem8_4 = new Fragmentation("viewOutline", ViewOutlineActivity.class);
         Fragmentation subItem8_5 = new Fragmentation("沉浸式", TranslucentBarActivity.class);
         Fragmentation subItem8_6 = new Fragmentation("SVG详解", SvgActivity.class);
+        Fragmentation subItem8_7 = new Fragmentation("MatraialShapeDrawable", MatraialShapeDrawableActivity.class);
         item8.addSubItem(subItem8_0);
         item8.addSubItem(subItem8_1);
         item8.addSubItem(subItem8_2);
@@ -243,6 +243,7 @@ public class DataGeneration {
         item8.addSubItem(subItem8_4);
         item8.addSubItem(subItem8_5);
         item8.addSubItem(subItem8_6);
+        item8.addSubItem(subItem8_7);
 
         Level0Item item9 = new Level0Item("插件化", "");
         Fragmentation subItem9_0 = new Fragmentation("深入探讨java类加载器", ClassLoaderActivity.class);

@@ -2,10 +2,8 @@ package com.hydbest.baseandroid.activity.Media
 
 import android.os.Bundle
 import android.view.View
-import android.widget.RelativeLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.csz.video.media.SlotValue
 import com.csz.video.media.VideoHandler
 import com.hydbest.baseandroid.R

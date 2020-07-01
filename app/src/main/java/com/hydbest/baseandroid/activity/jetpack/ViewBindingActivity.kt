@@ -2,9 +2,7 @@ package com.hydbest.baseandroid.activity.jetpack
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.hydbest.baseandroid.R
 import com.hydbest.baseandroid.databinding.ActivityViewbindingBinding
-import com.hydbest.baseandroid.databinding.FragmentPlusOneBinding
 
 class ViewBindingActivity :AppCompatActivity(){
 

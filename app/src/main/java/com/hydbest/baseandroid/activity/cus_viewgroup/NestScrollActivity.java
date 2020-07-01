@@ -1,10 +1,11 @@
 package com.hydbest.baseandroid.activity.cus_viewgroup;
 
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.hydbest.baseandroid.R;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class NestScrollActivity extends AppCompatActivity{
     @Override

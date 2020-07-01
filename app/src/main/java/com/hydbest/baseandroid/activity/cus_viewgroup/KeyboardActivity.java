@@ -2,8 +2,6 @@ package com.hydbest.baseandroid.activity.cus_viewgroup;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +10,8 @@ import android.widget.LinearLayout;
 
 import com.hydbest.baseandroid.R;
 import com.hydbest.baseandroid.view.viewgroup.keyboard.SafeKeyboard;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * Created by csz on 2019/4/26.

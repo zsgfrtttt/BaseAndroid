@@ -3,12 +3,13 @@ package com.hydbest.baseandroid.view.viewgroup.imagewatcher;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 public class SimpleLoader implements ImageWatcher.Loader {
     @Override

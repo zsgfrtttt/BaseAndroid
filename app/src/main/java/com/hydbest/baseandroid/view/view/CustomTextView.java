@@ -11,75 +11,16 @@ import android.graphics.Path;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.os.Build;
-import android.os.SystemClock;
 import android.text.Layout;
 import android.text.StaticLayout;
 import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.accessibility.AccessibilityEvent;
 
-import com.google.android.gms.common.util.Base64Utils;
-import com.google.android.gms.common.util.Hex;
 import com.hydbest.baseandroid.R;
-
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.math.BigInteger;
-import java.net.Socket;
-import java.net.URLEncoder;
-import java.security.AlgorithmParameterGenerator;
-import java.security.AlgorithmParameters;
-import java.security.CodeSigner;
-import java.security.DigestInputStream;
-import java.security.DigestOutputStream;
-import java.security.Key;
-import java.security.KeyFactory;
-import java.security.KeyPair;
-import java.security.KeyPairGenerator;
-import java.security.KeyStore;
-import java.security.KeyStoreException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.security.PrivateKey;
-import java.security.SecureRandom;
-import java.security.Signature;
-import java.security.SignedObject;
-import java.security.Timestamp;
-import java.security.cert.CRL;
-import java.security.cert.CertPath;
-import java.security.cert.Certificate;
-import java.security.cert.CertificateFactory;
-import java.security.cert.X509Certificate;
-import java.security.spec.EncodedKeySpec;
-import java.security.spec.PKCS8EncodedKeySpec;
-import java.security.spec.X509EncodedKeySpec;
-import java.util.Base64;
-import java.util.Date;
-
-import javax.crypto.Cipher;
-import javax.crypto.CipherInputStream;
-import javax.crypto.CipherOutputStream;
-import javax.crypto.KeyGenerator;
-import javax.crypto.Mac;
-import javax.crypto.SecretKey;
-import javax.crypto.SecretKeyFactory;
-import javax.crypto.spec.DESKeySpec;
-import javax.crypto.spec.DESedeKeySpec;
-import javax.crypto.spec.PBEKeySpec;
-import javax.crypto.spec.PBEParameterSpec;
-import javax.crypto.spec.SecretKeySpec;
-import javax.net.ssl.KeyManagerFactory;
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.SSLSession;
-import javax.net.ssl.SSLSocket;
-import javax.net.ssl.SSLSocketFactory;
-import javax.net.ssl.TrustManagerFactory;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
@@ -97,6 +38,7 @@ public class CustomTextView extends View {
     private Bitmap mBitmap;
 
     private int mType;
+    private String title;
 
 
     public CustomTextView(Context context, @Nullable AttributeSet attrs) {
@@ -185,6 +127,7 @@ public class CustomTextView extends View {
             case 8:
                 drawLinesOnStaticLayout(canvas);
                 break;
+
         }
 
     }
@@ -379,7 +322,18 @@ public class CustomTextView extends View {
         canvas.translate(0, 200);
         staticLayout2.draw(canvas);
         canvas.restore();
+
+        setAccessibilityDelegate(new AccessibilityDelegate() {
+            @Override
+            public boolean onRequestSendAccessibilityEvent(ViewGroup host, View child, AccessibilityEvent event) {
+                return super.onRequestSendAccessibilityEvent(host, child, event);
+            }
+
+        });
     }
+
+
+
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public static void main(String[] args) {

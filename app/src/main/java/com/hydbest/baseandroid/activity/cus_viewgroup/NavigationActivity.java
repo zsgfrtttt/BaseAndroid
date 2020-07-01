@@ -1,18 +1,18 @@
 package com.hydbest.baseandroid.activity.cus_viewgroup;
 
 import android.os.Bundle;
-import androidx.annotation.Nullable;
+import android.util.Log;
+import android.view.MenuItem;
+
 import com.google.android.material.navigation.NavigationView;
 import com.hydbest.baseandroid.R;
 import com.hydbest.baseandroid.activity.jetpack.A;
 
-import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-
-import android.util.Log;
-import android.view.MenuItem;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 /**
  * Created by csz on 2018/8/6.

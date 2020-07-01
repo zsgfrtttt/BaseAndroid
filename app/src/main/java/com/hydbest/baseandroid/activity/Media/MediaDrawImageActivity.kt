@@ -8,7 +8,6 @@ import android.graphics.Paint
 import android.os.Bundle
 import android.os.Environment
 import android.view.SurfaceHolder
-import android.view.SurfaceView
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
