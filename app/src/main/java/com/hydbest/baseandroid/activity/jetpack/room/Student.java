@@ -24,6 +24,12 @@ public class Student {
         this.age = age;
     }
 
+    /**
+     * Room只能识别一个构造函数
+     * @param id
+     * @param name
+     * @param age
+     */
     @Ignore
     public Student(int id, String name, int age) {
         this.id = id;

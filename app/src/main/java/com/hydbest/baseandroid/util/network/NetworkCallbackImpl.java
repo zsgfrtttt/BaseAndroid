@@ -2,11 +2,17 @@ package com.hydbest.baseandroid.util.network;
 
 import android.net.ConnectivityManager;
 import android.net.Network;
+import android.os.Build;
 import android.os.Handler;
 import android.os.Message;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 
+/**
+ * @author caishuzhan
+ */
+@RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 public class NetworkCallbackImpl extends ConnectivityManager.NetworkCallback {
 
     private final Handler mObserveHandler;

@@ -7,11 +7,12 @@ import android.os.Build;
 import android.view.View;
 
 import androidx.annotation.ColorInt;
+import androidx.core.view.ViewCompat;
 
 public class Gold {
 
     public static Request with(View view) {
-        Request request = new Request();
+        final Request request = new Request();
         request.view = view;
         request.resources = view.getResources();
         return request;
@@ -83,11 +84,7 @@ public class Gold {
                 if (defineShadowColor()) {
                     shadow.setShadowColor(shadowStartColor, shadowEndColor);
                 }
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                    view.setBackground(shadow);
-                } else {
-                    view.setBackgroundDrawable(shadow);
-                }
+                ViewCompat.setBackground(view,shadow);
             }
         }
 

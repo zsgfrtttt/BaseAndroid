@@ -63,10 +63,12 @@ import com.hydbest.baseandroid.activity.jetpack.WorkerActivity;
 import com.hydbest.baseandroid.activity.md.MD_ButtonActivity;
 import com.hydbest.baseandroid.activity.md.MD_StatusBarActivity;
 import com.hydbest.baseandroid.activity.md.MatraialShapeDrawableActivity;
+import com.hydbest.baseandroid.activity.md.MotionLayoutActivity;
 import com.hydbest.baseandroid.activity.md.RecycleViewAnimActivity;
 import com.hydbest.baseandroid.activity.md.RecycleViewDecorateActivity;
 import com.hydbest.baseandroid.activity.md.SvgActivity;
 import com.hydbest.baseandroid.activity.md.TranslucentBarActivity;
+import com.hydbest.baseandroid.activity.md.UiflagActivity;
 import com.hydbest.baseandroid.activity.md.ViewOutlineActivity;
 import com.hydbest.baseandroid.activity.other.AndroidAdvanceActivity;
 import com.hydbest.baseandroid.activity.other.HotFixActivity;
@@ -234,8 +236,10 @@ public class DataGeneration {
         Fragmentation subItem8_3 = new Fragmentation("recycleview装饰", RecycleViewDecorateActivity.class);
         Fragmentation subItem8_4 = new Fragmentation("viewOutline", ViewOutlineActivity.class);
         Fragmentation subItem8_5 = new Fragmentation("沉浸式", TranslucentBarActivity.class);
-        Fragmentation subItem8_6 = new Fragmentation("SVG详解", SvgActivity.class);
+        Fragmentation subItem8_6 = new Fragmentation("SVG & VectorDrawable 详解", SvgActivity.class);
         Fragmentation subItem8_7 = new Fragmentation("MatraialShapeDrawable", MatraialShapeDrawableActivity.class);
+        Fragmentation subItem8_8 = new Fragmentation("UI_FLAG", UiflagActivity.class);
+        Fragmentation subItem8_9 = new Fragmentation("MotionLayout基本操作", MotionLayoutActivity.class);
         item8.addSubItem(subItem8_0);
         item8.addSubItem(subItem8_1);
         item8.addSubItem(subItem8_2);
@@ -244,6 +248,8 @@ public class DataGeneration {
         item8.addSubItem(subItem8_5);
         item8.addSubItem(subItem8_6);
         item8.addSubItem(subItem8_7);
+        item8.addSubItem(subItem8_8);
+        item8.addSubItem(subItem8_9);
 
         Level0Item item9 = new Level0Item("插件化", "");
         Fragmentation subItem9_0 = new Fragmentation("深入探讨java类加载器", ClassLoaderActivity.class);

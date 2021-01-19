@@ -1,7 +1,5 @@
 package com.hydbest.annotationcompiler.base
-
 import com.bennyhuo.aptutils.types.ClassType
-
 
 val CONTEXT = ClassType("android.content.Context")
 val INTENT = ClassType("android.content.Intent")

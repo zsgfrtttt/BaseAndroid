@@ -71,8 +71,6 @@ public class ExpandableItemAdapter extends BaseNodeAdapter {
                         }
                     }
                 });
-
-
             }
         });
         addItemProvider(new BaseNodeProvider() {

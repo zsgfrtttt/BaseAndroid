@@ -1,6 +1,8 @@
 package com.hydbest.baseandroid.activity.jetpack;
 
+import android.app.Application;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -14,9 +16,16 @@ import java.util.Random;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.SavedStateHandle;
+import androidx.lifecycle.SavedStateViewModelFactory;
+import androidx.lifecycle.ViewModelProvider;
 
 public class RoomActivity extends AppCompatActivity {
 
@@ -26,6 +35,7 @@ public class RoomActivity extends AppCompatActivity {
     StudentDao studentDao;
 
     private Executor threadPool = Executors.newFixedThreadPool(1);
+    private RoomViewModel roomViewModel;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -34,8 +44,17 @@ public class RoomActivity extends AppCompatActivity {
         tv = findViewById(R.id.tv);
         stuDb = StudentDatabase.getInstance(this);
         studentDao = stuDb.getStudentDao();
+        studentDao.queryAll1();
 
         observe();
+
+        roomViewModel = new ViewModelProvider(this, new SavedStateViewModelFactory(getApplication(), this)).get(RoomViewModel.class);
+        roomViewModel.getStudentList().observe(this, new Observer<List<Student>>() {
+            @Override
+            public void onChanged(List<Student> students) {
+                Log.i("csz", Thread.currentThread().getName() + "    students changed    " + students);
+            }
+        });
     }
 
     public void insert(View view) {
@@ -134,12 +153,34 @@ public class RoomActivity extends AppCompatActivity {
             public void onChanged(List<Student> students) {
                 tv.setText("");
                 for (Student student : students) {
-                    tv.append(student.toString()+"\n");
+                    tv.append(student.toString() + "\n");
                 }
             }
         });
-
     }
 
+    /**
+     * 通过viewmodel隔离数据库的操作
+     */
+    public static class RoomViewModel extends AndroidViewModel {
+
+        private static final String KEY = "key1";
+        private SavedStateHandle handle;
+
+        private StudentDao studentDao;
+        private LiveData<List<Student>> liveStudentList;
+
+        public RoomViewModel(@NonNull Application application, SavedStateHandle handle) {
+            super(application);
+            this.handle = handle;
+            this.studentDao = StudentDatabase.getInstance(application).getStudentDao();
+            this.liveStudentList = this.studentDao.queryAll();
+        }
+
+        public LiveData<List<Student>> getStudentList() {
+            return liveStudentList;
+        }
+
+    }
 
 }

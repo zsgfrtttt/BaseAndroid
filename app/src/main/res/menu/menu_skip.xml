@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/homeSkipFragment"
+        android:icon="@drawable/icon_pause"
+        android:title="跳转" />
+</menu>

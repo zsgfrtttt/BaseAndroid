@@ -1,66 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/root"
-    android:orientation="vertical">
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/btn"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="test"
-        android:text="@string/app_name" />
+        android:layout_height="match_parent">
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
-    <ProgressBar
-        android:id="@+id/pr"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp_10"
-        android:indeterminate="true"
-        android:indeterminateBehavior="repeat"
-        android:indeterminateDrawable="@drawable/progressbar_anim"
-        android:indeterminateDuration="300"
-        android:indeterminateOnly="true" />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="test"
+                android:text="@string/app_name" />
+
+            <ProgressBar
+            android:id="@+id/pr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_10"
+            android:indeterminate="true"
+            android:indeterminateBehavior="repeat"
+            android:indeterminateDrawable="@drawable/progressbar_anim"
+            android:indeterminateDuration="300"
+            android:indeterminateOnly="true" />
 
 
-    <View
-        android:id="@+id/divider2"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="?android:attr/listDivider" />
+            <View
+                android:id="@+id/divider2"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="?android:attr/listDivider" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/shape_grandient"
-        android:gravity="center"
-        android:padding="@dimen/dp_10"
-        android:clickable="true"
-        android:longClickable="true"
-        android:text="hahah caishuzhan"
-        android:textSize="20sp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_grandient"
+                android:clickable="true"
+                android:gravity="center"
+                android:longClickable="true"
+                android:padding="@dimen/dp_10"
+                android:text="hahah caishuzhan"
+                android:textSize="20sp" />
 
-    <View
-        android:id="@+id/divider3"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="?android:attr/listDivider" />
+            <View
+                android:id="@+id/divider3"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="?android:attr/listDivider" />
 
-   <WebView
-       android:id="@+id/web_1"
-       android:layout_width="match_parent"
-       android:layout_height="200dp"/>
-    <WebView
-        android:layout_marginTop="@dimen/dp_40"
-        android:id="@+id/web_2"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"/>
+            <WebView
+                android:id="@+id/web_1"
+                android:layout_width="match_parent"
+                android:layout_height="200dp" />
 
-    <FrameLayout
+            <WebView
+                android:id="@+id/web_2"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="@dimen/dp_40" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="you are bottom"
+                android:gravity="center"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="you are bottom"
+                android:gravity="center"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="you are bottom"
+                android:gravity="center"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="you are bottom"
+                android:gravity="center"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="you are bottom"
+                android:gravity="center"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="you are bottom"
+                android:gravity="center"/>   <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="you are bottom"
+            android:gravity="center"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="you are bottom"
+                android:gravity="center"/>
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/lottieAnimationView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:lottie_fileName="network.json"
+                app:lottie_loop="true"
+                app:lottie_autoPlay="true" />
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+    <com.hydbest.CUsView
         android:id="@+id/frame"
-        android:layout_marginTop="@dimen/dp_10"
+        android:visibility="gone"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:background="@color/gray"/>
-</LinearLayout>
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/dp_10" />
+
+    <LinearLayout
+        android:layout_gravity="bottom"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/bg_shadow_top">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="you are bottom"
+            android:gravity="center"/>
+    </LinearLayout>
+</FrameLayout>

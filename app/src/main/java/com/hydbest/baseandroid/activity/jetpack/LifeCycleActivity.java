@@ -14,6 +14,10 @@ import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleObserver;
 import androidx.lifecycle.OnLifecycleEvent;
 
+/**
+ * {@link androidx.lifecycle.LifecycleService}
+ * {@link androidx.lifecycle.ProcessLifecycleOwner}
+ */
 public class LifeCycleActivity extends AppCompatActivity {
 
 

@@ -15,9 +15,10 @@ import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 
 /**
- * @author csz
+ * @author caishuzhan
  */
 public class NetworkStateManager {
     public static final int MSG_AVAILABLE = 0;
@@ -44,6 +45,7 @@ public class NetworkStateManager {
     private int mNetworkType = -1;
 
     private Handler mObserveHandler = new Handler(Looper.getMainLooper()) {
+        @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
         @Override
         public void handleMessage(@NonNull Message msg) {
             switch (msg.what) {
@@ -71,6 +73,7 @@ public class NetworkStateManager {
         return sInstance;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public static NetworkStateManager withRegisteNetworkCallback(Context context) {
         NetworkStateManager instance = getInstance(context);
         instance.registeNetworkCallback();
@@ -87,6 +90,7 @@ public class NetworkStateManager {
      * @param network
      * @param availavle
      */
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private void notifyNetworkState(Network network, boolean availavle) {
         NetworkInfo info = mConnectivityManager.getNetworkInfo(network);
 
@@ -105,6 +109,7 @@ public class NetworkStateManager {
      * @param network
      * @param availavle
      */
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private void notifyObserver(@Nullable Network network, boolean availavle) {
         mIsNetworkAvailable = availavle;
         NetworkInfo info = mConnectivityManager.getNetworkInfo(network);
@@ -122,6 +127,7 @@ public class NetworkStateManager {
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private synchronized void registeNetworkCallback() {
         if (mIsRegiste) {
             return;
@@ -136,6 +142,7 @@ public class NetworkStateManager {
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private synchronized void unRegisterNetworkCallback() {
         if (mIsRegiste) {
             mConnectivityManager.unregisterNetworkCallback(mNetworkCallback);
@@ -143,6 +150,7 @@ public class NetworkStateManager {
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void addNetworkCallbackObserver(@NonNull NetworkObserver observer) {
         if (mIsRegiste) {
             mObserverList.add(observer);

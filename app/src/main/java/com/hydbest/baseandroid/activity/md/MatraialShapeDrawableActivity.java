@@ -4,6 +4,7 @@ import android.animation.ValueAnimator;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.ColorStateListDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -18,9 +19,13 @@ import com.hydbest.baseandroid.R;
 import com.hydbest.baseandroid.drawable.ExMaterialShapeDrawable;
 import com.hydbest.baseandroid.view.RadiusTreatment;
 
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserFactory;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.ViewUtils;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.view.ViewCompat;
 
@@ -45,7 +50,6 @@ public class MatraialShapeDrawableActivity extends AppCompatActivity {
         ly_bot = findViewById(R.id.ly_bot);
 
         int size = getResources().getDimensionPixelSize(R.dimen.dp_40);
-
         ShapeAppearanceModel model = new ShapeAppearanceModel.Builder().setTopEdge(new RadiusTreatment(size)).build();
         MaterialShapeDrawable drawable2 = new MaterialShapeDrawable(model);
         drawable2.setTint(Color.GRAY);
@@ -57,12 +61,13 @@ public class MatraialShapeDrawableActivity extends AppCompatActivity {
             MaterialShapeDrawable materialShapeDrawable = new ExMaterialShapeDrawable();
             materialShapeDrawable.setFillColor(ColorStateList.valueOf(background.getColor()));
             materialShapeDrawable.initializeElevationOverlay(this);
-            ViewCompat.setBackground(iv, materialShapeDrawable);
+            //  ViewCompat.setBackground(iv, materialShapeDrawable);
         }
     }
 
     public void start(View view) {
         startLiftOnScrollElevationOverlayAnimation(lefted = !lefted);
+        iv.setSelected(lefted = !lefted);
     }
 
     private void startLiftOnScrollElevationOverlayAnimation(boolean lifted) {

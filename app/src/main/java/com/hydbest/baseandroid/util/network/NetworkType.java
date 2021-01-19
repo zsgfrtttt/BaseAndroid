@@ -19,6 +19,9 @@ import static android.net.ConnectivityManager.TYPE_VPN;
 import static android.net.ConnectivityManager.TYPE_WIFI;
 import static android.net.ConnectivityManager.TYPE_WIMAX;
 
+/**
+ * @author caishuzhan
+ */
 public class NetworkType {
     public static final int NETWORKTYPE_WIFI = 100;
     public static final int NETWORKTYPE_MOBILE = 101;

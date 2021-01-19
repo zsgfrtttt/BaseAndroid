@@ -44,6 +44,10 @@ public interface StudentDao {
     @Query("SELECT * FROM Student WHERE name LIKE :name LIMIT 1")
     Student findByName(String name);
 
+    /**
+     * 允许在主线程
+     * @return
+     */
     @Query("SELECT * FROM Student ORDER BY id ASC")
     LiveData<List<Student>> queryAll();
 

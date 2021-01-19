@@ -9,6 +9,11 @@ import androidx.room.RoomDatabase;
 import androidx.room.migration.Migration;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
+/**
+ * 数据库升级规则：
+ * 例如当前版本是1，最新版本是3,数据库会优先查找1直接升到3的Migration
+ * 如果找不到，则1升到2，再从2升到3
+ */
 @Database(entities = {Student.class}, version = 3)
 public abstract class StudentDatabase extends RoomDatabase {
 
@@ -19,7 +24,7 @@ public abstract class StudentDatabase extends RoomDatabase {
             synchronized (StudentDatabase.class) {
                 if (INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(), StudentDatabase.class, "stu_db")
-                           .addMigrations(Migration_1_2,Migration_2_3)
+                            .addMigrations(Migration_1_2,Migration_2_3)
                             .build();
                 }
             }

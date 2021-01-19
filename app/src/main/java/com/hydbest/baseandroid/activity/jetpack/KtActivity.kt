@@ -6,11 +6,9 @@ import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.Observer
-import androidx.lifecycle.SavedStateHandle
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.*
 import com.hydbest.baseandroid.R
+import com.hydbest.baseandroid.kt.*
 import kotlinx.android.synthetic.main.activity_kt.*
 import kotlinx.coroutines.*
 import kotlin.concurrent.thread
@@ -18,6 +16,14 @@ import kotlin.concurrent.thread
 class KtActivity :AppCompatActivity() {
 
     var model:MyViewModel? = null
+
+    val media: MediatorLiveData<Integer> = MediatorLiveData()
+    val str:MutableLiveData<String> = MutableLiveData<String>()
+    init {
+        media.addSource(str){
+            Log.i("csz","observe " + it)
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,8 +38,10 @@ class KtActivity :AppCompatActivity() {
             override fun onChanged(t: Int?) {
                btn.setText(t.toString())
             }
-
         })
+         media.observe(this){
+             Log.i("csz","kk "+it)
+         }
     }
 
     fun test(i:Int):Any{
@@ -43,7 +51,9 @@ class KtActivity :AppCompatActivity() {
     fun add(view: View) {
        // model?.add()
       //  delay()
-        apply()
+      //  apply()
+       str.postValue("lkllll")
+
     }
 
     suspend fun el(){

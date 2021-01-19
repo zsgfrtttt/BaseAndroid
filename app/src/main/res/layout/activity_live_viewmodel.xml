@@ -2,15 +2,16 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
+
         <variable
             name="model"
             type="com.hydbest.baseandroid.activity.jetpack.LiveViewModelActivity.LiveViewModel" />
     </data>
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/tv"
@@ -24,14 +25,29 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="add"
-            android:onClick="@{()->model.add()}" />
+            android:onClick="@{()->model.interval()}"
+            android:text="add" />
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="less"
-            android:onClick="@{()->model.less()}" />
+            android:onClick="@{()->model.less()}"
+            android:text="less" />
+
+
+        <fragment
+            android:id="@+id/fragment_top"
+            android:name="com.hydbest.baseandroid.fragment.FragmentTop"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginTop="@dimen/dp_10" />
+
+        <fragment
+            android:id="@+id/fragment_bottom"
+            android:name="com.hydbest.baseandroid.fragment.FragmentBottom"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginTop="@dimen/dp_10" />
 
     </LinearLayout>
 </layout>

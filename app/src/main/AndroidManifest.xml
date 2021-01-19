@@ -131,7 +131,9 @@
         <activity android:name=".activity.cus_view.MusicDropActivity" />
         <activity android:name=".activity.cus_view.RippleActivity" />
         <activity android:name=".activity.jetpack.LiveViewModelActivity" />
-        <activity android:name=".activity.jetpack.JetpackNavigationActivity" />
+        <activity android:name=".activity.jetpack.JetpackNavigationActivity">
+            <nav-graph android:value="@navigation/navigation_home"/>
+        </activity>
         <activity android:name=".activity.jetpack.LifeCycleActivity" />
         <activity android:name=".activity.jetpack.RoomActivity" />
         <activity android:name=".activity.jetpack.PagingActivity" />
@@ -145,6 +147,8 @@
             android:screenOrientation="landscape"/>
         <activity android:name=".activity.other.HotFixActivity"/>
         <activity android:name=".activity.md.MatraialShapeDrawableActivity"/>
+        <activity android:name=".activity.md.UiflagActivity"/>
+        <activity android:name=".activity.md.MotionLayoutActivity"/>
 
         <service
             android:name=".messenger.MessageService"
