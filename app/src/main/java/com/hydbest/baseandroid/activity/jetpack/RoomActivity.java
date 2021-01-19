@@ -44,7 +44,6 @@ public class RoomActivity extends AppCompatActivity {
         tv = findViewById(R.id.tv);
         stuDb = StudentDatabase.getInstance(this);
         studentDao = stuDb.getStudentDao();
-        studentDao.queryAll1();
 
         observe();
 

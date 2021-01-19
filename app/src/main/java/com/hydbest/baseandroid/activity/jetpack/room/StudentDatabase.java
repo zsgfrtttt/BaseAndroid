@@ -23,8 +23,9 @@ public abstract class StudentDatabase extends RoomDatabase {
         if (INSTANCE == null) {
             synchronized (StudentDatabase.class) {
                 if (INSTANCE == null) {
-                    INSTANCE = Room.databaseBuilder(context.getApplicationContext(), StudentDatabase.class, "stu_db")
+                    INSTANCE = Room.databaseBuilder(context.getApplicationContext(), StudentDatabase.class, "stu.db")
                             .addMigrations(Migration_1_2,Migration_2_3)
+                            .createFromAsset("stu.db") // 预填充数据库，文件必须要".db"做后缀
                             .build();
                 }
             }
@@ -48,6 +49,13 @@ public abstract class StudentDatabase extends RoomDatabase {
         }
     };
 
+    /**
+     * 由于sql无法修改表的字段属性（例如:由integer更改为text）
+     * 1.创建临时表
+     * 2.移植原数据表数据到临时表
+     * 3.删除原数据表
+     * 4.更改临时表数据的表名为原数据表名
+     */
     public static Migration Migration_2_3 = new Migration(2, 3) {
         @Override
         public void migrate(@NonNull SupportSQLiteDatabase database) {
