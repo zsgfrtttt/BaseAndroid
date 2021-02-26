@@ -15,7 +15,8 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
-    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"
+    <uses-permission
+        android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"
         tools:ignore="ProtectedPermissions" />
     <uses-permission android:name="android.permission.READ_SYNC_SETTINGS" />
     <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />
@@ -46,7 +47,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.MessengerActivity"/>
+        <activity android:name=".activity.MessengerActivity" />
         <activity android:name=".activity.concurrent.CountDownLatchActivity" />
         <activity android:name=".activity.concurrent.ThreadLocalActivity" />
         <activity android:name=".activity.concurrent.ExecuteServiceActivity" />
@@ -58,12 +59,14 @@
         <activity android:name=".activity.foundation.FileProviderActivity" />
         <activity android:name=".activity.foundation.BlockDetectActivity" />
         <!--taskAffinity 一定要以.开头-->
-        <activity android:name=".activity.foundation.RuntimePermissonActivity"
-            android:taskAffinity=".csz"
-            android:allowTaskReparenting="true"/>
+        <activity
+            android:name=".activity.foundation.RuntimePermissonActivity"
+            android:allowTaskReparenting="true"
+            android:taskAffinity=".csz" />
         <activity android:name=".activity.cus_viewgroup.ViewpageActivity" />
-        <activity android:name=".activity.foundation.LogActivity"
-            android:theme="@style/translucentTheme"/>
+        <activity
+            android:name=".activity.foundation.LogActivity"
+            android:theme="@style/translucentTheme" />
         <activity android:name=".activity.event.EventRegisterActivity" />
         <activity android:name=".activity.cus_viewgroup.NestScrollActivity" />
         <activity android:name=".activity.event.EventPostActivity" />
@@ -93,7 +96,7 @@
         <activity android:name=".activity.foundation.transition.DetailTransitionActivity" />
         <activity android:name=".activity.other.AndroidAdvanceActivity" />
         <activity android:name=".activity.other.syncAdapter.SyncAdapterActivity" />
-        <activity android:name=".activity.cus_view.TextActivity"/>
+        <activity android:name=".activity.cus_view.TextActivity" />
         <activity android:name=".activity.foundation.GifActivity" />
         <activity android:name=".aidl.BookActivity" />
         <activity
@@ -132,23 +135,29 @@
         <activity android:name=".activity.cus_view.RippleActivity" />
         <activity android:name=".activity.jetpack.LiveViewModelActivity" />
         <activity android:name=".activity.jetpack.JetpackNavigationActivity">
-            <nav-graph android:value="@navigation/navigation_home"/>
+            <nav-graph android:value="@navigation/navigation_home" />
         </activity>
         <activity android:name=".activity.jetpack.LifeCycleActivity" />
         <activity android:name=".activity.jetpack.RoomActivity" />
         <activity android:name=".activity.jetpack.PagingActivity" />
         <activity android:name=".activity.jetpack.ViewBindingActivity" />
         <activity android:name=".activity.jetpack.WorkerActivity" />
+        <activity android:name=".activity.jetpack.DataBindingActivity" />
         <activity android:name=".activity.other.syncAdapter.AnnotationProcessActivity" />
         <activity android:name=".activity.other.syncAdapter.AnnoReceActivity" />
         <activity android:name=".activity.cus_viewgroup.PagerIndicatorActivity" />
-        <activity android:name=".activity.foundation.NetworkObserveActivity"/>
-        <activity android:name=".activity.Media.IjkPlayerActivity"
-            android:screenOrientation="landscape"/>
-        <activity android:name=".activity.other.HotFixActivity"/>
-        <activity android:name=".activity.md.MatraialShapeDrawableActivity"/>
-        <activity android:name=".activity.md.UiflagActivity"/>
-        <activity android:name=".activity.md.MotionLayoutActivity"/>
+        <activity android:name=".activity.foundation.NetworkObserveActivity" />
+        <activity
+            android:name=".activity.Media.IjkPlayerActivity"
+            android:screenOrientation="landscape" />
+        <activity android:name=".activity.other.HotFixActivity" />
+        <activity android:name=".activity.md.MatraialShapeDrawableActivity" />
+        <activity android:name=".activity.md.UiflagActivity" />
+        <activity android:name=".activity.md.MotionLayoutActivity" />
+        <activity android:name=".activity.jetpack.paging.positional.PositionalDataSourceActivity" />
+        <activity android:name=".activity.jetpack.paging.pagekey.PageKeyDataSourceActivity" />
+        <activity android:name=".activity.jetpack.paging.itemkey.ItemKeyDataSourceActivity" />
+        <activity android:name=".activity.jetpack.paging.itemkey.BoundaryActivity" />
 
         <service
             android:name=".messenger.MessageService"

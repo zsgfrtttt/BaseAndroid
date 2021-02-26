@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="androidx.databinding.ObservableField"/>
+        <variable
+            name="name"
+            type="ObservableField&lt;String>" />
+        <!-- &lt; 是 对< 的转义-->
+
+        <variable
+            name="model"
+            type="com.hydbest.baseandroid.activity.jetpack.DataBindingActivity.ViewModel" />
+
+        <variable
+            name="student"
+            type="com.hydbest.baseandroid.activity.jetpack.room.Student" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_10"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/blue"
+            android:gravity="center"
+            android:padding="@dimen/dp_10"
+            android:text="@{student.name + `  is  second page name`}"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/blue"
+            android:gravity="center"
+            android:padding="@dimen/dp_10"
+            android:text="@={name}"
+            android:textColor="@color/white" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@={name}"
+            android:onClick="@{(view)->model.changeText(view)}"/>
+    </LinearLayout>
+</layout>

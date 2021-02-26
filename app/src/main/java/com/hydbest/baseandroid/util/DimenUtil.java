@@ -7,4 +7,8 @@ public class DimenUtil {
     public static float dp2px(Context context,int dp){
         return context.getResources().getDisplayMetrics().density * dp +  0.5f;
     }
+
+    public static String string(String text){
+        return "you are beautiful  -  " + text;
+    }
 }

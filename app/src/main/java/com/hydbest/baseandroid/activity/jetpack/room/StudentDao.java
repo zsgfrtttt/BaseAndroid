@@ -19,6 +19,9 @@ public interface StudentDao {
     @Insert
     void insertAll(Student... stu);
 
+    @Insert
+    void insertList(List<Student> list);
+
     @Delete
     void deleteOne(Student stu);
 
@@ -43,6 +46,10 @@ public interface StudentDao {
     /** %name% **/
     @Query("SELECT * FROM Student WHERE name LIKE :name LIMIT 1")
     Student findByName(String name);
+
+
+    @Query("SELECT * FROM Student ORDER BY id ASC")
+    List<Student> queryList();
 
     /**
      * 允许在主线程

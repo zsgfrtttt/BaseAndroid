@@ -24,6 +24,7 @@ public abstract class StudentDatabase extends RoomDatabase {
             synchronized (StudentDatabase.class) {
                 if (INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(), StudentDatabase.class, "stu.db")
+                            .allowMainThreadQueries()
                             .addMigrations(Migration_1_2,Migration_2_3)
                             .createFromAsset("stu.db") // 预填充数据库，文件必须要".db"做后缀
                             .build();

@@ -22,7 +22,6 @@ import androidx.lifecycle.ViewModelProvider;
 
 public class LiveViewModelActivity extends AppCompatActivity {
 
-
     private LiveViewModel model;
 
     private ActivityLiveViewmodelBinding binding;

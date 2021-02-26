@@ -40,17 +40,18 @@ public class PagingActivity extends AppCompatActivity {
     LiveData data;
     Executor executor = Executors.newSingleThreadExecutor();
 
- /*   private MutableLiveData<Integer> mu = new MutableLiveData<>(0);
-    private LiveData<String> text = Transformations.switchMap(mu, new Function<Integer, LiveData<String>>() {
-        @Override
-        public LiveData<String> apply(Integer input) {
-            Log.i("csz","input  " + input);
-            MutableLiveData<String> mutableLiveData = new MutableLiveData();
-            mutableLiveData.setValue("input  " + input);
-            return mutableLiveData;
-        }
-    });
-*/
+    /*   private MutableLiveData<Integer> mu = new MutableLiveData<>(0);
+       private LiveData<String> text = Transformations.switchMap(mu, new Function<Integer, LiveData<String>>() {
+           @Override
+           public LiveData<String> apply(Integer input) {
+               Log.i("csz","input  " + input);
+               MutableLiveData<String> mutableLiveData = new MutableLiveData();
+               mutableLiveData.setValue("input  " + input);
+               return mutableLiveData;
+           }
+       });
+   */
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,7 +61,7 @@ public class PagingActivity extends AppCompatActivity {
         adapter = new PageAdapter();
 
         /* data = new LivePagedListBuilder<>(dao.queryAllData(),2).build(); */
-        data = new LivePagedListBuilder(new PageKeyDataSourceFactory(),1).build();
+        data = new LivePagedListBuilder(new PageKeyDataSourceFactory(), 1).build();
 
         data.observe(this, new Observer<PagedList<Student>>() {
             @Override
@@ -68,7 +69,6 @@ public class PagingActivity extends AppCompatActivity {
                 adapter.submitList(students);
             }
         });
-
 
         rv = findViewById(R.id.rv);
         rv.setLayoutManager(new LinearLayoutManager(this));
@@ -79,7 +79,7 @@ public class PagingActivity extends AppCompatActivity {
     public void add(View view) {
         final List<Student> list = new ArrayList<>();
         for (int i = 0; i < 100; i++) {
-            list.add(new Student("cai " + i,i));
+            list.add(new Student("cai " + i, i));
         }
         executor.execute(new Runnable() {
             @Override
@@ -90,7 +90,7 @@ public class PagingActivity extends AppCompatActivity {
     }
 
     public void reset(View view) {
-       executor.execute(new Runnable() {
+        executor.execute(new Runnable() {
             @Override
             public void run() {
                 dao.deleteAll();
@@ -99,7 +99,7 @@ public class PagingActivity extends AppCompatActivity {
     }
 
 
-    class PageAdapter extends PagedListAdapter<Student, PageAdapter.MyHolder>{
+    class PageAdapter extends PagedListAdapter<Student, PageAdapter.MyHolder> {
 
 
         protected PageAdapter() {
@@ -111,9 +111,7 @@ public class PagingActivity extends AppCompatActivity {
 
                 @Override
                 public boolean areContentsTheSame(@NonNull Student oldItem, @NonNull Student newItem) {
-                    return oldItem.getName().equals(newItem.getName())
-                            && oldItem.getAge() == newItem.getAge()
-                            && oldItem.isBoy() == newItem.isBoy();
+                    return oldItem.getName().equals(newItem.getName()) && oldItem.getAge() == newItem.getAge() && oldItem.isBoy() == newItem.isBoy();
                 }
             });
         }
@@ -121,7 +119,7 @@ public class PagingActivity extends AppCompatActivity {
         @NonNull
         @Override
         public MyHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(parent.getContext()).inflate(android.R.layout.simple_list_item_1,parent,false);
+            View view = LayoutInflater.from(parent.getContext()).inflate(android.R.layout.simple_list_item_1, parent, false);
             return new MyHolder(view);
         }
 
@@ -129,14 +127,14 @@ public class PagingActivity extends AppCompatActivity {
         @Override
         public void onBindViewHolder(@NonNull MyHolder holder, int position) {
             Student item = getItem(position);
-            if (item == null){
+            if (item == null) {
                 holder.tv.setText("加载中");
-            }else{
-                holder.tv.setText(item.getName() +"      " + item.getAge());
+            } else {
+                holder.tv.setText(item.getName() + "      " + item.getAge());
             }
         }
 
-        class MyHolder extends RecyclerView.ViewHolder{
+        class MyHolder extends RecyclerView.ViewHolder {
             private TextView tv;
 
             public MyHolder(@NonNull View itemView) {
@@ -147,7 +145,7 @@ public class PagingActivity extends AppCompatActivity {
     }
 
 
-    class PageKeyDataSource extends PageKeyedDataSource<Integer,Student>{
+    class PageKeyDataSource extends PageKeyedDataSource<Integer, Student> {
 
         private int page = 1;
         private int pageSize = 10;
@@ -155,7 +153,7 @@ public class PagingActivity extends AppCompatActivity {
         @Override
         public void loadInitial(@NonNull LoadInitialParams<Integer> params, @NonNull LoadInitialCallback<Integer, Student> callback) {
             page = 1;
-            callback.onResult( dao.findOnePage(page, pageSize),null,2);
+            callback.onResult(dao.findOnePage(page, pageSize), null, 2);
         }
 
         @Override
@@ -165,7 +163,7 @@ public class PagingActivity extends AppCompatActivity {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            callback.onResult(dao.findOnePage(params.key, pageSize),params.key +1);
+            callback.onResult(dao.findOnePage(params.key, pageSize), params.key + 1);
         }
 
         @Override
@@ -174,7 +172,7 @@ public class PagingActivity extends AppCompatActivity {
         }
     }
 
-    class PageKeyDataSourceFactory extends DataSource.Factory<Integer,Student>{
+    class PageKeyDataSourceFactory extends DataSource.Factory<Integer, Student> {
 
         @NonNull
         @Override
