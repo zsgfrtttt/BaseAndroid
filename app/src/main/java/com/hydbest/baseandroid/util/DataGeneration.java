@@ -13,6 +13,8 @@ import com.hydbest.baseandroid.activity.Media.MediaVoiceActivity;
 import com.hydbest.baseandroid.activity.Media.openGL_ES.GLSurfaceActivity;
 import com.hydbest.baseandroid.activity.Media.openGL_ES.GL_DefineShapeActivity;
 import com.hydbest.baseandroid.activity.Media.record.MediaRecordActivity;
+import com.hydbest.baseandroid.activity.anim.scene.SceneTransitionAnimationActivity;
+import com.hydbest.baseandroid.activity.anim.transition.BasicTransitionAnimationActivity;
 import com.hydbest.baseandroid.activity.concurrent.CountDownLatchActivity;
 import com.hydbest.baseandroid.activity.concurrent.ExecuteServiceActivity;
 import com.hydbest.baseandroid.activity.concurrent.FutureActivity;
@@ -294,6 +296,12 @@ public class DataGeneration {
         item10.addSubItem(subItem10_11);
         item10.addSubItem(subItem10_12);
 
+        Level0Item item11 = new Level0Item("Android动画", "");
+        Fragmentation subItem11_0 = new Fragmentation("Activity转场动画", SceneTransitionAnimationActivity.class);
+        Fragmentation subItem11_1 = new Fragmentation("基础转场动画", BasicTransitionAnimationActivity.class);
+        item11.addSubItem(subItem11_0);
+        item11.addSubItem(subItem11_1);
+
         list.add(item0);
         list.add(item1);
         list.add(item2);
@@ -305,6 +313,7 @@ public class DataGeneration {
         list.add(item8);
         list.add(item9);
         list.add(item10);
+        list.add(item11);
 
         return list;
     }

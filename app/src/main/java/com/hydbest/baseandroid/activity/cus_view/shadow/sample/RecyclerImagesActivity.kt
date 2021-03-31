@@ -11,9 +11,9 @@ class RecyclerImagesActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recycler_images)
-        findViewById<RecyclerView>(R.id.recycler).apply {
-            adapter = ImageAdapter()
-            layoutManager = LinearLayoutManager(this@RecyclerImagesActivity)
-        }
+       /* findViewById<RecyclerView>(R.id.recycler).also {
+          // it. adapter = ImageAdapter()
+         //  it. layoutManager = LinearLayoutManager(this@RecyclerImagesActivity)
+        }*/
     }
 }

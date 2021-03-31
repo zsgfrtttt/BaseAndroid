@@ -89,6 +89,7 @@ dependencies {
     implementation "androidx.viewpager2:viewpager2:1.0.0"
     implementation 'androidx.fragment:fragment-ktx:1.2.4'
     implementation "androidx.work:work-runtime-ktx:2.3.4"
+    implementation "com.bennyhuo.kotlin:coroutines-android-autodisposable:1.0"
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.4'
     implementation 'com.google.android.gms:play-services-plus:17.0.0'
     implementation('com.csz.upload:testmodule:1.0.1') {

@@ -3,8 +3,12 @@ package com.hydbest.annotationcompiler.base
 import com.squareup.javapoet.MethodSpec
 import com.squareup.javapoet.TypeName
 import com.squareup.javapoet.TypeSpec
+import java.awt.print.Book
 import java.io.Serializable
 import javax.lang.model.element.Modifier
+import javax.xml.bind.JAXBElement
+import kotlin.properties.Delegates
+import kotlin.reflect.KClass
 
 class SaveStateMethodBuilder(private val activityClass: ActivityClass) {
     fun build(typeSpec: TypeSpec.Builder) {
@@ -18,10 +22,10 @@ class SaveStateMethodBuilder(private val activityClass: ActivityClass) {
                 .addStatement("\$T intent = new \$T()", INTENT.java, INTENT.java)
         activityClass.fields.forEach { field ->
             val name = field.name
-            if (field.isPrivate){
-                methodBuilder.addStatement("intent.putExtra(\$S,typeInstance.get\$L())",name,name.capitalize())
-            }else{
-                methodBuilder.addStatement("intent.putExtra(\$S,typeInstance.\$L)",name,name)
+            if (field.isPrivate) {
+                methodBuilder.addStatement("intent.putExtra(\$S,typeInstance.get\$L())", name, name.capitalize())
+            } else {
+                methodBuilder.addStatement("intent.putExtra(\$S,typeInstance.\$L)", name, name)
             }
         }
         methodBuilder.addStatement("outState.putAll(intent.getExtras())").endControlFlow()
@@ -33,6 +37,9 @@ class SaveStateMethodBuilder(private val activityClass: ActivityClass) {
         fun main(args: Array<String>) {
 
         }
+
     }
+
+
 }
 

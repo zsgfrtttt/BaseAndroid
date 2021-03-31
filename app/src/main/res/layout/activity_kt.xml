@@ -10,4 +10,10 @@
         android:layout_height="wrap_content"
         android:text="0"
         android:onClick="add"/>
+
+    <ImageView
+        android:id="@+id/iv"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 </LinearLayout>

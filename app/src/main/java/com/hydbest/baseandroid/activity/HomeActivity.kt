@@ -44,10 +44,7 @@ class HomeActivity : AppCompatActivity() {
 
         @JvmStatic
         fun main(args:Array<String>){
-           val btn :ArrayList<Button> = ArrayList()
-            sequenceOf(1,2,3,4).forEach {
-                println("kk $it")
-            }
+
         }
 
     }

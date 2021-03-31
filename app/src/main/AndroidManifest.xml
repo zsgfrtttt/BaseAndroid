@@ -158,6 +158,9 @@
         <activity android:name=".activity.jetpack.paging.pagekey.PageKeyDataSourceActivity" />
         <activity android:name=".activity.jetpack.paging.itemkey.ItemKeyDataSourceActivity" />
         <activity android:name=".activity.jetpack.paging.itemkey.BoundaryActivity" />
+        <activity android:name=".activity.anim.scene.SceneTransitionAnimationActivity"/>
+        <activity android:name=".activity.anim.scene.DetailActivity"/>
+        <activity android:name=".activity.anim.transition.BasicTransitionAnimationActivity"/>
 
         <service
             android:name=".messenger.MessageService"
