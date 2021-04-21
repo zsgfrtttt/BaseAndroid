@@ -13,7 +13,9 @@ import java.util.Set;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class SimpleHttpServer {
+public class
+
+SimpleHttpServer {
 
     private static WebConfiguration sWebConfiguration;
 

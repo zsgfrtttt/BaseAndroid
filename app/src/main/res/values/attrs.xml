@@ -37,4 +37,10 @@
     <declare-styleable name="Textswitch">
         <attr name="type" format="integer"/>
     </declare-styleable>
+
+    <declare-styleable name="ForegroundView">
+        <attr name="android:foreground" />
+        <attr name="foregroundInsidePadding" />
+        <attr name="android:foregroundGravity" />
+    </declare-styleable>
 </resources>

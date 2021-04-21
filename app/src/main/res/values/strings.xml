@@ -102,4 +102,139 @@
     <string name="scene_4">4</string>
     <string name="hello">Hello!</string>
     <string name="additional_message">This text fades in and out.</string>
+
+    <string name="animation_duration">Duration: %1$d ms</string>
+    <string name="interpolator">Interpolator:</string>
+    <string name="animate">Animate!</string>
+    <string-array name="interpolator_names">
+        <item>Linear</item>
+        <item>Fast Out Linear In</item>
+        <item>Fast Out Slow In</item>
+        <item>Linear Out Slow In</item>
+    </string-array>
+
+
+    <!-- Dissolve -->
+    <string name="dissolve_label">Layout > Dissolve</string>
+    <string name="dissolve_description">
+        A dissolve creates a smooth transition between elements that completely overlap one another,
+        such as photos inside a card or other container. A foreground element fades in (appears) or
+        out (disappears) to show or hide an element behind it.
+    </string>
+    <string-array name="dissolve_apis">
+        <item>Transition</item>
+        <item>ViewOverlay</item>
+    </string-array>
+
+    <!-- Fade through -->
+    <string name="fade_through_label">Layout > Fade through</string>
+    <string name="fade_through_description">
+        Fade through involves one element fading out completely before a new one fades in. These
+        transitions can be applied to text, icons, and other elements that don\'t perfectly overlap.
+        This technique lets the background show through during a transition, and it can provide
+        continuity between screens when paired with a shared transformation.
+    </string>
+    <string-array name="fade_through_apis">
+        <item>Transition</item>
+    </string-array>
+
+    <!-- FAB transformation -->
+    <string name="fab_transformation_label">Layout > FAB transformation</string>
+    <string name="fab_transformation_description">
+        A floating action button (FAB) can transform into a card by tweening FAB size and corner
+        radius.
+    </string>
+    <string-array name="fab_transformation_apis">
+        <item>FabTransformationSheetBehavior</item>
+        <item>CircularRevealCardView</item>
+    </string-array>
+
+    <!-- Reorder -->
+    <string name="reorder_label">List > Reorder</string>
+    <string name="reorder_description">
+        Motion makes it clear when items are selected and what will happen when they’re released.
+    </string>
+    <string-array name="reorder_apis">
+        <item>ItemTouchHelper</item>
+        <item>ItemAnimator</item>
+        <item>ViewPropertyAnimator</item>
+    </string-array>
+
+    <!-- Stagger -->
+    <string name="stagger_label">List > Stagger</string>
+    <string name="stagger_description">
+        Stagger refers to applying temporal offsets to a group of elements in sequence, like a list.
+        Stagger creates a cascade effect that focuses attention briefly on each item. It can reveal
+        significant content or highlight affordances within a group.
+    </string>
+    <string-array name="stagger_apis">
+        <item>Transition</item>
+        <item>SidePropagation</item>
+    </string-array>
+
+    <!-- Loading -->
+    <string name="loading_label">List > Loading</string>
+    <string name="loading_description">
+        Motion provides timely feedback and the status of user actions. An animated placeholder UI
+        can indicate that content is loading.
+    </string>
+    <string-array name="loading_apis">
+        <item>ObjectAnimator</item>
+        <item>PagedList</item>
+    </string-array>
+
+    <!-- Oscillation -->
+    <string name="oscillation_label">List > Oscillation</string>
+    <string name="oscillation_description">
+        Oscillation occurs when an animation uses more than one overshoot. Each additional back and
+        forth movement is smaller than the previous one, until the motion stops. Oscillation may be
+        used to create a cartoon style.
+    </string>
+    <string-array name="oscillation_apis">
+        <item>SpringAnimation</item>
+        <item>EdgeEffect</item>
+    </string-array>
+
+    <!-- Shared Element -->
+    <string name="shared_element_label">Navigation > Shared element</string>
+    <string name="shared_element_description">
+        A transition may include a focal element, which is a persistent element significant to the
+        hierarchy that can be tweened. Like animated containers, focal elements enhance continuity
+        by seamlessly transforming their appearance.
+    </string>
+    <string-array name="shared_element_apis">
+        <item>Transition</item>
+        <item>FragmentNavigator.Extras</item>
+    </string-array>
+
+    <!-- Nav Fade Through -->
+    <string name="nav_fade_through_label">Navigation > Fade through</string>
+    <string name="nav_fade_through_description">
+        To simplify overlapping motion, consider substituting a focal element with a fade through
+        transition.
+    </string>
+    <string-array name="nav_fade_through_apis">
+        <item>Transition</item>
+        <item>FragmentNavigator.Extras</item>
+    </string-array>
+
+    <string name="cheese">Cheese</string>
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
+    <string name="hello_world">Hello, world!</string>
+    <string name="favorite">Favorite</string>
+    <string name="bookmark">Bookmark</string>
+    <string name="share">Share</string>
+    <string name="next">Next</string>
+    <string name="toggle">Toggle</string>
+    <string name="detail">Detail</string>
+    <string name="order">Order</string>
+    <string name="add">Add</string>
+    <string name="tap_fab">Tap on the floating action button to expand it.</string>
+    <string name="you_selected">You selected %s.</string>
+    <string name="drag_hint">%s clicked. Long press to start dragging.</string>
+    <string name="refresh">Refresh</string>
+
+    <string name="lorum_ipsum">Artisan pickled freegan keytar High Life, roof party slow-carb Thundercats post-ironic. Bespoke sriracha taxidermy skateboard, yr PBRB jean shorts keytar post-ironic direct trade Banksy locavore selvage Vice four dollar toast. Wolf cardigan ugh gastropub. Pinterest Williamsburg Echo Park before they sold out tattooed. Tousled sriracha narwhal sustainable. Kale chips four dollar toast mumblecore gastropub Thundercats Brooklyn High Life, messenger bag tofu actually. Freegan drinking vinegar pug selfies gentrify.\n\nPolaroid photo booth Wes Anderson, wolf plaid tilde lo-fi. Godard Wes Anderson PBRB normcore. Pop-up mustache meh, wayfarers yr Odd Future food truck skateboard. Sriracha meggings next level VHS, gluten-free chia lumbersexual messenger bag art party Thundercats listicle. Pour-over heirloom cornhole direct trade fingerstache, disrupt Thundercats next level semiotics Banksy listicle narwhal Odd Future pork belly fixie. Squid Intelligentsia Bushwick disrupt direct trade +1, artisan photo booth meditation forage you probably haven\'t heard of them cray. Salvia lo-fi scenester banh mi, Schlitz irony vegan XOXO fashion axe street art bicycle rights keytar polaroid disrupt farm-to-table.\n\nForage Thundercats vegan, whatever synth tote bag lomo wayfarers locavore drinking vinegar Odd Future YOLO you probably haven\'t heard of them PBR. Shabby chic hella hoodie, lumbersexual keytar iPhone viral Vice gentrify seitan. You probably haven\'t heard of them asymmetrical flannel, Pinterest fanny pack Wes Anderson readymade typewriter post-ironic single-origin coffee Shoreditch biodiesel leggings. Twee mumblecore lo-fi, synth lomo gluten-free McSweeney\'s Pitchfork gastropub American Apparel. Gluten-free small batch tilde PBR occupy. Fashion axe yr meh, gentrify lo-fi chambray lomo drinking vinegar fap salvia irony tilde health goth trust fund. Authentic Intelligentsia YOLO, Blue Bottle McSweeney\'s yr fashion axe butcher Williamsburg.\n\nSustainable actually fashion axe slow-carb, whatever Intelligentsia sartorial PBRB bespoke 90\'s cold-pressed. Disrupt slow-carb church-key, Banksy four loko hashtag sartorial tote bag. Gastropub banh mi twee, four loko kogi distillery plaid yr. Fixie Neutra chillwave bicycle rights, readymade art party 90\'s Bushwick salvia pickled McSweeney\'s. XOXO gastropub tote bag, meggings Pinterest locavore roof party. Try-hard before they sold out mlkshk wayfarers pop-up Truffaut. Asymmetrical actually fixie, sartorial raw denim brunch mixtape.</string>
+    <string name="transition_photo">transition_photo</string>
+    <string name="transition_author">transition_author</string>
 </resources>

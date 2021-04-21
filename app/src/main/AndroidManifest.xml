@@ -158,9 +158,170 @@
         <activity android:name=".activity.jetpack.paging.pagekey.PageKeyDataSourceActivity" />
         <activity android:name=".activity.jetpack.paging.itemkey.ItemKeyDataSourceActivity" />
         <activity android:name=".activity.jetpack.paging.itemkey.BoundaryActivity" />
-        <activity android:name=".activity.anim.scene.SceneTransitionAnimationActivity"/>
-        <activity android:name=".activity.anim.scene.DetailActivity"/>
-        <activity android:name=".activity.anim.transition.BasicTransitionAnimationActivity"/>
+        <activity android:name=".activity.anim.scene.SceneTransitionAnimationActivity" />
+        <activity android:name=".activity.anim.scene.DetailActivity" />
+        <activity android:name=".activity.anim.transition.BasicTransitionAnimationActivity" />
+        <activity android:name=".activity.anim.transition.CustomTransitionActivity" />
+        <activity android:name=".activity.anim.drawable.DrawableActivity" />
+        <activity android:name=".activity.anim.fragment.FragmentTransitionActivity" />
+        <activity android:name=".activity.anim.interpolator.InterpolatorActivity" />
+        <activity android:name=".activity.anim.motion.MotionActivity" />
+        <activity android:name=".activity.anim.revealeffect.RevealEffectActivity" />
+        <activity android:name=".activity.anim.unsplash.UnSplashActivity"
+            android:theme="@style/AppTheme.Home"/>
+        <activity android:name=".activity.anim.unsplash.DetailActivity"
+            android:theme="@style/AppTheme.Details"/>
+
+        <activity
+            android:name="com.hydbest.baseandroid.activity.anim.motion.dissolve.DissolveActivity"
+            android:label="@string/dissolve_label">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.example.android.motion.intent.category.DEMO" />
+            </intent-filter>
+
+            <meta-data
+                android:name="com.hydbest.baseandroid.activity.anim.motion.DESCRIPTION"
+                android:value="@string/dissolve_description" />
+            <meta-data
+                android:name="com.hydbest.baseandroid.activity.anim.motion.APIS"
+                android:resource="@array/dissolve_apis" />
+        </activity>
+
+        <activity
+            android:name="com.hydbest.baseandroid.activity.anim.motion.fadethrough.FadeThroughActivity"
+            android:label="@string/fade_through_label">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.example.android.motion.intent.category.DEMO" />
+            </intent-filter>
+
+            <meta-data
+                android:name="com.hydbest.baseandroid.activity.anim.motion.DESCRIPTION"
+                android:value="@string/fade_through_description" />
+            <meta-data
+                android:name="com.hydbest.baseandroid.activity.anim.motion.APIS"
+                android:resource="@array/fade_through_apis" />
+        </activity>
+
+        <activity
+            android:name="com.hydbest.baseandroid.activity.anim.motion.fabtransformation.FabTransformationActivity"
+            android:label="@string/fab_transformation_label"
+            android:theme="@style/Theme.Motion.Translucent">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.example.android.motion.intent.category.DEMO" />
+            </intent-filter>
+
+            <meta-data
+                android:name="com.hydbest.baseandroid.activity.anim.motion.DESCRIPTION"
+                android:value="@string/fab_transformation_description" />
+            <meta-data
+                android:name="com.hydbest.baseandroid.activity.anim.motion.APIS"
+                android:resource="@array/fab_transformation_apis" />
+        </activity>
+
+        <activity
+            android:name="com.hydbest.baseandroid.activity.anim.motion.reorder.ReorderActivity"
+            android:label="@string/reorder_label"
+            android:theme="@style/Theme.Motion.Translucent">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.example.android.motion.intent.category.DEMO" />
+            </intent-filter>
+
+            <meta-data
+                android:name="com.hydbest.baseandroid.activity.anim.motion.DESCRIPTION"
+                android:value="@string/reorder_description" />
+            <meta-data
+                android:name="com.hydbest.baseandroid.activity.anim.motion.APIS"
+                android:resource="@array/reorder_apis" />
+        </activity>
+
+        <activity
+            android:name="com.hydbest.baseandroid.activity.anim.motion.stagger.StaggerActivity"
+            android:label="@string/stagger_label"
+            android:theme="@style/Theme.Motion.Translucent">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.example.android.motion.intent.category.DEMO" />
+            </intent-filter>
+
+            <meta-data
+                android:name="com.hydbest.baseandroid.activity.anim.motion.DESCRIPTION"
+                android:value="@string/stagger_description" />
+            <meta-data
+                android:name="com.hydbest.baseandroid.activity.anim.motion.APIS"
+                android:resource="@array/stagger_apis" />
+        </activity>
+
+        <activity
+            android:name="com.hydbest.baseandroid.activity.anim.motion.loading.LoadingActivity"
+            android:label="@string/loading_label"
+            android:theme="@style/Theme.Motion.Translucent">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.example.android.motion.intent.category.DEMO" />
+            </intent-filter>
+
+            <meta-data
+                android:name="com.hydbest.baseandroid.activity.anim.motion.DESCRIPTION"
+                android:value="@string/loading_description" />
+            <meta-data
+                android:name="com.hydbest.baseandroid.activity.anim.motion.APIS"
+                android:resource="@array/loading_apis" />
+        </activity>
+
+        <activity
+            android:name="com.hydbest.baseandroid.activity.anim.motion.oscillation.OscillationActivity"
+            android:label="@string/oscillation_label"
+            android:theme="@style/Theme.Motion.CardUi">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.example.android.motion.intent.category.DEMO" />
+            </intent-filter>
+
+            <meta-data
+                android:name="com.hydbest.baseandroid.activity.anim.motion.DESCRIPTION"
+                android:value="@string/oscillation_description" />
+            <meta-data
+                android:name="com.hydbest.baseandroid.activity.anim.motion.APIS"
+                android:resource="@array/oscillation_apis" />
+        </activity>
+
+        <activity
+            android:name="com.hydbest.baseandroid.activity.anim.motion.sharedelement.SharedElementActivity"
+            android:label="@string/shared_element_label"
+            android:theme="@style/Theme.Motion.Translucent">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.example.android.motion.intent.category.DEMO" />
+            </intent-filter>
+
+            <meta-data
+                android:name="com.hydbest.baseandroid.activity.anim.motion.DESCRIPTION"
+                android:value="@string/shared_element_description" />
+            <meta-data
+                android:name="com.hydbest.baseandroid.activity.anim.motion.APIS"
+                android:resource="@array/shared_element_apis" />
+        </activity>
+
+        <activity
+            android:name=".activity.anim.motion.navfadethrough.NavFadeThroughActivity"
+            android:label="@string/nav_fade_through_label"
+            android:theme="@style/Theme.Motion.Translucent">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.example.android.motion.intent.category.DEMO" />
+            </intent-filter>
+
+            <meta-data
+                android:name="com.hydbest.baseandroid.activity.anim.motion.DESCRIPTION"
+                android:value="@string/nav_fade_through_description" />
+            <meta-data
+                android:name="com.hydbest.baseandroid.activity.anim.motion.APIS"
+                android:resource="@array/nav_fade_through_apis" />
+        </activity>
 
         <service
             android:name=".messenger.MessageService"

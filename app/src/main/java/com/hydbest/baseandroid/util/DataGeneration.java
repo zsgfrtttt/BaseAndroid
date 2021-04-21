@@ -1,5 +1,8 @@
 package com.hydbest.baseandroid.util;
 
+import android.app.Activity;
+import android.graphics.Interpolator;
+
 import com.chad.library.adapter.base.entity.node.BaseNode;
 import com.hydbest.baseandroid.activity.Media.IjkPlayerActivity;
 import com.hydbest.baseandroid.activity.Media.MediaAudioRecordActivity;
@@ -13,8 +16,15 @@ import com.hydbest.baseandroid.activity.Media.MediaVoiceActivity;
 import com.hydbest.baseandroid.activity.Media.openGL_ES.GLSurfaceActivity;
 import com.hydbest.baseandroid.activity.Media.openGL_ES.GL_DefineShapeActivity;
 import com.hydbest.baseandroid.activity.Media.record.MediaRecordActivity;
+import com.hydbest.baseandroid.activity.anim.drawable.DrawableActivity;
+import com.hydbest.baseandroid.activity.anim.fragment.FragmentTransitionActivity;
+import com.hydbest.baseandroid.activity.anim.interpolator.InterpolatorActivity;
+import com.hydbest.baseandroid.activity.anim.motion.MotionActivity;
+import com.hydbest.baseandroid.activity.anim.revealeffect.RevealEffectActivity;
 import com.hydbest.baseandroid.activity.anim.scene.SceneTransitionAnimationActivity;
 import com.hydbest.baseandroid.activity.anim.transition.BasicTransitionAnimationActivity;
+import com.hydbest.baseandroid.activity.anim.transition.CustomTransitionActivity;
+import com.hydbest.baseandroid.activity.anim.unsplash.UnSplashActivity;
 import com.hydbest.baseandroid.activity.concurrent.CountDownLatchActivity;
 import com.hydbest.baseandroid.activity.concurrent.ExecuteServiceActivity;
 import com.hydbest.baseandroid.activity.concurrent.FutureActivity;
@@ -299,8 +309,23 @@ public class DataGeneration {
         Level0Item item11 = new Level0Item("Android动画", "");
         Fragmentation subItem11_0 = new Fragmentation("Activity转场动画", SceneTransitionAnimationActivity.class);
         Fragmentation subItem11_1 = new Fragmentation("基础转场动画", BasicTransitionAnimationActivity.class);
+        Fragmentation subItem11_2 = new Fragmentation("自定义转场动画", CustomTransitionActivity.class);
+        Fragmentation subItem11_3 = new Fragmentation("Drawable动画", DrawableActivity.class);
+        Fragmentation subItem11_4 = new Fragmentation("Fragment转场动画", FragmentTransitionActivity.class);
+        Fragmentation subItem11_5 = new Fragmentation("Interpolator", InterpolatorActivity.class);
+        Fragmentation subItem11_6 = new Fragmentation("Motion", MotionActivity.class);
+        Fragmentation subItem11_7 = new Fragmentation("展示效果动画", RevealEffectActivity.class);
+        Fragmentation subItem11_8 = new Fragmentation("UnSplash动画", UnSplashActivity.class);
+
         item11.addSubItem(subItem11_0);
         item11.addSubItem(subItem11_1);
+        item11.addSubItem(subItem11_2);
+        item11.addSubItem(subItem11_3);
+        item11.addSubItem(subItem11_4);
+        item11.addSubItem(subItem11_5);
+        item11.addSubItem(subItem11_6);
+        item11.addSubItem(subItem11_7);
+        item11.addSubItem(subItem11_8);
 
         list.add(item0);
         list.add(item1);

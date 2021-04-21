@@ -6,4 +6,26 @@
         <item name="android:windowTranslucentNavigation">true</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
     </style>
+
+    <style name="Theme.Motion" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:navigationBarColor" >
+            @color/navigationBarColor
+        </item>
+        <item name="android:statusBarColor" >@android:color/transparent</item>
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryVariant">@color/primary_variant</item>
+        <item name="colorSecondary">@color/secondary</item>
+        <item name="colorOnSecondary">@android:color/white</item>
+    </style>
+
+    <style name="AppTheme.Home">
+        <item name="android:windowExitTransition">@transition/grid_exit</item>
+        <item name="android:windowReenterTransition">@transition/grid_reenter</item>
+    </style>
+
+    <style name="AppTheme.Details">
+        <item name="android:windowSharedElementEnterTransition">
+            @transition/shared_main_detail
+        </item>
+    </style>
 </resources>

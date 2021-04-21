@@ -30,4 +30,21 @@
     <color name="blue">#304ffe</color>
     <color name="green">#6AB344</color>
     <color name="gray">#636363</color>
+    <color name="purple">#9c27b0</color>
+
+    <color name="primary">#008577</color>
+    <color name="primary_variant">#00574B</color>
+    <color name="secondary">#D81B60</color>
+    <color name="card_background">#e0e0e0</color>
+    <color name="dark_scrim">#66333333</color>
+    <color name="navigationBarColor">@color/dark_scrim</color>
+    <color name="color">#673AB7</color>
+    <color name="placeholder">#ddd</color>
+    <color name="author_background">#66000000</color>
+
+    <!--<color name="primary_dark">#00ACC1</color>-->
+    <color name="primary_dark">#333</color>
+    <color name="accent">#FFFF00</color>
+    <color name="ripple">#8ddd</color>
+    <color name="page_margin">#eee</color>
 </resources>

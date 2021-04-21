@@ -22,7 +22,7 @@ class SceneTransitionAnimationActivity : AppCompatActivity() {
 
         val grid = findViewById<GridView>(R.id.grid)
         grid.onItemClickListener = mOnItemClickListener
-        val adapter: GridAdapter = GridAdapter()
+        val adapter = GridAdapter()
         grid.adapter = adapter
     }
 

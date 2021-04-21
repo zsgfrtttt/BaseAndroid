@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
@@ -9,6 +9,37 @@
     </style>
 
     <style name="status" parent="AppTheme">
+    </style>
+
+    <style name="Widget.Motion.TextView.Api" parent="Widget.MaterialComponents.TextView">
+        <item name="android:background">@drawable/api_background</item>
+        <item name="android:textAppearance">?attr/textAppearanceListItemSecondary</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="Theme.Motion" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:navigationBarColor" tools:ignore="NewApi">
+            @color/navigationBarColor
+        </item>
+        <item name="android:statusBarColor" tools:ignore="NewApi">@android:color/transparent</item>
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryVariant">@color/primary_variant</item>
+        <item name="colorSecondary">@color/secondary</item>
+        <item name="colorOnSecondary">@android:color/white</item>
+    </style>
+
+    <style name="Theme.Motion.CardUi">
+        <item name="android:windowBackground">@color/card_background</item>
+    </style>
+
+    <style name="Theme.Motion.Translucent">
+        <item name="android:statusBarColor" tools:ignore="NewApi">@color/dark_scrim</item>
+    </style>
+
+    <style name="Widget.Motion.ImageView.Icon" parent="android:Widget">
+        <item name="android:padding">4dp</item>
+        <item name="android:scaleType">fitXY</item>
+        <item name="android:tint">?attr/colorPrimary</item>
     </style>
 
 </resources>
