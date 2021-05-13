@@ -17,9 +17,10 @@ import androidx.lifecycle.LifecycleObserver;
 import androidx.lifecycle.OnLifecycleEvent;
 import androidx.lifecycle.ProcessLifecycleOwner;
 import androidx.multidex.MultiDex;
+import dagger.hilt.android.HiltAndroidApp;
 
+@HiltAndroidApp
 public class App extends Application {
-    private boolean init;
 
     @Override
     public void onCreate() {

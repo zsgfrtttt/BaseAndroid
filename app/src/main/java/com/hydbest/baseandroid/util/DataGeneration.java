@@ -1,7 +1,6 @@
 package com.hydbest.baseandroid.util;
 
 import android.app.Activity;
-import android.graphics.Interpolator;
 
 import com.chad.library.adapter.base.entity.node.BaseNode;
 import com.hydbest.baseandroid.activity.Media.IjkPlayerActivity;
@@ -25,6 +24,7 @@ import com.hydbest.baseandroid.activity.anim.scene.SceneTransitionAnimationActiv
 import com.hydbest.baseandroid.activity.anim.transition.BasicTransitionAnimationActivity;
 import com.hydbest.baseandroid.activity.anim.transition.CustomTransitionActivity;
 import com.hydbest.baseandroid.activity.anim.unsplash.UnSplashActivity;
+import com.hydbest.baseandroid.activity.compose.ComposeFirstActivity;
 import com.hydbest.baseandroid.activity.concurrent.CountDownLatchActivity;
 import com.hydbest.baseandroid.activity.concurrent.ExecuteServiceActivity;
 import com.hydbest.baseandroid.activity.concurrent.FutureActivity;
@@ -65,6 +65,8 @@ import com.hydbest.baseandroid.activity.foundation.VlayoutActivity;
 import com.hydbest.baseandroid.activity.foundation.ZxingActivity;
 import com.hydbest.baseandroid.activity.foundation.transition.ListTransitionActivity;
 import com.hydbest.baseandroid.activity.jetpack.DataBindingActivity;
+import com.hydbest.baseandroid.activity.jetpack.datastore.DataStoreActivity;
+import com.hydbest.baseandroid.activity.jetpack.hilt.HiltActivity;
 import com.hydbest.baseandroid.activity.jetpack.JetpackNavigationActivity;
 import com.hydbest.baseandroid.activity.jetpack.KtActivity;
 import com.hydbest.baseandroid.activity.jetpack.LifeCycleActivity;
@@ -256,7 +258,6 @@ public class DataGeneration {
         Fragmentation subItem8_6 = new Fragmentation("SVG & VectorDrawable 详解", SvgActivity.class);
         Fragmentation subItem8_7 = new Fragmentation("MatraialShapeDrawable", MatraialShapeDrawableActivity.class);
         Fragmentation subItem8_8 = new Fragmentation("UI_FLAG", UiflagActivity.class);
-        Fragmentation subItem8_9 = new Fragmentation("MotionLayout基本操作", MotionLayoutActivity.class);
         item8.addSubItem(subItem8_0);
         item8.addSubItem(subItem8_1);
         item8.addSubItem(subItem8_2);
@@ -266,7 +267,6 @@ public class DataGeneration {
         item8.addSubItem(subItem8_6);
         item8.addSubItem(subItem8_7);
         item8.addSubItem(subItem8_8);
-        item8.addSubItem(subItem8_9);
 
         Level0Item item9 = new Level0Item("插件化", "");
         Fragmentation subItem9_0 = new Fragmentation("深入探讨java类加载器", ClassLoaderActivity.class);
@@ -292,6 +292,9 @@ public class DataGeneration {
         Fragmentation subItem10_10 = new Fragmentation("PageKeyDataSource", PageKeyDataSourceActivity.class);
         Fragmentation subItem10_11 = new Fragmentation("ItemKeyDataSource", ItemKeyDataSourceActivity.class);
         Fragmentation subItem10_12 = new Fragmentation("BoundaryCallback", BoundaryActivity.class);
+        Fragmentation subItem10_13 = new Fragmentation("Hilt", HiltActivity.class);
+        Fragmentation subItem10_14 = new Fragmentation("DataStore", DataStoreActivity.class);
+        Fragmentation subItem10_15 = new Fragmentation("MotionLayout", MotionLayoutActivity.class);
         item10.addSubItem(subItem10_0);
         item10.addSubItem(subItem10_1);
         item10.addSubItem(subItem10_2);
@@ -305,6 +308,9 @@ public class DataGeneration {
         item10.addSubItem(subItem10_10);
         item10.addSubItem(subItem10_11);
         item10.addSubItem(subItem10_12);
+        item10.addSubItem(subItem10_13);
+        item10.addSubItem(subItem10_14);
+        item10.addSubItem(subItem10_15);
 
         Level0Item item11 = new Level0Item("Android动画", "");
         Fragmentation subItem11_0 = new Fragmentation("Activity转场动画", SceneTransitionAnimationActivity.class);
@@ -327,6 +333,10 @@ public class DataGeneration {
         item11.addSubItem(subItem11_7);
         item11.addSubItem(subItem11_8);
 
+        Level0Item item12 = new Level0Item("Compose", "");
+        Fragmentation subItem12_0 = new Fragmentation("ComposeFirst", ComposeFirstActivity.class);
+        item12.addSubItem(subItem12_0);
+
         list.add(item0);
         list.add(item1);
         list.add(item2);
@@ -339,6 +349,7 @@ public class DataGeneration {
         list.add(item9);
         list.add(item10);
         list.add(item11);
+        list.add(item12);
 
         return list;
     }

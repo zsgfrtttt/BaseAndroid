@@ -167,10 +167,15 @@
         <activity android:name=".activity.anim.interpolator.InterpolatorActivity" />
         <activity android:name=".activity.anim.motion.MotionActivity" />
         <activity android:name=".activity.anim.revealeffect.RevealEffectActivity" />
-        <activity android:name=".activity.anim.unsplash.UnSplashActivity"
-            android:theme="@style/AppTheme.Home"/>
-        <activity android:name=".activity.anim.unsplash.DetailActivity"
-            android:theme="@style/AppTheme.Details"/>
+        <activity
+            android:name=".activity.anim.unsplash.UnSplashActivity"
+            android:theme="@style/AppTheme.Home" />
+        <activity
+            android:name=".activity.anim.unsplash.DetailActivity"
+            android:theme="@style/AppTheme.Details" />
+        <activity android:name=".activity.jetpack.hilt.HiltActivity" />
+        <activity android:name=".activity.jetpack.datastore.DataStoreActivity" />
+        <activity android:name=".activity.compose.ComposeFirstActivity" />
 
         <activity
             android:name="com.hydbest.baseandroid.activity.anim.motion.dissolve.DissolveActivity"

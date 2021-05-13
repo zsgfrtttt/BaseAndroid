@@ -38,4 +38,9 @@ public class SlotValue {
     public void setAutoPlay(boolean autoPlay) {
         this.autoPlay = autoPlay;
     }
+
+    @Override
+    public String toString() {
+        return "SlotValue{" + "url='" + url + '\'' + ", clickUrl='" + clickUrl + '\'' + ", autoPlay=" + autoPlay + ", isListMode=" + isListMode + '}';
+    }
 }
